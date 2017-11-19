@@ -28,7 +28,7 @@ To run Deer
 
 ## Contributions
 
-see [Cotributing guidelines](https://github.com/abahmed/Deer/master/CONTRIBUTING.md)
+See [Contributing guidelines](https://github.com/abahmed/Deer/blob/master/CONTRIBUTING.md)
 
 ## Communication
 
