@@ -8,12 +8,12 @@ dist: trusty
 # Install all system prerequisites
 before_install:
   - wget -O bootstrap.py https://raw.githubusercontent.com/abahmed/Deer/master/bootstrap.py && python bootstrap.py
-  
+
 # Build steps
 script:
   - python make.py build
-  
-  # Send results
-  notifications:
+
+# Send results
+notifications:
   email:
     - deer-project@googlegroups.com

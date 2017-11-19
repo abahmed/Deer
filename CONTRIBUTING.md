@@ -21,4 +21,4 @@ If you wish to work on an issue, please comment on the issue that you want to wo
 We are following [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
 ## Conduct
-We expect everyone to follow the [code of conduct](https://github.com/abahmed/Deer/blob/master/docs/CODE_OF_CONDUCT.md)
+We expect everyone to follow the [Code Of Conduct](https://github.com/abahmed/Deer/blob/master/docs/CODE_OF_CONDUCT.md)

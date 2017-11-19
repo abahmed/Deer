@@ -2,6 +2,8 @@
 
 # Deer
 
+[![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=master)](https://travis-ci.org/abahmed/Deer)
+
 Deer is an open-source note-keeping application, written in C++.
 It allows you to write down your thoughts and ideas quickly and easily.
 Deer aims to be a cross-platform software, that works on Windows, OS X and Linux.
