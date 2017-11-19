@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Igonre Mac OS X files
+.DS_Store
+
+# Ignore build directory
+build/*

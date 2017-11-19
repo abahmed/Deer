@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/Deer.png" width="256" height="256"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/resources/Deer.png" width="256" height="256"/></p>
 
 # Deer
 
@@ -6,16 +6,31 @@ Deer is an open-source note-keeping application, written in C++.
 It allows you to write down your thoughts and ideas quickly and easily.
 Deer aims to be a cross-platform software, that works on Windows, OS X and Linux.
 
+
+## System Rrerequisites
+
+Currently, Deer supports these platforms:
++ Debian-based operating systems (e.g. Ubuntu)
+
+Run this command in your terminal and it wil install all system prerequisites
+> wget -O bootstrap.py https://raw.githubusercontent.com/abahmed/Deer/master/bootstrap.py && python bootstrap.py
+
+## Build
+
+Firstly, you need to get a clone of Deer
+> git clone https://github.com/abahmed/Deer
+
+Just build Deer in one line
+> python make.py build
+
+To run Deer
+> python make.py run
+
 ## Contributions
 
-Newcomers are always welcome to contribute to Deer. The Deer community is happy to offer help to newcomers.
-There are many ways to contribute:
+see [Cotributing guidelines](https://github.com/abahmed/Deer/master/CONTRIBUTING.md)
 
-+ [Report issues](https://github.com/abahmed/Deer/issues)
-+ [Documentation](https://github.com/abahmed/Deer/wiki)
-+ Fix bugs
-
-## Mailing list
+## Communication
 
 The Deer community welcomes your feedback and thoughts for improving Deer. So, feel free to ping us on our mailing list.
 + Mailing List: [deer-project@googlegroups.com](deer-project@googlegroups.com)
