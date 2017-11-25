@@ -15,22 +15,23 @@ Currently, Deer supports these platforms:
 + Debian-based operating systems (e.g. Ubuntu)
 
 Run this command in your terminal and it wil install all system prerequisites
-> wget -O bootstrap.py https://raw.githubusercontent.com/abahmed/Deer/master/bootstrap.py && python bootstrap.py
+`wget -O bootstrap.py https://raw.githubusercontent.com/abahmed/Deer/master/bootstrap.py && python bootstrap.py`
 
 ## Build
 
 Firstly, you need to get a clone of Deer
-> git clone https://github.com/abahmed/Deer
+`git clone --recursive https://github.com/abahmed/Deer`
 
 Just build Deer in one line
-> python make.py build
+`python make.py build`
 
 To run Deer
-> python make.py run
+`python make.py run`
 
 ## Contributions
 
-See [Contributing guidelines](https://github.com/abahmed/Deer/blob/master/CONTRIBUTING.md)
+See [Contributing guidelines](https://github.com/abahmed/Deer/blob/master/CONTRIBUTING.md) and
+[Our Wiki](https://github.com/abahmed/Deer/wiki) to get started.
 
 ## Communication
 

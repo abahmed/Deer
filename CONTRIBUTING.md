@@ -13,7 +13,8 @@ Before making changes, please first discuss the change you want to make through 
 
 ## Contributions
 
-Contributions to Deer should be made in the form of pull requests. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes.
+Contributions to Deer should be made in the form of pull requests. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes. 
+We highly recommend to see [Our Wiki](https://github.com/abahmed/Deer/wiki) before starting to contribute.
 
 If you wish to work on an issue, please comment on the issue that you want to work on it. This is to prevent duplicated efforts on the same issue.
 
