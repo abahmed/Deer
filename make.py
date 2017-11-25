@@ -3,12 +3,7 @@
 # Responsible for performing main commands (e.g. building, cleaning, installing,
 # etc.) in Deer project in behalf of the user to keep these commands simple.
 
-import subprocess, signal, sys, shutil, os
-
-# Ignores ctrl-c.
-def signal_handler(signal, frame):
-	sys.exit(0)
-
+import subprocess, sys, shutil, os, multiprocessing
 
 # Executes a command (cmd) in the shell and gets real time output in the
 # standard output.
@@ -23,6 +18,8 @@ def execute_command(cmd):
 			sys.stdout.write(out)
 			sys.stdout.flush()
 
+# Deletes specified path if it's a file or directory and prints warning if the
+# provided path does not exist.
 def remove_path(path):
 	print ("Trying to remove {}".format(path))
 	if not os.path.exists(path):
@@ -30,21 +27,30 @@ def remove_path(path):
 		return
 	shutil.rmtree(path)
 
+# Cleans all previous builds.
+def clean_build():
+	remove_path("build")
+	remove_path("build_test")
+
+# Prints usage of this script.
 def print_usage():
 	print ("Usage: make.py <command>")	
 
 def main():
 	# Check argument if it is passed properly.
-	if not len(sys.argv) == 2:
+	if len(sys.argv) < 2:
 		print_usage()
 		sys.exit(0)
-	
+
+	# Get number of jobs that will be used for building.	
+	num_jobs = multiprocessing.cpu_count() + 2
+
 	# Get argument and handle it.
 	command = sys.argv[1]
 	if command == 'build':
 		print("Building project...")
-		execute_command("mkdir build; cd build; cmake ..; make")
-		pass
+		execute_command("mkdir build; cd build; cmake ..; make -j" + 
+						 str(num_jobs))
 	elif command == 'run':
 		print("Running project...")
 		executable = "./build/bin/Deer"
@@ -54,21 +60,26 @@ def main():
 			execute_command(executable)
 	elif command == 'clean':
 		print("Cleaning project...")
-		remove_path("build")
-		pass
+		clean_build()
+	elif command == 'test':
+		print("Building tests...")
+		execute_command("mkdir build_test; cd build_test; \
+						 cmake -Dtest=ON ..; make -j" + str(num_jobs))
+	elif command == 'run-test':
+		print("Running test...")
+		execute_command("cd build_test; make test")
 	elif command == '--help':
 		print_usage()
 		print ("This is a list of supported commands:")
 		print ("    build\tBuilds Deer project.")
 		print ("    clean\tRemove existing build")
 		print ("    run\tRuns project after building it.")
+		print ("    test\tBuilds tests of Deer project.")
+		print ("    run-test\tRuns tests after building it.")
 	else:
 		# This argument is not matched.
 		print ("make.py: '{}' is not a make command. See 'make.py --help'.".format(command))
   
 
 if __name__== "__main__":
-	# Catch the KeyboardInterrupt exception(SIGINT).
-	signal.signal(signal.SIGINT, signal_handler)
-	
 	main()

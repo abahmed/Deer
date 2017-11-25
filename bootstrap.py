@@ -25,8 +25,8 @@ def execute_command(cmd):
 
 def main():
 	# Get packages.
-	execute_command("sudo apt-get install git cmake libgtk-3-dev build-essential \
-  										 doxygen")
+	execute_command("sudo apt-get install git cmake3 libgtk-3-dev build-essential \
+					      doxygen")
   
 if __name__== "__main__":
 	# Catch the KeyboardInterrupt exception(SIGINT).

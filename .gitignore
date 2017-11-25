@@ -34,5 +34,6 @@
 # Igonre Mac OS X files
 .DS_Store
 
-# Ignore build directory
+# Ignore build directories
 build/*
+build_test/*
