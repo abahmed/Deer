@@ -8,13 +8,14 @@ dist: trusty
 # Install all system prerequisites
 before_install:
   - wget -O bootstrap.py https://raw.githubusercontent.com/abahmed/Deer/master/bootstrap.py && python bootstrap.py
-  - git submodule update --inits
+  - git submodule update --init
 
 jobs:
   include:
     - stage: Building
-      script: python make.py build
-      script: python make.py tests
+      script:
+        - python make.py build
+        - python make.py tests
     - stage: Testing
       script: python make.py run-test
 
