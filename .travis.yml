@@ -14,10 +14,9 @@ jobs:
   include:
     - stage: Building Deer
       script: python make.py build
-    - stage: Building tests
+    - stage: Building and Running tests
       script: python make.py test
-    - stage: Running tests
-      script: python make.py run-test
+      after_script: python make.py run-test
 
 # Send results
 notifications:
