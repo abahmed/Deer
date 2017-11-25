@@ -12,11 +12,11 @@ before_install:
 
 jobs:
   include:
-    - stage: Building
-      script:
-        - python make.py build
-        - python make.py tests
-    - stage: Testing
+    - stage: Building Deer
+      script: python make.py build
+    - stage: Building tests
+      script: python make.py test
+    - stage: Running tests
       script: python make.py run-test
 
 # Send results

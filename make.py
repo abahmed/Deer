@@ -55,7 +55,7 @@ def main():
 		print("Running project...")
 		executable = "./build/bin/Deer"
 		if not os.path.exists(executable):
-			print ("Error: Executable program does not exist")
+			raise ValueError("Error: Executable program does not exist")
 		else:
 			execute_command(executable)
 	elif command == 'clean':
@@ -67,7 +67,11 @@ def main():
 						 cmake -Dtest=ON ..; make -j" + str(num_jobs))
 	elif command == 'run-test':
 		print("Running test...")
-		execute_command("cd build_test; make test")
+		test_dir = "build_test"
+		if not os.path.exists(test_dir):
+			raise ValueError("Error: Test directory does not exist")
+		else:
+			execute_command("cd build_test; make test")
 	elif command == '--help':
 		print_usage()
 		print ("This is a list of supported commands:")
