@@ -10,6 +10,8 @@ deer::deer_app::deer_app(int argc, char **argv) {
     FLAGS_logtostderr = 1;
 
     LOG(INFO) << "Initializing Deer application...";
+
+    gui.load_gui(argc, argv);
 }
 
 // Destructor of deer_app class. Called on quiting the application.
