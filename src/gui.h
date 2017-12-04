@@ -13,7 +13,11 @@ namespace deer {
 
 class deer::deer_gui {
  private:
-    GtkWidget *window;
+    const gchar* main_window_ui_path;
+
+    GtkBuilder *builder;
+    GObject *window;
+    GObject *button;
 
  public:
     deer_gui();

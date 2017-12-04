@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object id="window" class="GtkWindow">
+    <property name="visible">True</property>
+    <property name="title">Deer</property>
+    <property name="default-width">600</property>
+    <property name="default-height">400</property>
+    <property name="border-width">10</property>
+  </object>
+</interface>

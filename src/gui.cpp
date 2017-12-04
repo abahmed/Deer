@@ -3,7 +3,7 @@
 #include "gui.h"
 
 // Constructor of deer_gui class.
-deer::deer_gui::deer_gui() {
+deer::deer_gui::deer_gui() : main_window_ui_path("src/ui/main-window.ui") {
     // Initialize main window.
     LOG(INFO) << "Initializing Deer main window...";
 }
@@ -14,14 +14,15 @@ void deer::deer_gui::load_gui(int argc, char **argv) {
 
     gtk_init(&argc, &argv);
 
-    // create window
-    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    // load main window ui builder
+    builder = gtk_builder_new ();
+    gtk_builder_add_from_file(builder, main_window_ui_path, NULL);
+
+    // load window object
+    window = gtk_builder_get_object(builder, "window");
 
     // register destroy handler
     g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
-
-    // show window
-    gtk_widget_show(window);
 
     // wait fot coming events
     gtk_main();
