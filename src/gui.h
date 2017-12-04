@@ -17,7 +17,6 @@ class deer::deer_gui {
 
     GtkBuilder *builder;
     GObject *window;
-    GObject *button;
 
  public:
     deer_gui();
