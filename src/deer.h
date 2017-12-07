@@ -5,6 +5,7 @@
 
 #include <gtk/gtk.h>
 #include "glog/logging.h"
+#include "gui.h"
 
 namespace deer {
 class deer_app;
@@ -12,6 +13,9 @@ class deer_app;
 
 
 class deer::deer_app {
+ private:
+    deer::deer_gui gui;
+
  public:
     deer_app(int argc, char **argv);
     ~deer_app();

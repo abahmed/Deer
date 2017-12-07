@@ -15,6 +15,8 @@ set(SOURCES
   main.cpp
   deer.h
   deer.cpp
+  gui.h
+  gui.cpp
 )
 
 # Add an executable compiled from source files
