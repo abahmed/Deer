@@ -7,7 +7,7 @@
 #include "glog/logging.h"
 
 namespace deer {
-    class deer_gui;
+class deer_gui;
 };  // namespace deer
 
 
@@ -26,3 +26,4 @@ class deer::deer_gui {
 };
 
 #endif  // SRC_GUI_H_
+

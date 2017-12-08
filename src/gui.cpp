@@ -15,7 +15,7 @@ void deer::deer_gui::load_gui(int argc, char **argv) {
     gtk_init(&argc, &argv);
 
     // load main window ui builder
-    builder = gtk_builder_new ();
+    builder = gtk_builder_new();
     gtk_builder_add_from_file(builder, main_window_ui_path, NULL);
 
     // load window object
