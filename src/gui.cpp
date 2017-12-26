@@ -3,7 +3,8 @@
 #include "gui.h"
 
 // Constructor of deer_gui class.
-deer::deer_gui::deer_gui() : main_window_ui_path("src/ui/main-window.ui") {
+deer::deer_gui::deer_gui()
+    : main_window_ui_path("resources/ui/main-window.ui") {
     // Initialize main window.
     LOG(INFO) << "Initializing Deer main window...";
 }

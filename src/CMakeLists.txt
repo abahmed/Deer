@@ -24,3 +24,9 @@ ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${SOURCES})
 
 # Link the target to the GTK+ libraries
 TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${GTK3_LIBRARIES} glog)
+
+# Copy resources to output directory.
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                   ${CMAKE_SOURCE_DIR}/resources
+                   ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/resources)

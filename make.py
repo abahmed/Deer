@@ -14,7 +14,7 @@ def execute_command(cmd):
 		out = process.stderr.read(1)
 		exit_code = process.poll()
 		if out == '' and exit_code != None:
-			break(exit_code)
+			exit(exit_code)
 		if out != '':
 			sys.stdout.write(out)
 			sys.stdout.flush()
@@ -64,10 +64,10 @@ def main():
 				str(num_jobs))
 	elif command == 'run':
 		print("Running project...")
-		executable = "./build/bin/Deer"
+		executable = "build/bin/Deer"
 		if not os.path.exists(executable):
 			raise ValueError("Error: Executable program does not exist")
-		execute_command(executable)
+		execute_command("cd build/bin; ./Deer")
 	elif command == 'clean':
 		print("Cleaning project...")
 		clean_build()
