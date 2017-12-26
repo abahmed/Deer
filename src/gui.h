@@ -25,6 +25,7 @@ class deer::deer_gui {
     void load_gui(int argc, char **argv);
     static void destroy(GtkWidget *widget, gpointer data);
     ~deer_gui();
+    set_icons();
 };
 
 #endif  // SRC_GUI_H_
