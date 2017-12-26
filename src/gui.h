@@ -17,12 +17,15 @@ class deer::deer_gui {
 
     GtkBuilder *builder;
     GObject *window;
+    GdkPixbuf *icon_32, *icon_48, *icon_64, *icon_128;
+    GList *icons_list;
 
  public:
     deer_gui();
     void load_gui(int argc, char **argv);
     static void destroy(GtkWidget *widget, gpointer data);
     ~deer_gui();
+    set_icons();
 };
 
 #endif  // SRC_GUI_H_
