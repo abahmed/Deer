@@ -17,6 +17,8 @@ class deer::deer_gui {
 
     GtkBuilder *builder;
     GObject *window;
+    GdkPixbuf *icon_32, *icon_48, *icon_64, *icon_128;
+    GList *icons_list;
 
  public:
     deer_gui();
