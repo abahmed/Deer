@@ -12,8 +12,9 @@ def execute_command(cmd):
 	process = subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE)
 	while True:
 		out = process.stderr.read(1)
-		if out == '' and process.poll() != None:
-			break
+		exit_code = process.poll()
+		if out == '' and exit_code != None:
+			break(exit_code)
 		if out != '':
 			sys.stdout.write(out)
 			sys.stdout.flush()
