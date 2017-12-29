@@ -5,6 +5,7 @@
     <property name="title">Deer</property>
     <property name="default-width">600</property>
     <property name="default-height">400</property>
+    <property name="window-position">GTK_WIN_POS_CENTER</property>
     <property name="border-width">10</property>
   </object>
 </interface>
