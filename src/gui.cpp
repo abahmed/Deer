@@ -2,6 +2,21 @@
 
 #include "gui.h"
 
+// Create new pixbuf from file
+GdkPixbuf* deer::deer_gui::create_pixbuf(const gchar *filename)
+{
+    GdkPixbuf *pixbuf;
+    GError *error = NULL;
+    pixbuf = gdk_pixbuf_new_from_file(filename, &error);
+
+    if(!pixbuf)
+    {
+        fprintf(stderr, "%s\n", error->message);
+        g_error_free(error);
+    }
+
+    return pixbuf;
+}
 // Constructor of deer_gui class.
 deer::deer_gui::deer_gui()
     : main_window_ui_path("resources/ui/main-window.ui") {
@@ -21,6 +36,10 @@ void deer::deer_gui::load_gui(int argc, char **argv) {
 
     // load window object
     window = gtk_builder_get_object(builder, "window");
+
+    // load appication icon
+    icon = create_pixbuf("resources/icons/Deer-64.png");
+    gtk_window_set_icon(GTK_WINDOW(window), icon);
 
     // register destroy handler
     g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);

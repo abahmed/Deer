@@ -17,10 +17,12 @@ class deer::deer_gui {
 
     GtkBuilder *builder;
     GObject *window;
+    GdkPixbuf *icon;
 
  public:
     deer_gui();
     void load_gui(int argc, char **argv);
+    GdkPixbuf* create_pixbuf(const gchar *filename);
     static void destroy(GtkWidget *widget, gpointer data);
     ~deer_gui();
 };
