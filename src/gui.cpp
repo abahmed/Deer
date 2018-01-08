@@ -25,6 +25,12 @@ void deer::deer_gui::load_gui(int argc, char **argv) {
     // register destroy handler
     g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
 
+    // load menu quit button
+    menu_quit_button = gtk_builder_get_object(builder, "menu_quit_button");
+
+    // register on click menu quit event
+    g_signal_connect(menu_quit_button, "activate", G_CALLBACK(destroy), NULL);
+
     // wait fot coming events
     gtk_main();
 }
