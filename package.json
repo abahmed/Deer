@@ -1,0 +1,24 @@
+{
+  "name": "deer",
+  "productName": "Deer",
+  "version": "0.0.1",
+  "description": "A modern, open source note-taking application.",
+  "main": "./main-process/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abahmed/deer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abahmed/Deer/issues"
+  },
+  "electronVersion": "1.7.10",
+  "license": "MIT",
+  "copyright": "© 2018, Deer",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "~1.7.8"
+  }
+}

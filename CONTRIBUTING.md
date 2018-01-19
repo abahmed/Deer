@@ -19,7 +19,7 @@ We highly recommend to see [Our Wiki](https://github.com/abahmed/Deer/wiki) befo
 If you wish to work on an issue, please comment on the issue that you want to work on it. This is to prevent duplicated efforts on the same issue.
 
 ## Coding style
-We are following [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+We are to keep following [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
 ## Conduct
 We expect everyone to follow the [Code Of Conduct](https://github.com/abahmed/Deer/blob/master/docs/CODE_OF_CONDUCT.md)
