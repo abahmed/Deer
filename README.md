@@ -2,6 +2,8 @@
 
 # Deer
 
+[![Join the chat at https://gitter.im/abahmed/Lobby](https://badges.gitter.im/abahmed/Lobby.svg)](https://gitter.im/abahmed/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Stars](https://img.shields.io/github/stars/abahmed/deer.svg)](https://github.com/abahmed/deer)
 [![Forks](https://img.shields.io/github/forks/abahmed/deer.svg)](https://github.com/abahmed/deer)
 
