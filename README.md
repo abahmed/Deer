@@ -6,13 +6,13 @@
 [![Forks](https://img.shields.io/github/forks/abahmed/deer.svg)](https://github.com/abahmed/deer)
 
 
-Deer is a modern open-source note-taking application, built on [Electron](https://github.com/electron/electron).
+Deer is a modern open source note-taking application, built on [Electron](https://github.com/electron/electron).
 It allows you to write down your thoughts and ideas quickly and easily.
 Deer is a cross-platform software, that works on Windows, OS X and Linux.
 
 ## Getting started
 
-Check [Our Wiki](wiki) for building and installing instructions.
+Check [Our Wiki](Deer/wiki) for building and installing instructions.
 
 ## Contributions
 
