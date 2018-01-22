@@ -8,7 +8,7 @@ Before making changes, please first discuss the change you want to make through 
 
 + Suggest new features to be implemented
 + [Report issues](issues)
-+ [Documentation](Deer/wiki)
++ [Documentation](https://github.com/abahmed/deer/wiki)
 + Fixing bugs
 
 ## Contributions
@@ -16,10 +16,10 @@ Before making changes, please first discuss the change you want to make through 
 If you wish to work on an issue, please comment on the issue that you want to work on it. This is to prevent duplicated efforts on the same issue.
 
 
-Contributions to Deer should be made in the form of pull requests. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes. (Seems not clear to you! Don't worry, we have added tutorials on [Our Wiki](Deer/wiki/GitHub-workflow))
+Contributions to Deer should be made in the form of pull requests. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes. (Seems not clear to you! Don't worry, we have added tutorials on [Our Wiki](https://github.com/abahmed/deer/wiki/GitHub-workflow))
 
 
-We highly recommend you to check [Our Wiki](Deer/wiki) before starting to contribute.
+We highly recommend you to check [Our Wiki](https://github.com/abahmed/deer/wiki) before starting to contribute.
 
 
 ## Coding style

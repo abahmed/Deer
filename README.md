@@ -12,7 +12,7 @@ Deer is a cross-platform software, that works on Windows, OS X and Linux.
 
 ## Getting started
 
-Check [Our Wiki](Deer/wiki) for building and installing instructions.
+Check [Our Wiki](https://github.com/abahmed/deer/wiki) for building and installing instructions.
 
 ## Contributions
 
