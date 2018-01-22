@@ -1,39 +1,16 @@
-# Prerequisites
-*.d
+# Ignore NodeJS modules directory
+node_modules
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Ignore NodeJS logs 
+npm-debug.log
+debug.log
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Ignore package lock
+package-lock.json
 
 # Igonre Mac OS X files
 .DS_Store
 
-# Ignore build directories
-build/*
-build_test/*
+# Ignore Windows files
+Thumbs.db
+

@@ -6,20 +6,24 @@ Before making changes, please first discuss the change you want to make through 
 
 ## There are many ways to contribute:
 
-+ Suggest new features to be implemented through our [mailing list](deer-project@googlegroups.com)
-+ [Report issues](https://github.com/abahmed/Deer/issues)
-+ [Documentation](https://github.com/abahmed/Deer/wiki)
-+ Fix bugs
++ Suggest new features to be implemented
++ [Report issues](issues)
++ [Documentation](https://github.com/abahmed/deer/wiki)
++ Fixing bugs
 
 ## Contributions
 
-Contributions to Deer should be made in the form of pull requests. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes. 
-We highly recommend to see [Our Wiki](https://github.com/abahmed/Deer/wiki) before starting to contribute.
-
 If you wish to work on an issue, please comment on the issue that you want to work on it. This is to prevent duplicated efforts on the same issue.
 
+
+Contributions to Deer should be made in the form of pull requests. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes. (Seems not clear to you! Don't worry, we have added tutorials on [Our Wiki](https://github.com/abahmed/deer/wiki/GitHub-workflow))
+
+
+We highly recommend you to check [Our Wiki](https://github.com/abahmed/deer/wiki) before starting to contribute.
+
+
 ## Coding style
-We are following [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+We are to keep following [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
 ## Conduct
-We expect everyone to follow the [Code Of Conduct](https://github.com/abahmed/Deer/blob/master/docs/CODE_OF_CONDUCT.md)
+We expect everyone to follow the [Code Of Conduct](docs/CODE_OF_CONDUCT.md)

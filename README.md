@@ -1,37 +1,22 @@
-<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/resources/icons/Deer.png" width="256" height="256"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/assests/app-icon/Deer.png" width="256" height="256"/></p>
 
 # Deer
 
-[![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=master)](https://travis-ci.org/abahmed/Deer)
+[![Stars](https://img.shields.io/github/stars/abahmed/deer.svg)](https://github.com/abahmed/deer)
+[![Forks](https://img.shields.io/github/forks/abahmed/deer.svg)](https://github.com/abahmed/deer)
 
-Deer is an open-source note-taking application, written in C++.
+
+Deer is a modern open source note-taking application, built on [Electron](https://github.com/electron/electron).
 It allows you to write down your thoughts and ideas quickly and easily.
-Deer aims to be a cross-platform software, that works on Windows, OS X and Linux.
+Deer is a cross-platform software, that works on Windows, OS X and Linux.
 
+## Getting started
 
-## System Prerequisites
-
-Currently, Deer supports these platforms:
-+ Debian-based operating systems (e.g. Ubuntu)
-
-Run this command in your terminal and it wil install all system prerequisites
-`wget -O bootstrap.py https://raw.githubusercontent.com/abahmed/Deer/master/bootstrap.py && python bootstrap.py`
-
-## Build
-
-Firstly, you need to get a clone of Deer
-`git clone --recursive https://github.com/abahmed/Deer`
-
-Just build Deer in one line
-`python make.py build`
-
-To run Deer
-`python make.py run`
+Check [Our Wiki](https://github.com/abahmed/deer/wiki) for building and installing instructions.
 
 ## Contributions
 
-See [Our Wiki](https://github.com/abahmed/Deer/wiki) and
-[Contributing guidelines](https://github.com/abahmed/Deer/blob/master/CONTRIBUTING.md) to get started.
+See [Contributing guidelines](CONTRIBUTING.md) to get started.
 
 ## Communication
 
@@ -42,4 +27,4 @@ The Deer community welcomes your feedback and thoughts for improving Deer. So, f
 
 ## License
 
-Deer is licensed under Mozilla Public License 2.0.
+Deer is licensed under [MIT License](LICENSE).
