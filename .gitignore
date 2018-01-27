@@ -14,3 +14,5 @@ package-lock.json
 # Ignore Windows files
 Thumbs.db
 
+# Webpack build directory
+build
