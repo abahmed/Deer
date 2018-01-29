@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/assests/app-icon/Deer.png" width="256" height="256"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/app/assets/images/Deer.png" width="256" height="256"/></p>
 
 # Deer
 
