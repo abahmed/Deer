@@ -16,7 +16,7 @@
   "copyright": "© 2018, Deer",
   "private": true,
   "scripts": {
-    "dev": "webpack",
+    "build": "webpack",
     "start": "electron .",
     "test": "jest"
   },
