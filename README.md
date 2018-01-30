@@ -1,8 +1,9 @@
-<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/assests/app-icon/Deer.png" width="256" height="256"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/app/assets/images/Deer.png" width="256" height="256"/></p>
 
 # Deer
 
 [![Join the chat at https://gitter.im/abahmed/Deer](https://badges.gitter.im/abahmed/Deer.svg)](https://gitter.im/abahmed/Deer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=master)](https://travis-ci.org/abahmed/Deer)
 
 [![Stars](https://img.shields.io/github/stars/abahmed/deer.svg)](https://github.com/abahmed/deer)
 [![Forks](https://img.shields.io/github/forks/abahmed/deer.svg)](https://github.com/abahmed/deer)
