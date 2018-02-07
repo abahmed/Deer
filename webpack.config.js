@@ -1,5 +1,5 @@
 module.exports = {
-  watch: false,
+  watch: true,
   
   target: 'electron',
   
