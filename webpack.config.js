@@ -1,6 +1,4 @@
 module.exports = {
-  watch: true,
-  
   target: 'electron',
   
   entry: './app/entry.js',

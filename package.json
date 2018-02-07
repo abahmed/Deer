@@ -19,7 +19,8 @@
     "lint": "eslint --ext .jsx .",
     "build": "webpack",
     "start": "electron .",
-    "test": "jest"
+    "test": "jest",
+    "watch": "webpack --watch"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
