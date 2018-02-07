@@ -16,6 +16,7 @@
   "copyright": "© 2018, Deer",
   "private": true,
   "scripts": {
+    "lint": "eslint --ext .jsx .",
     "build": "webpack",
     "start": "electron .",
     "test": "jest"
@@ -30,7 +31,9 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^22.1.4",
     "regenerator-runtime": "^0.11.1",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3"
   },
   "dependencies": {
     "electron": "~1.7.8",
