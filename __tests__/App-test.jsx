@@ -6,6 +6,6 @@ import App from '../app/App'
 Enzyme.configure({adapter: new Adapter()})
 
 test('App has empty body', () => {
-    const app = shallow(<App/>)
-    expect(app.text()).toEqual('')
+  const app = shallow(<App/>)
+  expect(app.text()).toEqual('')
 })
