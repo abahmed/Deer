@@ -1,0 +1,23 @@
+# Test against a specific version of Node.js
+environment:
+  nodejs_version: "8"
+
+platform:
+  - x86
+  - x64
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get Node.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  - npm run lint
+  - npm run build
+  - npm test
+
+# Don't actually build.
+build: off
