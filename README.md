@@ -3,7 +3,8 @@
 # Deer
 
 [![Join the chat at https://gitter.im/abahmed/Deer](https://badges.gitter.im/abahmed/Deer.svg)](https://gitter.im/abahmed/Deer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=master)](https://travis-ci.org/abahmed/Deer)
+[![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=develop)](https://travis-ci.org/abahmed/Deer)
+[![Build status](https://ci.appveyor.com/api/projects/status/k619um0clmxkmlrd/branch/develop?svg=true)](https://ci.appveyor.com/project/abahmed/deer/branch/develop)
 
 [![Stars](https://img.shields.io/github/stars/abahmed/deer.svg)](https://github.com/abahmed/deer)
 [![Forks](https://img.shields.io/github/forks/abahmed/deer.svg)](https://github.com/abahmed/deer)
