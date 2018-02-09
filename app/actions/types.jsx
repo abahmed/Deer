@@ -1,0 +1,4 @@
+export const ACTION_TYPES = {
+  ADD_NOTE: 'ADD_NOTE',
+  FETCH_ALL_NOTES: 'FETCH_ALL_NOTES',
+}

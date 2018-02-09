@@ -1,6 +1,15 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 
-export default class App extends Component {
+import ACTIONS from './actions';
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(ACTIONS.fetchAllNotes());
+  }
   render() {
     return (
       <div>
@@ -8,3 +17,9 @@ export default class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default App;
