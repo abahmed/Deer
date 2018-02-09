@@ -1,17 +1,17 @@
-# Contributing
+## Contributing to Deer
 
-Newcomers are always welcome to contribute to Deer. The Deer community is happy to offer help to newcomers.
-Before making changes, please first discuss the change you want to make through our [mailing list](deer-project@googlegroups.com).
+:tada: Newcomers are always welcome to contribute to Deer, and we are happy to offer help to newcomers.
+Before making changes, please first discuss the change you want to make through [Gitter](https://gitter.im/abahmed/Deer), or email us at [deer-project@googlegroups.com](deer-project@googlegroups.com)
 
 
-## There are many ways to contribute:
+### There are many ways to contribute:
 
 + Suggest new features to be implemented
 + [Report issues](issues)
 + [Documentation](https://github.com/abahmed/deer/wiki)
-+ Fixing bugs
++ [Fixing issues](issues)
 
-## Contributions
+### Code Contribution
 
 If you wish to work on an issue, please comment on the issue that you want to work on it. This is to prevent duplicated efforts on the same issue.
 
@@ -22,8 +22,9 @@ Contributions to Deer should be made in the form of pull requests to the **devel
 We highly recommend you to check [Our Wiki](https://github.com/abahmed/deer/wiki) before starting to contribute.
 
 
-## Coding style
-We are to keep following [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+### JavaScript Style guide
+JavaScript code must follow [JavaScript Standard Style](https://standardjs.com)
 
-## Conduct
+
+### Code of Conduct
 We expect everyone to follow the [Code Of Conduct](docs/CODE_OF_CONDUCT.md)
