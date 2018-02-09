@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/app/assets/images/Deer-256.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/develop/app/assets/images/Deer-256.png"/></p>
 
 [![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=develop)](https://travis-ci.org/abahmed/Deer)
 [![Build status](https://ci.appveyor.com/api/projects/status/k619um0clmxkmlrd/branch/develop?svg=true)](https://ci.appveyor.com/project/abahmed/deer/branch/develop)
