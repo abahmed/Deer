@@ -28,7 +28,6 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "electron-is-dev": "^0.3.0",
     "electron-reload": "^1.2.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -40,6 +39,7 @@
   },
   "dependencies": {
     "electron": "~1.7.8",
+    "electron-is-dev": "^0.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }
