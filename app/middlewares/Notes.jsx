@@ -1,34 +1,45 @@
-import * as ACTION_TYPES from '../actions/types';
-import { fetchNotes } from '../db';
+// Node Libs
+import uuidv4 from 'uuid/v4';
 
-const Notes = () => next => action => {
+// Actions Verbs
+import { ACTION_TYPES } from './../actions/types';
+
+// Helpers
+import { fetchNotes, addNote } from './../db';
+
+const Notes = ({dispatch}) => next => action => {
   switch (action.type) {
   case ACTION_TYPES.FETCH_ALL_NOTES: {
     return fetchNotes('notes')
-    .then(allDocs => {
-      next(
-        Object.assign({}, action, {
-          payload: allDocs,
+        .then(allDocs => {
+          next(
+            Object.assign({}, action, {
+              payload: allDocs,
+            })
+          );
         })
-      );
-    })
-    .catch(err => {
-      /* eslint-disable no-console */
-      console.log(err);
-      /* eslint-enable no-console */
-    });
-
+        .catch(err => {
+          console.log(err)
+        });
   }
 
   case ACTION_TYPES.ADD_NOTE: {
     const doc = Object.assign({}, action.payload, {
-      created: Date.now(),
+      _id: uuidv4(),
+      created_at: Date.now(),
     });
-    // TODO: Implement save
-    /* eslint-disable no-console */
     console.log(doc);
-    /* eslint-enable no-console */
-    break;
+    return addNote('notes', doc)
+        .then(newDocs => {
+          next(
+            Object.assign({}, action, {
+              payload: newDocs,
+            })
+          )
+        })
+        .catch(err => {
+          console.log(err);
+        });
   }
 
   default: {

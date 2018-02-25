@@ -9,13 +9,16 @@ const initialState = {
 const NoteReducer = handleActions(
   {
     [ ACTION_TYPES.ADD_NOTE ]: (state = initialState, action) =>
-      Object.assign({}, state, {
-        rows: [...state.notes, action.payload],
-      }),
+    {
+      console.log('reached reducer');
+      return Object.assign({}, state, {
+        notes: [...state.notes, action.payload],
+      });
+    },
 
     [ ACTION_TYPES.FETCH_ALL_NOTES ]: (state = initialState, action) =>
       Object.assign({}, state, {
-        rows: [...action.payload],
+        notes: [...action.payload],
       }),
   },
   initialState

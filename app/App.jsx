@@ -1,20 +1,17 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, {Component} from 'react';
 
-import ACTIONS from './actions';
-import AddNote from './containers/add-note';
+import AddNote from './components/add-note';
 import NoteList from './containers/note-list';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   render() {
     return (
       <div>
+        <h1> Deer </h1>
         <AddNote />
         <NoteList />
       </div>
@@ -22,18 +19,5 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
 
-function mapStateToProps({ notes }) {
-  return { notes };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ACTIONS, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  App
-);
+export default App

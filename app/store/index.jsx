@@ -1,15 +1,20 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import Reducers from '../reducers';
 
-// Custom Middleware
-import Notes from '../middlewares/Notes';
+import Logger from 'redux-logger';
 
+// Custom Middleware
+import Notes from './../middlewares/Notes';
+
+const middlewares = [
+  Logger,
+  Notes
+];
 export default function configureStore(initialState) {
   const store = createStore(
     Reducers,
     initialState,
-    compose(applyMiddleware(Notes))
+    compose(applyMiddleware(...middlewares))
   );
-
   return store;
 }
