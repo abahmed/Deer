@@ -7,5 +7,6 @@ Enzyme.configure({adapter: new Adapter()})
 
 test('App has empty body', () => {
   const app = shallow(<App/>)
+  const Store = require('electron-store');
   expect(app.text()).toEqual('')
 })
