@@ -20,8 +20,7 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "electron .",
-    "test": "jest",
-    "watch": "webpack --watch"
+    "test": "jest"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
