@@ -12,17 +12,20 @@ if (isDev) {
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+// Create an instance of the app. Returns false if first instance
 var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
   // Someone tried to run a second instance, we should focus our window.
   if (win) {
-    if (win.isMinimized()) win.restore();
-    win.focus();
+    if (win.isMinimized()) 
+	win.restore()
+    win.focus()
   }
-});
+})
 
+// Quit if not the first instance 
 if (shouldQuit) {
-  app.quit();
-  return;
+  app.quit()
+  return
 }
 
 function createWindow() {
