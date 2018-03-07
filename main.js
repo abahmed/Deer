@@ -14,7 +14,6 @@ let win
 
 // Create an instance of the app. Returns false if first instance
 var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
-  // Someone tried to run a second instance, we should focus our window.
   if (win) {
     if (win.isMinimized()) 
 	win.restore()
@@ -30,7 +29,7 @@ if (shouldQuit) {
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({ width: 720, height: 400 })
+  win = new BrowserWindow({ width: 720, height: 400, resizable: false  })
 
   // and load the index.html of the app.
   win.loadURL(url.format({
