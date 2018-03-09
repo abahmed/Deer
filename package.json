@@ -18,7 +18,6 @@
   "scripts": {
     "lint": "eslint --ext .jsx .",
     "build": "webpack",
-    "watch": "webpack --watch",
     "start": "electron .",
     "test": "jest",
     "watch": "webpack --watch"

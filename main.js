@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 const isDev = require('electron-is-dev')
@@ -12,7 +12,22 @@ if (isDev) {
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow () {
+// Create an instance of the app. Returns false if first instance
+var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
+  if (win) {
+    if (win.isMinimized()) 
+	win.restore()
+    win.focus()
+  }
+})
+
+// Quit if not the first instance 
+if (shouldQuit) {
+  app.quit()
+  return
+}
+
+function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({ width: 720, height: 400, resizable: false  })
 
