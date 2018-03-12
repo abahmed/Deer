@@ -1,4 +1,4 @@
-import * as ACTION_TYPES from '../actions/types';
+import { ACTION_TYPES } from '../actions/types';
 import { handleActions } from 'redux-actions';
 import { createSelector } from 'reselect';
 
@@ -10,16 +10,23 @@ const NoteReducer = handleActions(
   {
     [ ACTION_TYPES.ADD_NOTE ]: (state = initialState, action) =>
     {
-      console.log('reached reducer');
-      return Object.assign({}, state, {
-        notes: [...state.notes, action.payload],
-      });
+      if (action.payload) {
+        return Object.assign({}, state, {
+          notes: [...state.notes, action.payload],
+        });
+      }
+      return state;
     },
 
     [ ACTION_TYPES.FETCH_ALL_NOTES ]: (state = initialState, action) =>
-      Object.assign({}, state, {
-        notes: [...action.payload],
-      }),
+    {
+      if (action.payload) {
+        return Object.assign({}, state, {
+          notes: [...action.payload],
+        });
+      }
+      return state;
+    }
   },
   initialState
 );

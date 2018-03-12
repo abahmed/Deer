@@ -7,5 +7,5 @@ Enzyme.configure({adapter: new Adapter()})
 
 test('App has empty body', () => {
   const app = shallow(<App/>)
-  expect(app.text()).toEqual('')
+  expect(app.text()).toContain('Deer')
 })

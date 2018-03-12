@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ACTIONS from './../../actions';
+import * as ACTIONS from './../../actions';
 import NoteList from './../../components/note-list';
 
 function mapStateToProps({ notes }) {
