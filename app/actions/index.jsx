@@ -6,6 +6,7 @@ import { ACTION_TYPES } from './types';
 */
 
 // fetchAllNotes - Retrieve notes from the store
+
 export function fetchAllNotes() {
   return {
     type: ACTION_TYPES.FETCH_ALL_NOTES,
@@ -26,3 +27,4 @@ export function addNote(payload) {
 // }
 
 // export default ACTIONS;
+

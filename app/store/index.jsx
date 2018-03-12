@@ -9,7 +9,7 @@ import Logger from 'redux-logger';
 const middlewares = [
   Logger,
 // Bypassing custom middleware temporarily 
-//since PouchDB integartion isn't complete yet.
+// since PouchDB integartion isn't complete yet.
 //  Notes
 ];
 export default function configureStore(initialState) {
