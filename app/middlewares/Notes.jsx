@@ -7,7 +7,8 @@ import { ACTION_TYPES } from './../actions/types';
 // Helpers
 import { fetchNotes, addNote } from './../db';
 
-const Notes = ({dispatch}) => next => action => {
+//eslint-disable-next-line no-unused-vars
+const Notes = ({ dispatch }) => next => action => {
   switch (action.type) {
   case ACTION_TYPES.FETCH_ALL_NOTES: {
     return fetchNotes('notes')
@@ -19,6 +20,7 @@ const Notes = ({dispatch}) => next => action => {
           );
         })
         .catch(err => {
+          //eslint-disable-next-line no-console
           console.log(err)
         });
   }
@@ -28,7 +30,6 @@ const Notes = ({dispatch}) => next => action => {
       _id: uuidv4(),
       created_at: Date.now(),
     });
-    console.log(doc);
     return addNote('notes', doc)
         .then(newDocs => {
           next(
@@ -38,6 +39,7 @@ const Notes = ({dispatch}) => next => action => {
           )
         })
         .catch(err => {
+          //eslint-disable-next-line no-console
           console.log(err);
         });
   }

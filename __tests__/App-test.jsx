@@ -5,7 +5,7 @@ import App from '../app/App'
 
 Enzyme.configure({adapter: new Adapter()})
 
-test('App has empty body', () => {
+test('App contains Deer header', () => {
   const app = shallow(<App/>)
-  expect(app.text()).toEqual('')
+  expect(app.text()).toContain('Deer')
 })

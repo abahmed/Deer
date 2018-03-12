@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ACTIONS from './../../actions';
+
+import * as ACTIONS from './../../actions';
 
 class AddNote extends Component {
   constructor (props) {
@@ -14,6 +15,8 @@ class AddNote extends Component {
     this.changeEvent = this.changeEvent.bind(this);
   }
 
+  // This method is called onChange of the text field,
+  // so that we update the local state on every change
   changeEvent(event) {
     this.setState({ note: event.target.value });
   }
@@ -30,7 +33,7 @@ class AddNote extends Component {
           type="textarea"
           name="message"
           id="text"
-          placeholder="Placeholder"
+          placeholder="Add your note here."
           onChange={this.changeEvent}
         />
         <button onClick={this.saveNote}>Add note</button>
@@ -43,10 +46,14 @@ AddNote.propTypes = {
   addNote: PropTypes.func.isRequired,
 };
 
+// This method maps the actions to dispatch, 
+// which provide the actions as a part of props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(ACTIONS, dispatch);
 }
 
+// This method maps the state to dispatch, 
+// which provide the state as a part of props
 function mapStatetoProps(state) {
   return state;
 }
