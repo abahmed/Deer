@@ -5,7 +5,9 @@ const isDev = require('electron-is-dev')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
-  require('electron-reload')(__dirname)
+  require('electron-reload')(__dirname, {
+    electron: require('${__dirname}/../../node_modules/electron')
+  })
 }
 
 // Keep a global reference of the window object, if you don't, the window will

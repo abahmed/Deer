@@ -13,7 +13,7 @@ export default class NoteList extends Component {
     const notes = this.props.notes.map(note => {
       return (
         < NoteListItem
-        note = { note.payload } 
+        note = { note.payload }
         />
       );
     });
@@ -32,5 +32,3 @@ NoteList.propTypes = {
   notes: PropTypes.array.isRequired,
   fetchAllNotes: PropTypes.func.isRequired,
 };
-
-

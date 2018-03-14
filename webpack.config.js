@@ -10,10 +10,12 @@ module.exports = {
   },
 
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {compact: false}
       }
     ]
   },

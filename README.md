@@ -33,3 +33,10 @@ Feel free to Join us on [Gitter](https://gitter.im/abahmed/Deer), or email us at
 ### License
 
 Deer is licensed under [MIT License](LICENSE).
+
+changed require('electron-reload')(__dirname, {
+  electron: require('${__dirname}/../../node_modules/electron')
+})
+in main js
+
+added loader in webpack config
