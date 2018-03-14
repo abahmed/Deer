@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
-  CardBlock,
   CardFooter,
   CardTitle,
-  CardText,
   CardBody,
-  CardImg,
-  CardSubtitle,
   CardHeader,
 } from 'reactstrap';
 
