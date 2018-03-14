@@ -11,14 +11,12 @@ import {
 export default class NoteListItem extends Component{
   render() {
     return (
-          <Card body outline color="success"> 
-            <CardHeader tag="h3">Header</CardHeader>
+          <Card> 
             <CardBody>
-              <CardTitle>Card title</CardTitle>
               <p> {this.props.note} </p>
             </CardBody>
             <CardFooter>
-              <button color="secondary">Delete</button>
+              <button>Delete</button>
             </CardFooter>
           </Card>
     );
