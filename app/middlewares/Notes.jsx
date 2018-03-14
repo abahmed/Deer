@@ -30,7 +30,7 @@ const Notes = ({ dispatch }) => next => action => {
       _id: uuidv4(),
       created_at: Date.now(),
     });
-    return addNote('notes', doc)
+    return addNote(doc)
         .then(newDocs => {
           next(
             Object.assign({}, action, {

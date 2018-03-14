@@ -10,9 +10,9 @@ const NoteReducer = handleActions(
   {
     [ ACTION_TYPES.ADD_NOTE ]: (state = initialState, action) =>
     {
-      if (action.payload) {
+      if (action.payload.rows) {
         return Object.assign({}, state, {
-          notes: [...state.notes, action.payload],
+          notes: [...action.payload.rows],
         });
       }
       return state;
@@ -20,9 +20,9 @@ const NoteReducer = handleActions(
 
     [ ACTION_TYPES.FETCH_ALL_NOTES ]: (state = initialState, action) =>
     {
-      if (action.payload) {
+      if (action.payload.rows) {
         return Object.assign({}, state, {
-          notes: [...action.payload],
+          notes: [...action.payload.rows],
         });
       }
       return state;

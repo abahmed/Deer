@@ -21,7 +21,7 @@ export const fetchNotes = () => {
 // Create new Note
 export const addNote = ( doc ) =>
   new Promise((resolve, reject) => {
-    notes.put({ note: doc.payload, _id: doc.id })
+    notes.put(doc)
       .then(fetchNotes()
       .then(newDocs => resolve(newDocs)
       ))
