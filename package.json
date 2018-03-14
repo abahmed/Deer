@@ -45,8 +45,10 @@
     "pouchdb-browser": "^6.4.3",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-bootstrap-card": "^0.1.5",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
+    "reactstrap": "^5.0.0-beta.2",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "reselect": "^3.0.1"
