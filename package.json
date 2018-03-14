@@ -19,6 +19,7 @@
     "lint": "eslint --ext .jsx .",
     "build": "webpack",
     "watch": "webpack --watch",
+    "precommit": "npm test && npm run lint",
     "start": "electron .",
     "test": "jest"
   },
@@ -33,6 +34,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
+    "husky": "^0.14.3",
     "jest": "^22.1.4",
     "redux-logger": "^3.0.6",
     "regenerator-runtime": "^0.11.1",
