@@ -7,6 +7,5 @@ Enzyme.configure({adapter: new Adapter()})
 
 test('App contains Deer header', () => {
   const app = shallow(<App/>)
-  console.log(app.text())
   expect(app.text()).toContain('Deer')
 })
