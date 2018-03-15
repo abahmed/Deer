@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardFooter,
-  CardTitle,
   CardBody,
-  CardHeader,
 } from 'reactstrap';
 
 export default class NoteListItem extends Component{
