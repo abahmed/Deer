@@ -5,11 +5,3 @@ node_js:
 os:
   - linux
   - osx
-
-install:
-  - npm install
-
-script:
-  - npm run lint
-  - npm run build
-  - npm test
