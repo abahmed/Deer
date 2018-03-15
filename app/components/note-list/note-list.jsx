@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import NoteListItem from '../note-list-item/note-list-item';
 
 //This component renders all the notes added/saved by the user
-//TODO: Build a seperate component for the note item.
 export default class NoteList extends Component {
   componentDidMount() {
     this.props.fetchAllNotes();
