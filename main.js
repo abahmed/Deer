@@ -5,7 +5,11 @@ const isDev = require('electron-is-dev')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
-  require('electron-reload')(__dirname)
+  // Work around by providing electron path,
+  // (https://github.com/yan-foto/electron-reload/issues/16)
+  require('electron-reload')(__dirname, {
+    electron: require('${__dirname}/../../node_modules/electron')
+  })
 }
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -15,13 +19,13 @@ let win
 // Create an instance of the app. Returns false if first instance
 var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
   if (win) {
-    if (win.isMinimized()) 
+    if (win.isMinimized())
 	win.restore()
     win.focus()
   }
 })
 
-// Quit if not the first instance 
+// Quit if not the first instance
 if (shouldQuit) {
   app.quit()
   return
