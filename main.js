@@ -1,7 +1,8 @@
-const { app, BrowserWindow } = require('electron')
+const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 const isDev = require('electron-is-dev')
+const windowState = require('electron-window-state')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -32,8 +33,28 @@ if (shouldQuit) {
 }
 
 function createWindow() {
+  // Load last state and fallback to defaults if it does not exist.
+  let lastWindowState = windowState({
+    defaultWidth: 800,
+    defaultHeight: 600
+  })
+
   // Create the browser window.
-  win = new BrowserWindow({ width: 720, height: 400, resizable: false  })
+  win = new BrowserWindow({
+    width: lastWindowState.width,
+    height: lastWindowState.height,
+    x: lastWindowState.x,
+    y: lastWindowState.y,
+    minWidth: 800,
+    minHeight: 600,
+    backgroundColor: '#F8F8FF',
+    icon: 'app/assets/images/Deer-128.png',
+    show: false,
+    resizable: false
+  })
+
+  // Clear default menu.
+  win.setMenu(null)
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -42,6 +63,14 @@ function createWindow() {
     slashes: true
   }))
 
+  // Register listeners on browser window to keep track of its state, so it can
+  // restore it.
+  lastWindowState.manage(win)
+
+  // Show browser window once it's ready.
+  win.once('ready-to-show', () => {
+    win.show()
+  })
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -55,7 +84,10 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  // Create and load main window.
+  createWindow()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
