@@ -3,6 +3,9 @@ const path = require('path')
 const url = require('url')
 const isDev = require('electron-is-dev')
 const windowState = require('electron-window-state')
+const os = require('os')
+const initLogger = require('./utils/logger.js')
+const appInfo = require('./package.json')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -52,6 +55,7 @@ function createWindow() {
     show: false,
     resizable: false
   })
+  logger.info('Deer window is created')
 
   // Clear default menu.
   win.setMenu(null)
@@ -70,10 +74,13 @@ function createWindow() {
   // Show browser window once it's ready.
   win.once('ready-to-show', () => {
     win.show()
+    logger.info('Deer window is shown')
   })
 
   // Emitted when the window is closed.
   win.on('closed', () => {
+    logger.info('Deer window is closed')
+
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
@@ -85,6 +92,12 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
+  // Initialize logger
+  initLogger()
+  logger.info(`${appInfo.name}(${appInfo.version}) has started on ` +
+              `${os.type()}(${os.release()}) on ${os.platform()}(` +
+              `${os.arch()})`)
+
   // Create and load main window.
   createWindow()
 })
