@@ -7,10 +7,14 @@ import { ACTION_TYPES } from './../actions/types';
 // Helpers
 import { fetchNotes, addNote } from './../db';
 
+import { remote } from 'electron'
+const logger = remote.getGlobal('logger')
+
 //eslint-disable-next-line no-unused-vars
 const Notes = ({ dispatch }) => next => action => {
   switch (action.type) {
   case ACTION_TYPES.FETCH_ALL_NOTES: {
+    logger.info('Fetching notes from database')
     return fetchNotes('notes')
         .then(allDocs => {
           next(
@@ -21,7 +25,7 @@ const Notes = ({ dispatch }) => next => action => {
         })
         .catch(err => {
           //eslint-disable-next-line no-console
-          console.log(err)
+          logger.error('Error while fetching notes from database: ' + err)
         });
   }
 
@@ -30,6 +34,7 @@ const Notes = ({ dispatch }) => next => action => {
       _id: uuidv4(),
       created_at: Date.now(),
     });
+    logger.info('Adding note to database')
     return addNote(doc)
         .then(newDocs => {
           next(
@@ -40,7 +45,7 @@ const Notes = ({ dispatch }) => next => action => {
         })
         .catch(err => {
           //eslint-disable-next-line no-console
-          console.log(err);
+          logger.error('Error while adding note to database: ' + err)
         });
   }
 
