@@ -1,29 +1,17 @@
-import PouchDB from 'pouchdb-browser';
-
-
-/*
-* All DB store operations go here
-*/
+import PouchDB from 'pouchdb-browser'
 
 // Initialize Schema
-const notes = new PouchDB('notes');
+const notesDB = new PouchDB('notes')
 
-// Fetch operations
+// Fetches all notes from database
 export const fetchNotes = () => {
-  return notes.allDocs({
+  return notesDB.allDocs({
     include_docs: true,
-    attachments: true,
-  });
+    attachments: true
+  })
 }
 
-// Create/Update operations
-
-// Create new Note
-export const addNote = ( doc ) =>
-  new Promise((resolve, reject) => {
-    notes.put(doc)
-      .then(fetchNotes()
-      .then(newDocs => resolve(newDocs)
-      ))
-      .catch(err => reject(err));
-  });
+// Adds new note to database then fetches
+export const addNote = (doc) => {
+  return notesDB.put(doc)
+}

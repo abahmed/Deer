@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import * as ACTIONS from './../../actions';
+import * as ACTIONS from './../../actions'
 
 class AddNote extends Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
-      note: '',
+      note: ''
     }
-    this.saveNote = this.saveNote.bind(this);
-    this.changeEvent = this.changeEvent.bind(this);
+    this.saveNote = this.saveNote.bind(this)
+    this.changeEvent = this.changeEvent.bind(this)
   }
 
   // This method is called onChange of the text field,
   // so that we update the local state on every change
-  changeEvent(event) {
-    this.setState({ note: event.target.value });
+  changeEvent (event) {
+    this.setState({ note: event.target.value })
   }
 
-  saveNote() {
-    const { addNote } = this.props;
-    addNote({ payload: this.state.note});
+  saveNote () {
+    const { addNote } = this.props
+    addNote({payload: this.state.note})
   }
 
-  render() {
+  render () {
     return (
       <div >
         <input
@@ -38,23 +38,23 @@ class AddNote extends Component {
         />
         <button onClick={this.saveNote}>Add note</button>
       </div>
-    );
+    )
   }
 }
 
 AddNote.propTypes = {
-  addNote: PropTypes.func.isRequired,
-};
+  addNote: PropTypes.func.isRequired
+}
 
-// This method maps the actions to dispatch, 
+// This method maps the actions to dispatch,
 // which provide the actions as a part of props
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ACTIONS, dispatch);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(ACTIONS, dispatch)
 }
 
-// This method maps the state to dispatch, 
+// This method maps the state to dispatch,
 // which provide the state as a part of props
-function mapStatetoProps(state) {
-  return state;
+function mapStatetoProps (state) {
+  return state
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(AddNote);
+export default connect(mapStatetoProps, mapDispatchToProps)(AddNote)

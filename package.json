@@ -32,8 +32,13 @@
     "electron-reload": "^1.2.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^3.19.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
     "redux-logger": "^3.0.6",
@@ -53,6 +58,6 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "reselect": "^3.0.1",
-    "winston": "^2.4.1"
+    "winston": "^2.4.2"
   }
 }
