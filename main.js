@@ -12,7 +12,7 @@ if (isDev) {
   // Work around by providing electron path,
   // (https://github.com/yan-foto/electron-reload/issues/16)
   require('electron-reload')(__dirname, {
-    electron: require('${__dirname}/../../node_modules/electron')
+    electron: require(`${__dirname}/node_modules/electron`)
   })
 }
 
@@ -20,11 +20,13 @@ if (isDev) {
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+// a global reference of the logger object.
+let logger
+
 // Create an instance of the app. Returns false if first instance
-var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
+var shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory) {
   if (win) {
-    if (win.isMinimized())
-	win.restore()
+    if (win.isMinimized()) { win.restore() }
     win.focus()
   }
 })
@@ -32,10 +34,9 @@ var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) 
 // Quit if not the first instance
 if (shouldQuit) {
   app.quit()
-  return
 }
 
-function createWindow() {
+function createWindow () {
   // Load last state and fallback to defaults if it does not exist.
   let lastWindowState = windowState({
     defaultWidth: 800,
@@ -58,7 +59,7 @@ function createWindow() {
   logger.info('Deer window is created')
 
   // Clear default menu.
-  //win.setMenu(null)
+  // win.setMenu(null)
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -93,7 +94,7 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   // Initialize logger
-  initLogger()
+  logger = initLogger()
   logger.info(`${appInfo.name}(${appInfo.version}) has started on ` +
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)
