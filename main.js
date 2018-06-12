@@ -6,6 +6,7 @@ const windowState = require('electron-window-state')
 const os = require('os')
 const initLogger = require('./utils/logger.js')
 const appInfo = require('./package.json')
+const Prefs = require('electron-store')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -93,6 +94,9 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
+  // Initialize store to save and load preferences.
+  global.prefs = new Prefs()
+
   // Initialize logger
   logger = initLogger()
   logger.info(`${appInfo.name}(${appInfo.version}) has started on ` +

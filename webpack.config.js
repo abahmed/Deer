@@ -1,9 +1,10 @@
 var path = require('path')
+
 module.exports = {
   entry: './app/entry.js',
   output: {
-    path: path.resolve(__dirname, '/build'),
-    publicPath: path.resolve(__dirname, '/build'),
+    path: path.join(__dirname, '/build'),
+    publicPath: path.join(__dirname, '/build'),
     filename: 'bundle.js'
   },
   mode: 'development',
@@ -11,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
@@ -24,9 +25,5 @@ module.exports = {
         loaders: ['style-loader', 'css-loader']
       }
     ]
-  },
-
-  resolve: {
-    extensions: ['.js', '.jsx']
   }
 }
