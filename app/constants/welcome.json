@@ -1,0 +1,14 @@
+[
+  {
+    "lang": "English",
+    "welcome": "Welcome",
+    "selectLang": "Select your language",
+    "nextBtn": "Next"
+  },
+  {
+    "lang": "Arabic",
+    "welcome": "مرحبا",
+    "selectLang": "اختر لغتك",
+    "nextBtn": "التالى"
+  }
+]
