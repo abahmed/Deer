@@ -2,9 +2,6 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../constants/actions'
 
-// Add a new note.
-export const setWelcomeLang = createAction(ACTIONS.SET_WELCOME_LANG)
-
 export const getNextLang = createAction(ACTIONS.GET_NEXT_LANG)
 
 export const toggleFade = createAction(ACTIONS.TOGGLE_FADE)
@@ -12,8 +9,7 @@ export const toggleFade = createAction(ACTIONS.TOGGLE_FADE)
 export const updateLang = () => (dispatch, getState) => {
   const state = getState().welcomeReducer
   let isFadeIn = state.fadeIn
-  if (isFadeIn)
-    dispatch(getNextLang())
+  if (isFadeIn) { dispatch(getNextLang()) }
   setTimeout(() => {
     dispatch(toggleFade())
     dispatch(updateLang())

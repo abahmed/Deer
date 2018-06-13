@@ -1,31 +1,23 @@
 import { ACTIONS } from '../constants/actions'
+import langs from '../constants/welcome.json'
 
 const INITIAL_STATE = {
-  index: 0,
+  index: -1,
   fadeIn: true,
-  languages: [],
-  nextLang: {}
+  langList: langs
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.SET_WELCOME_LANG:
-      return {
-        ...state,
-        languages: action.payload,
-      }
     case ACTIONS.GET_NEXT_LANG:
-      if (state.languages.length == 0)
-        return state
-      let nextLang = state.languages[state.index]
-
-      let index = state.index + 1
-      if (index >= state.languages.length)
-        index = 0
+      let index = -1
+      if (state.langList.length !== 0) {
+        index = state.index + 1
+        if (index >= state.langList.length) { index = 0 }
+      }
       return {
         ...state,
-        index,
-        nextLang
+        index: index
       }
     case ACTIONS.TOGGLE_FADE:
       return {

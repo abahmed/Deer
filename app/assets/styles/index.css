@@ -46,3 +46,10 @@
 	margin-bottom: 10px;
 	font-size: 15px;
 }
+
+.middle-page {
+  @extend .font-style-base;
+  position: fixed;
+  left: 35%;
+  top: 45%;
+}
