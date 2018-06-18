@@ -4,9 +4,8 @@ const url = require('url')
 const isDev = require('electron-is-dev')
 const windowState = require('electron-window-state')
 const os = require('os')
-const initLogger = require('./utils/logger.js')
+const initLogger = require('./utils/logger')
 const appInfo = require('./package.json')
-const Prefs = require('electron-store')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -60,7 +59,7 @@ function createWindow () {
   logger.info('Deer window is created')
 
   // Clear default menu.
-  // win.setMenu(null)
+  win.setMenu(null)
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -77,6 +76,11 @@ function createWindow () {
   win.once('ready-to-show', () => {
     win.show()
     logger.info('Deer window is shown')
+
+    // Show DevTools for debugging.
+    if (isDev) {
+      win.webContents.openDevTools()
+    }
   })
 
   // Emitted when the window is closed.
@@ -94,9 +98,6 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  // Initialize store to save and load preferences.
-  global.prefs = new Prefs()
-
   // Initialize logger
   logger = initLogger()
   logger.info(`${appInfo.name}(${appInfo.version}) has started on ` +

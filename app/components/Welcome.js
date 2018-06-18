@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Fade } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Spinner from './Spinner'
 
@@ -8,11 +9,8 @@ export default class Welcome extends Component {
     this.props.updateLang()
   }
 
-  _doNext () {
-
-  }
-
   render () {
+    // Index value has not set, so there is nothing to show.
     if (this.props.index === -1) {
       return (<Spinner />)
     }
@@ -21,24 +19,21 @@ export default class Welcome extends Component {
     return (
       <div className='welcome-page'>
         <img className='logo' src={require('../assets/images/Deer-256.png')} />
-        <br />
+        <br /><br />
         <div ref='welcomeText'>
           <Fade
             in={this.props.fadeIn}
-            className='center-text welcome'>{lang.welcome}</Fade>
-          <Fade
-            in={this.props.fadeIn}
-            className='center-text language-text'>{lang.selectLang}</Fade>
+            className='center-text welcome'>{lang.welcome}
+          </Fade>
         </div>
-        <select className='form-control'>
-          {this.props.langList.map((lang, index) => (
-            <option key={index}>{lang.lang}</option>
-          ))}
-        </select>
-        <Button
-          className='center-button'
-          color='primary'
-          onClick={() => this._doNext()}>{lang.nextBtn}</Button>
+        <br />
+        <Link to='/'>
+          <Button
+            className='center-button'
+            color='primary'>
+            {lang.nextBtn}
+          </Button>
+        </Link>
       </div>
     )
   }
