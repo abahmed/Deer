@@ -1,15 +1,17 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import configureStore from './store'
-import App from './App';
+import App from './components/App'
 
-const store = configureStore();
+import 'bootstrap/dist/css/bootstrap.css'
+import './assets/styles/index.css'
+
+const store = configureStore()
 
 render(
   <Provider store={store}>
-      <App />
+    <App />
   </Provider>,
   document.getElementById('app')
-);
+)

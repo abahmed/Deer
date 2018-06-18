@@ -1,11 +1,11 @@
 // Set the logger
 const {app} = require('electron')
-const logger = require('winston')
+const logger = require('electron-log')
 const path = require('path')
 const fs = require('fs')
 
-// Initializes logger library to write logs
-function initLogger() {
+// Initializes logger library to write logs and returns logger object
+function initLogger () {
   // Get userData directory and create it if it does not exist.
   let appFolder = app.getPath('userData')
   if (!fs.existsSync(appFolder)) {
@@ -21,15 +21,12 @@ function initLogger() {
   // Set log file name based on time
   let logFile = new Date().toISOString().replace(/:/g, '.') + '.log'
 
-  // Set parameters of logging library (winston).
-  logger.add(logger.transports.File, {
-    json: false,
-    exitOnError: false,
-    filename: path.join(logFolder, logFile),
-    timestamp: true
-  })
+  // Log level
+  logger.transports.file.level = 'log'
 
-  // Set logger as global variable to allow using it in renderer process
-  global.logger = logger
+  // Write to this file, must be set before first logging
+  logger.transports.file.file = path.join(logFolder, logFile)
+
+  return logger
 }
 module.exports = initLogger
