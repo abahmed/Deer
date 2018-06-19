@@ -24,13 +24,13 @@
 + Fast :rocket:
 + Simple :eyeglasses:
 + Customizable :bookmark_tabs:
-+ Cross Platform :computer:
++ Cross Platform for Desktop and Mobile :computer: :mobile:
 + Multi-language :earth_americas:
 
 
 ### Getting started
 
-Check [Our Wiki](https://github.com/abahmed/deer/wiki) for **building**  and **installing** instructions.
+Check [Our Docs](./docs/index.md) for **building**  and **installing** instructions.
 
 
 If you would like to contribute to Deer, see [Contributing guidelines](CONTRIBUTING.md) to get started.
