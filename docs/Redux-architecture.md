@@ -2,7 +2,7 @@
 
 **This figure shows how components of Redux are connected and their interactions**
 
-[[https://github.com/abahmed/Deer/blob/develop/docs/redux.png]]
+<img src="./images/redux.png"/>
 
 ### The store
 

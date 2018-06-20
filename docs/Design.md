@@ -1,7 +1,7 @@
 **Deer** 🦌 aims to be modern 🌟, fast 🚀, beautiful note taking 📝 app.
 
 **Currently, it uses this Flow to be built and run** 
-[[https://github.com/abahmed/Deer/blob/develop/docs/workflow.png]]
+<img src="./images/workflow.png"/>
 
 **It relies on modern technologies**
 * [**Node.js**](https://nodejs.org/en/) (JavaScript runtime environment)

@@ -2,7 +2,7 @@
 
 **This figure shows how components of Electron are connected and their interactions**
 
-[[https://github.com/abahmed/Deer/blob/develop/docs/electron.png]]
+<img src="./images/electron.png"/>
 
 There are two process types available in Electron **main process** and **render process**
 
