@@ -8,8 +8,6 @@ const initLogger = require('./utils/logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
 
-console.log(app.getPath('userData'))
-
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
   // Work around by providing electron path,
