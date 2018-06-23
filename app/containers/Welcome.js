@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import WelcomePage from '../components/Welcome'
 import {
-  updateLang
+  updateLang,
+  stopUpdateLang
 } from '../actions/welcome'
 
 const mapStateToProps = state => ({
@@ -11,7 +12,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  updateLang: () => dispatch(updateLang())
+  updateLang: () => dispatch(updateLang()),
+  stopUpdateLang: () => dispatch(stopUpdateLang())
 })
 
 export default connect(
