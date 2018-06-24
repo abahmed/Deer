@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Fade } from 'reactstrap'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Spinner from './Spinner'
 

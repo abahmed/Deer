@@ -4,9 +4,9 @@ let electronStore = electron.remote.getGlobal('sharedObj').electronStore
 
 var checkRedirectToWelcomePage = function () {
   if (electronStore.has('not-first-time') && electronStore.get('not-first-time') === true) {
-      return false;
+    return false
   }
-  return true;
+  return true
 }
 
 var setNotFirstTimeFlag = function () {
@@ -14,6 +14,6 @@ var setNotFirstTimeFlag = function () {
 }
 
 module.exports = {
-    checkRedirectToWelcomePage,
-    setNotFirstTimeFlag
+  checkRedirectToWelcomePage,
+  setNotFirstTimeFlag
 }
