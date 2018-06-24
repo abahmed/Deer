@@ -14,7 +14,7 @@ export default () => (
             component={route.component}
           />
         ))}
-        <Redirect to='/welcome' />
+        <Redirect to='/' />
       </Switch>
     </BrowserRouter>
   </div>

@@ -3,7 +3,6 @@ import { Button, Fade } from 'reactstrap'
 import { Link, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Spinner from './Spinner'
-import electron from 'electron'
 
 export default class Welcome extends Component {
   componentWillMount () {
@@ -14,17 +13,6 @@ export default class Welcome extends Component {
     // Index value has not set, so there is nothing to show.
     if (this.props.index === -1) {
       return (<Spinner />)
-    }
-
-    // show welcome page only if the user did not hit
-    // home page ever
-    let electronStore = electron.remote.getGlobal('sharedObj').electronStore
-    if (electronStore.has('not-first-time') && electronStore.get('not-first-time') === true) {
-      return (
-        <div>
-          <Redirect to='/' />
-        </div>
-      )
     }
 
     let lang = this.props.langList[this.props.index]

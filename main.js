@@ -8,6 +8,7 @@ const initLogger = require('./utils/logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
 
+
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
   // Work around by providing electron path,
@@ -26,7 +27,7 @@ let logger
 
 // global reference for electron store
 // keep all user hidden, app specific options here
-let electronStore = new Store()
+var electronStore = new Store()
 global.sharedObj = {electronStore: electronStore}
 
 // Create an instance of the app. Returns false if first instance
@@ -130,3 +131,17 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+/*
+ipcRenderer.on('home:display-welcome-check', function(event){
+  let display = false
+  if(!electronStore.has('welcome-page-displayed') || !electronStore.get('welcome-page-displayed') == true){
+    display = true
+  }
+  event.sender.send('main:display-welcome', display)
+}) 
+
+ipcRenderer.on('home:welcome-displayed', function(){
+  electronStore.set('welcome-page-displayed', true)
+})
+*/
