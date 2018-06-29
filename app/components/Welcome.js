@@ -9,6 +9,10 @@ export default class Welcome extends Component {
     this.props.updateLang()
   }
 
+  componentWillUnmount () {
+    this.props.stopUpdateLang()
+  }
+
   render () {
     // Index value has not set, so there is nothing to show.
     if (this.props.index === -1) {
@@ -43,5 +47,6 @@ Welcome.propTypes = {
   index: PropTypes.number.isRequired,
   fadeIn: PropTypes.bool.isRequired,
   langList: PropTypes.array.isRequired,
-  updateLang: PropTypes.func.isRequired
+  updateLang: PropTypes.func.isRequired,
+  stopUpdateLang: PropTypes.func.isRequired
 }
