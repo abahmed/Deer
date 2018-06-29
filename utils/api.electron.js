@@ -3,14 +3,14 @@ import electron from 'electron'
 let electronStore = electron.remote.getGlobal('sharedObj').electronStore
 
 var checkRedirectToWelcomePage = function () {
-  if (electronStore.has('not-first-time') && electronStore.get('not-first-time') === true) {
-    return false
+  if (electronStore.has('show-welcome')) {
+    return electronStore.get('show-welcome')
   }
   return true
 }
 
 var setNotFirstTimeFlag = function () {
-  electronStore.set('not-first-time', true)
+  electronStore.set('show-welcome', false)
 }
 
 module.exports = {
