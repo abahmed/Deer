@@ -27,7 +27,7 @@ let logger
 // global reference for electron store
 // keep all user hidden, app specific options here
 var electronStore = new Store()
-global.sharedObj = {electronStore: electronStore}
+global.electronStore = electronStore
 
 // Create an instance of the app. Returns false if first instance
 var shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory) {

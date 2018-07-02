@@ -1,6 +1,6 @@
 import electron from 'electron'
 
-let electronStore = electron.remote.getGlobal('sharedObj').electronStore
+let electronStore = electron.remote.getGlobal('electronStore')
 
 var checkRedirectToWelcomePage = function () {
   if (electronStore.has('show-welcome')) {
