@@ -1,3 +1,5 @@
+# Electron architecture
+
 **Electron** builds cross-platform desktop applications with HTML, CSS, and JavaScript. Electron accomplishes this by combining Chromium(render library) and Node.js into a single runtime and apps can be packaged for Mac, Windows, and Linux.
 
 **This figure shows how components of Electron are connected and their interactions**

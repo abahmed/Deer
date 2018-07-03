@@ -1,3 +1,5 @@
+# Redux architecture
+
 **Redux** is state management framework that affects Deer’s design, here we go through the architecture and some concepts that will be helpful.
 
 **This figure shows how components of Redux are connected and their interactions**
@@ -37,7 +39,7 @@ This new state object is in turn sent to the store to be announced as the new of
 
 In Redux, a middleware is used to intercept dispatched actions before they make it to the reducer. This means that when you call dispatch on an action, the action goes through a (or many) middleware before hitting the reducer.
 
-The order of execution is actually the order in which you pass the middleware to the store. 
+The order of execution is actually the order in which you pass the middleware to the store.
 
 At any point in a middleware, you can chose to stop forwarding the action, which will end the cycle.
 

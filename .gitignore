@@ -16,3 +16,6 @@ Thumbs.db
 
 # Webpack build directory
 build
+
+# distribution directory
+dist

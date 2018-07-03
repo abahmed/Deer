@@ -3,6 +3,7 @@
   "productName": "Deer",
   "version": "0.0.1",
   "description": "A modern, fast, beautiful note taking app",
+  "author": "Deer <deer-project@googlegroups.com>",
   "main": "main.js",
   "repository": {
     "type": "git",
@@ -17,8 +18,16 @@
   "private": true,
   "scripts": {
     "build": "webpack",
+    "dist": "electron-builder",
     "lint": "eslint .",
     "precommit": "npm run lint",
+    "production": "webpack --mode=production",
+    "release:linux:deb": "npm run production && electron-builder --linux deb",
+    "release:linux:rpm": "npm run production && electron-builder --linux rpm",
+    "release:linux:zip": "npm run production && electron-builder --linux zip",
+    "release:mac": "npm run production && electron-builder --mac",
+    "release:win32": "npm run production && electron-builder --win --ia32",
+    "release:win64": "npm run production && electron-builder --win --x64",
     "start": "electron .",
     "watch": "webpack --watch"
   },
@@ -29,6 +38,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "electron": "^2.0.2",
+    "electron-builder": "^20.15.1",
     "electron-reload": "^1.2.2",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
@@ -40,13 +51,13 @@
     "eslint-plugin-standard": "^3.1.0",
     "file-loader": "^1.1.11",
     "husky": "^0.14.3",
+    "jquery": "^3.3.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.3"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "electron": "^2.0.2",
     "electron-is-dev": "^0.3.0",
     "electron-log": "^2.2.15",
     "electron-store": "^2.0.0",
