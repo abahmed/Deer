@@ -1,40 +1,76 @@
 {
-  "name": "deer",
+  "name": "Deer",
   "productName": "Deer",
   "version": "0.0.1",
-  "description": "A modern, open source note-taking application.",
+  "description": "A modern, fast, beautiful note taking app",
+  "author": "Deer <deer-project@googlegroups.com>",
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/abahmed/deer.git"
+    "url": "https://github.com/abahmed/Deer.git"
   },
   "bugs": {
     "url": "https://github.com/abahmed/Deer/issues"
   },
-  "electronVersion": "1.7.10",
+  "electronVersion": "2.0.1",
   "license": "MIT",
   "copyright": "© 2018, Deer",
   "private": true,
   "scripts": {
     "build": "webpack",
+    "dist": "electron-builder",
+    "lint": "eslint .",
+    "precommit": "npm run lint",
+    "production": "webpack --mode=production",
+    "release:linux:deb": "npm run production && electron-builder --linux deb",
+    "release:linux:rpm": "npm run production && electron-builder --linux rpm",
+    "release:linux:zip": "npm run production && electron-builder --linux zip",
+    "release:mac": "npm run production && electron-builder --mac",
+    "release:win32": "npm run production && electron-builder --win --ia32",
+    "release:win64": "npm run production && electron-builder --win --x64",
     "start": "electron .",
-    "test": "jest"
+    "watch": "webpack --watch"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.1.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^22.1.4",
-    "regenerator-runtime": "^0.11.1",
-    "webpack": "^3.10.0"
+    "css-loader": "^0.28.11",
+    "electron": "^2.0.2",
+    "electron-builder": "^20.15.1",
+    "electron-reload": "^1.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-standard": "^3.1.0",
+    "file-loader": "^1.1.11",
+    "husky": "^0.14.3",
+    "jquery": "^3.3.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
   },
   "dependencies": {
-    "electron": "~1.7.8",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "bootstrap": "^4.1.1",
+    "electron-is-dev": "^0.3.0",
+    "electron-log": "^2.2.15",
+    "electron-store": "^2.0.0",
+    "electron-window-state": "^4.1.1",
+    "pouchdb-browser": "^6.4.3",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "reactstrap": "^6.1.0",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.4.0",
+    "redux-thunk": "^2.3.0"
   }
 }

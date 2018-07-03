@@ -1,0 +1,12 @@
+# Ignore NodeJS modules directory
+node_modules
+
+# Ignore Mac OS X files
+.DS_Store
+
+# Ignore Webpack build directory
+build
+
+# Ignore Logs
+logs
+*.log

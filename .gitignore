@@ -1,14 +1,14 @@
 # Ignore NodeJS modules directory
 node_modules
 
-# Ignore NodeJS logs 
+# Ignore NodeJS logs
 npm-debug.log
 debug.log
 
 # Ignore package lock
 package-lock.json
 
-# Igonre Mac OS X files
+# Ignore Mac OS X files
 .DS_Store
 
 # Ignore Windows files
@@ -16,3 +16,6 @@ Thumbs.db
 
 # Webpack build directory
 build
+
+# distribution directory
+dist

@@ -1,33 +1,44 @@
-<p align="center"><img src="https://raw.githubusercontent.com/abahmed/Deer/master/app/assets/images/Deer.png" width="256" height="256"/></p>
+<p align="center">
+  <img src="./app/assets/images/Deer-256.png"/>
+  <p align="center">
+    <a href="https://travis-ci.org/abahmed/Deer">
+      <img src="https://travis-ci.org/abahmed/Deer.svg?branch=develop"/>
+    </a>
+    <a href="https://ci.appveyor.com/project/abahmed/deer/branch/develop">
+      <img src="https://ci.appveyor.com/api/projects/status/k619um0clmxkmlrd/branch/develop?svg=true"/>
+    </a>
+    <a href="https://gitter.im/abahmed/Deer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+      <img src="https://badges.gitter.im/abahmed/Deer.svg"/>
+    </a>
+  </p>
+</p>
 
-# Deer
-
-[![Join the chat at https://gitter.im/abahmed/Deer](https://badges.gitter.im/abahmed/Deer.svg)](https://gitter.im/abahmed/Deer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/abahmed/Deer.svg?branch=master)](https://travis-ci.org/abahmed/Deer)
-
-[![Stars](https://img.shields.io/github/stars/abahmed/deer.svg)](https://github.com/abahmed/deer)
-[![Forks](https://img.shields.io/github/forks/abahmed/deer.svg)](https://github.com/abahmed/deer)
+**Deer** :deer: is a modern :star2:, fast :rocket:, beautiful note taking :memo: app. Write down your thoughts and ideas :bookmark: quickly and easily on Linux, Mac and Windows.
 
 
-Deer is a modern open source note-taking application, built on [Electron](https://github.com/electron/electron).
-It allows you to write down your thoughts and ideas quickly and easily.
-Deer is a cross-platform software, that works on Windows, OS X and Linux.
+**Deer** :deer: is built on [Electron](https://electronjs.org) and aims to be
++ Free :free:
++ Open Source :book:
++ User Friendly :art:
++ Secure :closed_lock_with_key:
++ Fast :rocket:
++ Simple :eyeglasses:
++ Customizable :bookmark_tabs:
++ Cross Platform for Desktop and Mobile :computer:
++ Multi-language :earth_americas:
 
-## Getting started
 
-Check [Our Wiki](https://github.com/abahmed/deer/wiki) for building and installing instructions.
+### Getting started
 
-## Contributions
+Check [Our Docs](./docs/index.md) for **building**  and **installing** instructions.
 
-See [Contributing guidelines](CONTRIBUTING.md) to get started.
 
-## Communication
+If you would like to contribute to Deer, see [Our Docs](./docs/index.md) too.
 
-The Deer community welcomes your feedback and thoughts for improving Deer. So, feel free to ping us on our mailing list.
-+ Mailing List: [deer-project@googlegroups.com](deer-project@googlegroups.com)
-+ Subscribe:  [(deer-project)+subscribe@googlegroups.com]((deer-project)+subscribe@googlegroups.com)
-+ Archive:  [https://groups.google.com/forum/#!forum/deer-project](https://groups.google.com/forum/#!forum/deer-project)
+### Get in touch!
 
-## License
+Feel free to Join us on [Gitter](https://gitter.im/abahmed/Deer), or email us at [deer-project@googlegroups.com](deer-project@googlegroups.com) if you have questions.
+
+### License
 
 Deer is licensed under [MIT License](LICENSE).
