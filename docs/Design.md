@@ -1,6 +1,8 @@
+# Design
+
 **Deer** 🦌 aims to be modern 🌟, fast 🚀, beautiful note taking 📝 app.
 
-**Currently, it uses this Flow to be built and run** 
+**Currently, it uses this Flow to be built and run**
 <img src="./images/workflow.png"/>
 
 **It relies on modern technologies**
