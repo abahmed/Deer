@@ -6,6 +6,7 @@ const windowState = require('electron-window-state')
 const os = require('os')
 const initLogger = require('./utils/logger')
 const appInfo = require('./package.json')
+const Store = require('electron-store')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -22,6 +23,11 @@ let win
 
 // a global reference of the logger object.
 let logger
+
+// global reference for electron store
+// keep all user hidden, app specific options here
+var electronStore = new Store()
+global.electronStore = electronStore
 
 // Create an instance of the app. Returns false if first instance
 var shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory) {
