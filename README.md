@@ -30,10 +30,10 @@
 
 ### Getting started
 
-Check [Our Docs](./docs/index.md) for **building**  and **installing** instructions.
+Check [Our Docs](./docs/README.md) for **building**  and **installing** instructions.
 
 
-If you would like to contribute to Deer, see [Our Docs](./docs/index.md) too.
+If you would like to contribute to Deer, see [Our Docs](./docs/README.md) too.
 
 ### Get in touch!
 
