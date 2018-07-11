@@ -1,6 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { checkRedirectToWelcomePage, setNotFirstTimeFlag } from '../../utils/api.electron'
+import Header from './Header'
+import {
+  checkRedirectToWelcomePage,
+  setNotFirstTimeFlag
+} from '../../utils/api.electron'
 
 export default () => {
   if (checkRedirectToWelcomePage()) {
@@ -11,7 +15,7 @@ export default () => {
   }
   return (
     <div>
-      <h1>Deer</h1>
+      <Header />
     </div>
   )
 }
