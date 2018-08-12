@@ -49,8 +49,9 @@
 
 .middle-page {
   @extend .font-style-base;
-  position: fixed;
-  left: 35%;
+  position: sticky;
+  justify-content: center;
+  display: flex;
   top: 45%;
 }
 
