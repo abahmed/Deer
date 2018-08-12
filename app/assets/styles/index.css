@@ -53,3 +53,18 @@
   left: 35%;
   top: 45%;
 }
+
+.home-sidebar {
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  flex: 0 1 320px;
+  -webkit-box-flex: 0;
+  border-right: 2px solid ghostwhite;
+  overflow: auto;
+  padding: 5px!important;
+}
+
+.home-content {
+  padding: 0px;
+}
