@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
+    "draft-js": "^0.10.5",
     "electron-is-dev": "^0.3.0",
     "electron-log": "^2.2.15",
     "electron-store": "^2.0.0",
