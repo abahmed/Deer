@@ -91,3 +91,9 @@
 .NoteEditor-hidePlaceholder {
   display: none;
 }
+
+.noteItem {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
