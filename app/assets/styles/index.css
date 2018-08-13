@@ -64,9 +64,9 @@
   height: calc(100vh - 48px);
   flex: 0 1 320px;
   -webkit-box-flex: 0;
-  border-right: 2px solid ghostwhite;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
   overflow: auto;
-  padding: 5px!important;
+  padding: 0px!important;
 }
 
 .home-content {
