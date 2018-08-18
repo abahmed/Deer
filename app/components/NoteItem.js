@@ -2,11 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 export default class NoteItem extends Component {
+  constructor (props) {
+    // Initialize this using super
+    super()
+
+    this.onNoteClick = this.onNoteClick.bind(this)
+  }
+
+  onNoteClick () {
+    this.props.select(this.props.id)
+  }
+
   render () {
-    let title = this.props.value.title || 'Empty note'
+    const title = this.props.value || 'Empty note'
+
+    let classNames = 'list-group-item list-group-item-action noteItem'
+    if (this.props.isActive) { classNames += ' active text-white' }
+
     return (
-      <a
-        className='list-group-item list-group-item-action noteItem'>
+      <a className={classNames} onClick={this.onNoteClick}>
         {title}
       </a>
     )
@@ -14,5 +28,8 @@ export default class NoteItem extends Component {
 }
 
 NoteItem.propTypes = {
-  value: PropTypes.object.isRequired
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  select: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired
 }
