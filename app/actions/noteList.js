@@ -5,6 +5,9 @@ import { fetchNotes } from './../db'
 // Used for updating noteList with fetched notes from database.
 export const updateNoteList = createAction(ACTIONS.UPDATE_NOTE_LIST)
 
+// Used for setting the id of selected note.
+export const setActiveNote = createAction(ACTIONS.SET_ACTIVE_NOTE)
+
 // Used for fetching all notes from database.
 export const fetchAllNotes = () => (dispatch, getState) => {
   fetchNotes().then((result) => {
