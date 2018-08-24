@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Redirect, Route } from 'react-router-dom'
-import Header from './Header'
+import Header from './../containers/Header'
 import HomeContent from './HomeContent'
 import NoteList from './../containers/NoteList'
 import NoteEditor from './../containers/NoteEditor'
