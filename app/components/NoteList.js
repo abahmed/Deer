@@ -28,10 +28,10 @@ export default class NoteList extends Component {
         {this.props.notes.map((note, index) => (
           <NoteItem
             key={index}
-            id={note._id}
-            value={note.title}
+            id={note.id}
+            value={note.content}
             select={this.onSelect}
-            isActive={this.props.activeNote === note._id} />
+            isActive={this.props.activeNote === note.id} />
         ))}
       </div>
     )

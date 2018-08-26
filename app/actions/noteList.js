@@ -2,6 +2,9 @@ import { createAction } from 'redux-actions'
 import { ACTIONS } from '../constants/actions'
 import { fetchNotes } from './../db'
 
+// Used for adding a new note.
+export const addNewNote = createAction(ACTIONS.ADD_NOTE)
+
 // Used for updating noteList with fetched notes from database.
 export const updateNoteList = createAction(ACTIONS.UPDATE_NOTE_LIST)
 
