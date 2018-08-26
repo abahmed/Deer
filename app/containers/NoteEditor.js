@@ -5,6 +5,7 @@ import {
 } from '../actions/noteEditor'
 
 const mapStateToProps = state => ({
+  activeNote: state.noteListReducer.activeNote,
   editorState: state.noteEditorReducer.editorState
 })
 
