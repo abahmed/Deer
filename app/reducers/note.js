@@ -11,7 +11,13 @@ export default (state = INITIAL_STATE, action) => {
     case ACTIONS.UPDATE_NOTE_LIST:
       return {
         ...state,
-        notes: action.payload.map(note => note.doc)
+        notes: action.payload.map(note => {
+          return {
+            id: note.doc._id,
+            content: note.doc.content,
+            isSaved: true
+          }
+        })
       }
     case ACTIONS.SET_ACTIVE_NOTE:
       return {

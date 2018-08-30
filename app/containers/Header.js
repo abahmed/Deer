@@ -5,7 +5,7 @@ import {
 } from '../actions/header'
 import {
   addNewNote
-} from '../actions/noteList'
+} from '../actions/note'
 
 const mapStateToProps = state => ({
   isNewNoteDisabled: state.headerReducer.isNewNoteDisabled

@@ -3,11 +3,11 @@ import NoteList from '../components/NoteList'
 import {
   fetchAllNotes,
   setActiveNote
-} from '../actions/noteList'
+} from '../actions/note'
 
 const mapStateToProps = state => ({
-  activeNote: state.noteListReducer.activeNote,
-  notes: state.noteListReducer.notes
+  activeNote: state.noteReducer.activeNote,
+  notes: state.noteReducer.notes
 })
 
 const mapDispatchToProps = dispatch => ({
