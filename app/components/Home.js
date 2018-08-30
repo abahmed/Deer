@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Header from './../containers/Header'
 import NoteList from './../containers/NoteList'
-import NoteEditor from './../containers/NoteEditor'
+import HomeContent from './../containers/HomeContent'
 import {
   checkRedirectToWelcomePage,
   setNotFirstTimeFlag
@@ -24,7 +24,7 @@ export default () => {
           <NoteList />
         </div>
         <div className='col-12 col-md-9 col-xl-9 home-content'>
-          <NoteEditor />
+          <HomeContent />
         </div>
       </div>
     </div>
