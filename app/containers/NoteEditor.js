@@ -7,6 +7,9 @@ import {
   setSaveDisabled,
   setNewNoteDisabled
 } from '../actions/header'
+import {
+  updateNoteTitle
+} from '../actions/note'
 
 const mapStateToProps = state => ({
   editorState: state.noteEditorReducer.editorState
@@ -15,7 +18,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateEditorState: (editorState) => dispatch(updateEditorState(editorState)),
   setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
-  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag))
+  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
+  updateNoteTitle: (content) => dispatch(updateNoteTitle(content))
 })
 
 export default connect(
