@@ -14,6 +14,14 @@ export default class NoteEditor extends Component {
     const currentContent = this.props.editorState.getCurrentContent()
     const newContent = newEditorState.getCurrentContent()
     if (currentContent !== newContent) {
+      // We only save first 40 characters of the first non-empty line if there
+      // is a change.
+      const currentText =
+        currentContent.getPlainText().trim().split('\u000A')[0].substring(0, 40)
+      const newText =
+        newContent.getPlainText().trim().split('\u000A')[0].substring(0, 40)
+      if (currentText !== newText) { this.props.updateNoteTitle(newText) }
+
       // There is a change in content
       if (newContent.hasText()) {
         // The new content has text, so we will enable save button.
@@ -51,5 +59,6 @@ NoteEditor.propTypes = {
   editorState: PropTypes.object.isRequired,
   setSaveDisabled: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
-  updateEditorState: PropTypes.func.isRequired
+  updateEditorState: PropTypes.func.isRequired,
+  updateNoteTitle: PropTypes.func.isRequired
 }

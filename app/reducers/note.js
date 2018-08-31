@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
         notes: action.payload.map(note => {
           return {
             id: note.doc._id,
-            content: note.doc.content,
+            title: note.doc.content,
             isSaved: true
           }
         })
@@ -27,13 +27,36 @@ export default (state = INITIAL_STATE, action) => {
     case ACTIONS.ADD_NOTE:
       const note = {
         id: uuidv4(),
-        content: '',
+        title: '',
         isSaved: false
       }
       return {
         ...state,
         notes: [...state.notes, note],
         activeNote: note.id
+      }
+    case ACTIONS.UPDATE_NOTE_TITLE:
+      // Just return state as there is no active note.
+      if (!state.activeNote) {
+        console.warn('UPDATE_NOTE_TITLE action is fired with empty activeNote')
+        return state
+      }
+
+      let hasListUpdated = false
+      const newTitle = action.payload
+      const newNoteList = state.notes.map(note => {
+        if (note.id === state.activeNote && note.title !== newTitle) {
+          note.title = newTitle
+          hasListUpdated = true
+        }
+        return note
+      })
+      // Just return the state if there is not a new list.
+      if (!hasListUpdated) { return state }
+
+      return {
+        ...state,
+        notes: newNoteList
       }
     default:
       return state

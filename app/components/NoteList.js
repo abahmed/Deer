@@ -29,7 +29,7 @@ export default class NoteList extends Component {
           <NoteItem
             key={index}
             id={note.id}
-            value={note.content}
+            value={note.title}
             select={this.onSelect}
             isActive={this.props.activeNote === note.id} />
         ))}
