@@ -7,6 +7,7 @@ export default class Header extends Component {
     super()
 
     this.onAddNote = this.onAddNote.bind(this)
+    this.onSaveNote = this.onSaveNote.bind(this)
   }
 
   onAddNote () {
@@ -17,9 +18,14 @@ export default class Header extends Component {
     this.props.addNewNote()
   }
 
+  onSaveNote () { }
+
   render () {
-    let btnClassNames = 'btn btn-outline-success btn-sm'
-    if (this.props.isNewNoteDisabled) { btnClassNames += ' disabled' }
+    let newNoteBtnClass = 'btn btn-outline-success btn-sm'
+    if (this.props.isNewNoteDisabled) { newNoteBtnClass += ' disabled' }
+
+    let saveBtnClass = 'ml-2 btn btn-outline-primary btn-sm'
+    if (this.props.isSaveDisabled) { saveBtnClass += ' disabled' }
 
     return (
       <nav className='navbar sticky-top navbar-light bg-light'>
@@ -28,8 +34,13 @@ export default class Header extends Component {
           className='d-inline-block align-top' />
         <ul className='navbar-nav flex-row ml-md-auto d-none d-md-flex'>
           <li className='nav-item'>
-            <button className={btnClassNames} onClick={this.onAddNote}>
+            <button className={newNoteBtnClass} onClick={this.onAddNote}>
               New Note
+            </button>
+          </li>
+          <li className='nav-item'>
+            <button className={saveBtnClass} onClick={this.onSaveNote}>
+              Save
             </button>
           </li>
         </ul>
@@ -41,5 +52,6 @@ export default class Header extends Component {
 Header.propTypes = {
   addNewNote: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
-  isNewNoteDisabled: PropTypes.bool.isRequired
+  isNewNoteDisabled: PropTypes.bool.isRequired,
+  isSaveDisabled: PropTypes.bool.isRequired
 }

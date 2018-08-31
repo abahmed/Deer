@@ -8,7 +8,8 @@ import {
 } from '../actions/note'
 
 const mapStateToProps = state => ({
-  isNewNoteDisabled: state.headerReducer.isNewNoteDisabled
+  isNewNoteDisabled: state.headerReducer.isNewNoteDisabled,
+  isSaveDisabled: state.headerReducer.isSaveDisabled
 })
 
 const mapDispatchToProps = dispatch => ({
