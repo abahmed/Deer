@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import HomeContent from '../components/HomeContent'
 
 const mapStateToProps = state => ({
-  activeNote: state.noteReducer.activeNote
+  activeNoteIndex: state.noteReducer.activeNoteIndex
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -8,8 +8,8 @@ export const addNewNote = createAction(ACTIONS.ADD_NOTE)
 // Used for updating noteList with fetched notes from database.
 export const updateNoteList = createAction(ACTIONS.UPDATE_NOTE_LIST)
 
-// Used for setting the id of selected note.
-export const setActiveNote = createAction(ACTIONS.SET_ACTIVE_NOTE)
+// Used for setting the index of selected note.
+export const setActiveNoteIndex = createAction(ACTIONS.SET_ACTIVE_NOTE_INDEX)
 
 // Used for updating title of active note.
 export const updateNoteTitle = createAction(ACTIONS.UPDATE_NOTE_TITLE)
