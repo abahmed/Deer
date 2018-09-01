@@ -14,6 +14,10 @@ export const setActiveNoteIndex = createAction(ACTIONS.SET_ACTIVE_NOTE_INDEX)
 // Used for updating title of active note.
 export const updateNoteTitle = createAction(ACTIONS.UPDATE_NOTE_TITLE)
 
+// Used for updating state of active note.
+export const updateActiveNoteState =
+  createAction(ACTIONS.UPDATE_ACTIVE_NOTE_STATE)
+
 // Used for fetching all notes from database.
 export const fetchAllNotes = () => (dispatch, getState) => {
   fetchNotes().then((result) => {

@@ -1,8 +1,10 @@
 import uuidv4 from 'uuid/v4'
+import { EditorState } from 'draft-js'
 import { ACTIONS } from '../constants/actions'
 
 const INITIAL_STATE = {
   activeNoteIndex: -1,
+  activeNoteState: EditorState.createEmpty(),
   notes: []
 }
 
@@ -14,8 +16,7 @@ export default (state = INITIAL_STATE, action) => {
         notes: action.payload.map(note => {
           return {
             id: note.doc._id,
-            title: note.doc.content,
-            isSaved: true
+            title: note.doc.content
           }
         })
       }
@@ -29,10 +30,10 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         notes: [...state.notes, {
           id: uuidv4(),
-          title: '',
-          isSaved: false
+          title: ''
         }],
-        activeNoteIndex: state.notes.length
+        activeNoteIndex: state.notes.length,
+        activeNoteState: EditorState.createEmpty()
       }
     case ACTIONS.UPDATE_NOTE_TITLE:
       // Just return state as there is no active note.
@@ -57,6 +58,11 @@ export default (state = INITIAL_STATE, action) => {
           currentNote,
           ...state.notes.slice(state.activeNoteIndex + 1)
         ]
+      }
+    case ACTIONS.UPDATE_ACTIVE_NOTE_STATE:
+      return {
+        ...state,
+        activeNoteState: action.payload
       }
     default:
       return state

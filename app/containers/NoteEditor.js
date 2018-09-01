@@ -1,22 +1,20 @@
 import { connect } from 'react-redux'
 import NoteEditor from '../components/NoteEditor'
 import {
-  updateEditorState
-} from '../actions/noteEditor'
-import {
   setSaveDisabled,
   setNewNoteDisabled
 } from '../actions/header'
 import {
-  updateNoteTitle
+  updateNoteTitle,
+  updateActiveNoteState
 } from '../actions/note'
 
 const mapStateToProps = state => ({
-  editorState: state.noteEditorReducer.editorState
+  activeNoteState: state.noteReducer.activeNoteState
 })
 
 const mapDispatchToProps = dispatch => ({
-  updateEditorState: (editorState) => dispatch(updateEditorState(editorState)),
+  updateActiveNoteState: (state) => dispatch(updateActiveNoteState(state)),
   setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
   setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
   updateNoteTitle: (content) => dispatch(updateNoteTitle(content))

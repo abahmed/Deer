@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import welcome from './welcome'
-import noteEditor from './noteEditor'
 import note from './note'
 import header from './header'
 
@@ -8,7 +7,6 @@ import header from './header'
 // whose values are reducing functions with keys passed.
 export default combineReducers({
   welcomeReducer: welcome,
-  noteEditorReducer: noteEditor,
   noteReducer: note,
   headerReducer: header
 })

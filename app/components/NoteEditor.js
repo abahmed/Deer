@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Editor } from 'draft-js'
+import { Editor, EditorState } from 'draft-js'
 import PropTypes from 'prop-types'
 
 export default class NoteEditor extends Component {
@@ -11,7 +11,7 @@ export default class NoteEditor extends Component {
   }
 
   onEditorChange (newEditorState) {
-    const currentContent = this.props.editorState.getCurrentContent()
+    const currentContent = this.props.activeNoteState.getCurrentContent()
     const newContent = newEditorState.getCurrentContent()
     if (currentContent !== newContent) {
       // We only save first 40 characters of the first non-empty line if there
@@ -34,19 +34,20 @@ export default class NoteEditor extends Component {
       }
     }
 
-    this.props.updateEditorState(newEditorState)
+    this.props.updateActiveNoteState(newEditorState)
   }
 
   componentWillUnmount () {
     // Disable save button as editor will be unmounted.
     this.props.setSaveDisabled(true)
+    this.props.updateActiveNoteState(EditorState.createEmpty())
   }
 
   render () {
     return (
       <div className='NoteEditor'>
         <Editor
-          editorState={this.props.editorState}
+          editorState={this.props.activeNoteState}
           onChange={this.onEditorChange}
           placeholder='Write down your thoughts...'
         />
@@ -56,9 +57,9 @@ export default class NoteEditor extends Component {
 }
 
 NoteEditor.propTypes = {
-  editorState: PropTypes.object.isRequired,
+  activeNoteState: PropTypes.object.isRequired,
   setSaveDisabled: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
-  updateEditorState: PropTypes.func.isRequired,
+  updateActiveNoteState: PropTypes.func.isRequired,
   updateNoteTitle: PropTypes.func.isRequired
 }
