@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Header from './../containers/Header'
 import NoteList from './../containers/NoteList'
 import HomeContent from './../containers/HomeContent'
+import SaveModal from './../containers/SaveModal'
 import {
   checkRedirectToWelcomePage,
   setNotFirstTimeFlag
@@ -27,6 +28,7 @@ export default () => {
           <HomeContent />
         </div>
       </div>
+      <SaveModal />
     </div>
   )
 }
