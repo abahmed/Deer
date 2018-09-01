@@ -2,17 +2,17 @@ import { connect } from 'react-redux'
 import NoteList from '../components/NoteList'
 import {
   fetchAllNotes,
-  setActiveNote
+  setActiveNoteIndex
 } from '../actions/note'
 
 const mapStateToProps = state => ({
-  activeNote: state.noteReducer.activeNote,
+  activeNoteIndex: state.noteReducer.activeNoteIndex,
   notes: state.noteReducer.notes
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchAllNotes: () => dispatch(fetchAllNotes()),
-  setActiveNote: (noteId) => dispatch(setActiveNote(noteId))
+  setActiveNoteIndex: (noteIndex) => dispatch(setActiveNoteIndex(noteIndex))
 })
 
 export default connect(

@@ -10,7 +10,7 @@ export default class NoteItem extends Component {
   }
 
   onNoteClick () {
-    this.props.select(this.props.id)
+    this.props.select(this.props.index)
   }
 
   render () {
@@ -28,7 +28,7 @@ export default class NoteItem extends Component {
 }
 
 NoteItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
   select: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired

@@ -15,11 +15,11 @@ export default class NoteList extends Component {
     this.props.fetchAllNotes()
   }
 
-  onSelect (noteId = '') {
+  onSelect (noteIndex = -1) {
     // Do nothing as it's already selected.
-    if (this.props.activeNote === noteId) { return }
+    if (this.props.activeNoteIndex === noteIndex) { return }
 
-    this.props.setActiveNote(noteId)
+    this.props.setActiveNoteIndex(noteIndex)
   }
 
   render () {
@@ -28,10 +28,10 @@ export default class NoteList extends Component {
         {this.props.notes.map((note, index) => (
           <NoteItem
             key={index}
-            id={note.id}
+            index={index}
             value={note.title}
             select={this.onSelect}
-            isActive={this.props.activeNote === note.id} />
+            isActive={this.props.activeNoteIndex === index} />
         ))}
       </div>
     )
@@ -39,8 +39,8 @@ export default class NoteList extends Component {
 }
 
 NoteList.propTypes = {
-  activeNote: PropTypes.string.isRequired,
+  activeNoteIndex: PropTypes.number.isRequired,
   notes: PropTypes.array.isRequired,
   fetchAllNotes: PropTypes.func.isRequired,
-  setActiveNote: PropTypes.func.isRequired
+  setActiveNoteIndex: PropTypes.func.isRequired
 }

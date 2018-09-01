@@ -5,7 +5,7 @@ import NoteEditor from './../containers/NoteEditor'
 export default class HomeContent extends Component {
   render () {
     // Show homeContent when no note is selected.
-    if (this.props.activeNote) { return (<NoteEditor />) }
+    if (this.props.activeNoteIndex >= 0) { return (<NoteEditor />) }
 
     return (
       <div className='center-text middle-page'>
@@ -16,5 +16,5 @@ export default class HomeContent extends Component {
 }
 
 HomeContent.propTypes = {
-  activeNote: PropTypes.string.isRequired
+  activeNoteIndex: PropTypes.number.isRequired
 }

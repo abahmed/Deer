@@ -2,7 +2,7 @@ import uuidv4 from 'uuid/v4'
 import { ACTIONS } from '../constants/actions'
 
 const INITIAL_STATE = {
-  activeNote: '',
+  activeNoteIndex: -1,
   notes: []
 }
 
@@ -19,44 +19,44 @@ export default (state = INITIAL_STATE, action) => {
           }
         })
       }
-    case ACTIONS.SET_ACTIVE_NOTE:
+    case ACTIONS.SET_ACTIVE_NOTE_INDEX:
       return {
         ...state,
-        activeNote: action.payload
+        activeNoteIndex: action.payload
       }
     case ACTIONS.ADD_NOTE:
-      const note = {
-        id: uuidv4(),
-        title: '',
-        isSaved: false
-      }
       return {
         ...state,
-        notes: [...state.notes, note],
-        activeNote: note.id
+        notes: [...state.notes, {
+          id: uuidv4(),
+          title: '',
+          isSaved: false
+        }],
+        activeNoteIndex: state.notes.length
       }
     case ACTIONS.UPDATE_NOTE_TITLE:
       // Just return state as there is no active note.
-      if (!state.activeNote) {
-        console.warn('UPDATE_NOTE_TITLE action is fired with empty activeNote')
+      if (state.activeNoteIndex < 0 ||
+          state.activeNoteIndex >= state.notes.length) {
+        console.warn('UPDATE_NOTE_TITLE action is fired with out of range' +
+                     ' activeNoteIndex')
         return state
       }
 
-      let hasListUpdated = false
       const newTitle = action.payload
-      const newNoteList = state.notes.map(note => {
-        if (note.id === state.activeNote && note.title !== newTitle) {
-          note.title = newTitle
-          hasListUpdated = true
-        }
-        return note
-      })
-      // Just return the state if there is not a new list.
-      if (!hasListUpdated) { return state }
+      const currentNote = Object.create(state.notes[state.activeNoteIndex])
 
+      // Just return the state if there is not a new list.
+      if (currentNote.title === newTitle) { return state }
+
+      currentNote.title = newTitle
       return {
         ...state,
-        notes: newNoteList
+        notes: [
+          ...state.notes.slice(0, state.activeNoteIndex),
+          currentNote,
+          ...state.notes.slice(state.activeNoteIndex + 1)
+        ]
       }
     default:
       return state
