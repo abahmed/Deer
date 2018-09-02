@@ -13,6 +13,7 @@ export default class SaveModal extends Component {
   onSaveNote () {
     this.props.setSaveDisabled(true)
     this.props.toggleSaveModal()
+    this.props.saveNote()
   }
 
   render () {
@@ -41,5 +42,6 @@ export default class SaveModal extends Component {
 SaveModal.propTypes = {
   showSaveModal: PropTypes.bool.isRequired,
   toggleSaveModal: PropTypes.func.isRequired,
-  setSaveDisabled: PropTypes.func.isRequired
+  setSaveDisabled: PropTypes.func.isRequired,
+  saveNote: PropTypes.func.isRequired
 }

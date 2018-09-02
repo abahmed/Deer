@@ -6,6 +6,9 @@ import {
 import {
   setSaveDisabled
 } from '../actions/header'
+import {
+  saveNote
+} from '../actions/note'
 
 const mapStateToProps = state => ({
   showSaveModal: state.modalReducer.showSaveModal
@@ -13,7 +16,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleSaveModal: () => dispatch(toggleSaveModal()),
-  setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag))
+  setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
+  saveNote: () => dispatch(saveNote())
 })
 
 export default connect(

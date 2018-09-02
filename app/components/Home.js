@@ -4,6 +4,7 @@ import Header from './../containers/Header'
 import NoteList from './../containers/NoteList'
 import HomeContent from './../containers/HomeContent'
 import SaveModal from './../containers/SaveModal'
+import StatusModal from './../containers/StatusModal'
 import {
   checkRedirectToWelcomePage,
   setNotFirstTimeFlag
@@ -29,6 +30,7 @@ export default () => {
         </div>
       </div>
       <SaveModal />
+      <StatusModal />
     </div>
   )
 }

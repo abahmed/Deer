@@ -11,7 +11,7 @@ export const fetchNotes = () => {
   })
 }
 
-// Adds new note to database then fetches
+// Adds / Updates a note to database.
 export const addNote = (doc) => {
   return notesDB.put(doc)
 }
