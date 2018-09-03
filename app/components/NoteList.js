@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import NoteItem from './NoteItem'
+import { NOTE_STATUS } from '../constants/noteStatus'
 
 export default class NoteList extends Component {
   constructor (props) {
@@ -20,6 +21,8 @@ export default class NoteList extends Component {
     if (this.props.activeNoteIndex === noteIndex) { return }
 
     this.props.setActiveNoteIndex(noteIndex)
+    this.props.setNoteStatus(NOTE_STATUS.LOADING_NOTE)
+    this.props.fetchNote(noteIndex)
   }
 
   render () {
@@ -42,5 +45,7 @@ NoteList.propTypes = {
   activeNoteIndex: PropTypes.number.isRequired,
   notes: PropTypes.array.isRequired,
   fetchAllNotes: PropTypes.func.isRequired,
-  setActiveNoteIndex: PropTypes.func.isRequired
+  fetchNote: PropTypes.func.isRequired,
+  setActiveNoteIndex: PropTypes.func.isRequired,
+  setNoteStatus: PropTypes.func.isRequired
 }

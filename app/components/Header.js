@@ -18,7 +18,12 @@ export default class Header extends Component {
     this.props.addNewNote()
   }
 
-  onSaveNote () { }
+  onSaveNote () {
+    // Do not proceed as button is disabled
+    if (this.props.isSaveDisabled) return
+
+    this.props.toggleSaveModal()
+  }
 
   render () {
     let newNoteBtnClass = 'btn btn-outline-success btn-sm'
@@ -53,5 +58,6 @@ Header.propTypes = {
   addNewNote: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
   isNewNoteDisabled: PropTypes.bool.isRequired,
-  isSaveDisabled: PropTypes.bool.isRequired
+  isSaveDisabled: PropTypes.bool.isRequired,
+  toggleSaveModal: PropTypes.func.isRequired
 }

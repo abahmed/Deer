@@ -1,16 +1,15 @@
 import { ACTIONS } from '../constants/actions'
-import { EditorState } from 'draft-js'
 
 const INITIAL_STATE = {
-  editorState: EditorState.createEmpty()
+  showSaveModal: false
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.UPDATE_EDITOR_STATE:
+    case ACTIONS.TOGGLE_SAVE_MODAL:
       return {
         ...state,
-        editorState: action.payload
+        showSaveModal: !state.showSaveModal
       }
     default:
       return state

@@ -6,6 +6,9 @@ import {
 import {
   addNewNote
 } from '../actions/note'
+import {
+  toggleSaveModal
+} from '../actions/modal'
 
 const mapStateToProps = state => ({
   isNewNoteDisabled: state.headerReducer.isNewNoteDisabled,
@@ -14,7 +17,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addNewNote: () => dispatch(addNewNote()),
-  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag))
+  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
+  toggleSaveModal: () => dispatch(toggleSaveModal())
 })
 
 export default connect(
