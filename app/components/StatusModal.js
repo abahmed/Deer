@@ -8,8 +8,24 @@ export default class StatusModal extends Component {
     // Initialize this using super
     super()
 
+    this._getModalConfig = this._getModalConfig.bind(this)
     this.onSaveFail = this.onSaveFail.bind(this)
-    this.onSaveSuccess = this.onSaveSuccess.bind(this)
+    this.onLoadFail = this.onLoadFail.bind(this)
+  }
+
+  componentDidUpdate () {
+    switch (this.props.noteStatus) {
+      case NOTE_STATUS.NOTE_SAVE_SUCCESS:
+        this.props.setSaveDisabled(true)
+        this.props.setNewNoteDisabled(false)
+        this.props.updateNoteStatus()
+        break
+      case NOTE_STATUS.NOTE_LOAD_SUCCESS:
+        this.props.updateNoteStatus()
+        break
+      default:
+        break
+    }
   }
 
   // Called when saving note is failed.
@@ -18,18 +34,16 @@ export default class StatusModal extends Component {
     this.props.updateNoteStatus(false)
   }
 
-  // Called when saving note is succceed.
-  onSaveSuccess () {
-    this.props.setSaveDisabled(true)
-    this.props.setNewNoteDisabled(false)
-    this.props.updateNoteStatus()
+  // Called when loading note is failed.
+  onLoadFail () {
+    this.props.updateNoteStatus(false)
   }
 
-  render () {
+  _getModalConfig () {
     // This modal is shown when any operation happens.
     let showModal =
       this.props.noteStatus !== NOTE_STATUS.NO_OPERATION
-      
+
     let modalBody = ''
     let callBack = ''
     let showFooter = false
@@ -39,25 +53,45 @@ export default class StatusModal extends Component {
         break
       case NOTE_STATUS.NOTE_SAVE_SUCCESS:
         modalBody = 'Note saved successfully.'
-        this.onSaveSuccess()
         break
       case NOTE_STATUS.NOTE_SAVE_FAIL:
         modalBody = 'Unable to save note.'
         showFooter = true
         callBack = this.onSaveFail
         break
+      case NOTE_STATUS.LOADING_NOTE:
+        modalBody = 'Loading note...'
+        break
+      case NOTE_STATUS.NOTE_LOAD_SUCCESS:
+        modalBody = 'Note loaded successfully.'
+        break
+      case NOTE_STATUS.NOTE_LOAD_FAIL:
+        modalBody = 'Unable to load note.'
+        showFooter = true
+        callBack = this.onLoadFail
+        break
       default:
         break
     }
+    return {
+      showModal: showModal,
+      modalBody: modalBody,
+      callBack: callBack,
+      showFooter: showFooter
+    }
+  }
+
+  render () {
+    const modalConfig = this._getModalConfig()
     return (
-      <Modal isOpen={showModal}>
+      <Modal isOpen={modalConfig.showModal}>
         <ModalBody className='center-text font-italic'>
-          {modalBody}
+          {modalConfig.modalBody}
         </ModalBody>
-        {showFooter ? <ModalFooter className='hidden'>
+        {modalConfig.showFooter ? <ModalFooter>
           <button
             className='ml-2 btn btn-outline-danger btn-sm'
-            onClick={callBack}>
+            onClick={modalConfig.callBack}>
              Ok
           </button>
         </ModalFooter> : ''}

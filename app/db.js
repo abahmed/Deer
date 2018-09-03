@@ -15,3 +15,8 @@ export const fetchNotes = () => {
 export const addNote = (doc) => {
   return notesDB.put(doc)
 }
+
+// Gets a note from database using its ID.
+export const getNote = (noteId) => {
+  return notesDB.get(noteId)
+}

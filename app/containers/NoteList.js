@@ -2,7 +2,9 @@ import { connect } from 'react-redux'
 import NoteList from '../components/NoteList'
 import {
   fetchAllNotes,
-  setActiveNoteIndex
+  setActiveNoteIndex,
+  setNoteStatus,
+  fetchNote
 } from '../actions/note'
 
 const mapStateToProps = state => ({
@@ -12,7 +14,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllNotes: () => dispatch(fetchAllNotes()),
-  setActiveNoteIndex: (noteIndex) => dispatch(setActiveNoteIndex(noteIndex))
+  fetchNote: (noteIndex) => dispatch(fetchNote(noteIndex)),
+  setActiveNoteIndex: (noteIndex) => dispatch(setActiveNoteIndex(noteIndex)),
+  setNoteStatus: (status) => dispatch(setNoteStatus(status))
 })
 
 export default connect(

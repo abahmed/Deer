@@ -15,5 +15,5 @@ export const updateNoteStatus =
     (dispatch, getState) => {
       setTimeout(() => {
         dispatch(setNoteStatus(status))
-      }, withTimeOut ? 1500 : 0)
+      }, withTimeOut ? 1000 : 0)
     }

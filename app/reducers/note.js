@@ -87,6 +87,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         noteStatus: action.payload
       }
+    case ACTIONS.LOAD_NOTE_CONTENT:
+      return {
+        ...state,
+        activeNoteState: EditorState.createWithContent(action.payload)
+      }
     default:
       return state
   }

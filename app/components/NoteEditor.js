@@ -23,7 +23,7 @@ export default class NoteEditor extends Component {
       if (currentText !== newText) { this.props.updateNoteTitle(newText) }
 
       // There is a change in content
-      if (newContent.hasText()) {
+      if (newContent.hasText() && newText.trim()) {
         // The new content has text, so we will enable save button.
         this.props.setSaveDisabled(false)
       } else {

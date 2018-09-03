@@ -1,8 +1,8 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
-import { addNote, fetchNotes } from './../db'
-import { convertToRaw } from 'draft-js'
+import { addNote, fetchNotes, getNote } from './../db'
+import { convertFromRaw, convertToRaw } from 'draft-js'
 import logger from 'electron-log'
 
 // Used for adding a new note.
@@ -26,6 +26,9 @@ export const updateNoteRev = createAction(ACTIONS.UPDATE_NOTE_REV)
 
 // Used for updating status of the active note.
 export const setNoteStatus = createAction(ACTIONS.SET_NOTE_STATUS)
+
+// Used for updating status of the active note.
+export const loadNoteContent = createAction(ACTIONS.LOAD_NOTE_CONTENT)
 
 // Async method, Used for fetching all notes from database.
 export const fetchAllNotes = () => (dispatch, getState) => {
@@ -68,4 +71,16 @@ export const saveNote = () => (dispatch, getState) => {
       _noteSaveFailed(dispatch)
     }
   }).catch((err) => _noteSaveFailed(dispatch, err))
+}
+
+// Async method, Used for getting note content from database and loads it.
+export const fetchNote = (noteIndex) => (dispatch, getState) => {
+  const state = getState().noteReducer
+  getNote(state.notes[noteIndex].id).then((result) => {
+    dispatch(loadNoteContent(convertFromRaw(result.content)))
+    dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
+  }).catch((err) => {
+    dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_FAIL))
+    logger.error('Unable to get note ' + err)
+  })
 }
