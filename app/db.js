@@ -20,3 +20,8 @@ export const addNote = (doc) => {
 export const getNote = (noteId) => {
   return notesDB.get(noteId)
 }
+
+// Deletes a note from database using its ID and rev.
+export const removeNote = (noteId, noteRev) => {
+  return notesDB.remove(noteId, noteRev)
+}

@@ -1,28 +1,31 @@
 import { connect } from 'react-redux'
-import NoteEditor from '../components/NoteEditor'
+import YesNoModal from '../components/YesNoModal'
+import {
+  toggleYesNoModal
+} from '../actions/modal'
 import {
   setSaveDisabled,
-  setNewNoteDisabled,
   setDeleteDisabled
 } from '../actions/header'
 import {
-  updateNoteTitle,
-  updateActiveNoteState
+  saveNote,
+  deleteNote
 } from '../actions/note'
 
 const mapStateToProps = state => ({
-  activeNoteState: state.noteReducer.activeNoteState
+  showYesNoModal: state.modalReducer.showYesNoModal,
+  yesNoAction: state.modalReducer.yesNoAction
 })
 
 const mapDispatchToProps = dispatch => ({
-  updateActiveNoteState: (state) => dispatch(updateActiveNoteState(state)),
+  toggleYesNoModal: (action) => dispatch(toggleYesNoModal(action)),
   setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
   setDeleteDisabled: (flag) => dispatch(setDeleteDisabled(flag)),
-  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
-  updateNoteTitle: (content) => dispatch(updateNoteTitle(content))
+  saveNote: () => dispatch(saveNote()),
+  deleteNote: () => dispatch(deleteNote())
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NoteEditor)
+)(YesNoModal)

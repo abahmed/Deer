@@ -5,7 +5,8 @@ import {
 } from '../actions/modal'
 import {
   setSaveDisabled,
-  setNewNoteDisabled
+  setNewNoteDisabled,
+  setDeleteDisabled
 } from '../actions/header'
 
 const mapStateToProps = state => ({
@@ -16,7 +17,8 @@ const mapDispatchToProps = dispatch => ({
   updateNoteStatus: (withTimeOut, status) =>
     dispatch(updateNoteStatus(withTimeOut, status)),
   setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
-  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag))
+  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
+  setDeleteDisabled: (flag) => dispatch(setDeleteDisabled(flag))
 })
 
 export default connect(

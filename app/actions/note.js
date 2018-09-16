@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
-import { addNote, fetchNotes, getNote } from './../db'
+import { addNote, fetchNotes, getNote, removeNote } from './../db'
 import { convertFromRaw, convertToRaw } from 'draft-js'
 import logger from 'electron-log'
 
@@ -29,6 +29,9 @@ export const setNoteStatus = createAction(ACTIONS.SET_NOTE_STATUS)
 
 // Used for updating status of the active note.
 export const loadNoteContent = createAction(ACTIONS.LOAD_NOTE_CONTENT)
+
+// Used for deleting a note from noteList.
+export const deleteNoteFromList = createAction(ACTIONS.DELETE_NOTE_FROM_LIST)
 
 // Async method, Used for fetching all notes from database.
 export const fetchAllNotes = () => (dispatch, getState) => {
@@ -73,14 +76,34 @@ export const saveNote = () => (dispatch, getState) => {
   }).catch((err) => _noteSaveFailed(dispatch, err))
 }
 
-// Async method, Used for getting note content from database and loads it.
-export const fetchNote = (noteIndex) => (dispatch, getState) => {
+// Async method, Used for getting active note content from database and loads it.
+export const fetchNote = () => (dispatch, getState) => {
+  setNoteStatus(NOTE_STATUS.LOADING_NOTE)
+
   const state = getState().noteReducer
+  const noteIndex = state.activeNoteIndex
   getNote(state.notes[noteIndex].id).then((result) => {
     dispatch(loadNoteContent(convertFromRaw(result.content)))
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
   }).catch((err) => {
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_FAIL))
     logger.error('Unable to get note ' + err)
+  })
+}
+
+// Async method, Used for removing active note from database.
+export const deleteNote = () => (dispatch, getState) => {
+  setNoteStatus(NOTE_STATUS.DELETING_NOTE)
+
+  const state = getState().noteReducer
+  const noteIndex = state.activeNoteIndex
+  removeNote(state.notes[noteIndex].id,
+    state.notes[noteIndex].rev).then((result) => {
+    dispatch(deleteNoteFromList(noteIndex))
+    dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
+    dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
+  }).catch((err) => {
+    dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
+    logger.error('Unable to remove note ' + err)
   })
 }

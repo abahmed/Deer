@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { ACTIONS } from '../constants/actions'
 
 export default class Header extends Component {
   constructor (props) {
@@ -8,6 +9,7 @@ export default class Header extends Component {
 
     this.onAddNote = this.onAddNote.bind(this)
     this.onSaveNote = this.onSaveNote.bind(this)
+    this.onDeleteNote = this.onDeleteNote.bind(this)
   }
 
   onAddNote () {
@@ -22,7 +24,14 @@ export default class Header extends Component {
     // Do not proceed as button is disabled
     if (this.props.isSaveDisabled) return
 
-    this.props.toggleSaveModal()
+    this.props.toggleYesNoModal(ACTIONS.SAVE_NOTE)
+  }
+
+  onDeleteNote () {
+    // Do not proceed as button is disabled
+    if (this.props.isDeleteDisabled) return
+
+    this.props.toggleYesNoModal(ACTIONS.DELETE_NOTE)
   }
 
   render () {
@@ -31,6 +40,9 @@ export default class Header extends Component {
 
     let saveBtnClass = 'ml-2 btn btn-outline-primary btn-sm'
     if (this.props.isSaveDisabled) { saveBtnClass += ' disabled' }
+
+    let deleteBtnClass = 'ml-2 btn btn-outline-danger btn-sm'
+    if (this.props.isDeleteDisabled) { deleteBtnClass += ' disabled' }
 
     return (
       <nav className='navbar sticky-top navbar-light bg-light'>
@@ -48,6 +60,11 @@ export default class Header extends Component {
               Save
             </button>
           </li>
+          <li className='nav-item'>
+            <button className={deleteBtnClass} onClick={this.onDeleteNote}>
+              Delete
+            </button>
+          </li>
         </ul>
       </nav>
     )
@@ -59,5 +76,6 @@ Header.propTypes = {
   setNewNoteDisabled: PropTypes.func.isRequired,
   isNewNoteDisabled: PropTypes.bool.isRequired,
   isSaveDisabled: PropTypes.bool.isRequired,
-  toggleSaveModal: PropTypes.func.isRequired
+  isDeleteDisabled: PropTypes.bool.isRequired,
+  toggleYesNoModal: PropTypes.func.isRequired
 }

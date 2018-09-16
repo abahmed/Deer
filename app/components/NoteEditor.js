@@ -37,9 +37,15 @@ export default class NoteEditor extends Component {
     this.props.updateActiveNoteState(newEditorState)
   }
 
+  componentDidMount () {
+    // Enable delete button as editor is mounted.
+    this.props.setDeleteDisabled(false)
+  }
+
   componentWillUnmount () {
-    // Disable save button as editor will be unmounted.
+    // Disable save and delete buttons as editor will be unmounted.
     this.props.setSaveDisabled(true)
+    this.props.setDeleteDisabled(true)
     this.props.updateActiveNoteState(EditorState.createEmpty())
   }
 
@@ -59,6 +65,7 @@ export default class NoteEditor extends Component {
 NoteEditor.propTypes = {
   activeNoteState: PropTypes.object.isRequired,
   setSaveDisabled: PropTypes.func.isRequired,
+  setDeleteDisabled: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
   updateActiveNoteState: PropTypes.func.isRequired,
   updateNoteTitle: PropTypes.func.isRequired
