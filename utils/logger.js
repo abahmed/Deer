@@ -1,5 +1,5 @@
 // Set the logger
-const {app} = require('electron')
+const { app } = require('electron')
 const logger = require('electron-log')
 const path = require('path')
 const fs = require('fs')

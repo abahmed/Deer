@@ -13,7 +13,6 @@ export default (state = INITIAL_STATE, action) => {
           ACTIONS.hasOwnProperty(action.payload)) {
         noteAction = action.payload
       }
-      console.log(noteAction)
       return {
         ...state,
         showYesNoModal: !state.showYesNoModal,
