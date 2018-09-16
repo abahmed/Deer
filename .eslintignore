@@ -10,3 +10,6 @@ build
 # Ignore Logs
 logs
 *.log
+
+# coverage test directory
+coverage

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`header_actions getNextLang Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "SET_NEXT_LANG",
+  },
+]
+`;
+
+exports[`header_actions toggleFade Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "TOGGLE_FADE",
+  },
+]
+`;
+
+exports[`welcome_actions getNextLang Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "SET_NEXT_LANG",
+  },
+]
+`;
+
+exports[`welcome_actions toggleFade Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "TOGGLE_FADE",
+  },
+]
+`;

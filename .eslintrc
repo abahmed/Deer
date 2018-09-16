@@ -4,5 +4,8 @@
     "react": {
       "version": "16.4.0"
     }
+  },
+  "env": {
+    "jest": true
   }
 }

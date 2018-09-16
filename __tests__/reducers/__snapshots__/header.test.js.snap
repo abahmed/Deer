@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`INITIAL_STATE is correct 1`] = `
+Object {
+  "isDeleteDisabled": true,
+  "isNewNoteDisabled": false,
+  "isSaveDisabled": true,
+}
+`;
+
+exports[`UPDATE_DELETE_NOTE_STATE is correct 1`] = `
+Object {
+  "isDeleteDisabled": false,
+  "isNewNoteDisabled": false,
+  "isSaveDisabled": true,
+}
+`;
+
+exports[`UPDATE_NEW_NOTE_STATE is correct 1`] = `
+Object {
+  "isDeleteDisabled": true,
+  "isNewNoteDisabled": true,
+  "isSaveDisabled": true,
+}
+`;
+
+exports[`UPDATE_SAVE_NOTE_STATE is correct 1`] = `
+Object {
+  "isDeleteDisabled": true,
+  "isNewNoteDisabled": false,
+  "isSaveDisabled": false,
+}
+`;
