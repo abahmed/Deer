@@ -4,7 +4,7 @@ import { NOTE_STATUS } from '../constants/noteStatus'
 import { setNoteStatus } from './note'
 
 // Used for updating visibility of save modal.
-export const toggleSaveModal = createAction(ACTIONS.TOGGLE_SAVE_MODAL)
+export const toggleYesNoModal = createAction(ACTIONS.TOGGLE_SAVE_MODAL)
 
 // Async method, Used for updating note status with two optional parameters
 // - withTimeOut: dispatch action after timeout or not and it's default value

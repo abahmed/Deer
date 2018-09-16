@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Header from './../containers/Header'
 import NoteList from './../containers/NoteList'
 import HomeContent from './../containers/HomeContent'
-import SaveModal from './../containers/SaveModal'
+import YesNoModal from './../containers/YesNoModal'
 import StatusModal from './../containers/StatusModal'
 import {
   checkRedirectToWelcomePage,
@@ -29,7 +29,7 @@ export default () => {
           <HomeContent />
         </div>
       </div>
-      <SaveModal />
+      <YesNoModal />
       <StatusModal />
     </div>
   )

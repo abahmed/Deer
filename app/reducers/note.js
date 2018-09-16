@@ -5,7 +5,7 @@ import { NOTE_STATUS } from '../constants/noteStatus'
 import logger from 'electron-log'
 
 const INITIAL_STATE = {
-  activeNoteIndex: -1,
+  activeNoteIndex: ACTIONS.NOT_SELECTED_NOTE,
   activeNoteState: EditorState.createEmpty(),
   noteStatus: NOTE_STATUS.NO_OPERATION,
   notes: []
@@ -79,7 +79,7 @@ export default (state = INITIAL_STATE, action) => {
       }
     case ACTIONS.SET_NOTE_STATUS:
       if (!NOTE_STATUS.hasOwnProperty(action.payload)) {
-        logger.warn('Trying to set unsupported noteStatus')
+        logger.warn('Trying to set unsupported noteStatus: ' + action.payload)
         return state
       }
 
@@ -91,6 +91,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         activeNoteState: EditorState.createWithContent(action.payload)
+      }
+    case ACTIONS.DELETE_NOTE_FROM_LIST:
+      return {
+        ...state,
+        notes: state.notes.filter(note => note.id === action.payload)
       }
     default:
       return state

@@ -3,7 +3,6 @@ import NoteList from '../components/NoteList'
 import {
   fetchAllNotes,
   setActiveNoteIndex,
-  setNoteStatus,
   fetchNote
 } from '../actions/note'
 
@@ -14,9 +13,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllNotes: () => dispatch(fetchAllNotes()),
-  fetchNote: (noteIndex) => dispatch(fetchNote(noteIndex)),
-  setActiveNoteIndex: (noteIndex) => dispatch(setActiveNoteIndex(noteIndex)),
-  setNoteStatus: (status) => dispatch(setNoteStatus(status))
+  fetchNote: () => dispatch(fetchNote()),
+  setActiveNoteIndex: (noteIndex) => dispatch(setActiveNoteIndex(noteIndex))
 })
 
 export default connect(

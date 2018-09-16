@@ -11,6 +11,7 @@ export default class StatusModal extends Component {
     this._getModalConfig = this._getModalConfig.bind(this)
     this.onSaveFail = this.onSaveFail.bind(this)
     this.onLoadFail = this.onLoadFail.bind(this)
+    this.onDeleteFail = this.onDeleteFail.bind(this)
   }
 
   componentDidUpdate () {
@@ -21,6 +22,7 @@ export default class StatusModal extends Component {
         this.props.updateNoteStatus()
         break
       case NOTE_STATUS.NOTE_LOAD_SUCCESS:
+      case NOTE_STATUS.NOTE_DELETE_SUCCESS:
         this.props.updateNoteStatus()
         break
       default:
@@ -39,13 +41,18 @@ export default class StatusModal extends Component {
     this.props.updateNoteStatus(false)
   }
 
+  onDeleteFail () {
+    this.props.setDeleteDisabled(false)
+    this.props.updateNoteStatus(false)
+  }
+
   _getModalConfig () {
     // This modal is shown when any operation happens.
     let showModal =
       this.props.noteStatus !== NOTE_STATUS.NO_OPERATION
 
     let modalBody = ''
-    let callBack = ''
+    let callBack = () => {}
     let showFooter = false
     switch (this.props.noteStatus) {
       case NOTE_STATUS.SAVING_NOTE:
@@ -69,6 +76,17 @@ export default class StatusModal extends Component {
         modalBody = 'Unable to load note.'
         showFooter = true
         callBack = this.onLoadFail
+        break
+      case NOTE_STATUS.DELETING_NOTE:
+        modalBody = 'Deleting note...'
+        break
+      case NOTE_STATUS.NOTE_DELETE_SUCCESS:
+        modalBody = 'Note deleted successfully.'
+        break
+      case NOTE_STATUS.NOTE_DELETE_FAIL:
+        modalBody = 'Unable to delete note.'
+        showFooter = true
+        callBack = this.onDeleteFail
         break
       default:
         break
@@ -104,5 +122,6 @@ StatusModal.propTypes = {
   noteStatus: PropTypes.string.isRequired,
   updateNoteStatus: PropTypes.func.isRequired,
   setSaveDisabled: PropTypes.func.isRequired,
-  setNewNoteDisabled: PropTypes.func.isRequired
+  setNewNoteDisabled: PropTypes.func.isRequired,
+  setDeleteDisabled: PropTypes.func.isRequired
 }
