@@ -18,7 +18,7 @@ const _updateNoteEntry = (state, field, newValue) => {
   // Just return state as there is no active note.
   if (state.activeNoteIndex < 0 ||
       state.activeNoteIndex >= state.notes.length) {
-    logger.warn('UPDATE_NOTE_TITLE action is fired with out of range' +
+    logger.warn('action is fired with out of range' +
                  ' activeNoteIndex')
     return state
   }

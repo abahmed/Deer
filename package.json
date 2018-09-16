@@ -29,7 +29,7 @@
     "release:win32": "npm run production && electron-builder --win --ia32",
     "release:win64": "npm run production && electron-builder --win --x64",
     "start": "electron .",
-    "test": "jest",
+    "test": "jest --verbose",
     "watch": "webpack --watch"
   },
   "devDependencies": {
