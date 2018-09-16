@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET_NEXT_LANG is correct 1`] = `
+Object {
+  "fadeIn": true,
+  "index": 0,
+}
+`;
+
+exports[`INITIAL_STATE is correct 1`] = `
+Object {
+  "fadeIn": true,
+  "index": -1,
+  "langList": Array [
+    Object {
+      "lang": "English",
+      "nextBtn": "Next",
+      "welcome": "Welcome",
+    },
+    Object {
+      "lang": "Arabic",
+      "nextBtn": "التالى",
+      "welcome": "أهلا بك",
+    },
+    Object {
+      "lang": "French",
+      "nextBtn": "Prochain",
+      "welcome": "Bienvenue",
+    },
+    Object {
+      "lang": "Spanish",
+      "nextBtn": "Siguiente",
+      "welcome": "Bienvenido",
+    },
+    Object {
+      "lang": "Italian",
+      "nextBtn": "Il prossimo",
+      "welcome": "Benvenuto",
+    },
+    Object {
+      "lang": "German",
+      "nextBtn": "Nächster",
+      "welcome": "Willkommen",
+    },
+    Object {
+      "lang": "Russian",
+      "nextBtn": "следующий",
+      "welcome": "пожаловать",
+    },
+    Object {
+      "lang": "Chinese",
+      "nextBtn": "下一个",
+      "welcome": "欢迎",
+    },
+    Object {
+      "lang": "Japanese",
+      "nextBtn": "次",
+      "welcome": "ようこそ",
+    },
+    Object {
+      "lang": "Hindi",
+      "nextBtn": "आगामी",
+      "welcome": "स्वागत हे",
+    },
+  ],
+}
+`;
+
+exports[`TOGGLE_FADE is correct 1`] = `
+Object {
+  "fadeIn": false,
+  "index": -1,
+}
+`;
