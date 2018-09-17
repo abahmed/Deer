@@ -27,6 +27,10 @@
 + Cross Platform for Desktop and Mobile :computer:
 + Multi-language :earth_americas:
 
+### Download
+Currently, Deer is available for Linux, Mac and Windows :tada::tada:.
+[Download it now!](https://github.com/abahmed/Deer/releases)
+
 
 ### Getting started
 
