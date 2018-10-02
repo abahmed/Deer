@@ -99,7 +99,7 @@ export const deleteNote = () => (dispatch, getState) => {
   const noteIndex = state.activeNoteIndex
   removeNote(state.notes[noteIndex].id,
     state.notes[noteIndex].rev).then((result) => {
-    dispatch(deleteNoteFromList(noteIndex))
+    dispatch(deleteNoteFromList(result.id))
     dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
   }).catch((err) => {

@@ -95,7 +95,7 @@ export default (state = INITIAL_STATE, action) => {
     case ACTIONS.DELETE_NOTE_FROM_LIST:
       return {
         ...state,
-        notes: state.notes.filter(note => note.id === action.payload)
+        notes: state.notes.filter(note => note.id !== action.payload)
       }
     default:
       return state
