@@ -50,12 +50,13 @@ export default class NoteEditor extends Component {
   }
 
   render () {
+    const { t } = this.props
     return (
       <div className='NoteEditor'>
         <Editor
           editorState={this.props.activeNoteState}
           onChange={this.onEditorChange}
-          placeholder='Write down your thoughts...'
+          placeholder={t('noteEditor:placeholder')}
         />
       </div>
     )
@@ -68,5 +69,6 @@ NoteEditor.propTypes = {
   setDeleteDisabled: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
   updateActiveNoteState: PropTypes.func.isRequired,
-  updateNoteTitle: PropTypes.func.isRequired
+  updateNoteTitle: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 }

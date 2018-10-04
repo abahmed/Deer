@@ -47,6 +47,7 @@ export default class StatusModal extends Component {
   }
 
   _getModalConfig () {
+    const { t } = this.props
     // This modal is shown when any operation happens.
     let showModal =
       this.props.noteStatus !== NOTE_STATUS.NO_OPERATION
@@ -56,35 +57,35 @@ export default class StatusModal extends Component {
     let showFooter = false
     switch (this.props.noteStatus) {
       case NOTE_STATUS.SAVING_NOTE:
-        modalBody = 'Saving note...'
+        modalBody = t('statusModal:savingNote')
         break
       case NOTE_STATUS.NOTE_SAVE_SUCCESS:
-        modalBody = 'Note saved successfully.'
+        modalBody = t('statusModal:noteSaveSuccess')
         break
       case NOTE_STATUS.NOTE_SAVE_FAIL:
-        modalBody = 'Unable to save note.'
+        modalBody = t('statusModal:noteSaveFail')
         showFooter = true
         callBack = this.onSaveFail
         break
       case NOTE_STATUS.LOADING_NOTE:
-        modalBody = 'Loading note...'
+        modalBody = t('statusModal:loadingNote')
         break
       case NOTE_STATUS.NOTE_LOAD_SUCCESS:
-        modalBody = 'Note loaded successfully.'
+        modalBody = t('statusModal:noteLoadSuccess')
         break
       case NOTE_STATUS.NOTE_LOAD_FAIL:
-        modalBody = 'Unable to load note.'
+        modalBody = t('statusModal:noteLoadFail')
         showFooter = true
         callBack = this.onLoadFail
         break
       case NOTE_STATUS.DELETING_NOTE:
-        modalBody = 'Deleting note...'
+        modalBody = t('statusModal:deletingNote')
         break
       case NOTE_STATUS.NOTE_DELETE_SUCCESS:
-        modalBody = 'Note deleted successfully.'
+        modalBody = t('statusModal:noteDeleteSuccess')
         break
       case NOTE_STATUS.NOTE_DELETE_FAIL:
-        modalBody = 'Unable to delete note.'
+        modalBody = t('statusModal:noteDeleteFail')
         showFooter = true
         callBack = this.onDeleteFail
         break
@@ -123,5 +124,6 @@ StatusModal.propTypes = {
   updateNoteStatus: PropTypes.func.isRequired,
   setSaveDisabled: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
-  setDeleteDisabled: PropTypes.func.isRequired
+  setDeleteDisabled: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 }
