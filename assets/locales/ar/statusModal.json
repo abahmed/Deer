@@ -1,0 +1,11 @@
+{
+  "savingNote": "جاري حفظ التدوينة...",
+  "noteSaveSuccess": "تم حفظ التدوينة بنجاح",
+  "noteSaveFail": "غير قادر على حفظ التدوينة",
+  "loadingNote": "جاري تحميل التدوينة...",
+  "noteLoadSuccess": "تم تحميل التدوينة بنجاح",
+  "noteLoadFail": "غير قادر على تحميل التدوينة",
+  "deletingNote": "جارى حذف التدوينة...",
+  "noteDeleteSuccess": "تم حذف التدوينة بنجاح",
+  "noteDeleteFail": "غير قادر على حذف التدوينة"
+}

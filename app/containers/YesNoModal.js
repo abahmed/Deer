@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next'
 import YesNoModal from '../components/YesNoModal'
 import {
   toggleYesNoModal
@@ -25,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
   deleteNote: () => dispatch(deleteNote())
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withNamespaces()
 )(YesNoModal)

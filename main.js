@@ -58,7 +58,7 @@ function createWindow () {
     minWidth: 800,
     minHeight: 600,
     backgroundColor: '#F8F8FF',
-    icon: 'app/assets/images/Deer-128.png',
+    icon: './assets/images/Deer-128.png',
     show: false
   })
   logger.info('Deer window is created')

@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next'
 import Header from '../components/Header'
 import {
   setNewNoteDisabled
@@ -22,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
   toggleYesNoModal: (action) => dispatch(toggleYesNoModal(action))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withNamespaces()
 )(Header)

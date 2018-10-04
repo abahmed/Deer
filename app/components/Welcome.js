@@ -22,7 +22,8 @@ export default class Welcome extends Component {
     let lang = this.props.langList[this.props.index]
     return (
       <div className='welcome-page'>
-        <img className='logo' src={require('../assets/images/Deer-256.png')} />
+        <img className='logo'
+          src={require('./../../assets/images/Deer-256.png')} />
         <br /><br />
         <div ref='welcomeText'>
           <Fade
