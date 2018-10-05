@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   notes: []
 }
 
-// Helper method, Updates a field with a newValue of an element in notes array
+// Helper method, updates a field with a newValue of an element in notes array
 // without altering provided state if there is a change in value, otherwise
 // returns provided state.
 const _updateNoteEntry = (state, field, newValue) => {

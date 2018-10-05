@@ -14,7 +14,7 @@ export default class Welcome extends Component {
   }
 
   render () {
-    // Index value has not set, so there is nothing to show.
+    // Index value has not been set, so there is nothing to show.
     if (this.props.index === -1) {
       return (<Spinner />)
     }

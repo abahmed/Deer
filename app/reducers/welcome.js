@@ -11,7 +11,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ACTIONS.GET_NEXT_LANG:
       // Update the index value to point to the next element in the langList
-      // array, and if it reached to the end, it's set to zero.
+      // array, and if it has reached the end, it's set to zero.
       let index = -1
       if (state.langList.length !== 0) {
         index = state.index + 1

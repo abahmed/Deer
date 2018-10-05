@@ -16,12 +16,12 @@ export const addNote = (doc) => {
   return notesDB.put(doc)
 }
 
-// Gets a note from database using its ID.
+// Gets a note from database using it's ID.
 export const getNote = (noteId) => {
   return notesDB.get(noteId)
 }
 
-// Deletes a note from database using its ID and rev.
+// Deletes a note from database using it's ID and rev.
 export const removeNote = (noteId, noteRev) => {
   return notesDB.remove(noteId, noteRev)
 }
