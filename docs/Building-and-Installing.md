@@ -56,7 +56,7 @@ git clone https://github.com/abahmed/Deer
 
 ***
 
-### Installing dependancies and running Deer
+### Installing dependencies and running Deer
 In your terminal
 ``` bash
 # Go into Deer's repository

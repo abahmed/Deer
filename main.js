@@ -73,7 +73,7 @@ function createWindow () {
     slashes: true
   }))
 
-  // Register listeners on browser window to keep track of its state, so it can
+  // Register listeners on browser window to keep track of it's state, so it can
   // restore it.
   lastWindowState.manage(win)
 
@@ -92,7 +92,7 @@ function createWindow () {
   win.on('closed', () => {
     logger.info('Deer window is closed')
 
-    // Dereference the window object, usually you would store windows
+    // De-reference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null
@@ -115,7 +115,7 @@ app.on('ready', () => {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  // On macOS it is common for applications and their menu bar
+  // On macOS it's common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit()
