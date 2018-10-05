@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./app/assets/images/Deer-256.png"/>
+  <img src="./assets/images/Deer-256.png"/>
   <p align="center">
     <a href="https://travis-ci.org/abahmed/Deer">
       <img src="https://travis-ci.org/abahmed/Deer.svg?branch=develop"/>
