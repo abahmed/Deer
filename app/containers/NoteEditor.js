@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next'
 import NoteEditor from '../components/NoteEditor'
 import {
   setSaveDisabled,
@@ -22,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
   updateNoteTitle: (content) => dispatch(updateNoteTitle(content))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withNamespaces()
 )(NoteEditor)

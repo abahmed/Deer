@@ -46,10 +46,12 @@ Those are dependencies that are essential for software to work.
 | electron-log          | ^2.2.15       | A multi-transport async logging library |
 | electron-store        | ^2.0.0        | Save and load user preferences |
 | electron-window-state | ^5.0.1        | Store and restore window sizes and positions |
+| i18next               | ^11.9.0       | internationalization framework |
 | pouchdb-browser       | ^7.0.0        | A pocket-sized database. |
 | prop-types            | ^15.6.1       | A Runtime type checking for React props |
 | react                 | ^16.4.0       | A JavaScript library for building user interfaces |
 | react-dom             | ^16.4.0       | React package for working with the DOM |
+| react-i18next         | ^8.0.7        | Internationalization for react |
 | react-redux           | ^5.0.7        | React bindings for Redux |
 | react-router-dom      | ^4.3.1        | A DOM bindings for React Router |
 | reactstrap            | ^6.1.0        | A Stateless React Components for Bootstrap 4 |

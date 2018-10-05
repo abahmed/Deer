@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next'
 import HomeContent from '../components/HomeContent'
 
 const mapStateToProps = state => ({
@@ -8,7 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withNamespaces()
 )(HomeContent)

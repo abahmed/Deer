@@ -35,6 +35,7 @@ export default class Header extends Component {
   }
 
   render () {
+    const { t } = this.props
     let newNoteBtnClass = 'btn btn-outline-success btn-sm'
     if (this.props.isNewNoteDisabled) { newNoteBtnClass += ' disabled' }
 
@@ -47,22 +48,22 @@ export default class Header extends Component {
     return (
       <nav className='navbar sticky-top navbar-light bg-light'>
         <img
-          src={require('../assets/images/Deer-32.png')}
+          src={require('./../../assets/images/Deer-32.png')}
           className='d-inline-block align-top' />
         <ul className='navbar-nav flex-row ml-md-auto d-none d-md-flex'>
           <li className='nav-item'>
             <button className={newNoteBtnClass} onClick={this.onAddNote}>
-              New Note
+              {t('header:newNoteBtn')}
             </button>
           </li>
           <li className='nav-item'>
             <button className={saveBtnClass} onClick={this.onSaveNote}>
-              Save
+              {t('header:saveBtn')}
             </button>
           </li>
           <li className='nav-item'>
             <button className={deleteBtnClass} onClick={this.onDeleteNote}>
-              Delete
+              {t('header:deleteBtn')}
             </button>
           </li>
         </ul>
@@ -77,5 +78,6 @@ Header.propTypes = {
   isNewNoteDisabled: PropTypes.bool.isRequired,
   isSaveDisabled: PropTypes.bool.isRequired,
   isDeleteDisabled: PropTypes.bool.isRequired,
-  toggleYesNoModal: PropTypes.func.isRequired
+  toggleYesNoModal: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 }

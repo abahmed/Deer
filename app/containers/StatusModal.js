@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next'
 import StatusModal from '../components/StatusModal'
 import {
   updateNoteStatus
@@ -21,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
   setDeleteDisabled: (flag) => dispatch(setDeleteDisabled(flag))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withNamespaces()
 )(StatusModal)

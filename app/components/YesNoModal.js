@@ -28,15 +28,16 @@ export default class YesNoModal extends Component {
   }
 
   _getModalConfig () {
+    const { t } = this.props
     let modalBody = ''
     let callBack = () => {}
     switch (this.props.yesNoAction) {
       case ACTIONS.SAVE_NOTE:
-        modalBody = 'Do you want to save this note?'
+        modalBody = t('yesNoModal:saveNote')
         callBack = this.onSaveNote
         break
       case ACTIONS.DELETE_NOTE:
-        modalBody = 'Do you want to delete this note?'
+        modalBody = t('yesNoModal:deleteNote')
         callBack = this.onDeleteNote
         break
       default:
@@ -79,5 +80,6 @@ YesNoModal.propTypes = {
   setSaveDisabled: PropTypes.func.isRequired,
   setDeleteDisabled: PropTypes.func.isRequired,
   saveNote: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired
+  deleteNote: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 }
