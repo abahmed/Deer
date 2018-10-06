@@ -6,7 +6,7 @@ import { setNoteStatus } from './note'
 // Used for updating visibility of save modal.
 export const toggleYesNoModal = createAction(ACTIONS.TOGGLE_SAVE_MODAL)
 
-// Async method, Used for updating note status with two optional parameters
+// Async method, used for updating note status with two optional parameters
 // - withTimeOut: dispatch action after timeout or not and it's default value
 //                is true.
 // - status: the new status of the note and it's default value is NO_OPERATION.

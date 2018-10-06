@@ -97,3 +97,9 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+/* Set text cursor to note editor text */ 
+.public-DraftStyleDefault-block, 
+.public-DraftStyleDefault-block span { 
+  cursor: text; 
+}

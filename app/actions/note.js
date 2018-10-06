@@ -45,13 +45,13 @@ export const fetchAllNotes = () => (dispatch, getState) => {
   })
 }
 
-// Helper method, Used for setting noteStatus to NOTE_SAVE_FAIL.
+// Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.
 const _noteSaveFailed = (dispatch, err = null) => {
   dispatch(setNoteStatus(NOTE_STATUS.NOTE_SAVE_FAIL))
   logger.error('Unable to save note ' + err)
 }
 
-// Async method, Used for saving note (new or update) to database and updates
+// Async method, used for saving note (new or update) to database and updates
 // noteStatus.
 export const saveNote = () => (dispatch, getState) => {
   dispatch(setNoteStatus(NOTE_STATUS.SAVING_NOTE))
@@ -76,7 +76,7 @@ export const saveNote = () => (dispatch, getState) => {
   }).catch((err) => _noteSaveFailed(dispatch, err))
 }
 
-// Async method, Used for getting active note content from database and loads it.
+// Async method, used for getting active note content from database and loads it.
 export const fetchNote = () => (dispatch, getState) => {
   setNoteStatus(NOTE_STATUS.LOADING_NOTE)
 
@@ -91,7 +91,7 @@ export const fetchNote = () => (dispatch, getState) => {
   })
 }
 
-// Async method, Used for removing active note from database.
+// Async method, used for removing active note from database.
 export const deleteNote = () => (dispatch, getState) => {
   setNoteStatus(NOTE_STATUS.DELETING_NOTE)
 
