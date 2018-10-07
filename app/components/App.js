@@ -1,9 +1,9 @@
 import React from 'react'
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, HashRouter } from 'react-router-dom'
 import routes from '../routes'
 
 export default () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       {routes.map((route, index) => (
         <Route
@@ -15,5 +15,5 @@ export default () => (
       ))}
       <Redirect to='/' />
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 )
