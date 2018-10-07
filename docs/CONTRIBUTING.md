@@ -6,10 +6,10 @@ Before making changes, please first discuss the change you want to make through 
 
 ### There are many ways to contribute:
 
-+ [Suggest new features to be implemented](issues)
-+ [Report issues](issues)
-+ [Improve Documentation](index.md)
-+ [Fixing issues](issues)
++ [Suggest new features to be implemented](https://github.com/abahmed/Deer/issues)
++ [Report issues](https://github.com/abahmed/Deer/issues)
++ [Improve Documentation](https://github.com/abahmed/Deer/blob/develop/docs/README.md)
++ [Fixing issues](https://github.com/abahmed/Deer/issues)
 
 
 ### Code Contribution
