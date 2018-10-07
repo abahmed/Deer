@@ -98,8 +98,17 @@
   white-space: nowrap;
 }
 
-/* Set text cursor to note editor text */ 
-.public-DraftStyleDefault-block, 
-.public-DraftStyleDefault-block span { 
-  cursor: text; 
+/* Set text cursor to note editor text */
+.public-DraftStyleDefault-block,
+.public-DraftStyleDefault-block span {
+  cursor: text;
+}
+
+.settings-bottom-row {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.settings-top-row {
+  margin-top: 10px;
 }

@@ -1,4 +1,5 @@
 import electron from 'electron'
+import { FALLBACK_LANG } from '../app/constants/i18n'
 
 // fetching electron store object
 let electronStore = electron.remote.getGlobal('electronStore')
@@ -23,8 +24,31 @@ var setNotFirstTimeFlag = function () {
   electronStore.set('show-welcome', false)
 }
 
+/**
+ * retuns user's saved language if it's set, otherwise returns
+ * fallback language.
+ */
+var getDefaultLanguage = function () {
+  if (electronStore.has('general.language')) {
+    return electronStore.get('general.language')
+  }
+  return FALLBACK_LANG
+}
+
+/**
+ * called to save user's language preference by providing defaultLanguage.
+ */
+var setDefaultLanguage = function (defaultLanguage) {
+  if (!defaultLanguage) {
+    return
+  }
+  electronStore.set('general.language', defaultLanguage)
+}
+
 // export the functions defined here
 module.exports = {
   checkRedirectToWelcomePage,
-  setNotFirstTimeFlag
+  setNotFirstTimeFlag,
+  getDefaultLanguage,
+  setDefaultLanguage
 }
