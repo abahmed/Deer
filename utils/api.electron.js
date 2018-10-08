@@ -2,14 +2,14 @@ import electron from 'electron'
 import { FALLBACK_LANG } from '../app/constants/i18n'
 
 // fetching electron store object
-let electronStore = electron.remote.getGlobal('electronStore')
+const electronStore = electron.remote.getGlobal('electronStore')
 
 /**
  * check whether to redirect to the welcome page or no.
  * this value is saved in electron store in show-welcome flag.
  * returns true if first time to open Deer, otherwise, false
  */
-var checkRedirectToWelcomePage = function () {
+const checkRedirectToWelcomePage = function () {
   if (electronStore.has('show-welcome')) {
     return electronStore.get('show-welcome')
   }
@@ -20,7 +20,7 @@ var checkRedirectToWelcomePage = function () {
  * called to mark that the user has already opened Deer once.
  * sets the show-welcome flag in electron store to false.
  */
-var setNotFirstTimeFlag = function () {
+const setNotFirstTimeFlag = function () {
   electronStore.set('show-welcome', false)
 }
 
@@ -28,7 +28,7 @@ var setNotFirstTimeFlag = function () {
  * retuns user's saved language if it's set, otherwise returns
  * fallback language.
  */
-var getDefaultLanguage = function () {
+const getDefaultLanguage = function () {
   if (electronStore.has('general.language')) {
     return electronStore.get('general.language')
   }
@@ -38,7 +38,7 @@ var getDefaultLanguage = function () {
 /**
  * called to save user's language preference by providing defaultLanguage.
  */
-var setDefaultLanguage = function (defaultLanguage) {
+const setDefaultLanguage = function (defaultLanguage) {
   if (!defaultLanguage) {
     return
   }
