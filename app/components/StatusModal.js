@@ -23,6 +23,7 @@ export default class StatusModal extends Component {
         break
       case NOTE_STATUS.NOTE_LOAD_SUCCESS:
       case NOTE_STATUS.NOTE_DELETE_SUCCESS:
+        this.props.setNewNoteDisabled(false)
         this.props.updateNoteStatus()
         break
       default:

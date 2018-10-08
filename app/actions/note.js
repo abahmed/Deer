@@ -97,13 +97,27 @@ export const deleteNote = () => (dispatch, getState) => {
 
   const state = getState().noteReducer
   const noteIndex = state.activeNoteIndex
-  removeNote(state.notes[noteIndex].id,
-    state.notes[noteIndex].rev).then((result) => {
-    dispatch(deleteNoteFromList(result.id))
-    dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
-    dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
-  }).catch((err) => {
+  try {
+    // This is done just to make sure it exist before deleting it.
+    getNote(state.notes[noteIndex].id).then(() => {
+      removeNote(state.notes[noteIndex].id,
+        state.notes[noteIndex].rev).then((result) => {
+        dispatch(deleteNoteFromList(result.id))
+        dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
+      }).catch((err) => {
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
+        logger.error('Unable to remove note ' + err)
+      })
+    }).catch((err) => {
+      if (err) {
+        dispatch(deleteNoteFromList(state.notes[noteIndex].id))
+        dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
+      }
+    })
+  } catch (err) {
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
     logger.error('Unable to remove note ' + err)
-  })
+  }
 }
