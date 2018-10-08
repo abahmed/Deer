@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Spinner from './Spinner'
 
+import { setNotFirstTimeFlag } from '../../utils/api.electron'
+
 export default class Welcome extends Component {
   componentWillMount () {
     this.props.updateLang()
@@ -11,6 +13,10 @@ export default class Welcome extends Component {
 
   componentWillUnmount () {
     this.props.stopUpdateLang()
+  }
+
+  goToNext () {
+    setNotFirstTimeFlag()
   }
 
   render () {
@@ -34,6 +40,7 @@ export default class Welcome extends Component {
         <br />
         <Link to='/'>
           <Button
+            onClick={this.goToNext}
             className='center-button'
             color='primary'>
             {lang.nextBtn}
