@@ -44,8 +44,8 @@ Object {
     },
     Object {
       "lang": "Russian",
-      "nextBtn": "следующий",
-      "welcome": "пожаловать",
+      "nextBtn": "Далее",
+      "welcome": "Добро пожаловать",
     },
     Object {
       "lang": "Chinese",
