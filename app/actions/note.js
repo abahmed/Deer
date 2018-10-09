@@ -79,16 +79,25 @@ export const saveNote = () => (dispatch, getState) => {
 // Async method, used for getting active note content from database and loads it.
 export const fetchNote = () => (dispatch, getState) => {
   setNoteStatus(NOTE_STATUS.LOADING_NOTE)
-
   const state = getState().noteReducer
   const noteIndex = state.activeNoteIndex
-  getNote(state.notes[noteIndex].id).then((result) => {
-    dispatch(loadNoteContent(convertFromRaw(result.content)))
-    dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
-  }).catch((err) => {
-    dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_FAIL))
-    logger.error('Unable to get note ' + err)
-  })
+  try {
+    // This is to just get the note from the db and load it's content if already saved.
+    getNote(state.notes[noteIndex].id).then((result) => {
+      dispatch(loadNoteContent(convertFromRaw(result.content)))
+      dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
+    // Handle those new notes that are not saved yet.
+    }).catch((err) => {
+      if (err) {
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
+      }
+    })
+  } catch (err) {
+    if (err) {
+      dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_FAIL))
+      logger.error('Unable to get note ' + err)
+    }
+  }
 }
 
 // Async method, used for removing active note from database.
@@ -97,13 +106,27 @@ export const deleteNote = () => (dispatch, getState) => {
 
   const state = getState().noteReducer
   const noteIndex = state.activeNoteIndex
-  removeNote(state.notes[noteIndex].id,
-    state.notes[noteIndex].rev).then((result) => {
-    dispatch(deleteNoteFromList(result.id))
-    dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
-    dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
-  }).catch((err) => {
+  try {
+    // This is done just to make sure it exist before deleting it.
+    getNote(state.notes[noteIndex].id).then(() => {
+      removeNote(state.notes[noteIndex].id,
+        state.notes[noteIndex].rev).then((result) => {
+        dispatch(deleteNoteFromList(result.id))
+        dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
+      }).catch((err) => {
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
+        logger.error('Unable to remove note ' + err)
+      })
+    }).catch((err) => {
+      if (err) {
+        dispatch(deleteNoteFromList(state.notes[noteIndex].id))
+        dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
+        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
+      }
+    })
+  } catch (err) {
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
     logger.error('Unable to remove note ' + err)
-  })
+  }
 }

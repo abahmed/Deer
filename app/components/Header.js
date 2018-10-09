@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { ACTIONS } from '../constants/actions'
 
 export default class Header extends Component {
@@ -36,6 +37,7 @@ export default class Header extends Component {
 
   render () {
     const { t } = this.props
+
     let newNoteBtnClass = 'btn btn-outline-success btn-sm'
     if (this.props.isNewNoteDisabled) { newNoteBtnClass += ' disabled' }
 
@@ -65,6 +67,13 @@ export default class Header extends Component {
             <button className={deleteBtnClass} onClick={this.onDeleteNote}>
               {t('header:deleteBtn')}
             </button>
+          </li>
+          <li className='nav-item'>
+            <Link to='/settings'>
+              <button className='ml-2 btn btn-outline-info btn-sm'>
+                {t('header:settingsBtn')}
+              </button>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -5,14 +5,10 @@ import NoteList from './../containers/NoteList'
 import HomeContent from './../containers/HomeContent'
 import YesNoModal from './../containers/YesNoModal'
 import StatusModal from './../containers/StatusModal'
-import {
-  checkRedirectToWelcomePage,
-  setNotFirstTimeFlag
-} from '../../utils/api.electron'
+import { checkRedirectToWelcomePage } from '../../utils/api.electron'
 
 export default () => {
   if (checkRedirectToWelcomePage()) {
-    setNotFirstTimeFlag()
     return (
       <Redirect to='/welcome' />
     )

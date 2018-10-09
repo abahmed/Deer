@@ -1,5 +1,6 @@
 {
   "newNoteBtn": "New Note",
   "saveBtn": "Save",
-  "deleteBtn": "Delete"
+  "deleteBtn": "Delete",
+  "settingsBtn": "Settings"
 }
