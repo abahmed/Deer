@@ -6,6 +6,7 @@ import { FALLBACK_LANG } from '../app/constants/i18n'
 // Importing languages
 import en from './../assets/locales/en'
 import ar from './../assets/locales/ar'
+import es from './../assets/locales/es'
 
 const isDev = require('electron-is-dev')
 
@@ -15,7 +16,8 @@ i18n.use(reactI18nextModule).init({
   debug: isDev,
   resources: {
     en,
-    ar
+    ar,
+    es
   }
 })
 
