@@ -10,5 +10,9 @@ export const SUPPORTED_LANGS = [
   {
     language: 'العربية',
     code: 'ar'
+  },
+  {
+    language: 'Español',
+    code: 'es'
   }
 ]
