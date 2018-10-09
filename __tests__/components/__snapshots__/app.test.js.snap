@@ -36,6 +36,12 @@ exports[`<App /> render() renders the component 1`] = `
       key="1"
       path="/welcome"
     />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="2"
+      path="/settings"
+    />
     <Redirect
       push={false}
       to="/"
