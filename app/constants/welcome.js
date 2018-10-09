@@ -31,8 +31,8 @@ export const welcome = [
   },
   {
     lang: 'Russian',
-    welcome: 'пожаловать',
-    nextBtn: 'следующий'
+    welcome: 'Добро пожаловать',
+    nextBtn: 'Далее'
   },
   {
     lang: 'Chinese',
