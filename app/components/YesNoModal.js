@@ -50,7 +50,9 @@ export default class YesNoModal extends Component {
   }
 
   render () {
+    const { t } = this.props
     const modalConfig = this._getModalConfig()
+
     return (
       <Modal isOpen={this.props.showYesNoModal}>
         <ModalBody>
@@ -60,12 +62,12 @@ export default class YesNoModal extends Component {
           <button
             className='ml-2 btn btn-outline-success btn-sm'
             onClick={modalConfig.callBack}>
-             Yes
+            {t('yesNoModal:yesBtn')}
           </button>
           <button
             className='ml-2 btn btn-outline-danger btn-sm'
             onClick={this.props.toggleYesNoModal}>
-             No
+            {t('yesNoModal:noBtn')}
           </button>
         </ModalFooter>
       </Modal>
