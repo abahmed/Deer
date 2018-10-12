@@ -109,6 +109,8 @@ app.on('ready', () => {
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)
 
+  const reactPath = '~/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/3.4.0_0/'
+  BrowserWindow.addDevToolsExtension(reactPath)
   // Create and load main window.
   createWindow()
 })
