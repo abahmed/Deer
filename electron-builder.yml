@@ -4,7 +4,7 @@ files:
   - "utils/*"
   - "package.json"
   - "build/*"
-  - "public/*"
+  - "app/index.html"
   - "LICENSE"
   - "AUTHORS.md"
   - "README.md"

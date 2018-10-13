@@ -1,5 +1,5 @@
-import electron from 'electron'
-import { FALLBACK_LANG } from '../app/constants/i18n'
+const electron = require('electron')
+const { FALLBACK_LANG } = require('../app/constants/i18n')
 
 // fetching electron store object
 const electronStore = electron.remote.getGlobal('electronStore')

@@ -30,16 +30,9 @@ var electronStore = new Store()
 global.electronStore = electronStore
 
 // Create an instance of the app. Returns false if first instance
-var shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory) {
-  if (win) {
-    if (win.isMinimized()) { win.restore() }
-    win.focus()
-  }
-})
-
-// Quit if not the first instance
-if (shouldQuit) {
-  app.quit()
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+  app.exit()
 }
 
 function createWindow () {
@@ -68,7 +61,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'public/index.html'),
+    pathname: path.join(__dirname, 'app/index.html'),
     protocol: 'file:',
     slashes: true
   }))
@@ -84,7 +77,7 @@ function createWindow () {
 
     // Show DevTools for debugging.
     if (isDev) {
-      win.webContents.openDevTools()
+      win.webContents.openDevTools({ mode: 'detach' })
     }
   })
 
@@ -99,7 +92,33 @@ function createWindow () {
   })
 }
 
-// This method will be called when Electron has finished
+// Installs developer tool extensions for debugging.
+function installDevToolsExtensions () {
+  const devtron = require('devtron')
+  const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } =
+    require('electron-devtools-installer')
+
+  // Install React Developer Tool and Redux DevTool to debug React and Redux.
+  const extensions = [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]
+  extensions.forEach(extension => {
+    installExtension(extension)
+      .then((name) => logger.log(`Added Extension: ${name}`))
+      .catch((err) => logger.log('An error occurred: ', err))
+  })
+
+  // Install devtron to debug Electron.
+  devtron.install()
+}
+
+app.on('second-instance', () => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (win) {
+    if (win.isMinimized()) win.restore()
+    win.focus()
+  }
+})
+
+// This listener will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
@@ -109,8 +128,11 @@ app.on('ready', () => {
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)
 
-  const reactPath = '~/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/3.4.0_0/'
-  BrowserWindow.addDevToolsExtension(reactPath)
+  // Installs developer tool extensions for debugging.
+  if (isDev) {
+    installDevToolsExtensions()
+  }
+
   // Create and load main window.
   createWindow()
 })

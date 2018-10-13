@@ -33,7 +33,7 @@ sudo yum install -y nodejs gcc-c++ make git
 2. Download the Windows Installer(.exe)
 3. Run the downloaded _Git-v.exe_ Installer
 
-#### Node.js and npm installing 
+#### Node.js and npm installing
 1. Open [Node.js Downloads page](https://nodejs.org/en/download/)
 2. Download the Windows Installer(.msi)
 3. Run the downloaded _Node-v.msi_ Installer
@@ -65,9 +65,9 @@ cd Deer
 # Install dependencies
 npm install
 
-# build Deer
-npm run build
+# Run development server to build Deer
+npm run dev
 
-# Run Deer
+# Run Deer (in another tab)
 npm run start
 ```
