@@ -69,5 +69,5 @@ npm install
 npm run dev
 
 # Run Deer (in another tab)
-npm run start
+npm start
 ```
