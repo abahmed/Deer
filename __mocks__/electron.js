@@ -1,5 +1,8 @@
 module.exports = {
   remote: {
-    getGlobal: jest.fn()
+    getGlobal: jest.fn(),
+    app: {
+      isPackaged: false
+    }
   }
 }

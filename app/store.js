@@ -14,7 +14,12 @@ export default function configureStore (initialState = undefined) {
   const store = createStore(
     rootReducer,
     initialState,
-    compose(applyMiddleware(...middlewares))
+    compose(
+      applyMiddleware(...middlewares),
+      // Used to avoid "No store found." in Redux devtools
+      // (https://github.com/zalmoxisus/redux-devtools-extension/issues/126)
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
   )
   return store
 }

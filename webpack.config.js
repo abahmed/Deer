@@ -1,13 +1,10 @@
-var path = require('path')
+const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
 
-module.exports = {
+// Common configuration.
+const commonConfig = {
   entry: './app/entry.js',
-  output: {
-    path: path.join(__dirname, '/build'),
-    publicPath: path.join(__dirname, '/build/'),
-    filename: 'bundle.js'
-  },
-  mode: 'development',
   target: 'electron-main',
   module: {
     rules: [
@@ -26,4 +23,39 @@ module.exports = {
       }
     ]
   }
+}
+
+// Development configuration.
+const developmentConfig = {
+  mode: 'development',
+  output: {
+    publicPath: 'http://localhost:8080/build',
+    filename: 'bundle.js'
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    publicPath: 'http://localhost:8080/build',
+    hot: true,
+    compress: true
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+}
+
+// Production configuration.
+const productionConfig = {
+  mode: 'production',
+  output: {
+    path: path.join(__dirname, '/build'),
+    publicPath: path.join(__dirname, '/build/'),
+    filename: 'bundle.js'
+  }
+}
+
+module.exports = (env, options) => {
+  if (options.mode && options.mode === 'production') {
+    return merge(productionConfig, commonConfig)
+  }
+  return merge(developmentConfig, commonConfig)
 }
