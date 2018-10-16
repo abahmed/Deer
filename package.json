@@ -19,15 +19,14 @@
   "scripts": {
     "build-prod": "webpack --mode=production",
     "dev": "webpack-dev-server --mode=development",
-    "dist": "electron-builder",
     "lint": "eslint . --fix",
     "precommit": "npm run lint",
+    "release:linux": "electron-builder --linux ",
     "release:linux:deb": "npm run build-prod && electron-builder --linux deb",
     "release:linux:rpm": "npm run build-prod && electron-builder --linux rpm",
     "release:linux:zip": "npm run build-prod && electron-builder --linux zip",
-    "release:mac": "npm run build-prod && electron-builder --mac",
-    "release:win32": "npm run build-prod && electron-builder --win --ia32",
-    "release:win64": "npm run build-prod && electron-builder --win --x64",
+    "release:mac": "npm run build-prod && electron-builder --mac --publish never",
+    "release:win": "npm run build-prod && electron-builder --win --publish never",
     "start": "electron .",
     "test": "jest --verbose"
   },

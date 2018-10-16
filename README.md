@@ -33,8 +33,14 @@
 ![screenshot-4](https://user-images.githubusercontent.com/3946499/46846323-89feba00-ce09-11e8-857f-32f9a0e4f447.png)
 
 ### Download
-Currently, Deer is available for Linux, Mac and Windows :tada::tada:.
-[Download it now!](https://github.com/abahmed/Deer/releases)
+Currently, Deer is available for Linux, Mac and Windows :tada::tada: [Download it now!](https://github.com/abahmed/Deer/releases)
+
+Nightly builds are produced automatically for development branch so that people can help us testing the features that have just been added
+
+macOS | Windows | Linux
+-----------------| ---| ---|
+<a href='https://github.com/abahmed/Deer/releases/download/develop/Deer-darwin.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/develop/Deer-win32.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/develop/Deer-linux-amd64.deb'>Download</a> |
+
 
 
 ### Getting started
