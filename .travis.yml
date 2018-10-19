@@ -9,45 +9,35 @@ os:
 
 cache:
   directories:
-    - node_modules
-    - $HOME/.cache/electron
-    - $HOME/.cache/electron-builder
+  - node_modules
+  - $HOME/.cache/electron
+  - $HOME/.cache/electron-builder
+  - $HOME/.npm
 
 install:
   - npm install
 
+before_script:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      sudo apt-get update;
+      sudo apt-get install -y rpm;
+    fi
+
 script:
   - npm run lint
-  - if [[ $TRAVIS_BRANCH != "develop" || $TRAVIS_PULL_REQUEST != "false" ]]; then npm
-    run build-prod; fi
   - npm run test
-before_deploy:
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then sudo apt-get update; fi
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then sudo apt-get install rpm; fi
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then npm run release:linux; fi
-  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then npm run release:mac; fi
-  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then npm run release:win; fi
-  - git config --local user.name "Travis CI"
-  - git config --local user.email "YOUR GIT USER EMAIL"
-  - git tag -f develop
-deploy:
-  provider: releases
-  api_key:
-    secure: Ela0fI0roYxcqkLip8tcdX2+wB1pFXdDoL+0Z5RwbCg5fDYrYKDpXddHBnCbi0tQ4L1j9zoq8xf8udZfRSFXxZ83jFRXDSh/KjQZAvmFlSDPx2WMg9fflxwJnNjwmPi34wDwmSA5tYzPMk9h2iXy0BxWB5v3mQFgHdHbIrwoyIQ0Lo7dwdYXuAeojhuYFqeJg0CEytvfXbF1uZuafZPaDU9fvlFHJSGAt8URlHT4ofi9RnPVdHPuYUYVBUOIagjBANAPKX5vvnjLZWnuLbBMMQeUQQPKZ7XjQkP0pIli3iWjnE3xIF80JbLhYkK9aOzGVsvQDv6mykLJhJmNl/Dfv4EIlfBxq5nB5RO+aXWDh0/yq/zs3furPqLYUaqaC+6EjQOxOHrewB0nlDE1oyXQ8k7kQ7r/mB9TVNyvUlvdFWlH8VLvqysNShVxsQ7IyVTfkNHtIgEhTOjIF0Gr+p41Tlv9RBx2EcBlQElTW6jOH5tv3phn5A6YLpB13uODYyAf2d8wf8QMt+6QdX6fDTzZtcKf6yADhyPKZuGvYzuMGnK4zOvHpjofrdXi3T6woLiC8wlWn+bxXdw7raz0dTULfrjq49312PuxtGRwklscnQiboj1eF7BPuXtsURh7gtvMBMmewbYJQgAQGsMxyhd6Kd/kGFhn3hC22annIHDCi+0=
-  skip_cleanup: true
-  overwrite: true
-  file_glob: true
-  target_commitish: "$TRAVIS_COMMIT"
-  tag_name: develop
-  name: Nightly Builds
-  body: Nightly Builds
-  prerelease: true
-  file:
-  - dist/*.deb
-  - dist/*.rpm
-  - dist/*.zip
-  - dist/*.dmg
-  - dist/*.exe
-  on:
-    repo: abahmed/Deer
-    branch: support-CD
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      npm run release;
+      npm run deploy;
+    elif [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      npm run release;
+      npm run release:win;
+      npm run deploy;
+    else
+      npm run build-prod;
+    fi
+
+branches:
+  only:
+  - master
+  - develop
