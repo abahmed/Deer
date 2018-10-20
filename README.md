@@ -28,7 +28,7 @@
 + Multi-language :earth_americas:
 
 ### Screenshots
-![screenshot-1](screenshots.gif)
+![screenshot-1](https://github.com/abahmed/Deer/assets/images/screenshots.gif)
 
 
 ### Translation
