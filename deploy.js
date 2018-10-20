@@ -22,10 +22,9 @@ var NightlyDeploy = {
   init (config) {
     this.config = config
 
-    // Makes sure of asstes that will be uploaded.
+    // Makes sure of assets that will be uploaded.
     this.filteredAssets = this.config.assets.filter(asset => {
-      let assetUrl = path.join(this.config.dir, asset)
-      return fs.existsSync(assetUrl)
+      return fs.existsSync(path.join(this.config.dir, asset))
     })
     if (this.filteredAssets.length === 0) {
       console.log('There are no assets to upload...')
@@ -48,7 +47,7 @@ var NightlyDeploy = {
     })
   },
 
-  // Tries to check whether release is existing or not.
+  // Tries to check whether a release exist or not
   // If it exists, delete it. Otherwise create new one.
   getRelease () {
     console.log('Getting relesae info...')
@@ -58,7 +57,7 @@ var NightlyDeploy = {
       tag: this.config.tag
     }).then(result => {
       // Release is already created.
-      console.log(this.config.tag + ' is already existing')
+      console.log(this.config.tag + '  already exist')
       this.release = result.data
       this.getAssets(this.release.id)
     }).catch(e => {
@@ -83,10 +82,11 @@ var NightlyDeploy = {
       repo: this.config.repo,
       release_id: releaseId
     }).then(result => {
-      console.log('Release is deleted successfully...')
+      console.log('Release was deleted successfully...')
+
       // Use previous name and body.
-      let name = this.release.name
-      let body = this.release.body
+      const name = this.release.name
+      const body = this.release.body
 
       // Free release object.
       this.release = null
@@ -111,7 +111,7 @@ var NightlyDeploy = {
       draft: false,
       prerelease: true
     }).then(result => {
-      console.log('Release is created successfully...')
+      console.log('Release was created successfully...')
       this.release = result.data
       this.uploadAsset(0)
     }).catch(e => {
@@ -147,11 +147,11 @@ var NightlyDeploy = {
       return
     }
 
-    let asset = this.filteredAssets[assetIndex]
+    const asset = this.filteredAssets[assetIndex]
     console.log('Uploading ' + asset)
 
     // Check if it's uploaded.
-    let assetId = this.getAssetId(assetIndex)
+    const assetId = this.getAssetId(assetIndex)
     if (assetId !== -1) {
       console.log(asset + ' is existing, so it will be deleted')
       // Asset exists, so we need to delete it first.
@@ -159,7 +159,7 @@ var NightlyDeploy = {
       return
     }
 
-    let assetUrl = path.join(this.config.dir, asset)
+    const assetUrl = path.join(this.config.dir, asset)
     octokit.repos.uploadAsset({
       url: this.release.upload_url,
       file: fs.readFileSync(assetUrl),
@@ -193,8 +193,8 @@ var NightlyDeploy = {
 
   // Returns id for asset to be used in deleting it.
   getAssetId (index) {
-    let newAsset = this.filteredAssets[index]
-    let result = this.uploadedAssets.find(asset => asset.name === newAsset)
+    const newAsset = this.filteredAssets[index]
+    const result = this.uploadedAssets.find(asset => asset.name === newAsset)
     if (result && result.id) {
       return result.id
     }
