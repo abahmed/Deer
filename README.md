@@ -32,10 +32,32 @@
 ![screenshot-2](https://user-images.githubusercontent.com/3946499/46846312-7ce1cb00-ce09-11e8-8979-a8fe08806d42.png)
 ![screenshot-4](https://user-images.githubusercontent.com/3946499/46846323-89feba00-ce09-11e8-857f-32f9a0e4f447.png)
 
-### Download
-Currently, Deer is available for Linux, Mac and Windows :tada::tada:.
-[Download it now!](https://github.com/abahmed/Deer/releases)
+### Translation
+Currently, Deer supports these langauges :earth_americas:. If you would like to Deer to support your language, [please request that  here](https://github.com/abahmed/Deer/issues/new?template=feature_request.md).
 
+* العربية :egypt:
+* English :uk:
+* Español :es:
+
+### Download
+Currently, Deer is available for Linux, Mac and Windows :tada::tada:
+
+macOS | Windows | Linux
+-----------------| ---| ---|
+<a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer.Setup.0.1.0.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer_0.1.0_amd64.deb'>Debian-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.x86_64.rpm'>RedHat-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0-linux.zip'>Portable</a> |
+
+[More inforamtion about this release](https://github.com/abahmed/Deer/releases/latest)
+
+### Nightly builds
+Nightly builds :airplane: are produced automatically for development branch (develop), so that people can help us testing the features that have just been added
+
+macOS | Windows | Linux
+-----------------| ---| ---|
+<a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-mac.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-win.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-linux-amd64.deb'>Debian-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-linux-x86_64.rpm'>RedHat-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-linux-x64.zip'>Portable</a> |
 
 ### Getting started
 
