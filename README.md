@@ -32,11 +32,12 @@
 
 
 ### Translation
-Currently, Deer supports these langauges :earth_americas:. If you would like to Deer to support your language, [please request that  here](https://github.com/abahmed/Deer/issues/new?template=feature_request.md).
+Currently, Deer supports these languages :earth_americas:. If you would like to Deer to support your language, [please request that  here](https://github.com/abahmed/Deer/issues/new?template=feature_request.md).
 
 * العربية :egypt:
 * English :uk:
 * Español :es:
+* Русский :ru:
 
 ### Download
 Currently, Deer is available for Linux, Mac and Windows :tada::tada:
@@ -47,7 +48,7 @@ macOS | Windows | Linux
 | | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.x86_64.rpm'>RedHat-based</a> |
 | | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0-linux.zip'>Portable</a> |
 
-[More inforamtion about this release](https://github.com/abahmed/Deer/releases/latest)
+[More information about this release](https://github.com/abahmed/Deer/releases/latest)
 
 ### Nightly builds
 Nightly builds :airplane: are produced automatically for development branch (develop), so that people can help us testing the features that have just been added
