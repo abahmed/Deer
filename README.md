@@ -34,8 +34,8 @@
 ### Translation
 Currently, Deer supports these languages :earth_americas:. If you would like to Deer to support your language, [please request that  here](https://github.com/abahmed/Deer/issues/new?template=feature_request.md).
 
-* العربية :egypt:
 * English :uk:
+* العربية :egypt:
 * Español :es:
 * Русский :ru:
 
