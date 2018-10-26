@@ -1,9 +1,11 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
+import { toggleYesNoModal } from './modal'
 import { addNote, fetchNotes, getNote, removeNote } from './../db'
 import { convertFromRaw, convertToRaw } from 'draft-js'
 import logger from 'electron-log'
+const services = { WAIT_UNTIL: require('../middlewares/wait-service').NAME }
 
 // Used for adding a new note.
 export const addNewNote = createAction(ACTIONS.ADD_NOTE)
@@ -129,4 +131,36 @@ export const deleteNote = () => (dispatch, getState) => {
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
     logger.error('Unable to remove note ' + err)
   }
+}
+
+// Helper method, used for dispatching relevant actions when note is saved
+const _waitUntilSaved = (noteIndex) => (dispatch) => {
+  dispatch({
+    type: services.WAIT_UNTIL,
+    predicate: action => (action.type === ACTIONS.TOGGLE_SAVE_MODAL &&
+                          action.payload === NOTE_STATUS.NO_OPERATION),
+    run: (dispatch, getState, action) => {
+      dispatch(setActiveNoteIndex(noteIndex))
+      dispatch(fetchNote(noteIndex))
+    }
+  })
+}
+
+// Async method, used for switching between notes and prompting save modal
+// beforehand if needed.
+export const selectNote = (noteIndex) => (dispatch, getState) => {
+  dispatch(toggleYesNoModal(ACTIONS.SAVE_NOTE))
+  dispatch({
+    type: services.WAIT_UNTIL,
+    predicate: action => action.type === ACTIONS.TOGGLE_SAVE_MODAL,
+    run: (dispatch, getState, action) => {
+      const { noteStatus } = getState().noteReducer
+      if (noteStatus === NOTE_STATUS.NO_OPERATION) {
+        dispatch(setActiveNoteIndex(noteIndex))
+        dispatch(fetchNote(noteIndex))
+      } else {
+        _waitUntilSaved(noteIndex)
+      }
+    }
+  })
 }

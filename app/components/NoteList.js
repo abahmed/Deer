@@ -20,7 +20,7 @@ export default class NoteList extends Component {
     if (this.props.activeNoteIndex === noteIndex) { return }
 
     this.props.setActiveNoteIndex(noteIndex)
-    this.props.fetchNote(noteIndex)
+    // this.props.fetchNote(noteIndex)
   }
 
   render () {
@@ -43,6 +43,5 @@ NoteList.propTypes = {
   activeNoteIndex: PropTypes.number.isRequired,
   notes: PropTypes.array.isRequired,
   fetchAllNotes: PropTypes.func.isRequired,
-  fetchNote: PropTypes.func.isRequired,
   setActiveNoteIndex: PropTypes.func.isRequired
 }
