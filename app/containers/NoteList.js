@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchAllNotes: () => dispatch(fetchAllNotes()),
   fetchNote: () => dispatch(fetchNote()),
-  setActiveNoteIndex: (noteIndex) => dispatch(selectNote(noteIndex))
+  selectNote: (noteIndex) => dispatch(selectNote(noteIndex))
 })
 
 export default connect(

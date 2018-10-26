@@ -47,6 +47,9 @@ export const fetchAllNotes = () => (dispatch, getState) => {
   })
 }
 
+// Helper method, used for signaling that saveNote has finidhed running
+const _saveNoteFinished = createAction(ACTIONS.SAVE_NOTE_FINISHED)
+
 // Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.
 const _noteSaveFailed = (dispatch, err = null) => {
   dispatch(setNoteStatus(NOTE_STATUS.NOTE_SAVE_FAIL))
@@ -75,6 +78,7 @@ export const saveNote = () => (dispatch, getState) => {
     } else {
       _noteSaveFailed(dispatch)
     }
+    dispatch(_saveNoteFinished())
   }).catch((err) => _noteSaveFailed(dispatch, err))
 }
 
@@ -133,34 +137,17 @@ export const deleteNote = () => (dispatch, getState) => {
   }
 }
 
-// Helper method, used for dispatching relevant actions when note is saved
-const _waitUntilSaved = (noteIndex) => (dispatch) => {
-  dispatch({
-    type: services.WAIT_UNTIL,
-    predicate: action => (action.type === ACTIONS.TOGGLE_SAVE_MODAL &&
-                          action.payload === NOTE_STATUS.NO_OPERATION),
-    run: (dispatch, getState, action) => {
-      dispatch(setActiveNoteIndex(noteIndex))
-      dispatch(fetchNote(noteIndex))
-    }
-  })
-}
-
 // Async method, used for switching between notes and prompting save modal
 // beforehand if needed.
 export const selectNote = (noteIndex) => (dispatch, getState) => {
   dispatch(toggleYesNoModal(ACTIONS.SAVE_NOTE))
   dispatch({
     type: services.WAIT_UNTIL,
-    predicate: action => action.type === ACTIONS.TOGGLE_SAVE_MODAL,
+    predicate: action => (action.type === ACTIONS.MODAL_NO_ACTION ||
+                          action.type === ACTIONS.SAVE_NOTE_FINISHED),
     run: (dispatch, getState, action) => {
-      const { noteStatus } = getState().noteReducer
-      if (noteStatus === NOTE_STATUS.NO_OPERATION) {
-        dispatch(setActiveNoteIndex(noteIndex))
-        dispatch(fetchNote(noteIndex))
-      } else {
-        _waitUntilSaved(noteIndex)
-      }
+      dispatch(setActiveNoteIndex(noteIndex))
+      dispatch(fetchNote(noteIndex))
     }
   })
 }

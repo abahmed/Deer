@@ -3,7 +3,8 @@ import { compose } from 'redux'
 import { withNamespaces } from 'react-i18next'
 import YesNoModal from '../components/YesNoModal'
 import {
-  toggleYesNoModal
+  toggleYesNoModal,
+  modalNoAction
 } from '../actions/modal'
 import {
   setSaveDisabled,
@@ -23,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
   toggleYesNoModal: (action) => dispatch(toggleYesNoModal(action)),
   setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
   setDeleteDisabled: (flag) => dispatch(setDeleteDisabled(flag)),
+  modalNoAction: () => dispatch(modalNoAction()),
   saveNote: () => dispatch(saveNote()),
   deleteNote: () => dispatch(deleteNote())
 })

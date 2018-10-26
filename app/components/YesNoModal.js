@@ -9,8 +9,15 @@ export default class YesNoModal extends Component {
     super()
 
     this._getModalConfig = this._getModalConfig.bind(this)
+    this.onNoAction = this.onNoAction.bind(this)
     this.onSaveNote = this.onSaveNote.bind(this)
     this.onDeleteNote = this.onDeleteNote.bind(this)
+  }
+
+  // Called when no action is confirmed
+  onNoAction () {
+    this.props.toggleYesNoModal()
+    this.props.modalNoAction()
   }
 
   // Called when saving is confirmed.
@@ -66,7 +73,7 @@ export default class YesNoModal extends Component {
           </button>
           <button
             className='ml-2 btn btn-outline-danger btn-sm'
-            onClick={this.props.toggleYesNoModal}>
+            onClick={this.onNoAction}>
             {t('yesNoModal:noBtn')}
           </button>
         </ModalFooter>
@@ -79,6 +86,7 @@ YesNoModal.propTypes = {
   yesNoAction: PropTypes.string.isRequired,
   showYesNoModal: PropTypes.bool.isRequired,
   toggleYesNoModal: PropTypes.func.isRequired,
+  modalNoAction: PropTypes.func.isRequired,
   setSaveDisabled: PropTypes.func.isRequired,
   setDeleteDisabled: PropTypes.func.isRequired,
   saveNote: PropTypes.func.isRequired,
