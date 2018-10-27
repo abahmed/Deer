@@ -1,3 +1,4 @@
+@import url(typography.css);
 
  *, *::after, *::before {
  	-webkit-user-select: none;
@@ -74,9 +75,8 @@
 }
 
 .NoteEditor {
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-family: 'Mali', 'El Messiri', monospace;
   font-size: 15px;
-  font-weight: bold;
   color: black;
   line-height: 30px;
   cursor: text;
@@ -93,6 +93,7 @@
 }
 
 .noteItem {
+  font-family: 'Mali', 'El Messiri', monospace;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
