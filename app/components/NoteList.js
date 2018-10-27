@@ -10,9 +10,20 @@ export default class NoteList extends Component {
     this.onSelect = this.onSelect.bind(this)
   }
 
+  checkIfItemExists () {
+    const currentIndex = this.props.activeNoteIndex
+
+    // WORKAROUND: Unsaved item is unecessary added into notes list - checking by empty revision
+    return (currentIndex >= 0 && this.props.notes[currentIndex] && this.props.notes[currentIndex]['rev'])
+  }
+
   componentDidMount () {
     // Trigger fetching notes as this component is loaded.
     this.props.fetchAllNotes()
+    let currentIndex = this.props.activeNoteIndex
+    if (this.checkIfItemExists()) {
+      this.props.fetchNote(currentIndex)
+    }
   }
 
   onSelect (noteIndex = -1) {

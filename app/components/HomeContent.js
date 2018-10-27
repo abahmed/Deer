@@ -8,7 +8,7 @@ export default class HomeContent extends Component {
     const isAtLeastOneNote = notes.length > 0
 
     // Show homeContent when no note is selected.
-    if (this.props.activeNoteIndex >= 0) { return (<NoteEditor />) }
+    if (this.props.activeNoteIndex >= 0 && this.notes[this.props.activeNoteIndex]) { return (<NoteEditor />) }
 
     return (
       <div className='center-text middle-page'>
