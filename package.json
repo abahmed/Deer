@@ -18,16 +18,16 @@
   "private": true,
   "scripts": {
     "build-prod": "webpack --mode=production",
+    "deploy": "node deploy.js",
     "dev": "webpack-dev-server --mode=development",
-    "dist": "electron-builder",
     "lint": "eslint . --fix",
-    "precommit": "npm run lint",
+    "release": "electron-builder --publish never",
+    "release:linux": "electron-builder --linux ",
     "release:linux:deb": "npm run build-prod && electron-builder --linux deb",
     "release:linux:rpm": "npm run build-prod && electron-builder --linux rpm",
     "release:linux:zip": "npm run build-prod && electron-builder --linux zip",
-    "release:mac": "npm run build-prod && electron-builder --mac",
-    "release:win32": "npm run build-prod && electron-builder --win --ia32",
-    "release:win64": "npm run build-prod && electron-builder --win --x64",
+    "release:mac": "npm run build-prod && electron-builder --mac --publish never",
+    "release:win": "npm run build-prod && electron-builder --win --publish never",
     "start": "electron .",
     "test": "jest --verbose"
   },
@@ -36,6 +36,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@octokit/rest": "^15.15.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.0",
@@ -56,9 +57,11 @@
     "eslint-plugin-react": "^7.9.1",
     "eslint-plugin-standard": "^4.0.0",
     "file-loader": "^2.0.0",
+    "glob-fs": "^0.1.7",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "jquery": "^3.3.1",
+    "mime": "^2.3.1",
     "redux-mock-store": "^1.5.3",
     "style-loader": "^0.23.0",
     "webpack": "^4.12.0",
@@ -85,5 +88,11 @@
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
     "redux-thunk": "^2.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "post-commit": "bash post-commit.sh"
+    }
   }
 }

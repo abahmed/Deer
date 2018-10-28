@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const url = require('url')
 const isDev = require('electron-is-dev')
@@ -81,6 +81,14 @@ function createWindow () {
     }
   })
 
+  // Emitted when user clicks on close button.
+  win.on('close', (e) => {
+    // Prevents the window from closing
+    e.preventDefault()
+
+    win.webContents.send('close-main-window')
+  })
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     logger.info('Deer window is closed')
@@ -151,5 +159,11 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (win === null) {
     createWindow()
+  }
+})
+
+ipcMain.on('close-confirm', () => {
+  if (win !== null) {
+    win.destroy()
   }
 })

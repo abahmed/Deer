@@ -1,15 +1,43 @@
 language: node_js
+
 node_js:
-  - "8"
+  - '8'
 
 os:
   - linux
   - osx
 
+cache:
+  directories:
+  - node_modules
+  - $HOME/.cache/electron
+  - $HOME/.cache/electron-builder
+  - $HOME/.npm
+
 install:
   - npm install
 
+before_script:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      sudo apt-get update;
+      sudo apt-get install -y rpm;
+    fi
+
 script:
   - npm run lint
-  - npm run build-prod
   - npm run test
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      npm run release;
+      npm run deploy;
+    elif [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      npm run release;
+      npm run release:win;
+      npm run deploy;
+    else
+      npm run build-prod;
+    fi
+
+branches:
+  only:
+  - master
+  - develop

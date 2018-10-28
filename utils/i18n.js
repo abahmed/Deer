@@ -8,6 +8,7 @@ import isDev from 'electron-is-dev'
 import en from './../assets/locales/en'
 import ar from './../assets/locales/ar'
 import es from './../assets/locales/es'
+import ru from './../assets/locales/ru'
 
 i18n.use(reactI18nextModule).init({
   lng: getDefaultLanguage(),
@@ -16,7 +17,8 @@ i18n.use(reactI18nextModule).init({
   resources: {
     en,
     ar,
-    es
+    es,
+    ru
   }
 })
 

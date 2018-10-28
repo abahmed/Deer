@@ -4,7 +4,8 @@ import { withNamespaces } from 'react-i18next'
 import HomeContent from '../components/HomeContent'
 
 const mapStateToProps = state => ({
-  activeNoteIndex: state.noteReducer.activeNoteIndex
+  activeNoteIndex: state.noteReducer.activeNoteIndex,
+  notes: state.noteReducer.notes
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -12,17 +12,20 @@ extraFiles:
   - "assets/images/*"
 linux:
   category: Office
+  artifactName: ${productName}-linux-${arch}.${ext}
   icon: "assets/images/icon.icns"
   target:
     - deb
     - rpm
     - zip
 mac:
+  artifactName: ${productName}-mac-${arch}.${ext}
   icon: "assets/images/icon.icns"
   target:
     - dmg
 win:
   icon: "assets/images/icon.ico"
+  artifactName: ${productName}-win-${arch}.${ext}
   target:
     - target: nsis
       arch:
