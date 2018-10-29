@@ -139,15 +139,27 @@ export const deleteNote = () => (dispatch, getState) => {
 
 // Async method, used for switching between notes and prompting save modal
 // beforehand if needed.
-export const selectNote = (noteIndex) => (dispatch, getState) => {
-  dispatch(toggleYesNoModal(ACTIONS.SAVE_NOTE))
-  dispatch({
-    type: services.WAIT_UNTIL,
-    predicate: action => (action.type === ACTIONS.MODAL_NO_ACTION ||
-                          action.type === ACTIONS.SAVE_NOTE_FINISHED),
-    run: (dispatch, getState, action) => {
-      dispatch(setActiveNoteIndex(noteIndex))
-      dispatch(fetchNote(noteIndex))
-    }
-  })
+export const selectNote = (selectedIndex) => (dispatch, getState) => {
+  const state = getState().noteReducer
+  const noteIndex = state.activeNoteIndex
+  const currentNote = state.notes[noteIndex]
+
+  // Prompts modal if current note is not saved
+  if (currentNote && (!currentNote.hasOwnProperty('rev') || !currentNote.rev)) {
+    dispatch(toggleYesNoModal(ACTIONS.SAVE_NOTE))
+    // Waits for the right time to dispatch next actions
+    dispatch({
+      type: services.WAIT_UNTIL,
+      predicate: action => (action.type === ACTIONS.MODAL_NO_ACTION ||
+                            action.type === ACTIONS.SAVE_NOTE_FINISHED),
+      run: (dispatch, getState, action) => {
+        dispatch(setActiveNoteIndex(selectedIndex))
+        dispatch(fetchNote(selectedIndex))
+      }
+    })
+  } else {
+    // Otherwise just sets activeNoteIndex and fetches the note
+    dispatch(setActiveNoteIndex(selectedIndex))
+    dispatch(fetchNote(selectedIndex))
+  }
 }
