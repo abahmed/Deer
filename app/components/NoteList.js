@@ -19,8 +19,7 @@ export default class NoteList extends Component {
     // Do nothing as it's already selected.
     if (this.props.activeNoteIndex === noteIndex) { return }
 
-    this.props.setActiveNoteIndex(noteIndex)
-    this.props.fetchNote(noteIndex)
+    this.props.selectNote(noteIndex)
   }
 
   render () {
@@ -43,6 +42,5 @@ NoteList.propTypes = {
   activeNoteIndex: PropTypes.number.isRequired,
   notes: PropTypes.array.isRequired,
   fetchAllNotes: PropTypes.func.isRequired,
-  fetchNote: PropTypes.func.isRequired,
-  setActiveNoteIndex: PropTypes.func.isRequired
+  selectNote: PropTypes.func.isRequired
 }
