@@ -18,6 +18,10 @@ const commonConfig = {
         loader: 'file-loader'
       },
       {
+        test: /\.ttf$/,
+        loader: 'file-loader'
+      },
+      {
         test: /\.css?$/,
         loaders: ['style-loader', 'css-loader']
       }
