@@ -65,7 +65,7 @@
   height: calc(100vh - 48px);
   flex: 0 1 320px;
   -webkit-box-flex: 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  border-right: 3px solid rgba(0, 0, 0, 0.125);
   overflow: auto;
   padding: 0px!important;
 }
@@ -80,10 +80,9 @@
   color: black;
   line-height: 30px;
   cursor: text;
-  background: linear-gradient(transparent, transparent 28px, green 30px);
+  background: linear-gradient(transparent, transparent 29px, #1565C0 29px);
   background-size: 30px 30px;
   min-height: calc(100vh - 48px);
-  border-left: 3px solid #D44147;
   padding: 5px;
   padding-left: 10px;
 }
