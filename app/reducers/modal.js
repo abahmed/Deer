@@ -1,22 +1,21 @@
 import { ACTIONS } from '../constants/actions'
 
 const INITIAL_STATE = {
-  showYesNoModal: false,
-  yesNoAction: ACTIONS.NO_ACTION
+  showSaveModal: false,
+  showDeleteModal: false
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ACTIONS.TOGGLE_SAVE_MODAL:
-      let noteAction = state.yesNoAction
-      if (!state.showYesNoModal && action.payload &&
-          ACTIONS.hasOwnProperty(action.payload)) {
-        noteAction = action.payload
-      }
       return {
         ...state,
-        showYesNoModal: !state.showYesNoModal,
-        yesNoAction: noteAction
+        showSaveModal: !state.showSaveModal
+      }
+    case ACTIONS.TOGGLE_DELETE_MODAL:
+      return {
+        ...state,
+        showDeleteModal: !state.showDeleteModal
       }
     default:
       return state

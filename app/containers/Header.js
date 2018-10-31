@@ -3,13 +3,18 @@ import { compose } from 'redux'
 import { withNamespaces } from 'react-i18next'
 import Header from '../components/Header'
 import {
-  setNewNoteDisabled
+  setNewNoteDisabled,
+  setDeleteDisabled,
+  setSaveDisabled
 } from '../actions/header'
 import {
-  addNewNote
+  addNewNote,
+  saveNote,
+  deleteNote
 } from '../actions/note'
 import {
-  toggleYesNoModal
+  toggleSaveModal,
+  toggleDeleteModal
 } from '../actions/modal'
 
 const mapStateToProps = state => ({
@@ -21,7 +26,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addNewNote: () => dispatch(addNewNote()),
   setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
-  toggleYesNoModal: (action) => dispatch(toggleYesNoModal(action))
+  setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
+  setDeleteDisabled: (flag) => dispatch(setDeleteDisabled(flag)),
+  saveNote: () => dispatch(saveNote()),
+  deleteNote: () => dispatch(deleteNote()),
+  toggleDeleteModal: () => dispatch(toggleDeleteModal()),
+  toggleSaveModal: () => dispatch(toggleSaveModal())
 })
 
 export default compose(

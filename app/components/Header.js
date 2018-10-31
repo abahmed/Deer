@@ -1,16 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { ACTIONS } from '../constants/actions'
+import Modal from '../components/Modal'
 
 export default class Header extends Component {
   constructor (props) {
     // Initialize this using super
-    super()
-
+    super(props)
     this.onAddNote = this.onAddNote.bind(this)
     this.onSaveNote = this.onSaveNote.bind(this)
     this.onDeleteNote = this.onDeleteNote.bind(this)
+    this.deleteCallback = this.deleteCallback.bind(this)
+    this.saveCallBack = this.saveCallBack.bind(this)
+  }
+
+  deleteCallBack () {
+    this.props.deleteNote()
+    this.props.setDeleteDisabled(true)
+    this.props.toggleDeleteModal()
+  }
+
+  saveCallBack () {
+    this.props.saveNote()
+    this.props.setSaveDisabled(true)
+    this.props.toggleDeleteModal()
   }
 
   onAddNote () {
@@ -25,28 +38,21 @@ export default class Header extends Component {
     // Do not proceed as button is disabled
     if (this.props.isSaveDisabled) return
 
-    this.props.toggleYesNoModal(ACTIONS.SAVE_NOTE)
+    this.props.toggleSaveModal()
   }
 
   onDeleteNote () {
     // Do not proceed as button is disabled
     if (this.props.isDeleteDisabled) return
 
-    this.props.toggleYesNoModal(ACTIONS.DELETE_NOTE)
+    this.props.toggleDeleteModal()
   }
 
   render () {
     const { t } = this.props
-
-    let newNoteBtnClass = 'btn btn-outline-success btn-sm'
-    if (this.props.isNewNoteDisabled) { newNoteBtnClass += ' disabled' }
-
-    let saveBtnClass = 'ml-2 btn btn-outline-primary btn-sm'
-    if (this.props.isSaveDisabled) { saveBtnClass += ' disabled' }
-
-    let deleteBtnClass = 'ml-2 btn btn-outline-danger btn-sm'
-    if (this.props.isDeleteDisabled) { deleteBtnClass += ' disabled' }
-
+    let newNoteBtnClass = 'btn btn-outline-success btn-sm' + this.props.isNewNoteDisabled ? 'disabled' : ''
+    let saveBtnClass = 'ml-2 btn btn-outline-primary btn-sm' + this.props.isSaveDisabled ? 'disabled' : ''
+    let deleteBtnClass = 'ml-2 btn btn-outline-danger btn-sm' + this.props.isDeleteDisabled ? 'disabled' : ''
     return (
       <nav className='navbar sticky-top navbar-light bg-light'>
         <img
@@ -76,6 +82,12 @@ export default class Header extends Component {
             </Link>
           </li>
         </ul>
+        <Modal type='YesNo' showModal={this.props.showSaveModal} callBack={this.saveCallBack}>
+          {t('yesNoModal:saveNote')}
+        </Modal>
+        <Modal type='YesNo' showModal={this.props.showDeleteModal} callBack={this.deleteCallBack}>
+          {t('yesNoModal:deleteNote')}
+        </Modal>
       </nav>
     )
   }
@@ -84,9 +96,16 @@ export default class Header extends Component {
 Header.propTypes = {
   addNewNote: PropTypes.func.isRequired,
   setNewNoteDisabled: PropTypes.func.isRequired,
+  setDeleteDisabled: PropTypes.func.isRequired,
+  setSaveDisabled: PropTypes.func.isRequired,
   isNewNoteDisabled: PropTypes.bool.isRequired,
   isSaveDisabled: PropTypes.bool.isRequired,
   isDeleteDisabled: PropTypes.bool.isRequired,
-  toggleYesNoModal: PropTypes.func.isRequired,
+  toggleSaveModal: PropTypes.func.isRequired,
+  toggleDeleteModal: PropTypes.func.isRequired,
+  showSaveModal: PropTypes.bool.isRequired,
+  showDeleteModal: PropTypes.bool.isRequired,
+  saveNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 }

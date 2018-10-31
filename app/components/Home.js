@@ -3,8 +3,6 @@ import { Redirect } from 'react-router-dom'
 import Header from './../containers/Header'
 import NoteList from './../containers/NoteList'
 import HomeContent from './../containers/HomeContent'
-import YesNoModal from './../containers/YesNoModal'
-import StatusModal from './../containers/StatusModal'
 import { checkRedirectToWelcomePage } from '../../utils/api.electron'
 
 export default () => {
@@ -25,8 +23,6 @@ export default () => {
           <HomeContent />
         </div>
       </div>
-      <YesNoModal />
-      <StatusModal />
     </div>
   )
 }
