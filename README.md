@@ -38,6 +38,7 @@ Currently, Deer supports these languages :earth_americas:. If you would like to 
 * العربية :egypt:
 * Español :es:
 * Русский :ru:
+* Português do Brasil :pt_br:
 
 ### Download
 Currently, Deer is available for Linux, Mac and Windows :tada::tada:
