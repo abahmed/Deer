@@ -21,15 +21,15 @@
     "deploy": "node deploy.js",
     "dev": "webpack-dev-server --mode=development",
     "lint": "eslint . --fix",
-    "release": "electron-builder --publish never",
-    "release:linux": "electron-builder --linux ",
+    "release": "npm run build-prod && electron-builder --publish never",
+    "release:linux": "npm run build-prod && electron-builder --linux ",
     "release:linux:deb": "npm run build-prod && electron-builder --linux deb",
     "release:linux:rpm": "npm run build-prod && electron-builder --linux rpm",
     "release:linux:zip": "npm run build-prod && electron-builder --linux zip",
     "release:mac": "npm run build-prod && electron-builder --mac --publish never",
     "release:win": "npm run build-prod && electron-builder --win --publish never",
     "start": "electron .",
-    "test": "jest --verbose"
+    "test": "jest --verbose --updateSnapshot"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
