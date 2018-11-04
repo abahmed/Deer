@@ -1,0 +1,11 @@
+{
+  "savingNote": "Zapisywanie notatki...",
+  "noteSaveSuccess": "Notatka została zapisana pomyślnie.",
+  "noteSaveFail": "Nie można zapisać notatki.",
+  "loadingNote": "Ładowanie notatki...",
+  "noteLoadSuccess": "Notatka została załadowana pomyślnie.",
+  "noteLoadFail": "Nie można załadować notatki.",
+  "deletingNote": "Usuwanie notatki...",
+  "noteDeleteSuccess": "Notatka została usunięta pomyślnie.",
+  "noteDeleteFail": "Nie można usunąć notatki."
+}
