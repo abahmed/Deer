@@ -29,7 +29,7 @@
     "release:mac": "npm run build-prod && electron-builder --mac --publish never",
     "release:win": "npm run build-prod && electron-builder --win --publish never",
     "start": "electron .",
-    "test": "jest --verbose"
+    "test": "jest --verbose --updateSnapshot"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
