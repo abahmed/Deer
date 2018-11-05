@@ -52,7 +52,7 @@ const productionConfig = {
   mode: 'production',
   output: {
     path: path.join(__dirname, '/build'),
-    publicPath: path.join(__dirname, '/build/'),
+    publicPath: './../build/',
     filename: 'bundle.js'
   }
 }
