@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { ACTIONS } from '../constants/actions'
+import openAboutWindow from 'about-window'
 
 export default class Header extends Component {
   constructor (props) {
@@ -50,6 +51,10 @@ export default class Header extends Component {
     return (
       <nav className='navbar sticky-top navbar-light bg-light'>
         <img
+          onClick={() => openAboutWindow({
+            icon_path: './../../assets/images/Deer-32.png',
+            product_name: 'Deer'
+          })}
           src={require('./../../assets/images/Deer-32.png')}
           className='d-inline-block align-top' />
         <ul className='navbar-nav flex-row ml-md-auto d-none d-md-flex'>

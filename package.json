@@ -70,6 +70,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "about-window": "^1.12.1",
     "bootstrap": "^4.1.1",
     "draft-js": "^0.10.5",
     "electron-is-dev": "^1.0.1",
