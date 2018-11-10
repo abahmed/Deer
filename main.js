@@ -7,6 +7,7 @@ const os = require('os')
 const initLogger = require('./utils/logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
+const openAboutWindow = require('about-window').default
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -166,4 +167,8 @@ ipcMain.on('close-confirm', () => {
   if (win !== null) {
     win.destroy()
   }
+})
+
+ipcMain.on('open-about-us-window', () => {
+  openAboutWindow(path.join(__dirname, 'assets/images/Deer-256.png'))
 })
