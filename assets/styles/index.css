@@ -91,6 +91,57 @@
   display: none;
 }
 
+.NoteEditor-Toolbar {
+  position: relative;
+  padding: 0.25rem;
+  background-color: #fff;
+  color: #333;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.NoteEditor-ToolbarGroup {
+  display: inline-block;
+}
+
+.NoteEditor-ToolbarButton {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.NoteEditor-ToolbarButton--active {
+  background-color: rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.2);
+}
+
+.NoteEditor-ToolbarButton__label {
+  display: inline-block;
+  vertical-align: middle;
+  height: 1em;
+  line-height: 1em;
+  pointer-events: none;
+}
+
+
+.NoteEditor-Icon {
+  fill: #333;
+  pointer-events: none;
+  vertical-align: middle;
+}
+
 .noteItem {
   font-family: 'Mali', 'El Messiri', monospace;
   text-overflow: ellipsis;

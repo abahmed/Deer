@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Editor, EditorState } from 'draft-js'
+import NoteEditorToolbar from './NoteEditorToolbar'
 import PropTypes from 'prop-types'
 
 export default class NoteEditor extends Component {
@@ -52,12 +53,17 @@ export default class NoteEditor extends Component {
   render () {
     const { t } = this.props
     return (
-      <div className='NoteEditor'>
-        <Editor
-          editorState={this.props.activeNoteState}
-          onChange={this.onEditorChange}
-          placeholder={t('noteEditor:placeholder')}
-        />
+      <div>
+        <div className='NoteEditor-Toolbar__container'>
+          <NoteEditorToolbar />
+        </div>
+        <div className='NoteEditor'>
+          <Editor
+            editorState={this.props.activeNoteState}
+            onChange={this.onEditorChange}
+            placeholder={t('noteEditor:placeholder')}
+          />
+        </div>
       </div>
     )
   }
