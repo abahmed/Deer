@@ -36,6 +36,10 @@ export default class Header extends Component {
     this.props.toggleYesNoModal(ACTIONS.DELETE_NOTE)
   }
 
+  openAboutUsWindow () {
+    ipcRenderer.send('open-about-us-window')
+  }
+
   render () {
     const { t } = this.props
 
@@ -51,7 +55,7 @@ export default class Header extends Component {
     return (
       <nav className='navbar sticky-top navbar-light bg-light'>
         <img
-          onClick={() => ipcRenderer.send('open-about-us-window')}
+          onClick={this.openAboutUsWindow}
           src={require('./../../assets/images/Deer-32.png')}
           className='d-inline-block align-top' />
         <ul className='navbar-nav flex-row ml-md-auto d-none d-md-flex'>
