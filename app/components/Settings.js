@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { getDefaultLanguage } from '../../utils/api.electron'
 import { SUPPORTED_LANGS } from '../constants/i18n'
 import { SETTINGS_STATUS } from '../constants/settingsStatus'
+import { ipcRenderer } from 'electron'
 
 export default class Settings extends Component {
   constructor (props) {
@@ -50,6 +51,10 @@ export default class Settings extends Component {
     this.props.saveSettings(newSettings)
   }
 
+  openAboutUsWindow () {
+    ipcRenderer.send('open-about-us-window')
+  }
+
   componentWillUnmount () {
     this.props.setReadyStatus()
   }
@@ -87,6 +92,16 @@ export default class Settings extends Component {
               </option>
             ))}
           </select>
+        </div>
+        <div className='row justify-content-start settings-top-row'>
+          <label>About us</label>
+        </div>
+        <div className='row justify-content-start'>
+          <button
+            className='btn btn-outline-info'
+            onClick={this.openAboutUsWindow}>
+            Show info
+          </button>
         </div>
         <div className='row justify-content-end settings-bottom-row'>
           <button
