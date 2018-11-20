@@ -94,13 +94,13 @@ export default class Settings extends Component {
           </select>
         </div>
         <div className='row justify-content-start settings-top-row'>
-          <label>About us</label>
+          <label>{t('settings:aboutUs')}</label>
         </div>
         <div className='row justify-content-start'>
           <button
             className='btn btn-outline-info'
             onClick={this.openAboutUsWindow}>
-            Show info
+            {t('settings:showInfoBtn')}
           </button>
         </div>
         <div className='row justify-content-end settings-bottom-row'>
