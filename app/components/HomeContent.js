@@ -8,7 +8,6 @@ export default class HomeContent extends Component {
     const isAtLeastOneNote = notes.length > 0
 
     // Show homeContent when no note is selected.
-     // Show homeContent when no note is selected.
     if (this.props.activeNoteIndex >= 0 &&
         notes[this.props.activeNoteIndex]) {
       return (<NoteEditor />)

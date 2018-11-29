@@ -20,7 +20,7 @@ export default class NoteList extends Component {
   componentDidMount () {
     // Trigger fetching notes as this component is loaded.
     this.props.fetchAllNotes()
-    let currentIndex = this.props.activeNoteIndex
+    const currentIndex = this.props.activeNoteIndex
     if (this.checkIfItemExists()) {
       this.props.fetchNote(currentIndex)
     }
