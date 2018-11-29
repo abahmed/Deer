@@ -20,6 +20,10 @@ export const SUPPORTED_LANGS = [
     code: 'ru'
   },
   {
+    language: 'Polski',
+    code: 'pl'
+  },
+  {
     language: 'Português do Brasil',
     code: 'pt_br'
   }

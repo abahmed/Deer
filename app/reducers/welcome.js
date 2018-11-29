@@ -15,7 +15,9 @@ export default (state = INITIAL_STATE, action) => {
       let index = -1
       if (state.langList.length !== 0) {
         index = state.index + 1
-        if (index >= state.langList.length) { index = 0 }
+        if (index >= state.langList.length) {
+          index = 0
+        }
       }
       return {
         ...state,

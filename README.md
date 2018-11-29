@@ -38,6 +38,7 @@ Currently, Deer supports these languages :earth_americas:. If you would like to 
 * العربية :egypt:
 * Español :es:
 * Русский :ru:
+* Polski :poland:
 * Português do Brasil :brazil:
 
 ### Download
