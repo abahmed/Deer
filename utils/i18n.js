@@ -9,6 +9,7 @@ import en from './../assets/locales/en'
 import ar from './../assets/locales/ar'
 import es from './../assets/locales/es'
 import ru from './../assets/locales/ru'
+import ptBr from './../assets/locales/pt_br'
 
 i18n.use(reactI18nextModule).init({
   lng: getDefaultLanguage(),
@@ -18,7 +19,8 @@ i18n.use(reactI18nextModule).init({
     en,
     ar,
     es,
-    ru
+    ru,
+    ptBr
   }
 })
 
