@@ -46,9 +46,8 @@ export default class Header extends Component {
 
     let deleteBtnClass = 'ml-2 btn btn-outline-danger btn-sm'
     if (this.props.isDeleteDisabled) { deleteBtnClass += ' disabled' }
-
     return (
-      <nav className='navbar sticky-top navbar-light bg-light'>
+      <nav className='navbar fixed-top sticky-top navbar-light bg-light'>
         <img
           src={require('./../../assets/images/Deer-32.png')}
           className='d-inline-block align-top' />

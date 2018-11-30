@@ -1,9 +1,11 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
+import { toggleYesNoModal } from './modal'
 import { addNote, fetchNotes, getNote, removeNote } from './../db'
 import { convertFromRaw, convertToRaw } from 'draft-js'
 import logger from 'electron-log'
+const services = { WAIT_UNTIL: require('../middlewares/wait-service').NAME }
 
 // Used for adding a new note.
 export const addNewNote = createAction(ACTIONS.ADD_NOTE)
@@ -45,6 +47,9 @@ export const fetchAllNotes = () => (dispatch, getState) => {
   })
 }
 
+// Helper method, used for signaling that saveNote has finidhed running
+const _saveNoteFinished = createAction(ACTIONS.SAVE_NOTE_FINISHED)
+
 // Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.
 const _noteSaveFailed = (dispatch, err = null) => {
   dispatch(setNoteStatus(NOTE_STATUS.NOTE_SAVE_FAIL))
@@ -73,6 +78,7 @@ export const saveNote = () => (dispatch, getState) => {
     } else {
       _noteSaveFailed(dispatch)
     }
+    dispatch(_saveNoteFinished())
   }).catch((err) => _noteSaveFailed(dispatch, err))
 }
 
@@ -128,5 +134,32 @@ export const deleteNote = () => (dispatch, getState) => {
   } catch (err) {
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
     logger.error('Unable to remove note ' + err)
+  }
+}
+
+// Async method, used for switching between notes and prompting save modal
+// beforehand if needed.
+export const selectNote = (selectedIndex) => (dispatch, getState) => {
+  const state = getState().noteReducer
+  const noteIndex = state.activeNoteIndex
+  const currentNote = state.notes[noteIndex]
+
+  // Prompts modal if current note is not saved
+  if (currentNote && (!currentNote.hasOwnProperty('rev') || !currentNote.rev)) {
+    dispatch(toggleYesNoModal(ACTIONS.SAVE_NOTE))
+    // Waits for the right time to dispatch next actions
+    dispatch({
+      type: services.WAIT_UNTIL,
+      predicate: action => (action.type === ACTIONS.MODAL_NO_ACTION ||
+                            action.type === ACTIONS.SAVE_NOTE_FINISHED),
+      run: (dispatch, getState, action) => {
+        dispatch(setActiveNoteIndex(selectedIndex))
+        dispatch(fetchNote(selectedIndex))
+      }
+    })
+  } else {
+    // Otherwise just sets activeNoteIndex and fetches the note
+    dispatch(setActiveNoteIndex(selectedIndex))
+    dispatch(fetchNote(selectedIndex))
   }
 }

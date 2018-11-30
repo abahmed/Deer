@@ -16,3 +16,5 @@ If you make a contribution here, you may add your name and email address here.
 - Andrew Cheng (cheng0807@gmail.com)
 - Mahmoud Younes (m.younesbadr@gmail.com)
 - Jesus Bibieca (jesusbibieca52@gmail.com)
+- Mikołaj Witkowski (mikolwski@gmail.com)
+- Ricardo Bibieca (shirotokuro3715@gmail.com)
