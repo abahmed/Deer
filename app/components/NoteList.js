@@ -53,5 +53,6 @@ NoteList.propTypes = {
   activeNoteIndex: PropTypes.number.isRequired,
   notes: PropTypes.array.isRequired,
   fetchAllNotes: PropTypes.func.isRequired,
+  fetchNote: PropTypes.func.isRequired,
   selectNote: PropTypes.func.isRequired
 }
