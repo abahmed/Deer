@@ -1,10 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import Header from './../containers/Header'
-import NoteList from './../containers/NoteList'
-import HomeContent from './../containers/HomeContent'
-import YesNoModal from './../containers/YesNoModal'
-import StatusModal from './../containers/StatusModal'
+import Header from '../containers/Header'
+import NoteList from '../containers/NoteList'
+import HomeContent from '../containers/HomeContent'
+import YesNoModal from '../containers/YesNoModal'
+import StatusModal from '../containers/StatusModal'
 import { checkRedirectToWelcomePage } from '../../utils/api.electron'
 
 export default () => {
@@ -18,10 +18,10 @@ export default () => {
     <div>
       <Header />
       <div className='container-fluid row flex-xl-nowrap home-container'>
-        <div className='col-12 col-md-3 col-xl-3 home-sidebar'>
+        <div className='col-3 col-md-3 col-xl-2 home-sidebar'>
           <NoteList />
         </div>
-        <div className='col-12 col-md-9 col-xl-9 home-content'>
+        <div className='col-9 col-md-9 col-xl-10 home-content'>
           <HomeContent />
         </div>
       </div>

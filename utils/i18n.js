@@ -22,7 +22,7 @@ i18n.use(reactI18nextModule).init({
     es,
     ru,
     pl,
-    ptBr
+    'pt': ptBr
   }
 })
 

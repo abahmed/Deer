@@ -4,12 +4,12 @@ const merge = require('webpack-merge')
 
 // Common configuration.
 const commonConfig = {
-  entry: './app/entry.js',
+  entry: './app/entry.jsx',
   target: 'electron-main',
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
@@ -26,6 +26,9 @@ const commonConfig = {
         loaders: ['style-loader', 'css-loader']
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 }
 

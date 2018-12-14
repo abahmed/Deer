@@ -4,42 +4,42 @@ Packages which are used during development or which are used to build Deer's bun
 
 |           Name          |  Version  |    Usage   |
 | ----------------------- | --------- | ---------- |
-| @babel/core              | ^7.1.2   | Needed for other babel's packages |
-| @babel/plugin-proposal-object-rest-spread | ^7.0.0 | A Babel plugin responsible for transforming rest and spread properties for objects |
-| @babel/preset-env       | ^7.1.0    | A Babel plugin responsible for compiling Javascript ES6 code down to ES5 |
+| @babel/core              | ^7.2.0   | Needed for other babel's packages |
+| @babel/plugin-proposal-object-rest-spread | ^7.2.0 | A Babel plugin responsible for transforming rest and spread properties for objects |
+| @babel/preset-env       | ^7.2.0    | A Babel plugin responsible for compiling Javascript ES6 code down to ES5 |
 | @babel/preset-react     | ^7.0.0    | A Babel plugin responsible for compiling JSX down to Javascript |
-| @octokit/rest     | ^15.15.1    | GitHub REST API client for JavaScript |
+| @octokit/rest     | ^16.2.0    | GitHub REST API client for JavaScript |
 | babel-core               | 7.0.0-bridge.0 | Needed for other babel's packages (jest) |
 | babel-loader             | ^8.0.4   | A Webpack loader responsible for taking in the ES6 code and making it understandable |
-| css-loader              | ^1.0.1    | A Webpack loader responsible for collecting CSS from all the css files and put it into a string |
+| css-loader              | ^2.0.0    | A Webpack loader responsible for collecting CSS from all the css files and put it into a string |
 | devtron                 | ^1.4.0    | An Electron DevTools extension to help inspect, monitor, and debug the app |
-| electron                | ^3.0.7    | Build cross platform desktop apps |
-| electron-builder        | ^20.31.2  | Package and build a ready for distribution Electron app |
+| electron                | ^3.0.11    | Build cross platform desktop apps |
+| electron-builder        | ^20.38.3  | Package and build a ready for distribution Electron app |
 | electron-devtools-installer | ^2.2.4 | Install DevTool extensions into Electron |
-| electron-reload         | ^1.2.2    | Reload contents of when the source files are changed |
-| enzyme                  | ^3.7.0    | JavaScript Testing utilities for React |
-| enzyme-adapter-react-16 | ^1.6.0    | JavaScript Testing utilities for React |
-| enzyme-to-json          | ^3.3.4    | Convert enzyme wrapper to a format compatible with Jest snapshot |
-| eslint                  | ^5.4.0    | Linting utility for JavaScript and JSX |
+| electron-reload         | ^1.4.0    | Reload contents of when the source files are changed |
+| enzyme                  | ^3.8.0    | JavaScript Testing utilities for React |
+| enzyme-adapter-react-16 | ^1.7.1    | JavaScript Testing utilities for React |
+| enzyme-to-json          | ^3.3.5    | Convert enzyme wrapper to a format compatible with Jest snapshot |
+| eslint                  | ^5.10.0    | Linting utility for JavaScript and JSX |
 | eslint-config-standard  | ^12.0.0   | JavaScript Standard Style |
 | eslint-config-standard-react  | ^7.0.2   | JavaScript Standard Style React/JSX support |
-| eslint-plugin-import    | ^2.12.0   | Support linting of ES2015+ (ES6+) import/export syntax |
-| eslint-plugin-node      | ^7.0.1    | ESLint's rules for Node.js |
-| eslint-plugin-promise   | ^4.0.0    | Enforce best practices for JavaScript promises |
-| eslint-plugin-react     | ^7.9.1    | React specific linting rules for ESLint |
+| eslint-plugin-import    | ^2.14.0   | Support linting of ES2015+ (ES6+) import/export syntax |
+| eslint-plugin-node      | ^8.0.0    | ESLint's rules for Node.js |
+| eslint-plugin-promise   | ^4.0.1    | Enforce best practices for JavaScript promises |
+| eslint-plugin-react     | ^7.11.1    | React specific linting rules for ESLint |
 | eslint-plugin-standard  | ^4.0.0    | ESlint Plugin for the Standard Linter |
 | file-loader             | ^2.0.0    | A Webpack loader responsible for emitting files that will be bundled and returning their public URLs (e.g. Images) |
 | glob-fs                 | ^0.1.7   | file globbing for node.js. |
-| husky                   | ^1.1.3   | Prevent bad commit, push by doing checks before it takes place |
+| husky                   | ^1.2.0   | Prevent bad commit, push by doing checks before it takes place |
 | jest                    | ^23.6.0   | Delightful JavaScript Testing |
 | jquery                  | ^3.3.1    | Needed for electron-builder packages |
-| mime                    | ^2.3.1    | A comprehensive library for mime-type mapping |
+| mime                    | ^2.4.0    | A comprehensive library for mime-type mapping |
 | redux-mock-store        | ^1.5.3    | A mock store for testing your redux async action creators and middleware. |
 | style-loader            | ^0.23.1   | A Webpack loader responsibile for taking the output string generated by by css-loader and put it inside the <style> tags |
-| webpack                 | ^4.24.0   | A module bundler for JavaScript files |
+| webpack                 | ^4.27.1   | A module bundler for JavaScript files |
 | webpack-cli             | ^3.0.3    | Required by web pack |
 | webpack-dev-server      | ^3.1.10   | Provides live reloading for development |
-| webpack-merge           | ^4.1.4    | Provides a merge function that concatenates arrays and merges objects creating a new object |
+| webpack-merge           | ^4.1.5    | Provides a merge function that concatenates arrays and merges objects creating a new object |
 
 ## Production dependencies
 
@@ -53,14 +53,14 @@ Those are dependencies that are essential for software to work.
 | electron-is-dev       | ^1.0.1        | Check if Electron is running in development |
 | electron-log          | ^2.2.15       | A multi-transport async logging library |
 | electron-store        | ^2.0.0        | Save and load user preferences |
-| electron-window-state | ^5.0.2        | Store and restore window sizes and positions |
-| i18next               | ^12.0.0       | internationalization framework |
+| electron-window-state | ^5.0.3        | Store and restore window sizes and positions |
+| i18next               | ^12.1.0       | internationalization framework |
 | pouchdb-browser       | ^7.0.0        | A pocket-sized database. |
 | prop-types            | ^15.6.1       | A Runtime type checking for React props |
-| react                 | ^16.6.0       | A JavaScript library for building user interfaces |
-| react-dom             | ^16.6.0       | React package for working with the DOM |
-| react-i18next         | ^8.3.5        | Internationalization for react |
-| react-redux           | ^5.1.0        | React bindings for Redux |
+| react                 | ^16.6.3       | A JavaScript library for building user interfaces |
+| react-dom             | ^16.6.3       | React package for working with the DOM |
+| react-i18next         | ^8.3.8        | Internationalization for react |
+| react-redux           | ^6.0.0        | React bindings for Redux |
 | react-router-dom      | ^4.3.1        | A DOM bindings for React Router |
 | reactstrap            | ^6.5.0        | A Stateless React Components for Bootstrap 4 |
 | redux                 | ^4.0.1        | A predictable state container for JavaScript apps |
