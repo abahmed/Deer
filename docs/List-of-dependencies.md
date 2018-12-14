@@ -59,6 +59,7 @@ Those are dependencies that are essential for software to work.
 | prop-types            | ^15.6.1       | A Runtime type checking for React props |
 | react                 | ^16.6.3       | A JavaScript library for building user interfaces |
 | react-dom             | ^16.6.3       | React package for working with the DOM |
+| react-draft-wysiwyg   | ^1.12.13      | A Wysiwyg editor built using ReactJS and DraftJS libraries |
 | react-i18next         | ^8.3.8        | Internationalization for react |
 | react-redux           | ^6.0.0        | React bindings for Redux |
 | react-router-dom      | ^4.3.1        | A DOM bindings for React Router |
