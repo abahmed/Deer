@@ -5,7 +5,7 @@ import configureStore from './store'
 import { I18nextProvider } from 'react-i18next'
 import { ipcRenderer } from 'electron'
 import App from './components/App'
-import i18n from './../utils/i18n'
+import i18n from '../utils/i18n'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/styles/index.css'

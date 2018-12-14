@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import NoteEditor from './../containers/NoteEditor'
+import NoteEditor from '../containers/NoteEditor'
 
 export default class HomeContent extends Component {
   render () {

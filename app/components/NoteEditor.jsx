@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Editor, EditorState } from 'draft-js'
+import { EditorState } from 'draft-js'
+import { Editor }  from 'react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import PropTypes from 'prop-types'
 
 export default class NoteEditor extends Component {
@@ -52,11 +54,20 @@ export default class NoteEditor extends Component {
   render () {
     const { t } = this.props
     return (
-      <div className='NoteEditor'>
+      <div>
         <Editor
           editorState={this.props.activeNoteState}
-          onChange={this.onEditorChange}
+          onEditorStateChange={this.onEditorChange}
           placeholder={t('noteEditor:placeholder')}
+          toolbarClassName='NoteEditor-toolbar'
+          editorClassName='NoteEditor'
+          toolbar={{
+            options: ['inline', 'textAlign', 'list', 'blockType'],
+            blockType: {
+              options: ['H1', 'H2', 'H3', 'Blockquote', 'Code'],
+              inDropdown: false 
+            }
+          }}
         />
       </div>
     )
