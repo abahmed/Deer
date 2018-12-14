@@ -1,0 +1,11 @@
+{
+  "savingNote": "Salvando nota...",
+  "noteSaveSuccess": "Nota salva com sucesso.",
+  "noteSaveFail": "Não foi possivel salvar a nota.",
+  "loadingNote": "Carregando nota...",
+  "noteLoadSuccess": "Nota carregada com sucesso.",
+  "noteLoadFail": "Não foi possivel carregar a nota.",
+  "deletingNote": "Deletando nota...",
+  "noteDeleteSuccess": "Nota deletada com sucesso.",
+  "noteDeleteFail": "Falha ao deletar nota."
+}

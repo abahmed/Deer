@@ -22,5 +22,9 @@ export const SUPPORTED_LANGS = [
   {
     language: 'Polski',
     code: 'pl'
+  },
+  {
+    language: 'Português do Brasil',
+    code: 'pt'
   }
 ]

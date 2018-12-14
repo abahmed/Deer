@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import NoteEditor from './../containers/NoteEditor'
+import NoteEditor from '../containers/NoteEditor'
 
 export default class HomeContent extends Component {
   render () {
@@ -8,7 +8,10 @@ export default class HomeContent extends Component {
     const isAtLeastOneNote = notes.length > 0
 
     // Show homeContent when no note is selected.
-    if (this.props.activeNoteIndex >= 0) { return (<NoteEditor />) }
+    if (this.props.activeNoteIndex >= 0 &&
+        notes[this.props.activeNoteIndex]) {
+      return (<NoteEditor />)
+    }
 
     return (
       <div className='center-text middle-page'>
