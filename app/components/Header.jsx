@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { ACTIONS } from '../constants/actions'
+import { openAboutUsWindow } from '../../utils/api.electron'
 
 export default class Header extends Component {
   constructor (props) {
@@ -50,7 +51,8 @@ export default class Header extends Component {
       <nav className='navbar fixed-top sticky-top navbar-light bg-light'>
         <img
           src={require('./../../assets/images/Deer-32.png')}
-          className='d-inline-block align-top' />
+          className='d-inline-block align-top' 
+          onClick={openAboutUsWindow} />
         <ul className='navbar-nav flex-row ml-md-auto d-none d-md-flex'>
           <li className='nav-item'>
             <button className={newNoteBtnClass} onClick={this.onAddNote}>
@@ -73,6 +75,13 @@ export default class Header extends Component {
                 {t('header:settingsBtn')}
               </button>
             </Link>
+          </li>
+          <li className='nav-item'>
+            <button 
+              className='ml-2 btn btn-outline-secondary btn-sm' 
+              onClick={openAboutUsWindow}>
+              {t('header:aboutUsBtn')}
+            </button>
           </li>
         </ul>
       </nav>

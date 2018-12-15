@@ -123,7 +123,7 @@ var NightlyDeploy = {
   // new assets by deleting them, then it calls uploadAllAssets.
   getAssets (releaseId) {
     console.log('Getting assets...')
-    octokit.repos.getAssets({
+    octokit.repos.listAssetsForRelease({
       owner: this.config.owner,
       repo: this.config.repo,
       release_id: releaseId,
@@ -135,7 +135,7 @@ var NightlyDeploy = {
 
       this.uploadAsset(0)
     }).catch(function (e) {
-      throw new Error('Unhandled response for getAssets: ' + e)
+      throw new Error('Unhandled response for listAssetsForRelease: ' + e)
     })
   },
 
@@ -160,7 +160,7 @@ var NightlyDeploy = {
     }
 
     const assetUrl = path.join(this.config.dir, asset)
-    octokit.repos.uploadAsset({
+    octokit.repos.uploadReleaseAsset({
       url: this.release.upload_url,
       file: fs.readFileSync(assetUrl),
       contentType: mime.getType(assetUrl),
@@ -178,7 +178,7 @@ var NightlyDeploy = {
   // one.
   deleteAsset (assetId, assetIndex) {
     console.log('Deleting ' + this.filteredAssets[assetIndex])
-    octokit.repos.deleteAsset({
+    octokit.repos.deleteReleaseAsset({
       owner: this.config.owner,
       repo: this.config.repo,
       asset_id: assetId

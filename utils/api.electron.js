@@ -45,10 +45,18 @@ const setDefaultLanguage = function (defaultLanguage) {
   electronStore.set('general.language', defaultLanguage)
 }
 
+/**
+ * called to ask main process to create about us window.
+ */
+const openAboutUsWindow = function () {
+  electron.ipcRenderer.send('open-about-us-window')
+}
+
 // export the functions defined here
 module.exports = {
   checkRedirectToWelcomePage,
   setNotFirstTimeFlag,
   getDefaultLanguage,
-  setDefaultLanguage
+  setDefaultLanguage,
+  openAboutUsWindow
 }
