@@ -163,9 +163,11 @@ var NightlyDeploy = {
     octokit.repos.uploadReleaseAsset({
       url: this.release.upload_url,
       file: fs.readFileSync(assetUrl),
-      contentType: mime.getType(assetUrl),
-      contentLength: fs.statSync(assetUrl).size,
-      name: asset
+      name: asset,
+      headers: {
+        'content-type': mime.getType(assetUrl),
+        'content-length': fs.statSync(assetUrl).size
+      }
     }).then(result => {
       console.log('Uploaded successfully...')
       this.uploadAsset(assetIndex + 1)
