@@ -157,6 +157,18 @@ ipcMain.on('close-confirm', () => {
   }
 })
 
+// Create about us window.
 ipcMain.on('open-about-us-window', () => {
-  openAboutWindow(path.join(__dirname, 'assets/images/Deer-256.png'))
+  openAboutWindow({
+    icon_path: path.join(__dirname, 'assets/images/Deer.png'),
+    css_path: path.join(__dirname, 'assets/styles/about.css'),
+    use_version_info: false,
+    win_options: {
+      resizable: false,
+      parent: win,
+      alwaysOnTop: true,
+      minimizable: false,
+      maximizable: false
+    }
+  })
 })

@@ -2,7 +2,5 @@
   "cancelBtn": "Cancel",
   "saveBtn": "Save",
   "settings": "Settings",
-  "language": "Language",
-  "aboutUs": "About us",
-  "showInfoBtn": "Show info"
+  "language": "Language"
 }

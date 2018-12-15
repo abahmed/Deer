@@ -30,7 +30,7 @@ Packages which are used during development or which are used to build Deer's bun
 | eslint-plugin-standard  | ^4.0.0    | ESlint Plugin for the Standard Linter |
 | file-loader             | ^2.0.0    | A Webpack loader responsible for emitting files that will be bundled and returning their public URLs (e.g. Images) |
 | glob-fs                 | ^0.1.7   | file globbing for node.js. |
-| husky                   | ^1.2.0   | Prevent bad commit, push by doing checks before it takes place |
+| husky                   | ^1.2.1   | Prevent bad commit, push by doing checks before it takes place |
 | jest                    | ^23.6.0   | Delightful JavaScript Testing |
 | jquery                  | ^3.3.1    | Needed for electron-builder packages |
 | mime                    | ^2.4.0    | A comprehensive library for mime-type mapping |
@@ -54,13 +54,13 @@ Those are dependencies that are essential for software to work.
 | electron-log          | ^2.2.15       | A multi-transport async logging library |
 | electron-store        | ^2.0.0        | Save and load user preferences |
 | electron-window-state | ^5.0.3        | Store and restore window sizes and positions |
-| i18next               | ^12.1.0       | internationalization framework |
+| i18next               | ^13.0.0       | internationalization framework |
 | pouchdb-browser       | ^7.0.0        | A pocket-sized database. |
 | prop-types            | ^15.6.1       | A Runtime type checking for React props |
 | react                 | ^16.6.3       | A JavaScript library for building user interfaces |
 | react-dom             | ^16.6.3       | React package for working with the DOM |
 | react-draft-wysiwyg   | ^1.12.13      | A Wysiwyg editor built using ReactJS and DraftJS libraries |
-| react-i18next         | ^8.3.8        | Internationalization for react |
+| react-i18next         | ^8.3.9        | Internationalization for react |
 | react-redux           | ^6.0.0        | React bindings for Redux |
 | react-router-dom      | ^4.3.1        | A DOM bindings for React Router |
 | reactstrap            | ^6.5.0        | A Stateless React Components for Bootstrap 4 |
