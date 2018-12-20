@@ -7,46 +7,25 @@
  	cursor: default;
  }
 
+* {
+  font-family: Roboto, sans-serif;
+}
+
+button:focus,
+button:active:focus,
+button:active:focus,
+button.focus,
+button.focus,
+button.focus {
+  outline: none !important;
+}
+
 .font-style-base {
 	 font-family: Impact, Charcoal, sans-serif;
 	 font-size: 25px;
 	 color: rgb(100,100,100);
 }
 
-.logo {
-    margin-top: 100px;
-}
- .center-text {
- 	text-align: center;
-	margin-right: 15px;
- }
-
- .center-button {
-   position: relative;
-   margin-top: 30px;
-   width: 150px;
-   left: 18%;
- }
-
-.welcome-page {
-    position: fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.welcome {
-	@extend .font-style-base;
-	font-size: 37px;
-	font-style: italic;
-	margin-top: 5px;
-}
-
-.language-text {
-	@extend .welcome;
-	margin-bottom: 10px;
-	font-size: 15px;
-}
 
 .middle-page {
   @extend .font-style-base;

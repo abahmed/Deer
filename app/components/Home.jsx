@@ -8,7 +8,7 @@ import StatusModal from '../containers/StatusModal'
 import { checkRedirectToWelcomePage } from '../../utils/api.electron'
 
 export default () => {
-  if (checkRedirectToWelcomePage()) {
+  if (!checkRedirectToWelcomePage()) {
     return (
       <Redirect to='/welcome' />
     )
