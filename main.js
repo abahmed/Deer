@@ -10,13 +10,13 @@ const Store = require('electron-store')
 const openAboutWindow = require('about-window').default
 
 // Let electron reloads by itself when webpack watches changes in ./app/
-//if (isDev) {
-  // Work around by providing electron path,
-  // (https://github.com/yan-foto/electron-reload/issues/16)
+// if (isDev) {
+// Work around by providing electron path,
+// (https://github.com/yan-foto/electron-reload/issues/16)
 //  require('electron-reload')(__dirname, {
 //    electron: require(`${__dirname}/node_modules/electron`)
 //  })
-//}
+// }
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

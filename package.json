@@ -94,10 +94,5 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-thunk": "^2.3.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
   }
 }
