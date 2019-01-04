@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions'
-import { ACTIONS } from '../constants/actions'
+import { ACTIONS } from './actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
 import { setNoteStatus } from './note'
 

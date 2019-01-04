@@ -1,8 +1,8 @@
 import { createAction } from 'redux-actions'
-import { ACTIONS } from '../constants/actions'
+import { ACTIONS } from './actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
 import { toggleYesNoModal } from './modal'
-import { addNote, fetchNotes, getNote, removeNote } from './../db'
+import { addNote, fetchNotes, getNote, removeNote } from '../utils/db'
 import { convertFromRaw, convertToRaw } from 'draft-js'
 import logger from 'electron-log'
 const services = { WAIT_UNTIL: require('../middlewares/wait-service').NAME }

@@ -1,4 +1,4 @@
-import { ACTIONS } from '../constants/actions'
+import { ACTIONS } from '../actions/actions'
 
 const INITIAL_STATE = {
   showYesNoModal: false,

@@ -4,19 +4,19 @@ const url = require('url')
 const isDev = require('electron-is-dev')
 const windowState = require('electron-window-state')
 const os = require('os')
-const initLogger = require('./utils/logger')
+const initLogger = require('./logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
 const openAboutWindow = require('about-window').default
 
 // Let electron reloads by itself when webpack watches changes in ./app/
-if (isDev) {
+//if (isDev) {
   // Work around by providing electron path,
   // (https://github.com/yan-foto/electron-reload/issues/16)
-  require('electron-reload')(__dirname, {
-    electron: require(`${__dirname}/node_modules/electron`)
-  })
-}
+//  require('electron-reload')(__dirname, {
+//    electron: require(`${__dirname}/node_modules/electron`)
+//  })
+//}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -51,9 +51,9 @@ function createWindow () {
     y: lastWindowState.y,
     minWidth: 800,
     minHeight: 600,
-    backgroundColor: '#F8F8FF',
-    icon: './assets/images/Deer-128.png',
-    show: false
+    icon: './assets/images/Deer-256.png',
+    show: false,
+    titleBarStyle: 'hidden'
   })
   logger.info('Deer window is created')
 
@@ -62,7 +62,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'app/index.html'),
+    pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
@@ -160,8 +160,8 @@ ipcMain.on('close-confirm', () => {
 // Create about us window.
 ipcMain.on('open-about-us-window', () => {
   openAboutWindow({
-    icon_path: path.join(__dirname, 'assets/images/Deer.png'),
-    css_path: path.join(__dirname, 'assets/styles/about.css'),
+    icon_path: path.join(__dirname, 'app/assets/images/Deer.png'),
+    css_path: path.join(__dirname, 'app/assets/styles/about.css'),
     use_version_info: false,
     win_options: {
       resizable: false,

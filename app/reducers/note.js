@@ -1,6 +1,6 @@
 import uuidv4 from 'uuid/v4'
 import { EditorState } from 'draft-js'
-import { ACTIONS } from '../constants/actions'
+import { ACTIONS } from '../actions/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
 import logger from 'electron-log'
 
