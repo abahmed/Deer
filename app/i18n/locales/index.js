@@ -29,5 +29,10 @@ export const SUPPORTED_LANGS = [
     language: 'Português do Brasil',
     code: 'pt',
     path: 'pt_br'
+  },
+  {
+    language: 'Česky',
+    code: 'cs',
+    path: 'cs'
   }
 ]
