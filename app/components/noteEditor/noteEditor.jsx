@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Grow from '@material-ui/core/Grow'
 import Styles from './style'
 
 // UI wrappers.
@@ -46,7 +47,7 @@ class NoteEditor extends Component {
   }
 
   handleChange (content, delta, source, editor) {
-    this.props.updateActiveNoteState(content)
+    this.props.updateActiveNoteContent(content)
 
     // We only save first 40 characters of the first non-empty line if there
       // is a change.
@@ -76,25 +77,27 @@ class NoteEditor extends Component {
   render () {
     const { classes, t } = this.props
     return (
-      <div className={classes.root}>
-        <ReactQuill
-          theme='snow'
-          className={classes.editor}
-          onChange={this.handleChange}
-          value={this.props.activeNoteState}
-          modules={this.modules}
-          formats={this.formats}
-          placeholder={t('noteEditor:placeholder')}
-         />
-      </div>
+      <Grow in={true}>
+        <div className={classes.root}>
+          <ReactQuill
+            theme='snow'
+            className={classes.editor}
+            onChange={this.handleChange}
+            value={this.props.activeNoteContent}
+            modules={this.modules}
+            formats={this.formats}
+            placeholder={t('noteEditor:placeholder')}
+          />
+        </div>
+      </Grow>
     )
   }
 }
 
 NoteEditor.propTypes = {
   saveNote: PropTypes.func.isRequired,
-  activeNoteState: PropTypes.string.isRequired,
-  updateActiveNoteState: PropTypes.func.isRequired,
+  activeNoteContent: PropTypes.string.isRequired,
+  updateActiveNoteContent: PropTypes.func.isRequired,
   updateNoteTitle: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,

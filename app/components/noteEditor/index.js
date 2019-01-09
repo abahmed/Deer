@@ -4,16 +4,16 @@ import { withNamespaces } from 'react-i18next'
 import NoteEditor from './noteEditor'
 import {
   updateNoteTitle,
-  updateActiveNoteState,
+  updateActiveNoteContent,
   saveNote
 } from '../../actions/note'
 
 const mapStateToProps = state => ({
-  activeNoteState: state.noteReducer.activeNoteState
+  activeNoteContent: state.noteReducer.activeNoteContent
 })
 
 const mapDispatchToProps = dispatch => ({
-  updateActiveNoteState: (state) => dispatch(updateActiveNoteState(state)),
+  updateActiveNoteContent: (content) => dispatch(updateActiveNoteContent(content)),
   updateNoteTitle: (content) => dispatch(updateNoteTitle(content)),
   saveNote: () => dispatch(saveNote())
 })

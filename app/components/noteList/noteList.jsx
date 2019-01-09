@@ -61,7 +61,7 @@ class NoteList extends Component {
                 id={index}
                 text={note.title}
                 selected={this.props.activeNoteIndex === index}
-                callback={this.onNoteSelect}
+                onClick={this.onNoteSelect}
                 onDelete={this.onNoteDelete}/>
             ))}
           </List>

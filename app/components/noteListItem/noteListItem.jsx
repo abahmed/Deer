@@ -16,12 +16,12 @@ class NoteListItem extends Component {
   constructor (props) {
     super()
 
-    this.handleClick = this.handleClick.bind(this)
+    this.onClick = this.onClick.bind(this)
     this.onDeleteClick = this.onDeleteClick.bind(this)
   }
 
-  handleClick () {
-    this.props.callback(this.props.id)
+  onClick () {
+    this.props.onClick(this.props.id)
   }
 
   onDeleteClick() {
@@ -30,6 +30,7 @@ class NoteListItem extends Component {
 
   render () {
     const { classes } = this.props
+    const text = this.props.text || 'Empty note'
     return (
       <ListItem
         button
@@ -40,14 +41,14 @@ class NoteListItem extends Component {
           selected: classes.selected
         }}
         selected={this.props.selected}
-        onClick={this.handleClick}>
+        onClick={this.onClick}>
         <ListItemText
           classes={{
             primary:classes.listItemText,
             secondary:classes.listItemText
           }}
           className={classes.listItemText}
-          primary={this.props.text} />
+          primary={text} />
         <ListItemSecondaryAction>
           {this.props.selected ?
             <IconButton color='primary' onClick={this.onDeleteClick}>
@@ -64,7 +65,7 @@ NoteListItem.propTypes = {
   id: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
-  callback: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired

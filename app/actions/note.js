@@ -18,8 +18,8 @@ export const setActiveNoteIndex = createAction(ACTIONS.SET_ACTIVE_NOTE_INDEX)
 export const updateNoteTitle = createAction(ACTIONS.UPDATE_NOTE_TITLE)
 
 // Used for updating editor's state of the active note.
-export const updateActiveNoteState =
-  createAction(ACTIONS.UPDATE_ACTIVE_NOTE_STATE)
+export const updateActiveNoteContent =
+  createAction(ACTIONS.UPDATE_ACTIVE_NOTE_CONTENT)
 
 // Used for updating rev of the active note.
 export const updateNoteRev = createAction(ACTIONS.UPDATE_NOTE_REV)
@@ -64,7 +64,7 @@ export const saveNote = () => (dispatch, getState) => {
     _id: state.notes[noteIndex].id,
     _rev: state.notes[noteIndex].rev,
     title: state.notes[noteIndex].title,
-    content: state.activeNoteState
+    content: state.activeNoteContent
   }
   addNote(doc).then((result) => {
     if (result.ok) {

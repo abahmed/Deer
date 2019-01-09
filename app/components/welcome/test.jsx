@@ -1,10 +1,9 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
-import toJson from 'enzyme-to-json'
-import Welcome from './component'
+import { shallow } from 'enzyme'
+import Welcome from './welcome'
 
 jest.mock('../../../__mocks__/electron')
-jest.mock('../../../utils/api.electron')
+jest.mock('../../utils/api.electron')
 
 import { unwrap } from '@material-ui/core/test-utils'
 
