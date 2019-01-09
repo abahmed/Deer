@@ -65,9 +65,6 @@ cd Deer
 # Install dependencies
 npm install
 
-# Run development server to build Deer
-npm run dev
-
 # Run Deer (in another tab)
 npm start
 ```
