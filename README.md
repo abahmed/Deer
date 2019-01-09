@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/abahmed/Deer/blob/develop/assets/images/Deer-256.png"/>
+  <img src="https://github.com/abahmed/Deer/blob/develop/app/assets/images/Deer-256.png"/>
   <p align="center">
     <a href="https://travis-ci.org/abahmed/Deer">
       <img src="https://travis-ci.org/abahmed/Deer.svg?branch=develop"/>
@@ -28,19 +28,22 @@
 + Multi-language :earth_americas:
 
 ### Screenshots
-![screenshot-1](https://github.com/abahmed/Deer/blob/develop/assets/images/screenshots.gif)
+![screenshot-1](https://github.com/abahmed/Deer/blob/develop/app/assets/images/screenshots.gif)
 
 
-### Translation
+### Supported Languages
 Currently, Deer supports these languages :earth_americas:. If you would like to Deer to support your language, [please request that  here](https://github.com/abahmed/Deer/issues/new?template=feature_request.md).
 
-* English :uk:
-* العربية :egypt:
-* Español :es:
-* Русский :ru:
-* Polski :poland:
-* Português do Brasil :brazil:
-* Česky :czech_republic:
+&nbsp;            |  Language
+ -----------------|----------------------|
+ :uk:             | English              |
+ :egypt:          | العربية              |
+ :es:             | Español              |
+ :ru:             | Русский              |
+ :poland:         | Polski               |
+ :brazil:         | Português do Brasil  |
+ :czech_republic: | Česky                |
+
 
 ### Download
 Currently, Deer is available for Linux, Mac and Windows :tada::tada:
@@ -54,7 +57,7 @@ macOS | Windows | Linux
 [More information about this release](https://github.com/abahmed/Deer/releases/latest)
 
 ### Nightly builds
-Nightly builds :airplane: are produced automatically for development branch (develop), so that people can help us testing the features that have just been added
+Nightly builds :airplane: are produced **automatically** for development branch (**develop**), so that people can help us testing features that have just been added
 
 macOS | Windows | Linux
 -----------------| ---| ---|

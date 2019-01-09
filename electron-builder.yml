@@ -1,30 +1,30 @@
 appId: com.electron.Deer
 files:
   - "main.js"
-  - "utils/*"
+  - "logger.js"
   - "package.json"
   - "build/*"
-  - "app/index.html"
+  - "index.html"
   - "LICENSE"
   - "AUTHORS.md"
   - "README.md"
 extraFiles:
-  - "assets/images/*"
+  - "app/assets/images/*"
 linux:
   category: Office
   artifactName: ${productName}-linux-${arch}.${ext}
-  icon: "assets/images/icon.icns"
+  icon: "app/assets/images/icon.icns"
   target:
     - deb
     - rpm
     - zip
 mac:
   artifactName: ${productName}-mac-${arch}.${ext}
-  icon: "assets/images/icon.icns"
+  icon: "app/assets/images/icon.icns"
   target:
     - dmg
 win:
-  icon: "assets/images/icon.ico"
+  icon: "app/assets/images/icon.ico"
   artifactName: ${productName}-win-${arch}.${ext}
   target:
     - target: nsis

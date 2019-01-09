@@ -1,12 +1,11 @@
 import uuidv4 from 'uuid/v4'
-import { EditorState } from 'draft-js'
 import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
 import logger from 'electron-log'
 
 const INITIAL_STATE = {
   activeNoteIndex: ACTIONS.NOT_SELECTED_NOTE,
-  activeNoteState: EditorState.createEmpty(),
+  activeNoteContent: '',
   noteStatus: NOTE_STATUS.NO_OPERATION,
   notes: []
 }
@@ -66,16 +65,16 @@ export default (state = INITIAL_STATE, action) => {
           title: ''
         }],
         activeNoteIndex: state.notes.length,
-        activeNoteState: EditorState.createEmpty()
+        activeNoteContent: ''
       }
     case ACTIONS.UPDATE_NOTE_TITLE:
       return _updateNoteEntry(state, 'title', action.payload)
     case ACTIONS.UPDATE_NOTE_REV:
       return _updateNoteEntry(state, 'rev', action.payload)
-    case ACTIONS.UPDATE_ACTIVE_NOTE_STATE:
+    case ACTIONS.UPDATE_ACTIVE_NOTE_CONTENT:
       return {
         ...state,
-        activeNoteState: action.payload
+        activeNoteContent: action.payload
       }
     case ACTIONS.SET_NOTE_STATUS:
       if (!NOTE_STATUS.hasOwnProperty(action.payload)) {
@@ -90,7 +89,7 @@ export default (state = INITIAL_STATE, action) => {
     case ACTIONS.LOAD_NOTE_CONTENT:
       return {
         ...state,
-        activeNoteState: EditorState.createWithContent(action.payload)
+        activeNoteContent: action.payload
       }
     case ACTIONS.DELETE_NOTE_FROM_LIST:
       return {

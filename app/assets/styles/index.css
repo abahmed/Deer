@@ -1,0 +1,31 @@
+@import url(typography.css);
+
+ *, *::after, *::before {
+ 	-webkit-user-select: none;
+ 	-webkit-user-drag: none;
+ }
+
+button:focus,
+button:active:focus,
+button:active:focus,
+button.focus,
+button.focus,
+button.focus {
+  outline: none !important;
+}
+
+body {
+  margin: 0px;
+}
+
+.NoteEditor {
+  font-family: 'Mali', 'El Messiri', monospace;
+  font-size: 15px;
+  color: black;
+  line-height: 9px;
+  cursor: text;
+  padding-left: 5px;
+  background-color: lightgoldenrodyellow;
+  max-height: calc(100vh - 84px);
+  min-height: calc(100vh - 84px);
+}

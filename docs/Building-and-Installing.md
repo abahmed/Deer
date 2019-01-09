@@ -14,14 +14,14 @@ In the next section, we explain how to install them correctly on each platform.
 #### Debian based distributions (Debian / Ubuntu / Linux Mint / elementary OS)
 In your terminal
 ``` bash
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install -y nodejs build-essential git
 ```
 
 #### Enterprise based distributions (Red Hat® / CentOS / CloudLinux / Fedora)
 In your terminal
 ``` bash
-curl -sL https://rpm.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
 sudo yum install -y nodejs gcc-c++ make git
 ```
 
@@ -64,9 +64,6 @@ cd Deer
 
 # Install dependencies
 npm install
-
-# Run development server to build Deer
-npm run dev
 
 # Run Deer (in another tab)
 npm start

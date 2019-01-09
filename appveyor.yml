@@ -1,6 +1,6 @@
 # Test against a specific version of Node.js
 environment:
-  nodejs_version: "8"
+  nodejs_version: "10"
 
 platform:
   - x64
