@@ -1,3 +1,10 @@
 {
-  "homeBtn": "Home"
+  "homeBtn": "Home",
+  "copyright": "Copyright",
+  "forAuthors": "for Authors",
+  "license": "Distributed under {{license}} License",
+  "WantHelp": "Want to help?",
+  "reportIssue": "Report an issue",
+  "or": ", or",
+  "contribute": "contribute"
 }

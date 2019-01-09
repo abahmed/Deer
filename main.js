@@ -7,16 +7,15 @@ const os = require('os')
 const initLogger = require('./logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
-const openAboutWindow = require('about-window').default
 
 // Let electron reloads by itself when webpack watches changes in ./app/
-// if (isDev) {
+if (isDev) {
 // Work around by providing electron path,
 // (https://github.com/yan-foto/electron-reload/issues/16)
-//  require('electron-reload')(__dirname, {
-//    electron: require(`${__dirname}/node_modules/electron`)
-//  })
-// }
+  require('electron-reload')(__dirname, {
+    electron: require(`${__dirname}/node_modules/electron`)
+  })
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -52,10 +51,9 @@ function createWindow () {
     minWidth: 800,
     minHeight: 600,
     icon: './assets/images/Deer-256.png',
-    show: false,
-    titleBarStyle: 'hidden'
+    show: false
   })
-  logger.info('Deer window is created')
+  logger.info('Apps window is created')
 
   // Clear default menu.
   win.setMenu(null)
@@ -74,7 +72,7 @@ function createWindow () {
   // Show browser window once it's ready.
   win.once('ready-to-show', () => {
     win.show()
-    logger.info('Deer window is shown')
+    logger.info('App window is shown')
 
     // Show DevTools for debugging.
     if (isDev) {
@@ -92,7 +90,7 @@ function createWindow () {
 
   // Emitted when the window is closed.
   win.on('closed', () => {
-    logger.info('Deer window is closed')
+    logger.info('App window is closed')
 
     // De-reference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
@@ -148,6 +146,7 @@ app.on('ready', () => {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
+  logger.info('Quitting app')
   app.quit()
 })
 
@@ -155,20 +154,5 @@ ipcMain.on('close-confirm', () => {
   if (win !== null) {
     win.destroy()
   }
-})
-
-// Create about us window.
-ipcMain.on('open-about-us-window', () => {
-  openAboutWindow({
-    icon_path: path.join(__dirname, 'app/assets/images/Deer.png'),
-    css_path: path.join(__dirname, 'app/assets/styles/about.css'),
-    use_version_info: false,
-    win_options: {
-      resizable: false,
-      parent: win,
-      alwaysOnTop: true,
-      minimizable: false,
-      maximizable: false
-    }
-  })
+  app.quit()
 })

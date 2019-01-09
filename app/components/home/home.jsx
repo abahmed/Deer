@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
-import { checkRedirectToWelcomePage } from '../../utils/api.electron'
-
-import NotesPanel from '../notesPanel'
-import Dashboard from '../dashboard'
-import NoteEditor from '../noteEditor'
 
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Slide from '@material-ui/core/Slide'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
 
-import Styles from './style'
+
+import { checkRedirectToWelcomePage } from '../../utils/api.electron'
+import NotesPanel from '../notesPanel'
+import Dashboard from '../dashboard'
+import NoteEditor from '../noteEditor'
 
 class Home extends Component {
   constructor (props) {

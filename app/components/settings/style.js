@@ -13,12 +13,6 @@ export default theme => ({
     backgroundColor: fade(theme.palette.primary.main, 0.1),
     overflow: 'hidden'
   },
-  content: {
-    marginLeft: '70px',
-    height: '256px',
-    width: '40%',
-    textAlign: 'center'
-  },
   divider: {
     marginTop: '10px',
     marginBottom: '10px'
@@ -32,7 +26,8 @@ export default theme => ({
     minWidth: '45%'
   },
   select: {
-    width: '-webkit-fill-available'
+    width: '-webkit-fill-available',
+    textAlign: 'center'
   },
   button: {
     margin: '7px'

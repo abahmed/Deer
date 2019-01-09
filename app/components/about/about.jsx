@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
-import * as os from 'os'
-import { openExternalLink } from '../../utils/api.electron'
-import packageJson from '../../../package.json'
-import Styles from './style'
+import os from 'os'
 
 import Slide from '@material-ui/core/Slide'
 import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import HomeIcon from '@material-ui/icons/Home'
 import PopoverIcon from '../popoverIcon'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
+
+import packageJson from '../../../package.json'
+import { openExternalLink } from '../../utils/api.electron'
 
 class About extends Component {
   constructor (props) {
@@ -52,27 +52,31 @@ class About extends Component {
             <Typography variant='h3'>
               {packageJson.productName}
             </Typography>
-            <Typography variant='h6'>
-              {packageJson.version} - {os.type()} ({os.arch()})
+            <Typography variant='body1'>
+              {packageJson.version}
+            </Typography>
+            <Typography variant='body2'>
+              {os.type()} {os.arch()}
             </Typography>
             <Divider className={classes.divider}/>
             <Typography variant='body1'>
               {packageJson.description}
             </Typography>
             <Typography variant='body2'>
-              Copyright © 2017–2019 {packageJson.productName} Authors
+              {t('about:copyright')} © 2017 – {(new Date()).getFullYear()}
+              {' '}{t('about:forAuthors')}
             </Typography>
             <Typography variant='body2'>
-              Distributed under {packageJson.license} License
+              {t('about:license', { license: packageJson.license})}
             </Typography>
             <Typography variant='body2'>
-              Want to help?
+              {t('about:WantHelp')}
               <span className={classes.link} onClick={this.openIssuesLink}>
-                Report an issue
+                {t('about:reportIssue')}
               </span>
-              , or
+              {t('about:or')}
               <span className={classes.link} onClick={this.openAppLink}>
-                contribute
+              {t('about:contribute')}
               </span>
             </Typography>
             <PopoverIcon

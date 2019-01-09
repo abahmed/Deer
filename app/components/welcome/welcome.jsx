@@ -1,12 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { SUPPORTED_LANGS } from '../../i18n/locales'
-import { LANG_LIST } from './langList'
-
-import {
-  setNotFirstTimeFlag,
-  getDefaultLanguage
-} from '../../utils/api.electron'
 
 // UI components.
 import Typography from '@material-ui/core/Typography'
@@ -19,12 +12,19 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import NavigateNext from '@material-ui/icons/NavigateNext'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
 
-import Styles from './style'
+import { SUPPORTED_LANGS } from '../../i18n/locales'
+import { LANG_LIST } from './langList'
+import {
+  setNotFirstTimeFlag,
+  getDefaultLanguage
+} from '../../utils/api.electron'
+
 
 class Welcome extends Component {
   constructor (props) {

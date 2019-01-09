@@ -4,10 +4,11 @@ import { withNamespaces } from 'react-i18next'
 import {
   fetchAllNotes,
   selectNote,
-  fetchNote
+  fetchNote,
+  deleteNote
 } from '../../actions/note'
 
-import NoteList from './component'
+import NoteList from './noteList'
 
 const mapStateToProps = state => ({
   activeNoteIndex: state.noteReducer.activeNoteIndex,
@@ -17,6 +18,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchAllNotes: () => dispatch(fetchAllNotes()),
   fetchNote: () => dispatch(fetchNote()),
+  deleteNote: () => dispatch(deleteNote()),
   selectNote: (noteIndex) => dispatch(selectNote(noteIndex))
 })
 

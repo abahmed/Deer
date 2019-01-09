@@ -1,14 +1,21 @@
-import { fade } from '@material-ui/core/styles/colorManipulator'
-
 export default theme => ({
   root: {
-    flexGrow: 1
-  },
-  paper: {
+    flexGrow: 1,
     padding: 0,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    height: '100vh',
-    backgroundColor: fade(theme.palette.primary.main, 0.05)
+    height: '100vh'
+  },
+  editor: {
+    '& .ql-container': {
+      height: 'calc(100vh - 66px)',
+      overflow: 'auto',
+      fontFamily: [
+        'Mali',
+        'El Messiri',
+        'monospace'
+      ].join(','),
+      fontSize: '15px',
+      color: 'black',
+      border: 0
+    }
   }
 })

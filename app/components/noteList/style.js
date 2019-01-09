@@ -7,9 +7,6 @@ export default theme => ({
     height: '94%',
     backgroundColor: fade(theme.palette.primary.main, 0.04)
   },
-  section: {
-    marginTop: '2px'
-  },
   list: {
     paddingRight: '10px',
     paddingLeft: '10px',

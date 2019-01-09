@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions'
-import { ACTIONS } from './actions'
+import { ACTIONS } from '../constants/actions'
 
 // Used for saving and applying new settings.
 export const saveSettings = createAction(ACTIONS.SAVE_SETTINGS)

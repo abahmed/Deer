@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { withNamespaces } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 import { saveSettings, setReadyStatus } from '../../actions/settings'
-import Settings from './component'
+import Settings from './settings'
 
 const mapStateToProps = state => ({
   settingsStatus: state.settingsReducer.settingsStatus

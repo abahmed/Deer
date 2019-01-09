@@ -1,11 +1,9 @@
 import { createAction } from 'redux-actions'
-import { ACTIONS } from './actions'
+import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
-import { toggleYesNoModal } from './modal'
 import { addNote, fetchNotes, getNote, removeNote } from '../utils/db'
-import { convertFromRaw, convertToRaw } from 'draft-js'
 import logger from 'electron-log'
-const services = { WAIT_UNTIL: require('../middlewares/wait-service').NAME }
+const services = { WAIT_UNTIL: require('../middlewares/waitService').NAME }
 
 // Used for adding a new note.
 export const addNewNote = createAction(ACTIONS.ADD_NOTE)
@@ -66,7 +64,7 @@ export const saveNote = () => (dispatch, getState) => {
     _id: state.notes[noteIndex].id,
     _rev: state.notes[noteIndex].rev,
     title: state.notes[noteIndex].title,
-    content: convertToRaw(state.activeNoteState.getCurrentContent())
+    content: state.activeNoteState
   }
   addNote(doc).then((result) => {
     if (result.ok) {
@@ -90,7 +88,7 @@ export const fetchNote = () => (dispatch, getState) => {
   try {
     // This is to just get the note from the db and load it's content if already saved.
     getNote(state.notes[noteIndex].id).then((result) => {
-      dispatch(loadNoteContent(convertFromRaw(result.content)))
+      dispatch(loadNoteContent(result.content))
       dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
     // Handle those new notes that are not saved yet.
     }).catch((err) => {
@@ -146,7 +144,7 @@ export const selectNote = (selectedIndex) => (dispatch, getState) => {
 
   // Prompts modal if current note is not saved
   if (currentNote && (!currentNote.hasOwnProperty('rev') || !currentNote.rev)) {
-    dispatch(toggleYesNoModal(ACTIONS.SAVE_NOTE))
+    // SAVE!!!! TODO
     // Waits for the right time to dispatch next actions
     dispatch({
       type: services.WAIT_UNTIL,

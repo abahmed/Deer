@@ -1,15 +1,11 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withNamespaces } from 'react-i18next'
-import NoteEditor from './component'
-import {
-  setSaveDisabled,
-  setNewNoteDisabled,
-  setDeleteDisabled
-} from '../../actions/header'
+import NoteEditor from './noteEditor'
 import {
   updateNoteTitle,
-  updateActiveNoteState
+  updateActiveNoteState,
+  saveNote
 } from '../../actions/note'
 
 const mapStateToProps = state => ({
@@ -18,10 +14,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateActiveNoteState: (state) => dispatch(updateActiveNoteState(state)),
-  setSaveDisabled: (flag) => dispatch(setSaveDisabled(flag)),
-  setDeleteDisabled: (flag) => dispatch(setDeleteDisabled(flag)),
-  setNewNoteDisabled: (flag) => dispatch(setNewNoteDisabled(flag)),
-  updateNoteTitle: (content) => dispatch(updateNoteTitle(content))
+  updateNoteTitle: (content) => dispatch(updateNoteTitle(content)),
+  saveNote: () => dispatch(saveNote())
 })
 
 export default compose(

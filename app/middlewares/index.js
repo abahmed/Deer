@@ -1,5 +1,5 @@
 import thunk from 'redux-thunk'
-import { waitUntilService } from './wait-service'
+import { waitUntilService } from './waitService'
 
 // Middlewares that will be applied.
 export default [

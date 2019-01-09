@@ -1,2 +1,2 @@
-import NoteListItem from './component'
+import NoteListItem from './noteListItem'
 export default NoteListItem

@@ -5,7 +5,7 @@ import {
   fetchAllNotes
 } from '../../actions/note'
 
-import Home from './component'
+import Home from './home'
 
 const mapStateToProps = state => ({
   activeNoteIndex: state.noteReducer.activeNoteIndex,

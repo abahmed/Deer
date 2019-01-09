@@ -2,17 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-import NoteListItem from '../noteListItem'
-
-import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
-import NotesIcon from '@material-ui/icons/Notes'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
 
-import Styles from './style'
+import NoteListItem from '../noteListItem'
 
 class NoteList extends Component {
   constructor (props) {
@@ -22,6 +19,7 @@ class NoteList extends Component {
     }
 
     this.onNoteSelect = this.onNoteSelect.bind(this)
+    this.onNoteDelete = this.onNoteDelete.bind(this)
   }
 
   checkIfItemExists () {
@@ -47,6 +45,10 @@ class NoteList extends Component {
     this.props.selectNote(noteIndex)
   }
 
+  onNoteDelete () {
+    this.props.deleteNote()
+  }
+
   render () {
     const { classes } = this.props
     return (
@@ -59,7 +61,8 @@ class NoteList extends Component {
                 id={index}
                 text={note.title}
                 selected={this.props.activeNoteIndex === index}
-                callback={this.onNoteSelect}/>
+                callback={this.onNoteSelect}
+                onDelete={this.onNoteDelete}/>
             ))}
           </List>
         </Scrollbars>
@@ -74,6 +77,7 @@ NoteList.propTypes = {
   fetchAllNotes: PropTypes.func.isRequired,
   fetchNote: PropTypes.func.isRequired,
   selectNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 }

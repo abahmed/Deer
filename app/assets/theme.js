@@ -1,7 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
-import i18n from '../i18n/i18n'
-
-export const theme = createMuiTheme({
+export const theme = {
   palette: {
     type: 'light',
     primary: {
@@ -21,4 +18,4 @@ export const theme = createMuiTheme({
     ].join(',')
   },
   direction: 'ltr'
-})
+}

@@ -1,31 +1,31 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Badge from '@material-ui/core/Badge'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import IconButton from '@material-ui/core/IconButton';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-
-
+import IconButton from '@material-ui/core/IconButton'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import DeleteIcon from '@material-ui/icons/Delete'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
-import Styles from './style'
-
 
 class NoteListItem extends Component {
   constructor (props) {
     super()
 
     this.handleClick = this.handleClick.bind(this)
+    this.onDeleteClick = this.onDeleteClick.bind(this)
   }
 
   handleClick () {
     this.props.callback(this.props.id)
+  }
+
+  onDeleteClick() {
+    this.props.onDelete()
   }
 
   render () {
@@ -47,12 +47,13 @@ class NoteListItem extends Component {
             secondary:classes.listItemText
           }}
           className={classes.listItemText}
-          primary={this.props.text}
-          secondary="Jan 9, 2014" />
+          primary={this.props.text} />
         <ListItemSecondaryAction>
-          <IconButton color='primary'>
-            <DeleteIcon />
-          </IconButton>
+          {this.props.selected ?
+            <IconButton color='primary' onClick={this.onDeleteClick}>
+              <DeleteIcon />
+            </IconButton> : ''
+          }
         </ListItemSecondaryAction>
       </ListItem>
     )
@@ -64,6 +65,7 @@ NoteListItem.propTypes = {
   text: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
   callback: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 }

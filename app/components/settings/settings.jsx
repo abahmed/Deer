@@ -2,14 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 
-import { getDefaultLanguage } from '../../utils/api.electron'
-import { SETTINGS_STATUS } from '../../constants/settingsStatus'
-import { SUPPORTED_LANGS } from '../../i18n/locales'
-import Styles from './style'
-
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
-
 import Slide from '@material-ui/core/Slide'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
@@ -18,10 +12,15 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import CancelIcon from '@material-ui/icons/Cancel'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
+
+import { getDefaultLanguage } from '../../utils/api.electron'
+import { SETTINGS_STATUS } from '../../constants/settingsStatus'
+import { SUPPORTED_LANGS } from '../../i18n/locales'
 
 class Settings extends Component {
   constructor (props) {
@@ -41,7 +40,6 @@ class Settings extends Component {
       language: getDefaultLanguage()
     }
   }
-
 
   // Returns true if user's settings haven't been changed from it's defaults,
   // otherwise returns false.
@@ -82,7 +80,6 @@ class Settings extends Component {
     this.props.setReadyStatus()
   }
 
-
   render () {
     const settingsStatus = this.props.settingsStatus
     // New settings have been saved successfully, so redirect to home.
@@ -102,43 +99,42 @@ class Settings extends Component {
             <Typography variant='h5'>{t('settings:settings')}</Typography>
             <Divider className={classes.divider}/>
             <Grid container>
-            <Grid item xs={6}>
-            <Typography variant='body1'>{t('settings:language')}</Typography>
-            </Grid>
-            <Grid item xs={6}>
-            <Select
-              value={this.state.language}
-              onChange={this.onLanguageChange}
-              className={classes.select}
-              color='primary'
-            >
-              {SUPPORTED_LANGS.map((lang, index) => (
-                <MenuItem key={index} value={lang.code}>
-                  {lang.language}
-                </MenuItem>
-              ))}
-            </Select>
-            </Grid>
+              <Grid item xs={6}>
+                <Typography variant='body1'>{t('settings:language')}</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Select
+                  value={this.state.language}
+                  onChange={this.onLanguageChange}
+                  className={classes.select}
+                  color='primary'>
+                  {SUPPORTED_LANGS.map((lang, index) => (
+                    <MenuItem key={index} value={lang.code}>
+                      {lang.language}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Grid>
             </Grid>
             <Divider className={classes.divider} />
             <div className={classes.buttons}>
-            <Button
-              variant='contained'
-              color='primary'
-              className={classes.button}
-              disabled={this._isSaveDisabled()}
-              onClick={this.onSaveSettings}>
-            {t('settings:saveBtn')}
-            <SaveIcon className={classes.nextIconSize}/>
-            </Button>
-            <Button
-              variant='contained'
-              color='primary'
-              className={classes.button}
-              onClick={this.onCancelClick}>
-            {t('settings:cancelBtn')}
-            <CancelIcon className={classes.nextIconSize}/>
-            </Button>
+              <Button
+                variant='contained'
+                color='primary'
+                className={classes.button}
+                disabled={this._isSaveDisabled()}
+                onClick={this.onSaveSettings}>
+              {t('settings:saveBtn')}
+              <SaveIcon className={classes.nextIconSize}/>
+              </Button>
+              <Button
+                variant='contained'
+                color='primary'
+                className={classes.button}
+                onClick={this.onCancelClick}>
+              {t('settings:cancelBtn')}
+              <CancelIcon className={classes.nextIconSize}/>
+              </Button>
             </div>
           </Paper>
         </Grid>

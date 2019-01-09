@@ -4,12 +4,11 @@ import PropTypes from 'prop-types'
 import Popover from '@material-ui/core/Popover'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
+import Styles from './style'
 
 // UI wrappers.
 import { withStyles } from '@material-ui/core/styles'
 import { withTheme } from '@material-ui/core/styles'
-
-import Styles from './style'
 
 class PopoverIcon extends React.Component {
   constructor (props) {
@@ -23,8 +22,6 @@ class PopoverIcon extends React.Component {
     this.handlePopoverClose = this.handlePopoverClose.bind(this)
   }
 
-
-
   handlePopoverOpen (event) {
     this.setState({ anchorEl: event.currentTarget })
   }
@@ -34,9 +31,9 @@ class PopoverIcon extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    const { classes } = this.props
+    const { anchorEl } = this.state
+    const open = Boolean(anchorEl)
 
     return (
       <div className={classes.root}>
@@ -67,7 +64,7 @@ class PopoverIcon extends React.Component {
           <Typography>{this.props.text}</Typography>
         </Popover>
       </div>
-    );
+    )
   }
 }
 

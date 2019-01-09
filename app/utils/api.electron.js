@@ -46,12 +46,8 @@ const setDefaultLanguage = function (defaultLanguage) {
 }
 
 /**
- * called to ask main process to create about us window.
+ * called to ask main process to open a url in browser.
  */
-const openAboutUsWindow = function () {
-  electron.ipcRenderer.send('open-about-us-window')
-}
-
 const openExternalLink = function (url) {
   electron.shell.openExternal(url)
 }
@@ -62,6 +58,5 @@ module.exports = {
   setNotFirstTimeFlag,
   getDefaultLanguage,
   setDefaultLanguage,
-  openAboutUsWindow,
   openExternalLink
 }

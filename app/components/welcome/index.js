@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Welcome from './component'
+import Welcome from './welcome'
 import { saveSettings } from '../../actions/settings'
 
 const mapStateToProps = state => ({
