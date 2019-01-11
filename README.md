@@ -28,7 +28,7 @@
 + Multi-language :earth_americas:
 
 ### Screenshots
-![screenshot-1](https://github.com/abahmed/Deer/blob/develop/app/assets/images/screenshots.gif)
+![screenshot-1](https://github.com/abahmed/Deer/blob/develop/app/assets/images/deer-demo.gif)
 
 
 ### Supported Languages
