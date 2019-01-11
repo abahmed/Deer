@@ -4,6 +4,10 @@ const WebpackDevServer = require('webpack-dev-server')
 const { spawn } = require('child_process')
 const electron = require('electron')
 
+const glob = require('glob-fs')({ gitignore: false })
+const fs = require('fs')
+const jsdoc2md = require('jsdoc-to-markdown')
+
 // Webpack Configuration.
 const webpackConfig = require('./webpack.config.js')
 
@@ -30,3 +34,12 @@ function runWebpackDevServer () {
   return Promise.resolve('done')
 }
 exports.start = runWebpackDevServer
+
+// Generates docs for app directory and updates docs/api.md.
+function genDocs () {
+  const files = glob.readdirSync('./app/**/*.{js,jsx}')
+  const docs = jsdoc2md.renderSync({ files: files })
+  fs.writeFileSync('docs/api.md', docs)
+  return Promise.resolve('done')
+}
+exports.docs = genDocs

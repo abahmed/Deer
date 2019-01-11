@@ -10,8 +10,7 @@ import PopoverIcon from '../popoverIcon'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import packageJson from '../../../package.json'
 import { openExternalLink } from '../../utils/api.electron'
@@ -43,11 +42,11 @@ class About extends Component {
   render () {
     const { classes, t } = this.props
     return (
-      <Slide in={true} direction='left'>
+      <Slide in direction='left'>
         <div className={classes.root}>
           <img
             className={classes.img}
-            src={require('../../assets/images/Deer-256.png')}/>
+            src={require('../../assets/images/Deer-256.png')} />
           <div className={classes.content}>
             <Typography variant='h3'>
               {packageJson.productName}
@@ -58,7 +57,7 @@ class About extends Component {
             <Typography variant='body2'>
               {os.type()} {os.arch()}
             </Typography>
-            <Divider className={classes.divider}/>
+            <Divider className={classes.divider} />
             <Typography variant='body1'>
               {packageJson.description}
             </Typography>
@@ -67,7 +66,7 @@ class About extends Component {
               {' '}{t('about:forAuthors')}
             </Typography>
             <Typography variant='body2'>
-              {t('about:license', { license: packageJson.license})}
+              {t('about:license', { license: packageJson.license })}
             </Typography>
             <Typography variant='body2'>
               {t('about:WantHelp')}
@@ -76,7 +75,7 @@ class About extends Component {
               </span>
               {t('about:or')}
               <span className={classes.link} onClick={this.openAppLink}>
-              {t('about:contribute')}
+                {t('about:contribute')}
               </span>
             </Typography>
             <PopoverIcon

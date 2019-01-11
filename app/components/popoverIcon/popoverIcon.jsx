@@ -7,8 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 class PopoverIcon extends React.Component {
   constructor (props) {
@@ -30,7 +29,7 @@ class PopoverIcon extends React.Component {
     this.setState({ anchorEl: null })
   }
 
-  render() {
+  render () {
     const { classes } = this.props
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
@@ -39,7 +38,7 @@ class PopoverIcon extends React.Component {
       <div className={classes.root}>
         <IconButton
           aria-owns={open ? 'mouse-over-popover' : undefined}
-          aria-haspopup="true"
+          aria-haspopup='true'
           onMouseEnter={this.handlePopoverOpen}
           onMouseLeave={this.handlePopoverClose}
           onClick={this.props.callback}
@@ -50,13 +49,13 @@ class PopoverIcon extends React.Component {
           id='mouse-over-popover'
           className={classes.popover}
           classes={{
-            paper: classes.paper,
+            paper: classes.paper
           }}
           open={open}
           anchorEl={anchorEl}
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           onClose={this.handlePopoverClose}
           disableRestoreFocus

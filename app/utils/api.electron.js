@@ -1,3 +1,4 @@
+/** @module Electron API */
 const electron = require('electron')
 const FALLBACK_LANG = 'en'
 

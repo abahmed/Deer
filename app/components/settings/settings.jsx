@@ -15,8 +15,7 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import { getDefaultLanguage } from '../../utils/api.electron'
 import { SETTINGS_STATUS } from '../../constants/settingsStatus'
@@ -93,11 +92,11 @@ class Settings extends Component {
 
     const { classes, t } = this.props
     return (
-      <Slide in={true} direction='left'>
+      <Slide in direction='left'>
         <Grid container justify='center' className={classes.root}>
           <Paper className={classes.paper}>
             <Typography variant='h5'>{t('settings:settings')}</Typography>
-            <Divider className={classes.divider}/>
+            <Divider className={classes.divider} />
             <Grid container>
               <Grid item xs={6}>
                 <Typography variant='body1'>{t('settings:language')}</Typography>
@@ -124,16 +123,16 @@ class Settings extends Component {
                 className={classes.button}
                 disabled={this._isSaveDisabled()}
                 onClick={this.onSaveSettings}>
-              {t('settings:saveBtn')}
-              <SaveIcon className={classes.nextIconSize}/>
+                {t('settings:saveBtn')}
+                <SaveIcon className={classes.nextIconSize} />
               </Button>
               <Button
                 variant='contained'
                 color='primary'
                 className={classes.button}
                 onClick={this.onCancelClick}>
-              {t('settings:cancelBtn')}
-              <CancelIcon className={classes.nextIconSize}/>
+                {t('settings:cancelBtn')}
+                <CancelIcon className={classes.nextIconSize} />
               </Button>
             </div>
           </Paper>

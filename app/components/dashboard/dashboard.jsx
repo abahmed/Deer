@@ -11,8 +11,7 @@ import PopoverIcon from '../popoverIcon'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 class Dashboard extends Component {
   constructor (props) {
@@ -41,7 +40,7 @@ class Dashboard extends Component {
   render () {
     const { classes, t } = this.props
     return (
-      <Fade in={true}>
+      <Fade in>
         <div className={classes.root}>
           <img
             className={classes.img}
@@ -52,17 +51,17 @@ class Dashboard extends Component {
           </Typography>
           <Grid item>
             <PopoverIcon
-            text={t('dashboard:newNote')}
-            icon={<NoteAddIcon fontSize='large'  />}
-            callback={this.onClickNewNote} />
+              text={t('dashboard:newNote')}
+              icon={<NoteAddIcon fontSize='large' />}
+              callback={this.onClickNewNote} />
             <PopoverIcon
-            text={t('dashboard:settings')}
-            icon={<SettingsIcon fontSize='large' />}
-            callback={this.onClickSettings} />
+              text={t('dashboard:settings')}
+              icon={<SettingsIcon fontSize='large' />}
+              callback={this.onClickSettings} />
             <PopoverIcon
-            text={t('dashboard:about')}
-            icon={<InfosIcon fontSize='large' />}
-            callback={this.onClickAbout} />
+              text={t('dashboard:about')}
+              icon={<InfosIcon fontSize='large' />}
+              callback={this.onClickAbout} />
           </Grid>
         </div>
       </Fade>

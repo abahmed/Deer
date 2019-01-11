@@ -2,19 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Welcome from './welcome'
 
+import { unwrap } from '@material-ui/core/test-utils'
+
 jest.mock('../../../__mocks__/electron')
 jest.mock('../../utils/api.electron')
 
-import { unwrap } from '@material-ui/core/test-utils'
-
-const uWelcome = unwrap(Welcome)
-const welcomeObj = new uWelcome()
+const UWelcome = unwrap(Welcome)
+const welcomeObj = new UWelcome()
 
 describe('<Welcome />', () => {
   describe('render()', () => {
     test('renders the welcome component', () => {
-    const wrapper = shallow(<Welcome />)
-    expect(wrapper.exists()).toBe(true)
+      const wrapper = shallow(<Welcome />)
+      expect(wrapper.exists()).toBe(true)
     })
   })
 
@@ -38,7 +38,7 @@ describe('<Welcome />', () => {
     test('updateLang with toggleFade', () => {
       welcomeObj.state.fadeIn = false
       welcomeObj.updateLang()
-    expect(welcomeObj.langIndex).toEqual(2)
+      expect(welcomeObj.langIndex).toEqual(2)
     })
   })
 })

@@ -8,9 +8,7 @@ import Slide from '@material-ui/core/Slide'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
-
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import { checkRedirectToWelcomePage } from '../../utils/api.electron'
 import NotesPanel from '../notesPanel'
@@ -29,8 +27,8 @@ class Home extends Component {
     this.props.fetchAllNotes()
   }
 
-  getHomeContent() {
-    const { notes, t } = this.props
+  getHomeContent () {
+    const { notes } = this.props
     // Show homeContent when no note is selected.
     if (this.props.activeNoteIndex >= 0 &&
     notes[this.props.activeNoteIndex]) {
@@ -46,17 +44,17 @@ class Home extends Component {
       )
     }
 
-    const { notes, t, classes } = this.props
+    const { notes, classes } = this.props
     return (
       <div className={classes.root}>
-        <Slide in={true}>
+        <Slide in>
           <Grid container>
-            { notes.length > 0 ?
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <NotesPanel />
-              </Paper>
-            </Grid> : ''
+            { notes.length > 0
+              ? <Grid item xs={4}>
+                <Paper className={classes.paper}>
+                  <NotesPanel />
+                </Paper>
+              </Grid> : ''
             }
             <Grid item xs>
               <Paper className={classes.paper}>
@@ -75,7 +73,6 @@ Home.propTypes = {
   fetchAllNotes: PropTypes.func.isRequired,
   notes: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(Home))

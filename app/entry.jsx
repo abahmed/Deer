@@ -30,7 +30,7 @@ const generateClassName = createGenerateClassName()
 // Configure redux store
 const store = configureStore()
 
-function renderApp() {
+function renderApp () {
   const app = document.getElementById('app')
 
   // Set localization direction.
@@ -67,7 +67,7 @@ function renderApp() {
 renderApp()
 
 // Re-render app to update localization direction.
-i18n.on('languageChanged', function(lng) {
+i18n.on('languageChanged', function (lng) {
   renderApp()
 })
 

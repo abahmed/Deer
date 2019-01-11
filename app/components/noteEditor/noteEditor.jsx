@@ -5,8 +5,7 @@ import Grow from '@material-ui/core/Grow'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import ReactQuill from 'react-quill'
 
@@ -21,11 +20,11 @@ class NoteEditor extends Component {
 
     this.modules = {
       toolbar: [
-        [{ 'header': '1'}, {'header': '2'}],
+        [{ 'header': '1' }, { 'header': '2' }],
         ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
         [{ 'align': [] }, { 'color': [] }, { 'background': [] }],
-        [{'list': 'ordered'}, {'list': 'bullet'},
-         {'indent': '-1'}, {'indent': '+1'}, { 'direction': 'rtl' }],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' },
+          { 'indent': '-1' }, { 'indent': '+1' }, { 'direction': 'rtl' }],
         ['image'],
         ['clean']
       ],
@@ -50,11 +49,11 @@ class NoteEditor extends Component {
     this.props.updateActiveNoteContent(content)
 
     // We only save first 40 characters of the first non-empty line if there
-      // is a change.
+    // is a change.
     const newTitle =
       editor.getText(0, 40).trim().split('\u000A')[0].substring(0, 40)
 
-    //this.setState(newState)
+    // this.setState(newState)
     if (newTitle !== this.title) {
       this.props.updateNoteTitle(newTitle)
       this.title = newTitle
@@ -69,7 +68,6 @@ class NoteEditor extends Component {
     }, 750)
   }
 
-
   componentWillUnmount () {
     clearTimeout(this.saveTimer)
   }
@@ -77,7 +75,7 @@ class NoteEditor extends Component {
   render () {
     const { classes, t } = this.props
     return (
-      <Grow in={true}>
+      <Grow in>
         <div className={classes.root}>
           <ReactQuill
             theme='snow'
