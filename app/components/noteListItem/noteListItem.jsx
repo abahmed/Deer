@@ -9,8 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 class NoteListItem extends Component {
   constructor (props) {
@@ -24,7 +23,7 @@ class NoteListItem extends Component {
     this.props.onClick(this.props.id)
   }
 
-  onDeleteClick() {
+  onDeleteClick () {
     this.props.onDelete()
   }
 
@@ -44,14 +43,14 @@ class NoteListItem extends Component {
         onClick={this.onClick}>
         <ListItemText
           classes={{
-            primary:classes.listItemText,
-            secondary:classes.listItemText
+            primary: classes.listItemText,
+            secondary: classes.listItemText
           }}
           className={classes.listItemText}
           primary={text} />
         <ListItemSecondaryAction>
-          {this.props.selected ?
-            <IconButton color='primary' onClick={this.onDeleteClick}>
+          {this.props.selected
+            ? <IconButton color='primary' onClick={this.onDeleteClick}>
               <DeleteIcon />
             </IconButton> : ''
           }

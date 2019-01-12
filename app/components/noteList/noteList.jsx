@@ -6,8 +6,7 @@ import List from '@material-ui/core/List'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import NoteListItem from '../noteListItem'
 
@@ -28,7 +27,6 @@ class NoteList extends Component {
     // WORKAROUND: Unsaved item is unecessary added into notes list - checking by empty revision
     return (currentIndex >= 0 && this.props.notes[currentIndex] && this.props.notes[currentIndex]['rev'])
   }
-
 
   componentDidMount () {
     const currentIndex = this.props.activeNoteIndex
@@ -62,7 +60,7 @@ class NoteList extends Component {
                 text={note.title}
                 selected={this.props.activeNoteIndex === index}
                 onClick={this.onNoteSelect}
-                onDelete={this.onNoteDelete}/>
+                onDelete={this.onNoteDelete} />
             ))}
           </List>
         </Scrollbars>

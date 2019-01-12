@@ -9,8 +9,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import Styles from './style'
 
 // UI wrappers.
-import { withStyles } from '@material-ui/core/styles'
-import { withTheme } from '@material-ui/core/styles'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import { ACTIONS } from '../../constants/actions'
 import NoteList from '../noteList'
@@ -36,7 +35,7 @@ class NotesPanel extends Component {
     const { classes } = this.props
     return (
       <div className={classes.root}>
-         <AppBar position='static' color='default'>
+        <AppBar position='static' color='default'>
           <Toolbar variant='dense' className={classes.toolbar}>
             <IconButton
               color='primary'

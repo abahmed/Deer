@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { withNamespaces } from 'react-i18next'
 import {
   fetchAllNotes
 } from '../../actions/note'
@@ -17,6 +16,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withNamespaces()
+  connect(mapStateToProps, mapDispatchToProps)
 )(Home)
