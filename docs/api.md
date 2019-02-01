@@ -46,6 +46,7 @@ it as a thunk that blocks until the condition is met. Example:</p>
     * [~getDefaultLanguage()](#module_Electron API..getDefaultLanguage)
     * [~setDefaultLanguage()](#module_Electron API..setDefaultLanguage)
     * [~openExternalLink()](#module_Electron API..openExternalLink)
+    * [~getDb()](#module_Electron API..getDb)
 
 <a name="module_Electron API..checkRedirectToWelcomePage"></a>
 
@@ -78,6 +79,12 @@ called to save user's language preference by providing defaultLanguage.
 <a name="module_Electron API..openExternalLink"></a>
 
 ### Electron API~openExternalLink()
+called to ask main process to open a url in browser.
+
+**Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
+<a name="module_Electron API..getDb"></a>
+
+### Electron API~getDb()
 called to ask main process to open a url in browser.
 
 **Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  

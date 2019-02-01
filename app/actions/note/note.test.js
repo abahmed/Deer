@@ -1,8 +1,8 @@
 import configureStore from 'redux-mock-store'
 
 // Actions to be tested
-import * as noteActions from './note'
-import { NOTE_STATUS } from '../constants/noteStatus'
+import * as noteActions from './index'
+import { NOTE_STATUS } from '../../constants/noteStatus'
 
 const mockStore = configureStore()
 const store = mockStore()

@@ -53,11 +53,19 @@ const openExternalLink = function (url) {
   electron.shell.openExternal(url)
 }
 
+/**
+ * called to ask main process to open a url in browser.
+ */
+const getDb = function () {
+  electron.remote.getGlobal('db')
+}
+
 // export the functions defined here
 module.exports = {
   checkRedirectToWelcomePage,
   setNotFirstTimeFlag,
   getDefaultLanguage,
   setDefaultLanguage,
-  openExternalLink
+  openExternalLink,
+  getDb
 }

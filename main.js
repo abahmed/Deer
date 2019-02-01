@@ -7,11 +7,12 @@ const os = require('os')
 const initLogger = require('./logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
+const sqlDB = require('./db')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
-// Work around by providing electron path,
-// (https://github.com/yan-foto/electron-reload/issues/16)
+  // Work around by providing electron path,
+  // (https://github.com/yan-foto/electron-reload/issues/16)
   require('electron-reload')(__dirname, {
     electron: require(`${__dirname}/node_modules/electron`)
   })
@@ -24,9 +25,12 @@ let win
 // a global reference of the logger object.
 let logger
 
+// a global reference of the database object.
+let db
+
 // global reference for electron store
 // keep all user hidden, app specific options here
-var electronStore = new Store()
+const electronStore = new Store()
 global.electronStore = electronStore
 
 // Create an instance of the app. Returns false if first instance
@@ -109,8 +113,8 @@ function installDevToolsExtensions () {
   const extensions = [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]
   extensions.forEach(extension => {
     installExtension(extension)
-      .then((name) => logger.log(`Added Extension: ${name}`))
-      .catch((err) => logger.log('An error occurred: ', err))
+      .then((name) => logger.info(`Added Extension: ${name}`))
+      .catch((err) => logger.info('An error occurred: ', err))
   })
 
   // Install devtron to debug Electron.
@@ -135,6 +139,10 @@ app.on('ready', () => {
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)
 
+  // Initialize Database
+  db = new sqlDB('Notes')
+  global.db = db
+
   // Installs developer tool extensions for debugging.
   if (isDev) {
     installDevToolsExtensions()
@@ -154,5 +162,9 @@ ipcMain.on('close-confirm', () => {
   if (win !== null) {
     win.destroy()
   }
+
+  // Close database
+  if(db) db.close()
+
   app.quit()
 })
