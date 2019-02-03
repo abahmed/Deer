@@ -8,12 +8,12 @@ Packages which are used during development or which are used to build Deer's bun
 | @babel/plugin-proposal-object-rest-spread | ^7.3.1 | A Babel plugin responsible for transforming rest and spread properties for objects |
 | @babel/preset-env       | ^7.3.1    | A Babel plugin responsible for compiling Javascript ES6 code down to ES5 |
 | @babel/preset-react     | ^7.0.0    | A Babel plugin responsible for compiling JSX down to Javascript |
-| @octokit/rest           | ^16.14.0  | GitHub REST API client for JavaScript |
+| @octokit/rest           | ^16.14.1  | GitHub REST API client for JavaScript |
 | babel-core              | 7.0.0-bridge.0 | Needed for other babel's packages (jest) |
 | babel-loader            | ^8.0.5    | A Webpack loader responsible for taking in the ES6 code and making it understandable |
 | css-loader              | ^2.0.1    | A Webpack loader responsible for collecting CSS from all the css files and put it into a string |
 | devtron                 | ^1.4.0    | An Electron DevTools extension to help inspect, monitor, and debug the app |
-| electron                | ^4.0.3    | Build cross platform desktop apps |
+| electron                | ^4.0.4    | Build cross platform desktop apps |
 | electron-builder        | ^20.38.5  | Package and build a ready for distribution Electron app |
 | electron-devtools-installer | ^2.2.4 | Install DevTool extensions into Electron |
 | electron-reload         | ^1.4.0    | Reload contents of when the source files are changed |

@@ -135,6 +135,8 @@ app.on('second-instance', () => {
 app.on('ready', () => {
   // Initialize logger
   logger = initLogger()
+  global.logger = logger
+
   logger.info(`${appInfo.name}(${appInfo.version}) has started on ` +
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)

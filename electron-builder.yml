@@ -2,6 +2,7 @@ appId: com.electron.Deer
 files:
   - "main.js"
   - "logger.js"
+  - "db.js"
   - "package.json"
   - "build/*"
   - "index.html"

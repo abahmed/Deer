@@ -3,6 +3,8 @@
 <dl>
 <dt><a href="#module_Electron API">Electron API</a></dt>
 <dd></dd>
+<dt><a href="#module_DB">DB</a></dt>
+<dd></dd>
 </dl>
 
 ## Classes
@@ -46,7 +48,8 @@ it as a thunk that blocks until the condition is met. Example:</p>
     * [~getDefaultLanguage()](#module_Electron API..getDefaultLanguage)
     * [~setDefaultLanguage()](#module_Electron API..setDefaultLanguage)
     * [~openExternalLink()](#module_Electron API..openExternalLink)
-    * [~getDb()](#module_Electron API..getDb)
+    * [~getDB()](#module_Electron API..getDB)
+    * [~getLogger()](#module_Electron API..getLogger)
 
 <a name="module_Electron API..checkRedirectToWelcomePage"></a>
 
@@ -82,12 +85,68 @@ called to save user's language preference by providing defaultLanguage.
 called to ask main process to open a url in browser.
 
 **Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
-<a name="module_Electron API..getDb"></a>
+<a name="module_Electron API..getDB"></a>
 
-### Electron API~getDb()
-called to ask main process to open a url in browser.
+### Electron API~getDB()
+called to ask main process to get global object for database.
 
 **Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
+<a name="module_Electron API..getLogger"></a>
+
+### Electron API~getLogger()
+called to ask main process to get global object for logger.
+
+**Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
+<a name="module_DB"></a>
+
+## DB
+
+* [DB](#module_DB)
+    * [~fetchNotesId()](#module_DB..fetchNotesId)
+    * [~addNote(uuid, content)](#module_DB..addNote)
+    * [~getNote(uuid)](#module_DB..getNote)
+    * [~removeNote(uuid)](#module_DB..removeNote)
+
+<a name="module_DB..fetchNotesId"></a>
+
+### DB~fetchNotesId()
+Fetches uuid and title of notes in database.
+
+**Kind**: inner method of [<code>DB</code>](#module_DB)  
+<a name="module_DB..addNote"></a>
+
+### DB~addNote(uuid, content)
+Adds a new note to database with uuid and content
+
+**Kind**: inner method of [<code>DB</code>](#module_DB)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uuid | <code>string</code> | The unique id of the note that will be added |
+| content | <code>string</code> | Content of note that will be added |
+
+<a name="module_DB..getNote"></a>
+
+### DB~getNote(uuid)
+Fetches a note from database with uuid
+
+**Kind**: inner method of [<code>DB</code>](#module_DB)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uuid | <code>string</code> | The unique id of the note |
+
+<a name="module_DB..removeNote"></a>
+
+### DB~removeNote(uuid)
+Removes a note from database with uuid
+
+**Kind**: inner method of [<code>DB</code>](#module_DB)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uuid | <code>string</code> | The unique id of the note |
+
 <a name="Welcome"></a>
 
 ## Welcome
