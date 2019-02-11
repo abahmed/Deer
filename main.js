@@ -7,7 +7,6 @@ const os = require('os')
 const initLogger = require('./logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
-const sqlDB = require('./db')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -24,9 +23,6 @@ let win
 
 // a global reference of the logger object.
 let logger
-
-// a global reference of the database object.
-let db
 
 // global reference for electron store
 // keep all user hidden, app specific options here
@@ -141,10 +137,6 @@ app.on('ready', () => {
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)
 
-  // Initialize Database
-  db = new sqlDB('Notes')
-  global.db = db
-
   // Installs developer tool extensions for debugging.
   if (isDev) {
     installDevToolsExtensions()
@@ -164,9 +156,6 @@ ipcMain.on('close-confirm', () => {
   if (win !== null) {
     win.destroy()
   }
-
-  // Close database
-  if(db) db.close()
 
   app.quit()
 })

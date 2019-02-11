@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 import { addNewNote, setActiveNoteIndex } from '../../actions/note'
 import NotesPanel from './notesPanel'
@@ -15,5 +15,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withNamespaces()
+  withTranslation()
 )(NotesPanel)

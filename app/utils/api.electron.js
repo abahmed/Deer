@@ -54,13 +54,6 @@ const openExternalLink = function (url) {
 }
 
 /**
- * called to ask main process to get global object for database.
- */
-const getDB = function () {
-  return electron.remote.getGlobal('db')
-}
-
-/**
  * called to ask main process to get global object for logger.
  */
 const getLogger = function () {
@@ -74,6 +67,5 @@ module.exports = {
   getDefaultLanguage,
   setDefaultLanguage,
   openExternalLink,
-  getDB,
   getLogger
 }

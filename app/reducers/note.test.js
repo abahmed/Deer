@@ -2,7 +2,7 @@ import noteReducer from './note'
 import { ACTIONS } from '../constants/actions'
 import { NOTE_STATUS } from '../constants/noteStatus'
 
-jest.mock('../../__mocks__/uuid/v4')
+jest.mock('../utils/api.electron')
 
 describe('INITIAL_STATE', () => {
   test('is correct', () => {

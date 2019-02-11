@@ -1,8 +1,9 @@
 import { ACTIONS } from '../constants/actions'
 import { SETTINGS_STATUS } from '../constants/settingsStatus'
-import logger from 'electron-log'
 import i18n from '../i18n'
-import { setDefaultLanguage } from '../utils/api.electron'
+import { setDefaultLanguage, getLogger } from '../utils/api.electron'
+
+const logger = getLogger()
 
 const INITIAL_STATE = {
   settingsStatus: SETTINGS_STATUS.READY

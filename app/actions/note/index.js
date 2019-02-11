@@ -2,7 +2,10 @@ import { createAction } from 'redux-actions'
 import { ACTIONS } from '../../constants/actions'
 import { NOTE_STATUS } from '../../constants/noteStatus'
 import { addNote, fetchNotes, getNote, removeNote } from '../../utils/db'
-import logger from 'electron-log'
+import { getLogger } from '../../utils/api.electron'
+
+const logger = getLogger()
+
 const services = { WAIT_UNTIL: require('../../middlewares/waitService').NAME }
 
 // Used for adding a new note.

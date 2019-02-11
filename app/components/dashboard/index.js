@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 import { addNewNote } from '../../actions/note'
 import Dashboard from './dashboard'
@@ -14,6 +14,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withNamespaces(),
+  withTranslation(),
   withRouter
 )(Dashboard)

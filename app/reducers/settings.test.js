@@ -1,4 +1,3 @@
-
 import settingsReducer from './settings'
 import { ACTIONS } from '../constants/actions'
 
