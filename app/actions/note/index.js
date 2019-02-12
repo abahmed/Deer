@@ -2,9 +2,7 @@ import { createAction } from 'redux-actions'
 import { ACTIONS } from '../../constants/actions'
 import { NOTE_STATUS } from '../../constants/noteStatus'
 import { addNote, fetchNotes, getNote, removeNote } from '../../utils/db'
-import { getLogger } from '../../utils/api.electron'
-
-const logger = getLogger()
+import logger from 'electron-log'
 
 const services = { WAIT_UNTIL: require('../../middlewares/waitService').NAME }
 
@@ -44,7 +42,7 @@ export const fetchAllNotes = () => (dispatch, getState) => {
       dispatch(updateNoteList(result.rows))
     }
   }).catch((err) => {
-    logger.error('Unable to fetch notes ' + err)
+    logger.error('Unable to fetch notes ' + JSON.stringify(err))
   })
 }
 
@@ -54,7 +52,7 @@ const _saveNoteFinished = createAction(ACTIONS.SAVE_NOTE_FINISHED)
 // Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.
 const _noteSaveFailed = (dispatch, err = null) => {
   dispatch(setNoteStatus(NOTE_STATUS.NOTE_SAVE_FAIL))
-  logger.error('Unable to save note ' + err)
+  logger.error('Unable to save note ' + JSON.stringify(err))
 }
 
 // Async method, used for saving note (new or update) to database and updates
@@ -102,7 +100,7 @@ export const fetchNote = () => (dispatch, getState) => {
   } catch (err) {
     if (err) {
       dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_FAIL))
-      logger.error('Unable to get note ' + err)
+      logger.error('Unable to get note ' + JSON.stringify(err))
     }
   }
 }
@@ -123,7 +121,7 @@ export const deleteNote = () => (dispatch, getState) => {
         dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
       }).catch((err) => {
         dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
-        logger.error('Unable to remove note ' + err)
+        logger.error('Unable to remove note ' + JSON.stringify(err))
       })
     }).catch((err) => {
       if (err) {
@@ -134,7 +132,7 @@ export const deleteNote = () => (dispatch, getState) => {
     })
   } catch (err) {
     dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
-    logger.error('Unable to remove note ' + err)
+    logger.error('Unable to remove note ' + JSON.stringify(err))
   }
 }
 

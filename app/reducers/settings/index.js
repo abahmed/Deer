@@ -1,9 +1,8 @@
-import { ACTIONS } from '../constants/actions'
-import { SETTINGS_STATUS } from '../constants/settingsStatus'
-import i18n from '../i18n'
-import { setDefaultLanguage, getLogger } from '../utils/api.electron'
-
-const logger = getLogger()
+import { ACTIONS } from '../../constants/actions'
+import { SETTINGS_STATUS } from '../../constants/settingsStatus'
+import i18n from '../../i18n'
+import { setDefaultLanguage } from '../../utils/api.electron'
+import logger from 'electron-log'
 
 const INITIAL_STATE = {
   settingsStatus: SETTINGS_STATUS.READY
@@ -26,8 +25,8 @@ export default (state = INITIAL_STATE, action) => {
           ...state,
           settingsStatus: SETTINGS_STATUS.SETTINGS_SAVE_SUCCESS
         }
-      } catch (error) {
-        logger.error(error)
+      } catch (err) {
+        logger.error(JSON.stringify(err))
         return {
           ...state,
           settingsStatus: SETTINGS_STATUS.SETTINGS_SAVE_FAIL

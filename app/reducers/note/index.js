@@ -1,9 +1,7 @@
 import uuidv4 from 'uuid/v4'
-import { ACTIONS } from '../constants/actions'
-import { NOTE_STATUS } from '../constants/noteStatus'
-import { getLogger } from '../utils/api.electron'
-
-const logger = getLogger()
+import { ACTIONS } from '../../constants/actions'
+import { NOTE_STATUS } from '../../constants/noteStatus'
+import logger from 'electron-log'
 
 const INITIAL_STATE = {
   activeNoteIndex: ACTIONS.NOT_SELECTED_NOTE,

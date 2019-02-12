@@ -1,8 +1,6 @@
-import noteReducer from './note'
-import { ACTIONS } from '../constants/actions'
-import { NOTE_STATUS } from '../constants/noteStatus'
-
-jest.mock('../utils/api.electron')
+import noteReducer from './index'
+import { ACTIONS } from '../../constants/actions'
+import { NOTE_STATUS } from '../../constants/noteStatus'
 
 describe('INITIAL_STATE', () => {
   test('is correct', () => {

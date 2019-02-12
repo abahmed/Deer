@@ -4,9 +4,9 @@ const url = require('url')
 const isDev = require('electron-is-dev')
 const windowState = require('electron-window-state')
 const os = require('os')
-const initLogger = require('./logger')
 const appInfo = require('./package.json')
 const Store = require('electron-store')
+const logger = require('electron-log')
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
@@ -20,9 +20,6 @@ if (isDev) {
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-
-// a global reference of the logger object.
-let logger
 
 // global reference for electron store
 // keep all user hidden, app specific options here
@@ -110,7 +107,7 @@ function installDevToolsExtensions () {
   extensions.forEach(extension => {
     installExtension(extension)
       .then((name) => logger.info(`Added Extension: ${name}`))
-      .catch((err) => logger.info('An error occurred: ', err))
+      .catch((err) => logger.info('An error occurred: ', JSON.stringify(err)))
   })
 
   // Install devtron to debug Electron.
@@ -129,10 +126,6 @@ app.on('second-instance', () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  // Initialize logger
-  logger = initLogger()
-  global.logger = logger
-
   logger.info(`${appInfo.name}(${appInfo.version}) has started on ` +
               `${os.type()}(${os.release()}) on ${os.platform()}(` +
               `${os.arch()})`)

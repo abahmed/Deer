@@ -48,7 +48,7 @@ Those are dependencies that are essential for software to work.
 | electron-log          | ^3.0.1        | A multi-transport async logging library |
 | electron-store        | ^2.0.0        | Save and load user preferences |
 | electron-window-state | ^5.0.3        | Store and restore window sizes and positions |
-| i18next               | ^15.0.1       | internationalization framework |
+| i18next               | ^15.0.2       | internationalization framework |
 | jss                   | ^9.8.7        | A lib for generating Style Sheets with JavaScript. |
 | jss-rtl               | ^0.2.3        | Enables right-to-left support by flipping every rule |
 | pouchdb-browser       | ^7.0.0        | A pocket-sized database. |
@@ -56,7 +56,7 @@ Those are dependencies that are essential for software to work.
 | react                 | ^16.8.1       | A JavaScript library for building user interfaces |
 | react-custom-scrollbars | ^4.2.1      | React scrollbars component |
 | react-dom             | ^16.8.1       | React package for working with the DOM |
-| react-i18next         | ^10.0.4       | Internationalization for react |
+| react-i18next         | ^10.0.5       | Internationalization for react |
 | react-jss             | ^8.6.1        | JSS integration with React |
 | react-quill           | ^1.3.3        | The Quill rich-text editor as a React component |
 | react-redux           | ^6.0.0        | React bindings for Redux |

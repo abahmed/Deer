@@ -53,19 +53,11 @@ const openExternalLink = function (url) {
   electron.shell.openExternal(url)
 }
 
-/**
- * called to ask main process to get global object for logger.
- */
-const getLogger = function () {
-  return electron.remote.getGlobal('logger')
-}
-
 // export the functions defined here
 module.exports = {
   checkRedirectToWelcomePage,
   setNotFirstTimeFlag,
   getDefaultLanguage,
   setDefaultLanguage,
-  openExternalLink,
-  getLogger
+  openExternalLink
 }
