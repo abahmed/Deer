@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import ListItem from '@material-ui/core/ListItem'
@@ -11,7 +11,45 @@ import Styles from './style'
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
-class NoteListItem extends Component {
+/**
+ * NoteListItem Component
+ */
+class NoteListItem extends React.Component {
+  static propTypes = {
+    /**
+     * id of current item
+     */
+    id: PropTypes.number.isRequired,
+    /**
+     * text will be shown in this item
+     */
+    text: PropTypes.string.isRequired,
+    /**
+     * is current item selected or not
+     */
+    selected: PropTypes.bool.isRequired,
+    /**
+     * callback called when user clicks on this item
+     */
+    onClick: PropTypes.func.isRequired,
+    /**
+     * callback called when user clicks on delete button
+     */
+    onDelete: PropTypes.func.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
@@ -19,14 +57,23 @@ class NoteListItem extends Component {
     this.onDeleteClick = this.onDeleteClick.bind(this)
   }
 
+  /**
+   * Called when user clicks on this item
+   */
   onClick () {
     this.props.onClick(this.props.id)
   }
 
+  /**
+   * Called when user clicks on delete button
+   */
   onDeleteClick () {
     this.props.onDelete()
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes } = this.props
     const text = this.props.text || 'Empty note'
@@ -58,15 +105,5 @@ class NoteListItem extends Component {
       </ListItem>
     )
   }
-}
-
-NoteListItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(NoteListItem))

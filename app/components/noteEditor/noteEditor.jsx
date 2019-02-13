@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import Grow from '@material-ui/core/Grow'
@@ -11,7 +11,45 @@ import ReactQuill from 'react-quill'
 
 import 'react-quill/dist/quill.snow.css'
 
-class NoteEditor extends Component {
+/**
+ * NoteEditor Component
+ */
+class NoteEditor extends React.Component {
+  static propTypes = {
+    /**
+     * save changes for current note
+     */
+    saveNote: PropTypes.func.isRequired,
+    /**
+     * content of active note
+     */
+    activeNoteContent: PropTypes.string.isRequired,
+    /**
+     * update current note content
+     */
+    updateActiveNoteContent: PropTypes.func.isRequired,
+    /**
+     * update current note title
+     */
+    updateNoteTitle: PropTypes.func.isRequired,
+    /**
+     * gets current translation
+     */
+    t: PropTypes.func.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
@@ -45,6 +83,9 @@ class NoteEditor extends Component {
     this.saveTimer = null
   }
 
+  /**
+   * Called when there is a change in content of current note
+   */
   handleChange (content, delta, source, editor) {
     this.props.updateActiveNoteContent(content)
 
@@ -68,10 +109,16 @@ class NoteEditor extends Component {
     }, 750)
   }
 
+  /**
+   * called before un-mounting component.
+   */
   componentWillUnmount () {
     clearTimeout(this.saveTimer)
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes, t } = this.props
     return (
@@ -90,15 +137,5 @@ class NoteEditor extends Component {
       </Grow>
     )
   }
-}
-
-NoteEditor.propTypes = {
-  saveNote: PropTypes.func.isRequired,
-  activeNoteContent: PropTypes.string.isRequired,
-  updateActiveNoteContent: PropTypes.func.isRequired,
-  updateNoteTitle: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(NoteEditor))

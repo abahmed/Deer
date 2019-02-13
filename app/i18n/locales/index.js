@@ -1,4 +1,6 @@
-// Supported Languages.
+/** @module locales */
+
+/** Supported Languages. */
 export const SUPPORTED_LANGS = [
   {
     language: 'English',

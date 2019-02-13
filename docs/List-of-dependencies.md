@@ -5,6 +5,7 @@ Packages which are used during development or which are used to build Deer's bun
 |           Name          |  Version  |    Usage   |
 | ----------------------- | --------- | ---------- |
 | @babel/core             | ^7.2.2   | Needed for other babel's packages |
+| @babel/plugin-proposal-class-properties | ^7.3.0 | A Babel plugin responsible for transforming class properties for objects |
 | @babel/plugin-proposal-object-rest-spread | ^7.3.2 | A Babel plugin responsible for transforming rest and spread properties for objects |
 | @babel/preset-env       | ^7.3.1    | A Babel plugin responsible for compiling Javascript ES6 code down to ES5 |
 | @babel/preset-react     | ^7.0.0    | A Babel plugin responsible for compiling JSX down to Javascript |
@@ -48,11 +49,11 @@ Those are dependencies that are essential for software to work.
 | electron-log          | ^3.0.1        | A multi-transport async logging library |
 | electron-store        | ^2.0.0        | Save and load user preferences |
 | electron-window-state | ^5.0.3        | Store and restore window sizes and positions |
-| i18next               | ^15.0.2       | internationalization framework |
+| i18next               | ^15.0.3       | internationalization framework |
 | jss                   | ^9.8.7        | A lib for generating Style Sheets with JavaScript. |
 | jss-rtl               | ^0.2.3        | Enables right-to-left support by flipping every rule |
 | pouchdb-browser       | ^7.0.0        | A pocket-sized database. |
-| prop-types            | ^15.7.1       | A Runtime type checking for React props |
+| prop-types            | ^15.7.2       | A Runtime type checking for React props |
 | react                 | ^16.8.1       | A JavaScript library for building user interfaces |
 | react-custom-scrollbars | ^4.2.1      | React scrollbars component |
 | react-dom             | ^16.8.1       | React package for working with the DOM |

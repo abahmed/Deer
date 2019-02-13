@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import AppBar from '@material-ui/core/AppBar'
@@ -14,7 +14,33 @@ import { withStyles, withTheme } from '@material-ui/core/styles'
 import { ACTIONS } from '../../constants/actions'
 import NoteList from '../noteList'
 
-class NotesPanel extends Component {
+/**
+ * NotesPanel Component
+ */
+class NotesPanel extends React.Component {
+  static propTypes = {
+    /**
+     * adds a new note
+     */
+    addNewNote: PropTypes.func.isRequired,
+    /**
+     * called when user selects a note
+     */
+    setActiveNoteIndex: PropTypes.func.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
@@ -22,15 +48,24 @@ class NotesPanel extends Component {
     this.onClickNewNote = this.onClickNewNote.bind(this)
   }
 
-  // Called when users clicks on new note button.
+  /**
+   * Called when users clicks on new note button.
+   */
   onClickNewNote () {
     this.props.addNewNote()
   }
 
+  /**
+   * Called when users clicks on view dashboard button.
+   */
   viewDashboard () {
+    // deselects selected note.
     this.props.setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE)
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes } = this.props
     return (
@@ -53,12 +88,5 @@ class NotesPanel extends Component {
       </div>
     )
   }
-}
-
-NotesPanel.propTypes = {
-  addNewNote: PropTypes.func.isRequired,
-  setActiveNoteIndex: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(NotesPanel))

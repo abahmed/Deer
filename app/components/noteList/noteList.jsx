@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Scrollbars } from 'react-custom-scrollbars'
 
@@ -10,7 +10,49 @@ import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import NoteListItem from '../noteListItem'
 
-class NoteList extends Component {
+/**
+ * NoteList Component
+ */
+class NoteList extends React.Component {
+  static propTypes = {
+    /**
+     * index of current selected note
+     */
+    activeNoteIndex: PropTypes.number.isRequired,
+    /**
+     * array of notes
+     */
+    notes: PropTypes.array.isRequired,
+    /**
+     * fetches notes from database into notes array
+     */
+    fetchAllNotes: PropTypes.func.isRequired,
+    /**
+     * fetch a note with index
+     */
+    fetchNote: PropTypes.func.isRequired,
+    /**
+     * selects note with index
+     */
+    selectNote: PropTypes.func.isRequired,
+    /**
+     * deletes selected note
+     */
+    deleteNote: PropTypes.func.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
     this.state = {
@@ -21,13 +63,23 @@ class NoteList extends Component {
     this.onNoteDelete = this.onNoteDelete.bind(this)
   }
 
+  /**
+   * Checks if active note index exists or not
+   * @return {boolean}
+   */
   checkIfItemExists () {
     const currentIndex = this.props.activeNoteIndex
 
-    // WORKAROUND: Unsaved item is unecessary added into notes list - checking by empty revision
-    return (currentIndex >= 0 && this.props.notes[currentIndex] && this.props.notes[currentIndex]['rev'])
+    // WORKAROUND: Unsaved item is unecessary added into notes list
+    // checking by empty revision.
+    return (currentIndex >= 0 &&
+            this.props.notes[currentIndex] &&
+            this.props.notes[currentIndex]['rev'])
   }
 
+  /**
+   * Called after mounting component.
+   */
   componentDidMount () {
     const currentIndex = this.props.activeNoteIndex
     if (this.checkIfItemExists()) {
@@ -35,6 +87,9 @@ class NoteList extends Component {
     }
   }
 
+  /**
+   * Called when user selects a note
+   */
   onNoteSelect (noteIndex = -1) {
     // Do nothing as it's already selected.
     if (this.props.activeNoteIndex === noteIndex) { return }
@@ -43,10 +98,16 @@ class NoteList extends Component {
     this.props.selectNote(noteIndex)
   }
 
+  /**
+   * Called when user clicks for deleting selected note
+   */
   onNoteDelete () {
     this.props.deleteNote()
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes } = this.props
     return (
@@ -67,16 +128,5 @@ class NoteList extends Component {
       </div>
     )
   }
-}
-
-NoteList.propTypes = {
-  activeNoteIndex: PropTypes.number.isRequired,
-  notes: PropTypes.array.isRequired,
-  fetchAllNotes: PropTypes.func.isRequired,
-  fetchNote: PropTypes.func.isRequired,
-  selectNote: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(NoteList))

@@ -1,3 +1,4 @@
+/** @module i18n */
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import { getDefaultLanguage } from '../utils/api.electron'
@@ -15,4 +16,6 @@ i18n.use(initReactI18next).init({
   debug: isDev,
   resources: resources
 })
+
+/** i18next after initializing it with supported translations. */
 export default i18n

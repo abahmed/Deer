@@ -3,6 +3,9 @@ import Welcome from '../components/welcome'
 import About from '../components/about'
 import Settings from '../components/settings'
 
+/**
+ * Declare routes for components.
+ */
 const routes = [
   {
     path: '/',

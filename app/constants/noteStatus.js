@@ -1,3 +1,4 @@
+/** Supported NOTE STATUS. */
 export const NOTE_STATUS = {
   NO_OPERATION: 'NO_OPERATION',
   SAVING_NOTE: 'SAVING_NOTE',

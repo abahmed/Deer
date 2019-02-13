@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import os from 'os'
 
@@ -15,7 +15,33 @@ import { withStyles, withTheme } from '@material-ui/core/styles'
 import packageJson from '../../../package.json'
 import { openExternalLink } from '../../utils/api.electron'
 
-class About extends Component {
+/**
+ * About Component
+ */
+class About extends React.Component {
+  static propTypes = {
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired,
+    /**
+     * gets current translation
+     */
+    t: PropTypes.func.isRequired,
+    /**
+     * used for navigation
+     */
+    history: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
@@ -24,21 +50,30 @@ class About extends Component {
     this.onClickHome = this.onClickHome.bind(this)
   }
 
-  // Redirects to Main component.
+  /**
+   * Redirects to Main component.
+   */
   onClickHome () {
     this.props.history.push('/')
   }
 
-  // Open link for reporting issues in browser.
+  /**
+   * Open link for reporting issues in browser.
+   */
   openIssuesLink () {
     openExternalLink(packageJson.bugs.url)
   }
 
-  // Open link for the app in browser.
+  /**
+   * Open link for the app in browser.
+   */
   openAppLink () {
     openExternalLink(packageJson.repository.url)
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes, t } = this.props
     return (
@@ -87,12 +122,5 @@ class About extends Component {
       </Slide>
     )
   }
-}
-
-About.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(About))
