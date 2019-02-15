@@ -94,7 +94,6 @@ class NoteEditor extends React.Component {
     const newTitle =
       editor.getText(0, 40).trim().split('\u000A')[0].substring(0, 40)
 
-    // this.setState(newState)
     if (newTitle !== this.title) {
       this.props.updateNoteTitle(newTitle)
       this.title = newTitle

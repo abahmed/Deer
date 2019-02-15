@@ -51,6 +51,7 @@ class PopoverIcon extends React.Component {
    * Called when user hovers on component to show popover
    */
   handlePopoverOpen (event) {
+    if (!event || !event.currentTarget) return
     this.setState({ anchorEl: event.currentTarget })
   }
 

@@ -19,7 +19,7 @@ describe('<Welcome />', () => {
   })
 
   describe('props', () => {
-    test('state', () => {
+    test('fadeIn', () => {
       expect(welcomeObj.state.fadeIn).toEqual(true)
     })
     test('langIndex', () => {

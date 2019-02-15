@@ -213,6 +213,43 @@
 ## Constants
 
 <dl>
+<dt><a href="#addNewNote">addNewNote</a></dt>
+<dd><p>Used for adding a new note.</p>
+</dd>
+<dt><a href="#updateNoteList">updateNoteList</a></dt>
+<dd><p>Used for updating noteList with fetched notes from database.</p>
+</dd>
+<dt><a href="#setActiveNoteIndex">setActiveNoteIndex</a></dt>
+<dd><p>Used for setting the index of selected note.</p>
+</dd>
+<dt><a href="#updateNoteTitle">updateNoteTitle</a></dt>
+<dd><p>Used for updating title of the active note.</p>
+</dd>
+<dt><a href="#updateActiveNoteContent">updateActiveNoteContent</a></dt>
+<dd><p>Used for updating editor&#39;s state of the active note.</p>
+</dd>
+<dt><a href="#updateNoteRev">updateNoteRev</a></dt>
+<dd><p>Used for updating rev of the active note.</p>
+</dd>
+<dt><a href="#setNoteStatus">setNoteStatus</a></dt>
+<dd><p>Used for updating status of the active note.</p>
+</dd>
+<dt><a href="#loadNoteContent">loadNoteContent</a></dt>
+<dd><p>Used for updating status of the active note.</p>
+</dd>
+<dt><a href="#deleteNoteFromList">deleteNoteFromList</a></dt>
+<dd><p>Used for deleting a note from noteList.</p>
+</dd>
+<dt><a href="#_saveNoteFinished">_saveNoteFinished</a></dt>
+<dd><p>Helper method, used for signaling that saveNote has finidhed running</p>
+</dd>
+<dt><a href="#saveSettings">saveSettings</a></dt>
+<dd><p>Used for saving and applying new settings.</p>
+</dd>
+<dt><a href="#setReadyStatus">setReadyStatus</a></dt>
+<dd><p>Used for settings status to Ready (usually, used when component is
+unmounted).</p>
+</dd>
 <dt><a href="#ACTIONS">ACTIONS</a></dt>
 <dd><p>Supported ACTIONS.</p>
 </dd>
@@ -257,6 +294,27 @@ it as a thunk that blocks until the condition is met. Example:</p>
 ## Functions
 
 <dl>
+<dt><a href="#fetchAllNotes">fetchAllNotes()</a></dt>
+<dd><p>Async method, Used for fetching all notes from database.</p>
+</dd>
+<dt><a href="#_noteSaveFailed">_noteSaveFailed()</a></dt>
+<dd><p>Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.</p>
+</dd>
+<dt><a href="#saveNote">saveNote()</a></dt>
+<dd><p>Async method, used for saving note (new or update) to database and updates
+noteStatus.</p>
+</dd>
+<dt><a href="#fetchNote">fetchNote()</a></dt>
+<dd><p>Async method, used for getting active note content from database and
+loads it.</p>
+</dd>
+<dt><a href="#deleteNote">deleteNote()</a></dt>
+<dd><p>Async method, used for removing active note from database.</p>
+</dd>
+<dt><a href="#selectNote">selectNote(selectedIndex)</a></dt>
+<dd><p>Async method, used for switching between notes and prompting save modal
+beforehand if needed.</p>
+</dd>
 <dt><a href="#renderApp">renderApp()</a></dt>
 <dd><p>Renders Apps with proper direction</p>
 </dd>
@@ -1174,6 +1232,79 @@ styles for this component
 theme used generally in App
 
 **Kind**: global variable  
+<a name="addNewNote"></a>
+
+## addNewNote
+Used for adding a new note.
+
+**Kind**: global constant  
+<a name="updateNoteList"></a>
+
+## updateNoteList
+Used for updating noteList with fetched notes from database.
+
+**Kind**: global constant  
+<a name="setActiveNoteIndex"></a>
+
+## setActiveNoteIndex
+Used for setting the index of selected note.
+
+**Kind**: global constant  
+<a name="updateNoteTitle"></a>
+
+## updateNoteTitle
+Used for updating title of the active note.
+
+**Kind**: global constant  
+<a name="updateActiveNoteContent"></a>
+
+## updateActiveNoteContent
+Used for updating editor's state of the active note.
+
+**Kind**: global constant  
+<a name="updateNoteRev"></a>
+
+## updateNoteRev
+Used for updating rev of the active note.
+
+**Kind**: global constant  
+<a name="setNoteStatus"></a>
+
+## setNoteStatus
+Used for updating status of the active note.
+
+**Kind**: global constant  
+<a name="loadNoteContent"></a>
+
+## loadNoteContent
+Used for updating status of the active note.
+
+**Kind**: global constant  
+<a name="deleteNoteFromList"></a>
+
+## deleteNoteFromList
+Used for deleting a note from noteList.
+
+**Kind**: global constant  
+<a name="_saveNoteFinished"></a>
+
+## \_saveNoteFinished
+Helper method, used for signaling that saveNote has finidhed running
+
+**Kind**: global constant  
+<a name="saveSettings"></a>
+
+## saveSettings
+Used for saving and applying new settings.
+
+**Kind**: global constant  
+<a name="setReadyStatus"></a>
+
+## setReadyStatus
+Used for settings status to Ready (usually, used when component is
+unmounted).
+
+**Kind**: global constant  
 <a name="ACTIONS"></a>
 
 ## ACTIONS
@@ -1239,6 +1370,50 @@ const services = { WAIT_UNTIL: require('wait-service').NAME };
 Declare routes for components.
 
 **Kind**: global constant  
+<a name="fetchAllNotes"></a>
+
+## fetchAllNotes()
+Async method, Used for fetching all notes from database.
+
+**Kind**: global function  
+<a name="_noteSaveFailed"></a>
+
+## \_noteSaveFailed()
+Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.
+
+**Kind**: global function  
+<a name="saveNote"></a>
+
+## saveNote()
+Async method, used for saving note (new or update) to database and updates
+noteStatus.
+
+**Kind**: global function  
+<a name="fetchNote"></a>
+
+## fetchNote()
+Async method, used for getting active note content from database and
+loads it.
+
+**Kind**: global function  
+<a name="deleteNote"></a>
+
+## deleteNote()
+Async method, used for removing active note from database.
+
+**Kind**: global function  
+<a name="selectNote"></a>
+
+## selectNote(selectedIndex)
+Async method, used for switching between notes and prompting save modal
+beforehand if needed.
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| selectedIndex | <code>integer</code> | 
+
 <a name="renderApp"></a>
 
 ## renderApp()
