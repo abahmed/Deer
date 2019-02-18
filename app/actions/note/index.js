@@ -42,7 +42,7 @@ const fetchAllNotes = () => (dispatch, getState) => {
       dispatch(updateNoteList(result.rows))
     }
   }).catch((err) => {
-    logger.error('Unable to fetch notes ' + JSON.stringify(err))
+    logger.error('Unable to fetch notes: ' + JSON.stringify(err))
   })
 }
 

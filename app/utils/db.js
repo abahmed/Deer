@@ -1,19 +1,24 @@
 /** @module db */
 const PouchDB = require('pouchdb-browser').default
+const uuidv4 = require('uuid/v4')
 
 // Initialize Schema
 const notesDB = new PouchDB('notes')
 
 /** Fetches all notes from database */
 const fetchNotes = function () {
-  return notesDB.allDocs({
-    include_docs: true,
-    attachments: true
-  })
+  return notesDB.allDocs({ include_docs: true })
 }
 
 /** Adds / Updates a note to database. */
-const addNote = function (doc) {
+const addNote = function (id = uuidv4(), title, content,
+  modified = Date.now()) {
+  const doc = {
+    _id: id,
+    title: title,
+    content: content,
+    modified: modified
+  }
   return notesDB.put(doc)
 }
 
