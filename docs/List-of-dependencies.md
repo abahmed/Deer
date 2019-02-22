@@ -6,7 +6,6 @@ Packages which are used during development or which are used to build Deer's bun
 | ----------------------- | --------- | ---------- |
 | @babel/core             | ^7.3.3    | Needed for other babel's packages |
 | @babel/plugin-proposal-class-properties | ^7.3.3 | A Babel plugin responsible for transforming class properties for objects |
-| @babel/plugin-proposal-object-rest-spread | ^7.3.2 | A Babel plugin responsible for transforming rest and spread properties for objects |
 | @babel/preset-env       | ^7.3.1    | A Babel plugin responsible for compiling Javascript ES6 code down to ES5 |
 | @babel/preset-react     | ^7.0.0    | A Babel plugin responsible for compiling JSX down to Javascript |
 | @octokit/rest           | ^16.16.0  | GitHub REST API client for JavaScript |
