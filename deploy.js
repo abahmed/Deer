@@ -227,7 +227,7 @@ const assets = [
   './dist/*.dmg',
   './dist/*.exe'
 ]
-/*
+
 const repoSlug = process.env.TRAVIS_REPO_SLUG
 if (repoSlug !== 'abahmed/Deer') {
   console.log('Deployment is only done for abahmed/Deer')
@@ -238,20 +238,20 @@ const isPullRequest = process.env.TRAVIS_PULL_REQUEST !== 'false'
 if (isPullRequest) {
   console.log('Deployment is not done for Pull Requests')
   process.exit()
-} */
+}
 
 const branch = process.env.TRAVIS_BRANCH
-// if (branch === 'develop') {
-NightlyDeploy.init({
-  owner: 'abahmed',
-  repo: 'Deer',
-  branch: branch,
-  tag: 'nightly',
-  assets: getAssetNames(assets),
-  dir: './dist',
-  token: process.env.GH_TOKEN
-})
-// } else {
-// console.log('No deployments for ' + branch)
-//  process.exit()
-// }
+if (branch === 'develop') {
+  NightlyDeploy.init({
+    owner: 'abahmed',
+    repo: 'Deer',
+    branch: branch,
+    tag: 'nightly',
+    assets: getAssetNames(assets),
+    dir: './dist',
+    token: process.env.GH_TOKEN
+  })
+} else {
+  console.log('No deployments for ' + branch)
+  process.exit()
+}
