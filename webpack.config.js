@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+const { spawn } = require('child_process')
 
 // Common configuration.
 const commonConfig = {
@@ -43,7 +44,16 @@ const developmentConfig = {
   devServer: {
     publicPath: 'http://localhost:8080/build',
     hot: true,
-    compress: true
+    compress: true,
+    after () {
+      spawn(
+        'electron',
+        ['.'],
+        { shell: true, env: process.env, stdio: 'inherit' }
+      )
+        .on('close', code => process.exit(0))
+        .on('error', spawnError => console.error(spawnError))
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

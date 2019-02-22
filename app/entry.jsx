@@ -1,3 +1,4 @@
+/** entry for the app */
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -21,15 +22,16 @@ import { theme } from './assets/theme'
 
 import './assets/styles/index.css'
 
-// Configure JSS
+/** Configure JSS */
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
-// Custom Material-UI class name generator.
+/** Custom Material-UI class name generator. */
 const generateClassName = createGenerateClassName()
 
-// Configure redux store
+/** Configure redux store */
 const store = configureStore()
 
+/** Renders Apps with proper direction */
 function renderApp () {
   const app = document.getElementById('app')
 
@@ -66,11 +68,12 @@ function renderApp () {
 
 renderApp()
 
-// Re-render app to update localization direction.
+/** Re-render app to update localization direction. */
 i18n.on('languageChanged', function (lng) {
   renderApp()
 })
 
+/** Do checks before closing app to avoid losing data */
 ipcRenderer.on('close-main-window', (e) => {
   // TODO: Add checks before closing app (e.g. save current work).
   ipcRenderer.send('close-confirm')

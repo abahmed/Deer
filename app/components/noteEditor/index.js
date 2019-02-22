@@ -1,24 +1,32 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import NoteEditor from './noteEditor'
 import {
-  updateNoteTitle,
-  updateActiveNoteContent,
-  saveNote
+  editSelectedNote,
+  saveSelectedNote
 } from '../../actions/note'
 
-const mapStateToProps = state => ({
-  activeNoteContent: state.noteReducer.activeNoteContent
-})
+const mapStateToProps = state => {
+  const selectedNoteID = state.noteReducer.get('selectedNoteID')
+  const selectedNote = state.noteReducer.get('notes')[selectedNoteID]
+  return {
+    selectedNoteContent: selectedNote.content
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
-  updateActiveNoteContent: (content) => dispatch(updateActiveNoteContent(content)),
-  updateNoteTitle: (content) => dispatch(updateNoteTitle(content)),
-  saveNote: () => dispatch(saveNote())
+  editSelectedNote: (title = null, content, modified) => {
+    dispatch(editSelectedNote({
+      title,
+      content,
+      modified
+    }))
+  },
+  saveSelectedNote: () => dispatch(saveSelectedNote())
 })
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withNamespaces()
+  withTranslation()
 )(NoteEditor)

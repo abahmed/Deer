@@ -7,8 +7,8 @@ import {
 import Home from './home'
 
 const mapStateToProps = state => ({
-  activeNoteIndex: state.noteReducer.activeNoteIndex,
-  notes: state.noteReducer.notes
+  selectedNoteID: state.noteReducer.get('selectedNoteID'),
+  hasNotes: Object.keys(state.noteReducer.get('notes')).length !== 0
 })
 
 const mapDispatchToProps = dispatch => ({

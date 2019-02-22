@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import Grid from '@material-ui/core/Grid'
@@ -13,7 +13,37 @@ import Styles from './style'
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
-class Dashboard extends Component {
+/**
+ * Dashboard Component
+ */
+class Dashboard extends React.Component {
+  static propTypes = {
+    /**
+     * adds a new note
+     */
+    createNote: PropTypes.func.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired,
+    /**
+     * gets current translation
+     */
+    t: PropTypes.func.isRequired,
+    /**
+     * used for navigation
+     */
+    history: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
@@ -22,21 +52,30 @@ class Dashboard extends Component {
     this.onClickAbout = this.onClickAbout.bind(this)
   }
 
-  // Called when users clicks on new note button.
+  /**
+   * Called when users clicks on new note button.
+   */
   onClickNewNote () {
-    this.props.addNewNote()
+    this.props.createNote()
   }
 
-  // Called when users clicks on settings button.
+  /**
+   * Called when users clicks on settings button.
+   */
   onClickSettings () {
     this.props.history.push('/settings')
   }
 
-  // Called when users clicks on about button.
+  /**
+   * Called when users clicks on about button.
+   */
   onClickAbout () {
     this.props.history.push('/about')
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes, t } = this.props
     return (
@@ -67,13 +106,5 @@ class Dashboard extends Component {
       </Fade>
     )
   }
-}
-
-Dashboard.propTypes = {
-  addNewNote: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(Dashboard))

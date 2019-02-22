@@ -65,6 +65,6 @@ cd Deer
 # Install dependencies
 npm install
 
-# Run Deer (in another tab)
+# Run Deer
 npm start
 ```

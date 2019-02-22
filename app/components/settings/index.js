@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 import { saveSettings, setReadyStatus } from '../../actions/settings'
 import Settings from './settings'
 
 const mapStateToProps = state => ({
-  settingsStatus: state.settingsReducer.settingsStatus
+  settingsStatus: state.settingsReducer.get('settingsStatus')
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -16,6 +16,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withNamespaces(),
+  withTranslation(),
   withRouter
 )(Settings)

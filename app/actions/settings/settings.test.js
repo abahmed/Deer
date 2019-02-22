@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store'
 
 // Actions to be tested
-import * as settingsActions from './settings'
+import * as settingsActions from './index'
 
 const mockStore = configureStore()
 const store = mockStore()

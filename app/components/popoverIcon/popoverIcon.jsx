@@ -9,7 +9,33 @@ import Styles from './style'
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
+/**
+ * PopoverIcon Component
+ */
 class PopoverIcon extends React.Component {
+  static propTypes = {
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * icon that will be shown
+     */
+    icon: PropTypes.element.isRequired,
+    /**
+     * shown when user hovers on this component
+     */
+    text: PropTypes.string.isRequired,
+    /**
+     * called when user clicks on this component
+     */
+    callback: PropTypes.func.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
@@ -21,14 +47,24 @@ class PopoverIcon extends React.Component {
     this.handlePopoverClose = this.handlePopoverClose.bind(this)
   }
 
+  /**
+   * Called when user hovers on component to show popover
+   */
   handlePopoverOpen (event) {
+    if (!event || !event.currentTarget) return
     this.setState({ anchorEl: event.currentTarget })
   }
 
+  /**
+   * Called when user hovers on component to hide popover
+   */
   handlePopoverClose () {
     this.setState({ anchorEl: null })
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const { classes } = this.props
     const { anchorEl } = this.state
@@ -66,12 +102,4 @@ class PopoverIcon extends React.Component {
     )
   }
 }
-
-PopoverIcon.propTypes = {
-  classes: PropTypes.object.isRequired,
-  icon: PropTypes.element.isRequired,
-  text: PropTypes.string.isRequired,
-  callback: PropTypes.func.isRequired
-}
-
 export default withTheme()(withStyles(Styles)(PopoverIcon))

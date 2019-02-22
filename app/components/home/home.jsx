@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 
@@ -15,28 +15,67 @@ import NotesPanel from '../notesPanel'
 import Dashboard from '../dashboard'
 import NoteEditor from '../noteEditor'
 
-class Home extends Component {
+/**
+ * Home Component
+ */
+class Home extends React.Component {
+  static propTypes = {
+    /**
+     * ID of current selected note
+     */
+    selectedNoteID: PropTypes.string.isRequired,
+    /**
+     * used to determine if there are notes or not
+     */
+    hasNotes: PropTypes.bool.isRequired,
+    /**
+     * fetches notes from database into notes array
+     */
+    fetchAllNotes: PropTypes.func.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     super()
 
     this.getHomeContent = this.getHomeContent.bind(this)
   }
 
+  /**
+   * Called after mounting component.
+   */
   componentDidMount () {
     // Trigger fetching notes as this component is loaded.
     this.props.fetchAllNotes()
   }
 
+  /**
+   * Decides whether to show NoteEditor or Dashboard component.
+   * @return {element}
+   */
+
   getHomeContent () {
-    const { notes } = this.props
     // Show homeContent when no note is selected.
-    if (this.props.activeNoteIndex >= 0 &&
-    notes[this.props.activeNoteIndex]) {
+    if (this.props.selectedNoteID) {
       return (<NoteEditor />)
     }
     return (<Dashboard />)
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     if (checkRedirectToWelcomePage()) {
       return (
@@ -44,12 +83,12 @@ class Home extends Component {
       )
     }
 
-    const { notes, classes } = this.props
+    const { classes } = this.props
     return (
       <div className={classes.root}>
         <Slide in>
           <Grid container>
-            { notes.length > 0
+            { this.props.hasNotes
               ? <Grid item xs={4}>
                 <Paper className={classes.paper}>
                   <NotesPanel />
@@ -66,13 +105,5 @@ class Home extends Component {
       </div>
     )
   }
-}
-
-Home.propTypes = {
-  activeNoteIndex: PropTypes.number.isRequired,
-  fetchAllNotes: PropTypes.func.isRequired,
-  notes: PropTypes.array.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(Home))

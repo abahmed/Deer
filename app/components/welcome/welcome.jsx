@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI components.
@@ -26,10 +26,19 @@ import {
 
 /**
  * Welcome Component
- * @reactProps {object} classes - styles for this component
- * @reactProps {object} theme - theme used generally in App
  */
-class Welcome extends Component {
+class Welcome extends React.Component {
+  static propTypes = {
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired
+  }
+
   /**
    * this is constructor description.
    * @param {object} props passed to component
@@ -182,10 +191,5 @@ class Welcome extends Component {
       </Grid>
     )
   }
-}
-
-Welcome.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(Welcome))

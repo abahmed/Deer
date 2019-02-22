@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 
@@ -21,7 +21,45 @@ import { getDefaultLanguage } from '../../utils/api.electron'
 import { SETTINGS_STATUS } from '../../constants/settingsStatus'
 import { SUPPORTED_LANGS } from '../../i18n/locales'
 
-class Settings extends Component {
+/**
+ * Settings Component
+ */
+class Settings extends React.Component {
+  static propTypes = {
+    /**
+     * save new settings
+     */
+    saveSettings: PropTypes.func.isRequired,
+    /**
+     * changes status of settings
+     */
+    setReadyStatus: PropTypes.func.isRequired,
+    /**
+     * indictator for current status
+     */
+    settingsStatus: PropTypes.string.isRequired,
+    /**
+     * styles for this component
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * theme used generally in App
+     */
+    theme: PropTypes.object.isRequired,
+    /**
+     * gets current translation
+     */
+    t: PropTypes.func.isRequired,
+    /**
+     * used for navigation after saving
+     */
+    history: PropTypes.object.isRequired
+  }
+
+  /**
+   * this is constructor description.
+   * @param {object} props passed to component
+   */
   constructor (props) {
     // Initialize this using super
     super()
@@ -40,8 +78,11 @@ class Settings extends Component {
     }
   }
 
-  // Returns true if user's settings haven't been changed from it's defaults,
-  // otherwise returns false.
+  /**
+   * Checks if there is a change in settings from its defaults.
+   * @return {boolean} True if user's settings haven't been changed from it's
+   * defaults, otherwise returns false.
+   */
   _isSaveDisabled () {
     for (let setting in this.state) {
       if (this.state[setting] !== this._defaults[setting]) {
@@ -51,14 +92,18 @@ class Settings extends Component {
     return true
   }
 
-  // Called when user changes language.
+  /**
+   * Called when user changes language.
+   */
   onLanguageChange (event) {
     // Local component state used for UI internally, so we don't need to keep
     // it in Redux.
     this.setState({ language: event.target.value })
   }
 
-  // Called when user clicks on save button.
+  /**
+   * Called when user clicks on save button.
+   */
   onSaveSettings () {
     // Saving new Language.
     let newSettings = {}
@@ -71,14 +116,23 @@ class Settings extends Component {
     this.props.saveSettings(newSettings)
   }
 
+  /**
+   * Called when user clicks on cancel button.
+   */
   onCancelClick () {
     this.props.history.push('/')
   }
 
+  /**
+   * called before un-mounting component.
+   */
   componentWillUnmount () {
     this.props.setReadyStatus()
   }
 
+  /**
+   * Rendering method
+   */
   render () {
     const settingsStatus = this.props.settingsStatus
     // New settings have been saved successfully, so redirect to home.
@@ -140,15 +194,5 @@ class Settings extends Component {
       </Slide>
     )
   }
-}
-
-Settings.propTypes = {
-  saveSettings: PropTypes.func.isRequired,
-  setReadyStatus: PropTypes.func.isRequired,
-  settingsStatus: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 }
 export default withTheme()(withStyles(Styles)(Settings))

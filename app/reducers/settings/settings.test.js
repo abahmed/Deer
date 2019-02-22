@@ -1,8 +1,7 @@
+import settingsReducer from './index'
+import { ACTIONS } from '../../constants/actions'
 
-import settingsReducer from './settings'
-import { ACTIONS } from '../constants/actions'
-
-jest.mock('../utils/api.electron')
+jest.mock('../../utils/api.electron')
 
 describe('INITIAL_STATE', () => {
   test('is correct', () => {

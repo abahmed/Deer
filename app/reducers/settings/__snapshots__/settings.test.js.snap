@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`INITIAL_STATE is correct 1`] = `
-Object {
+Immutable.Map {
   "settingsStatus": "READY",
 }
 `;
 
 exports[`SAVE_SETTINGS is correct 1`] = `
-Object {
+Immutable.Map {
   "settingsStatus": "SETTINGS_SAVE_SUCCESS",
 }
 `;
 
 exports[`SET_READY_STATUS is correct 1`] = `
-Object {
+Immutable.Map {
   "settingsStatus": "READY",
 }
 `;

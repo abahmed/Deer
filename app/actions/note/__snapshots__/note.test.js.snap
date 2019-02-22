@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`note_actions addNewNote Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "ADD_NOTE",
+  },
+]
+`;
+
+exports[`note_actions deleteSelectedNote Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "DELETE_SELECTED_NOTE",
+  },
+]
+`;
+
+exports[`note_actions editSelectedNote Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "content": "",
+      "modified": 1550849863632,
+      "title": "",
+    },
+    "type": "EDIT_SELECTED_NOTE",
+  },
+]
+`;
+
+exports[`note_actions setSelectedNoteID Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": "a123",
+    "type": "SET_SELECTED_NOTE_ID",
+  },
+]
+`;
+
+exports[`note_actions updateNotesList Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "NOTES_FETCH_SUCCESS",
+  },
+]
+`;
+
+exports[`note_actions updateSelectedNoteRev Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": "a123",
+    "type": "UPDATE_SELECTED_NOTE_REV",
+  },
+]
+`;
