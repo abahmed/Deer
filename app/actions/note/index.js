@@ -1,190 +1,105 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../../constants/actions'
-import { NOTE_STATUS } from '../../constants/noteStatus'
-import { addNote, fetchNotes, getNote, removeNote } from '../../utils/db'
+import { addNote, fetchNotes, removeNote } from '../../utils/db'
 import logger from 'electron-log'
-
-const services = { WAIT_UNTIL: require('../../middlewares/waitService').NAME }
 
 /** Used for adding a new note. */
 const addNewNote = createAction(ACTIONS.ADD_NOTE)
 
-/** Used for updating noteList with fetched notes from database. */
-const updateNoteList = createAction(ACTIONS.UPDATE_NOTE_LIST)
+/** Used for updating notes with fetched notes from database. */
+const updateNotesList = createAction(ACTIONS.NOTES_FETCH_SUCCESS)
 
 /** Used for setting the index of selected note. */
-const setActiveNoteIndex = createAction(ACTIONS.SET_ACTIVE_NOTE_INDEX)
+const setSelectedNoteID = createAction(ACTIONS.SET_SELECTED_NOTE_ID)
 
-/** Used for updating title of the active note. */
-const updateNoteTitle = createAction(ACTIONS.UPDATE_NOTE_TITLE)
+/** Used for updating title, content and modified values for the selected note. */
+const editSelectedNote = createAction(ACTIONS.EDIT_SELECTED_NOTE)
 
-/** Used for updating editor's state of the active note. */
-const updateActiveNoteContent =
-  createAction(ACTIONS.UPDATE_ACTIVE_NOTE_CONTENT)
-
-/** Used for updating rev of the active note. */
-const updateNoteRev = createAction(ACTIONS.UPDATE_NOTE_REV)
-
-/** Used for updating status of the active note. */
-const setNoteStatus = createAction(ACTIONS.SET_NOTE_STATUS)
-
-/** Used for updating status of the active note. */
-const loadNoteContent = createAction(ACTIONS.LOAD_NOTE_CONTENT)
+/** Used for updating rev of the selected note. */
+const updateSelectedNoteRev = createAction(ACTIONS.UPDATE_SELECTED_NOTE_REV)
 
 /** Used for deleting a note from noteList. */
-const deleteNoteFromList = createAction(ACTIONS.DELETE_NOTE_FROM_LIST)
+const deleteSelectedNote = createAction(ACTIONS.DELETE_SELECTED_NOTE)
 
 /** Async method, Used for fetching all notes from database. */
-const fetchAllNotes = () => (dispatch, getState) => {
+const fetchAllNotes = () => (dispatch) => {
   fetchNotes().then((result) => {
     // Update only if there are notes.
     if (result.total_rows > 0) {
-      dispatch(updateNoteList(result.rows))
+      dispatch(updateNotesList(result.rows))
     }
   }).catch((err) => {
     logger.error('Unable to fetch notes: ' + JSON.stringify(err))
   })
 }
 
-/** Helper method, used for signaling that saveNote has finidhed running */
-const _saveNoteFinished = createAction(ACTIONS.SAVE_NOTE_FINISHED)
-
-/** Helper method, used for setting noteStatus to NOTE_SAVE_FAIL. */
-const _noteSaveFailed = (dispatch, err = null) => {
-  dispatch(setNoteStatus(NOTE_STATUS.NOTE_SAVE_FAIL))
-  logger.error('Unable to save note ' + JSON.stringify(err))
+/**
+ * Async method, used for saving note to database.
+ */
+const createNote = () => (dispatch) => {
+  const modified = Date.now()
+  addNote(undefined, undefined, undefined, modified).then((result) => {
+    if (result.ok) {
+      dispatch(addNewNote({
+        id: result.id,
+        rev: result.rev,
+        title: '',
+        content: '',
+        modified: modified
+      }))
+      dispatch(setSelectedNoteID(result.id))
+    }
+  }).catch((err) => {
+    logger.error('Unable to add new note: ' + JSON.stringify(err))
+  })
 }
 
 /**
- * Async method, used for saving note (new or update) to database and updates
- * noteStatus.
+ * Async method, used for updating note in database.
  */
-const saveNote = () => (dispatch, getState) => {
-  dispatch(setNoteStatus(NOTE_STATUS.SAVING_NOTE))
+const saveSelectedNote = () => (dispatch, getState) => {
   const state = getState().noteReducer
-  const noteIndex = state.activeNoteIndex
-  const doc = {
-    _id: state.notes[noteIndex].id,
-    _rev: state.notes[noteIndex].rev,
-    title: state.notes[noteIndex].title,
-    content: state.activeNoteContent
-  }
-  addNote(doc).then((result) => {
+  const selectedNoteID = state.get('selectedNoteID')
+  const selectedNote = state.get('notes')[selectedNoteID]
+  addNote(
+    selectedNoteID,
+    selectedNote.title,
+    selectedNote.content,
+    selectedNote.modified,
+    selectedNote.rev
+  ).then((result) => {
     if (result.ok) {
       // Update note rev to avoid conflicts while the next time for saving
       // this note.
-      dispatch(updateNoteRev(result.rev))
-
-      dispatch(setNoteStatus(NOTE_STATUS.NOTE_SAVE_SUCCESS))
-    } else {
-      _noteSaveFailed(dispatch)
+      dispatch(updateSelectedNoteRev(result.rev))
     }
-    dispatch(_saveNoteFinished())
-  }).catch((err) => _noteSaveFailed(dispatch, err))
+  }).catch((err) => {
+    logger.error('Unable to update note: ' + JSON.stringify(err))
+  })
 }
 
-/**
- * Async method, used for getting active note content from database and
- * loads it.
- */
-const fetchNote = () => (dispatch, getState) => {
-  setNoteStatus(NOTE_STATUS.LOADING_NOTE)
-  const state = getState().noteReducer
-  const noteIndex = state.activeNoteIndex
-  try {
-    // This is to just get the note from the db and load it's content
-    // if already saved.
-    getNote(state.notes[noteIndex].id).then((result) => {
-      dispatch(loadNoteContent(result.content))
-      dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
-    // Handle those new notes that are not saved yet.
-    }).catch((err) => {
-      if (err) {
-        dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_SUCCESS))
-      }
-    })
-  } catch (err) {
-    if (err) {
-      dispatch(setNoteStatus(NOTE_STATUS.NOTE_LOAD_FAIL))
-      logger.error('Unable to get note ' + JSON.stringify(err))
-    }
-  }
-}
 
 /** Async method, used for removing active note from database. */
-const deleteNote = () => (dispatch, getState) => {
-  setNoteStatus(NOTE_STATUS.DELETING_NOTE)
-
+const removeSelectedNote = () => (dispatch, getState) => {
   const state = getState().noteReducer
-  const noteIndex = state.activeNoteIndex
-  try {
-    // This is done just to make sure it exist before deleting it.
-    getNote(state.notes[noteIndex].id).then(() => {
-      removeNote(state.notes[noteIndex].id,
-        state.notes[noteIndex].rev).then((result) => {
-        dispatch(deleteNoteFromList(result.id))
-        dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
-        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
-      }).catch((err) => {
-        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
-        logger.error('Unable to remove note ' + JSON.stringify(err))
-      })
-    }).catch((err) => {
-      if (err) {
-        dispatch(deleteNoteFromList(state.notes[noteIndex].id))
-        dispatch(setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE))
-        dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_SUCCESS))
-      }
-    })
-  } catch (err) {
-    dispatch(setNoteStatus(NOTE_STATUS.NOTE_DELETE_FAIL))
+  const selectedNoteID = state.get('selectedNoteID')
+  const selectedNote = state.get('notes')[selectedNoteID]
+  removeNote(selectedNoteID, selectedNote.rev).then((result) => {
+    dispatch(deleteSelectedNote())
+  }).catch((err) => {
     logger.error('Unable to remove note ' + JSON.stringify(err))
-  }
-}
-
-/**
- * Async method, used for switching between notes and prompting save modal
- * beforehand if needed.
- * @param {integer} selectedIndex
- */
-const selectNote = (selectedIndex) => (dispatch, getState) => {
-  const state = getState().noteReducer
-  const noteIndex = state.activeNoteIndex
-  const currentNote = state.notes[noteIndex]
-
-  // Prompts modal if current note is not saved
-  if (currentNote && (!currentNote.hasOwnProperty('rev') || !currentNote.rev)) {
-    // SAVE!!!! TODO
-    // Waits for the right time to dispatch next actions
-    dispatch({
-      type: services.WAIT_UNTIL,
-      predicate: action => (action.type === ACTIONS.MODAL_NO_ACTION ||
-                            action.type === ACTIONS.SAVE_NOTE_FINISHED),
-      run: (dispatch, getState, action) => {
-        dispatch(setActiveNoteIndex(selectedIndex))
-        dispatch(fetchNote(selectedIndex))
-      }
-    })
-  } else {
-    // Otherwise just sets activeNoteIndex and fetches the note
-    dispatch(setActiveNoteIndex(selectedIndex))
-    dispatch(fetchNote(selectedIndex))
-  }
+  })
 }
 
 export {
+  updateNotesList,
   addNewNote,
-  updateNoteList,
-  setActiveNoteIndex,
-  updateNoteTitle,
-  updateActiveNoteContent,
-  updateNoteRev,
-  setNoteStatus,
-  loadNoteContent,
-  deleteNoteFromList,
+  setSelectedNoteID,
+  editSelectedNote,
+  updateSelectedNoteRev,
   fetchAllNotes,
-  saveNote,
-  fetchNote,
-  deleteNote,
-  selectNote
+  createNote,
+  saveSelectedNote,
+  deleteSelectedNote,
+  removeSelectedNote
 }

@@ -6,7 +6,7 @@ import { saveSettings, setReadyStatus } from '../../actions/settings'
 import Settings from './settings'
 
 const mapStateToProps = state => ({
-  settingsStatus: state.settingsReducer.settingsStatus
+  settingsStatus: state.settingsReducer.get('settingsStatus')
 })
 
 const mapDispatchToProps = dispatch => ({

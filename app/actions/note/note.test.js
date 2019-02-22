@@ -2,7 +2,6 @@ import configureStore from 'redux-mock-store'
 
 // Actions to be tested
 import * as noteActions from './index'
-import { NOTE_STATUS } from '../../constants/noteStatus'
 
 const mockStore = configureStore()
 const store = mockStore()
@@ -19,58 +18,41 @@ describe('note_actions', () => {
     })
   })
 
-  describe('updateNoteList', () => {
+  describe('updateNotesList', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.updateNoteList())
+      store.dispatch(noteActions.updateNotesList())
       expect(store.getActions()).toMatchSnapshot()
     })
   })
 
-  describe('setActiveNoteIndex', () => {
+  describe('setSelectedNoteID', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.setActiveNoteIndex(3))
+      store.dispatch(noteActions.setSelectedNoteID('a123'))
       expect(store.getActions()).toMatchSnapshot()
     })
   })
 
-  describe('updateNoteTitle', () => {
+  describe('editSelectedNote', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.updateNoteTitle('Hello world'))
+      store.dispatch(noteActions.editSelectedNote({
+        title: '',
+        content: '',
+        modified: 1550849863632
+      }))
       expect(store.getActions()).toMatchSnapshot()
     })
   })
 
-  describe('updateActiveNoteContent', () => {
+  describe('updateSelectedNoteRev', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.updateActiveNoteContent(''))
+      store.dispatch(noteActions.updateSelectedNoteRev('a123'))
       expect(store.getActions()).toMatchSnapshot()
     })
   })
 
-  describe('updateNoteRev', () => {
+  describe('deleteSelectedNote', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.updateNoteRev('a123-a123'))
-      expect(store.getActions()).toMatchSnapshot()
-    })
-  })
-
-  describe('setNoteStatus', () => {
-    test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.setNoteStatus(NOTE_STATUS.SAVING_NOTE))
-      expect(store.getActions()).toMatchSnapshot()
-    })
-  })
-
-  describe('loadNoteContent', () => {
-    test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.loadNoteContent({}))
-      expect(store.getActions()).toMatchSnapshot()
-    })
-  })
-
-  describe('deleteNoteFromList', () => {
-    test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.deleteNoteFromList(3))
+      store.dispatch(noteActions.deleteSelectedNote())
       expect(store.getActions()).toMatchSnapshot()
     })
   })

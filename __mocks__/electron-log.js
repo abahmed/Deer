@@ -1,3 +1,4 @@
 module.exports = {
-  warn: jest.fn()
+  warn: jest.fn(),
+  error: jest.fn()
 }

@@ -11,7 +11,6 @@ import Styles from './style'
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
-import { ACTIONS } from '../../constants/actions'
 import NoteList from '../noteList'
 
 /**
@@ -22,11 +21,11 @@ class NotesPanel extends React.Component {
     /**
      * adds a new note
      */
-    addNewNote: PropTypes.func.isRequired,
+    createNote: PropTypes.func.isRequired,
     /**
-     * called when user selects a note
+     * shows dashboard
      */
-    setActiveNoteIndex: PropTypes.func.isRequired,
+    showDashboard: PropTypes.func.isRequired,
     /**
      * styles for this component
      */
@@ -52,7 +51,7 @@ class NotesPanel extends React.Component {
    * Called when users clicks on new note button.
    */
   onClickNewNote () {
-    this.props.addNewNote()
+    this.props.createNote()
   }
 
   /**
@@ -60,7 +59,7 @@ class NotesPanel extends React.Component {
    */
   viewDashboard () {
     // deselects selected note.
-    this.props.setActiveNoteIndex(ACTIONS.NOT_SELECTED_NOTE)
+    this.props.showDashboard()
   }
 
   /**

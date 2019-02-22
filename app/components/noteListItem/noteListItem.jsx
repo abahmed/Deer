@@ -19,11 +19,11 @@ class NoteListItem extends React.Component {
     /**
      * id of current item
      */
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     /**
      * text will be shown in this item
      */
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     /**
      * is current item selected or not
      */

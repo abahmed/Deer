@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
     /**
      * adds a new note
      */
-    addNewNote: PropTypes.func.isRequired,
+    createNote: PropTypes.func.isRequired,
     /**
      * styles for this component
      */
@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
    * Called when users clicks on new note button.
    */
   onClickNewNote () {
-    this.props.addNewNote()
+    this.props.createNote()
   }
 
   /**

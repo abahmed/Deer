@@ -21,17 +21,17 @@ import NoteEditor from '../noteEditor'
 class Home extends React.Component {
   static propTypes = {
     /**
-     * index of current selected note
+     * ID of current selected note
      */
-    activeNoteIndex: PropTypes.number.isRequired,
+    selectedNoteID: PropTypes.string.isRequired,
+    /**
+     * used to determine if there are notes or not
+     */
+    hasNotes: PropTypes.bool.isRequired,
     /**
      * fetches notes from database into notes array
      */
     fetchAllNotes: PropTypes.func.isRequired,
-    /**
-     * array of notes
-     */
-    notes: PropTypes.array.isRequired,
     /**
      * styles for this component
      */
@@ -64,11 +64,10 @@ class Home extends React.Component {
    * Decides whether to show NoteEditor or Dashboard component.
    * @return {element}
    */
+
   getHomeContent () {
-    const { notes } = this.props
     // Show homeContent when no note is selected.
-    if (this.props.activeNoteIndex >= 0 &&
-    notes[this.props.activeNoteIndex]) {
+    if (this.props.selectedNoteID) {
       return (<NoteEditor />)
     }
     return (<Dashboard />)
@@ -84,12 +83,12 @@ class Home extends React.Component {
       )
     }
 
-    const { notes, classes } = this.props
+    const { classes } = this.props
     return (
       <div className={classes.root}>
         <Slide in>
           <Grid container>
-            { notes.length > 0
+            { this.props.hasNotes
               ? <Grid item xs={4}>
                 <Paper className={classes.paper}>
                   <NotesPanel />

@@ -61,7 +61,7 @@
 <dt><a href="#history">history</a></dt>
 <dd><p>used for navigation</p>
 </dd>
-<dt><a href="#addNewNote">addNewNote</a></dt>
+<dt><a href="#createNote">createNote</a></dt>
 <dd><p>adds a new note</p>
 </dd>
 <dt><a href="#classes">classes</a></dt>
@@ -76,14 +76,14 @@
 <dt><a href="#history">history</a></dt>
 <dd><p>used for navigation</p>
 </dd>
-<dt><a href="#activeNoteIndex">activeNoteIndex</a></dt>
-<dd><p>index of current selected note</p>
+<dt><a href="#selectedNoteID">selectedNoteID</a></dt>
+<dd><p>ID of current selected note</p>
+</dd>
+<dt><a href="#hasNotes">hasNotes</a></dt>
+<dd><p>used to determine if there are notes or not</p>
 </dd>
 <dt><a href="#fetchAllNotes">fetchAllNotes</a></dt>
 <dd><p>fetches notes from database into notes array</p>
-</dd>
-<dt><a href="#notes">notes</a></dt>
-<dd><p>array of notes</p>
 </dd>
 <dt><a href="#classes">classes</a></dt>
 <dd><p>styles for this component</p>
@@ -91,17 +91,14 @@
 <dt><a href="#theme">theme</a></dt>
 <dd><p>theme used generally in App</p>
 </dd>
-<dt><a href="#saveNote">saveNote</a></dt>
+<dt><a href="#selectedNoteContent">selectedNoteContent</a></dt>
+<dd><p>content of selected note</p>
+</dd>
+<dt><a href="#editSelectedNote">editSelectedNote</a></dt>
+<dd><p>update current note</p>
+</dd>
+<dt><a href="#saveSelectedNote">saveSelectedNote</a></dt>
 <dd><p>save changes for current note</p>
-</dd>
-<dt><a href="#activeNoteContent">activeNoteContent</a></dt>
-<dd><p>content of active note</p>
-</dd>
-<dt><a href="#updateActiveNoteContent">updateActiveNoteContent</a></dt>
-<dd><p>update current note content</p>
-</dd>
-<dt><a href="#updateNoteTitle">updateNoteTitle</a></dt>
-<dd><p>update current note title</p>
 </dd>
 <dt><a href="#t">t</a></dt>
 <dd><p>gets current translation</p>
@@ -112,22 +109,16 @@
 <dt><a href="#theme">theme</a></dt>
 <dd><p>theme used generally in App</p>
 </dd>
-<dt><a href="#activeNoteIndex">activeNoteIndex</a></dt>
+<dt><a href="#selectedNoteID">selectedNoteID</a></dt>
 <dd><p>index of current selected note</p>
 </dd>
 <dt><a href="#notes">notes</a></dt>
 <dd><p>array of notes</p>
 </dd>
-<dt><a href="#fetchAllNotes">fetchAllNotes</a></dt>
-<dd><p>fetches notes from database into notes array</p>
+<dt><a href="#setSelectedNoteID">setSelectedNoteID</a></dt>
+<dd><p>selects note with ID</p>
 </dd>
-<dt><a href="#fetchNote">fetchNote</a></dt>
-<dd><p>fetch a note with index</p>
-</dd>
-<dt><a href="#selectNote">selectNote</a></dt>
-<dd><p>selects note with index</p>
-</dd>
-<dt><a href="#deleteNote">deleteNote</a></dt>
+<dt><a href="#removeSelectedNote">removeSelectedNote</a></dt>
 <dd><p>deletes selected note</p>
 </dd>
 <dt><a href="#classes">classes</a></dt>
@@ -157,11 +148,11 @@
 <dt><a href="#theme">theme</a></dt>
 <dd><p>theme used generally in App</p>
 </dd>
-<dt><a href="#addNewNote">addNewNote</a></dt>
+<dt><a href="#createNote">createNote</a></dt>
 <dd><p>adds a new note</p>
 </dd>
-<dt><a href="#setActiveNoteIndex">setActiveNoteIndex</a></dt>
-<dd><p>called when user selects a note</p>
+<dt><a href="#showDashboard">showDashboard</a></dt>
+<dd><p>shows dashboard</p>
 </dd>
 <dt><a href="#classes">classes</a></dt>
 <dd><p>styles for this component</p>
@@ -216,32 +207,20 @@
 <dt><a href="#addNewNote">addNewNote</a></dt>
 <dd><p>Used for adding a new note.</p>
 </dd>
-<dt><a href="#updateNoteList">updateNoteList</a></dt>
-<dd><p>Used for updating noteList with fetched notes from database.</p>
+<dt><a href="#updateNotesList">updateNotesList</a></dt>
+<dd><p>Used for updating notes with fetched notes from database.</p>
 </dd>
-<dt><a href="#setActiveNoteIndex">setActiveNoteIndex</a></dt>
+<dt><a href="#setSelectedNoteID">setSelectedNoteID</a></dt>
 <dd><p>Used for setting the index of selected note.</p>
 </dd>
-<dt><a href="#updateNoteTitle">updateNoteTitle</a></dt>
-<dd><p>Used for updating title of the active note.</p>
+<dt><a href="#editSelectedNote">editSelectedNote</a></dt>
+<dd><p>Used for updating title, content and modified values for the selected note.</p>
 </dd>
-<dt><a href="#updateActiveNoteContent">updateActiveNoteContent</a></dt>
-<dd><p>Used for updating editor&#39;s state of the active note.</p>
+<dt><a href="#updateSelectedNoteRev">updateSelectedNoteRev</a></dt>
+<dd><p>Used for updating rev of the selected note.</p>
 </dd>
-<dt><a href="#updateNoteRev">updateNoteRev</a></dt>
-<dd><p>Used for updating rev of the active note.</p>
-</dd>
-<dt><a href="#setNoteStatus">setNoteStatus</a></dt>
-<dd><p>Used for updating status of the active note.</p>
-</dd>
-<dt><a href="#loadNoteContent">loadNoteContent</a></dt>
-<dd><p>Used for updating status of the active note.</p>
-</dd>
-<dt><a href="#deleteNoteFromList">deleteNoteFromList</a></dt>
+<dt><a href="#deleteSelectedNote">deleteSelectedNote</a></dt>
 <dd><p>Used for deleting a note from noteList.</p>
-</dd>
-<dt><a href="#_saveNoteFinished">_saveNoteFinished</a></dt>
-<dd><p>Helper method, used for signaling that saveNote has finidhed running</p>
 </dd>
 <dt><a href="#saveSettings">saveSettings</a></dt>
 <dd><p>Used for saving and applying new settings.</p>
@@ -252,9 +231,6 @@ unmounted).</p>
 </dd>
 <dt><a href="#ACTIONS">ACTIONS</a></dt>
 <dd><p>Supported ACTIONS.</p>
-</dd>
-<dt><a href="#NOTE_STATUS">NOTE_STATUS</a></dt>
-<dd><p>Supported NOTE STATUS.</p>
 </dd>
 <dt><a href="#SETTINGS_STATUS">SETTINGS_STATUS</a></dt>
 <dd><p>Supported SETTINGS STATUS.</p>
@@ -297,23 +273,14 @@ it as a thunk that blocks until the condition is met. Example:</p>
 <dt><a href="#fetchAllNotes">fetchAllNotes()</a></dt>
 <dd><p>Async method, Used for fetching all notes from database.</p>
 </dd>
-<dt><a href="#_noteSaveFailed">_noteSaveFailed()</a></dt>
-<dd><p>Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.</p>
+<dt><a href="#createNote">createNote()</a></dt>
+<dd><p>Async method, used for saving note to database.</p>
 </dd>
-<dt><a href="#saveNote">saveNote()</a></dt>
-<dd><p>Async method, used for saving note (new or update) to database and updates
-noteStatus.</p>
+<dt><a href="#saveSelectedNote">saveSelectedNote()</a></dt>
+<dd><p>Async method, used for updating note in database.</p>
 </dd>
-<dt><a href="#fetchNote">fetchNote()</a></dt>
-<dd><p>Async method, used for getting active note content from database and
-loads it.</p>
-</dd>
-<dt><a href="#deleteNote">deleteNote()</a></dt>
+<dt><a href="#removeSelectedNote">removeSelectedNote()</a></dt>
 <dd><p>Async method, used for removing active note from database.</p>
-</dd>
-<dt><a href="#selectNote">selectNote(selectedIndex)</a></dt>
-<dd><p>Async method, used for switching between notes and prompting save modal
-beforehand if needed.</p>
 </dd>
 <dt><a href="#renderApp">renderApp()</a></dt>
 <dd><p>Renders Apps with proper direction</p>
@@ -388,35 +355,73 @@ called to ask main process to open a url in browser.
 ## db
 
 * [db](#module_db)
-    * [~fetchNotes()](#module_db..fetchNotes)
-    * [~addNote()](#module_db..addNote)
-    * [~getNote()](#module_db..getNote)
-    * [~removeNote()](#module_db..removeNote)
+    * [module.exports](#exp_module_db--module.exports) ⏏
+        * [~notesDB](#module_db--module.exports..notesDB)
+        * [~fetchNotes()](#module_db--module.exports..fetchNotes) ⇒ <code>Promise</code>
+        * [~addNote(id, title, content, modified, rev)](#module_db--module.exports..addNote) ⇒ <code>Promise</code>
+        * [~getNote(id)](#module_db--module.exports..getNote) ⇒ <code>Promise</code>
+        * [~removeNote(id, rev)](#module_db--module.exports..removeNote) ⇒ <code>Promise</code>
 
-<a name="module_db..fetchNotes"></a>
+<a name="exp_module_db--module.exports"></a>
 
-### db~fetchNotes()
+### module.exports ⏏
+export the functions defined here
+
+**Kind**: Exported member  
+<a name="module_db--module.exports..notesDB"></a>
+
+#### module.exports~notesDB
+Initialize Schema
+
+**Kind**: inner constant of [<code>module.exports</code>](#exp_module_db--module.exports)  
+<a name="module_db--module.exports..fetchNotes"></a>
+
+#### module.exports~fetchNotes() ⇒ <code>Promise</code>
 Fetches all notes from database
 
-**Kind**: inner method of [<code>db</code>](#module_db)  
-<a name="module_db..addNote"></a>
+**Kind**: inner method of [<code>module.exports</code>](#exp_module_db--module.exports)  
+**Returns**: <code>Promise</code> - of the result  
+<a name="module_db--module.exports..addNote"></a>
 
-### db~addNote()
+#### module.exports~addNote(id, title, content, modified, rev) ⇒ <code>Promise</code>
 Adds / Updates a note to database.
 
-**Kind**: inner method of [<code>db</code>](#module_db)  
-<a name="module_db..getNote"></a>
+**Kind**: inner method of [<code>module.exports</code>](#exp_module_db--module.exports)  
+**Returns**: <code>Promise</code> - of the result  
 
-### db~getNote()
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | for the note |
+| title | <code>string</code> | for the note |
+| content | <code>string</code> | for the note |
+| modified | <code>string</code> | date for the note |
+| rev | <code>string</code> | used in case of updating existing note |
+
+<a name="module_db--module.exports..getNote"></a>
+
+#### module.exports~getNote(id) ⇒ <code>Promise</code>
 Gets a note from database using it's ID.
 
-**Kind**: inner method of [<code>db</code>](#module_db)  
-<a name="module_db..removeNote"></a>
+**Kind**: inner method of [<code>module.exports</code>](#exp_module_db--module.exports)  
+**Returns**: <code>Promise</code> - of the result  
 
-### db~removeNote()
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | for the note |
+
+<a name="module_db--module.exports..removeNote"></a>
+
+#### module.exports~removeNote(id, rev) ⇒ <code>Promise</code>
 Deletes a note from database using it's ID and rev.
 
-**Kind**: inner method of [<code>db</code>](#module_db)  
+**Kind**: inner method of [<code>module.exports</code>](#exp_module_db--module.exports)  
+**Returns**: <code>Promise</code> - of the result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | for the note |
+| rev | <code>string</code> | for the note |
+
 <a name="About"></a>
 
 ## About
@@ -604,8 +609,6 @@ NoteList Component
 
 * [NoteList](#NoteList)
     * [new NoteList(props)](#new_NoteList_new)
-    * [.checkIfItemExists()](#NoteList+checkIfItemExists) ⇒ <code>boolean</code>
-    * [.componentDidMount()](#NoteList+componentDidMount)
     * [.onNoteSelect()](#NoteList+onNoteSelect)
     * [.onNoteDelete()](#NoteList+onNoteDelete)
     * [.render()](#NoteList+render)
@@ -620,18 +623,6 @@ this is constructor description.
 | --- | --- | --- |
 | props | <code>object</code> | passed to component |
 
-<a name="NoteList+checkIfItemExists"></a>
-
-### noteList.checkIfItemExists() ⇒ <code>boolean</code>
-Checks if active note index exists or not
-
-**Kind**: instance method of [<code>NoteList</code>](#NoteList)  
-<a name="NoteList+componentDidMount"></a>
-
-### noteList.componentDidMount()
-Called after mounting component.
-
-**Kind**: instance method of [<code>NoteList</code>](#NoteList)  
 <a name="NoteList+onNoteSelect"></a>
 
 ### noteList.onNoteSelect()
@@ -938,9 +929,9 @@ gets current translation
 used for navigation
 
 **Kind**: global variable  
-<a name="addNewNote"></a>
+<a name="createNote"></a>
 
-## addNewNote
+## createNote
 adds a new note
 
 **Kind**: global variable  
@@ -968,22 +959,22 @@ gets current translation
 used for navigation
 
 **Kind**: global variable  
-<a name="activeNoteIndex"></a>
+<a name="selectedNoteID"></a>
 
-## activeNoteIndex
-index of current selected note
+## selectedNoteID
+ID of current selected note
+
+**Kind**: global variable  
+<a name="hasNotes"></a>
+
+## hasNotes
+used to determine if there are notes or not
 
 **Kind**: global variable  
 <a name="fetchAllNotes"></a>
 
 ## fetchAllNotes
 fetches notes from database into notes array
-
-**Kind**: global variable  
-<a name="notes"></a>
-
-## notes
-array of notes
 
 **Kind**: global variable  
 <a name="classes"></a>
@@ -998,28 +989,22 @@ styles for this component
 theme used generally in App
 
 **Kind**: global variable  
-<a name="saveNote"></a>
+<a name="selectedNoteContent"></a>
 
-## saveNote
+## selectedNoteContent
+content of selected note
+
+**Kind**: global variable  
+<a name="editSelectedNote"></a>
+
+## editSelectedNote
+update current note
+
+**Kind**: global variable  
+<a name="saveSelectedNote"></a>
+
+## saveSelectedNote
 save changes for current note
-
-**Kind**: global variable  
-<a name="activeNoteContent"></a>
-
-## activeNoteContent
-content of active note
-
-**Kind**: global variable  
-<a name="updateActiveNoteContent"></a>
-
-## updateActiveNoteContent
-update current note content
-
-**Kind**: global variable  
-<a name="updateNoteTitle"></a>
-
-## updateNoteTitle
-update current note title
 
 **Kind**: global variable  
 <a name="t"></a>
@@ -1040,9 +1025,9 @@ styles for this component
 theme used generally in App
 
 **Kind**: global variable  
-<a name="activeNoteIndex"></a>
+<a name="selectedNoteID"></a>
 
-## activeNoteIndex
+## selectedNoteID
 index of current selected note
 
 **Kind**: global variable  
@@ -1052,27 +1037,15 @@ index of current selected note
 array of notes
 
 **Kind**: global variable  
-<a name="fetchAllNotes"></a>
+<a name="setSelectedNoteID"></a>
 
-## fetchAllNotes
-fetches notes from database into notes array
-
-**Kind**: global variable  
-<a name="fetchNote"></a>
-
-## fetchNote
-fetch a note with index
+## setSelectedNoteID
+selects note with ID
 
 **Kind**: global variable  
-<a name="selectNote"></a>
+<a name="removeSelectedNote"></a>
 
-## selectNote
-selects note with index
-
-**Kind**: global variable  
-<a name="deleteNote"></a>
-
-## deleteNote
+## removeSelectedNote
 deletes selected note
 
 **Kind**: global variable  
@@ -1130,16 +1103,16 @@ styles for this component
 theme used generally in App
 
 **Kind**: global variable  
-<a name="addNewNote"></a>
+<a name="createNote"></a>
 
-## addNewNote
+## createNote
 adds a new note
 
 **Kind**: global variable  
-<a name="setActiveNoteIndex"></a>
+<a name="showDashboard"></a>
 
-## setActiveNoteIndex
-called when user selects a note
+## showDashboard
+shows dashboard
 
 **Kind**: global variable  
 <a name="classes"></a>
@@ -1238,58 +1211,34 @@ theme used generally in App
 Used for adding a new note.
 
 **Kind**: global constant  
-<a name="updateNoteList"></a>
+<a name="updateNotesList"></a>
 
-## updateNoteList
-Used for updating noteList with fetched notes from database.
+## updateNotesList
+Used for updating notes with fetched notes from database.
 
 **Kind**: global constant  
-<a name="setActiveNoteIndex"></a>
+<a name="setSelectedNoteID"></a>
 
-## setActiveNoteIndex
+## setSelectedNoteID
 Used for setting the index of selected note.
 
 **Kind**: global constant  
-<a name="updateNoteTitle"></a>
+<a name="editSelectedNote"></a>
 
-## updateNoteTitle
-Used for updating title of the active note.
-
-**Kind**: global constant  
-<a name="updateActiveNoteContent"></a>
-
-## updateActiveNoteContent
-Used for updating editor's state of the active note.
+## editSelectedNote
+Used for updating title, content and modified values for the selected note.
 
 **Kind**: global constant  
-<a name="updateNoteRev"></a>
+<a name="updateSelectedNoteRev"></a>
 
-## updateNoteRev
-Used for updating rev of the active note.
-
-**Kind**: global constant  
-<a name="setNoteStatus"></a>
-
-## setNoteStatus
-Used for updating status of the active note.
+## updateSelectedNoteRev
+Used for updating rev of the selected note.
 
 **Kind**: global constant  
-<a name="loadNoteContent"></a>
+<a name="deleteSelectedNote"></a>
 
-## loadNoteContent
-Used for updating status of the active note.
-
-**Kind**: global constant  
-<a name="deleteNoteFromList"></a>
-
-## deleteNoteFromList
+## deleteSelectedNote
 Used for deleting a note from noteList.
-
-**Kind**: global constant  
-<a name="_saveNoteFinished"></a>
-
-## \_saveNoteFinished
-Helper method, used for signaling that saveNote has finidhed running
 
 **Kind**: global constant  
 <a name="saveSettings"></a>
@@ -1311,12 +1260,12 @@ unmounted).
 Supported ACTIONS.
 
 **Kind**: global constant  
-<a name="NOTE_STATUS"></a>
+<a name="ACTIONS.NOTES_FETCH_SUCCESS"></a>
 
-## NOTE\_STATUS
-Supported NOTE STATUS.
+### ACTIONS.NOTES\_FETCH\_SUCCESS
+Notes operations
 
-**Kind**: global constant  
+**Kind**: static property of [<code>ACTIONS</code>](#ACTIONS)  
 <a name="SETTINGS_STATUS"></a>
 
 ## SETTINGS\_STATUS
@@ -1376,44 +1325,24 @@ Declare routes for components.
 Async method, Used for fetching all notes from database.
 
 **Kind**: global function  
-<a name="_noteSaveFailed"></a>
+<a name="createNote"></a>
 
-## \_noteSaveFailed()
-Helper method, used for setting noteStatus to NOTE_SAVE_FAIL.
-
-**Kind**: global function  
-<a name="saveNote"></a>
-
-## saveNote()
-Async method, used for saving note (new or update) to database and updates
-noteStatus.
+## createNote()
+Async method, used for saving note to database.
 
 **Kind**: global function  
-<a name="fetchNote"></a>
+<a name="saveSelectedNote"></a>
 
-## fetchNote()
-Async method, used for getting active note content from database and
-loads it.
+## saveSelectedNote()
+Async method, used for updating note in database.
 
 **Kind**: global function  
-<a name="deleteNote"></a>
+<a name="removeSelectedNote"></a>
 
-## deleteNote()
+## removeSelectedNote()
 Async method, used for removing active note from database.
 
 **Kind**: global function  
-<a name="selectNote"></a>
-
-## selectNote(selectedIndex)
-Async method, used for switching between notes and prompting save modal
-beforehand if needed.
-
-**Kind**: global function  
-
-| Param | Type |
-| --- | --- |
-| selectedIndex | <code>integer</code> | 
-
 <a name="renderApp"></a>
 
 ## renderApp()

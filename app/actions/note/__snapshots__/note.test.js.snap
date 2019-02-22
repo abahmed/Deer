@@ -8,73 +8,49 @@ Array [
 ]
 `;
 
-exports[`note_actions deleteNoteFromList Dispatches the correct action and payload 1`] = `
+exports[`note_actions deleteSelectedNote Dispatches the correct action and payload 1`] = `
 Array [
   Object {
-    "payload": 3,
-    "type": "DELETE_NOTE_FROM_LIST",
+    "type": "DELETE_SELECTED_NOTE",
   },
 ]
 `;
 
-exports[`note_actions loadNoteContent Dispatches the correct action and payload 1`] = `
+exports[`note_actions editSelectedNote Dispatches the correct action and payload 1`] = `
 Array [
   Object {
-    "payload": Object {},
-    "type": "LOAD_NOTE_CONTENT",
+    "payload": Object {
+      "content": "",
+      "modified": 1550849863632,
+      "title": "",
+    },
+    "type": "EDIT_SELECTED_NOTE",
   },
 ]
 `;
 
-exports[`note_actions setActiveNoteIndex Dispatches the correct action and payload 1`] = `
+exports[`note_actions setSelectedNoteID Dispatches the correct action and payload 1`] = `
 Array [
   Object {
-    "payload": 3,
-    "type": "SET_ACTIVE_NOTE",
+    "payload": "a123",
+    "type": "SET_SELECTED_NOTE_ID",
   },
 ]
 `;
 
-exports[`note_actions setNoteStatus Dispatches the correct action and payload 1`] = `
+exports[`note_actions updateNotesList Dispatches the correct action and payload 1`] = `
 Array [
   Object {
-    "payload": "SAVING_NOTE",
-    "type": "SET_NOTE_STATUS",
+    "type": "NOTES_FETCH_SUCCESS",
   },
 ]
 `;
 
-exports[`note_actions updateActiveNoteContent Dispatches the correct action and payload 1`] = `
+exports[`note_actions updateSelectedNoteRev Dispatches the correct action and payload 1`] = `
 Array [
   Object {
-    "payload": "",
-    "type": "UPDATE_ACTIVE_NOTE_CONTENT",
-  },
-]
-`;
-
-exports[`note_actions updateNoteList Dispatches the correct action and payload 1`] = `
-Array [
-  Object {
-    "type": "UPDATE_NOTE_LIST",
-  },
-]
-`;
-
-exports[`note_actions updateNoteRev Dispatches the correct action and payload 1`] = `
-Array [
-  Object {
-    "payload": "a123-a123",
-    "type": "UPDATE_NOTE_REV",
-  },
-]
-`;
-
-exports[`note_actions updateNoteTitle Dispatches the correct action and payload 1`] = `
-Array [
-  Object {
-    "payload": "Hello world",
-    "type": "UPDATE_NOTE_TITLE",
+    "payload": "a123",
+    "type": "UPDATE_SELECTED_NOTE_REV",
   },
 ]
 `;

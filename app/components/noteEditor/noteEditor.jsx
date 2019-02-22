@@ -17,21 +17,17 @@ import 'react-quill/dist/quill.snow.css'
 class NoteEditor extends React.Component {
   static propTypes = {
     /**
+     * content of selected note
+     */
+    selectedNoteContent: PropTypes.string.isRequired,
+    /**
+     * update current note
+     */
+    editSelectedNote: PropTypes.func.isRequired,
+    /**
      * save changes for current note
      */
-    saveNote: PropTypes.func.isRequired,
-    /**
-     * content of active note
-     */
-    activeNoteContent: PropTypes.string.isRequired,
-    /**
-     * update current note content
-     */
-    updateActiveNoteContent: PropTypes.func.isRequired,
-    /**
-     * update current note title
-     */
-    updateNoteTitle: PropTypes.func.isRequired,
+    saveSelectedNote: PropTypes.func.isRequired,
     /**
      * gets current translation
      */
@@ -53,7 +49,6 @@ class NoteEditor extends React.Component {
   constructor (props) {
     super()
 
-    this.title = ''
     this.handleChange = this.handleChange.bind(this)
 
     this.modules = {
@@ -77,7 +72,7 @@ class NoteEditor extends React.Component {
       'list', 'bullet', 'indent',
       'color', 'background',
       'align', 'direction',
-      'link', 'image', 'video'
+      'link', 'image'
     ]
 
     this.saveTimer = null
@@ -87,24 +82,19 @@ class NoteEditor extends React.Component {
    * Called when there is a change in content of current note
    */
   handleChange (content, delta, source, editor) {
-    this.props.updateActiveNoteContent(content)
-
     // We only save first 40 characters of the first non-empty line if there
     // is a change.
     const newTitle =
       editor.getText(0, 40).trim().split('\u000A')[0].substring(0, 40)
 
-    if (newTitle !== this.title) {
-      this.props.updateNoteTitle(newTitle)
-      this.title = newTitle
-    }
+    this.props.editSelectedNote(newTitle, content, Date.now())
 
     // There is a change in content
     if (this.saveTimer) {
       clearTimeout(this.saveTimer)
     }
     this.saveTimer = setTimeout(() => {
-      this.props.saveNote()
+      this.props.saveSelectedNote()
     }, 750)
   }
 
@@ -127,7 +117,7 @@ class NoteEditor extends React.Component {
             theme='snow'
             className={classes.editor}
             onChange={this.handleChange}
-            value={this.props.activeNoteContent}
+            value={this.props.selectedNoteContent}
             modules={this.modules}
             formats={this.formats}
             placeholder={t('noteEditor:placeholder')}

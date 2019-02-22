@@ -1,134 +1,91 @@
-import uuidv4 from 'uuid/v4'
 import { ACTIONS } from '../../constants/actions'
-import { NOTE_STATUS } from '../../constants/noteStatus'
 import logger from 'electron-log'
-import { Map, mergeDeep } from 'immutable'
+import { Map, merge } from 'immutable'
 
-const INITIAL_STATE = {
-  activeNoteIndex: ACTIONS.NOT_SELECTED_NOTE,
-  activeNoteContent: '',
-  noteStatus: NOTE_STATUS.NO_OPERATION,
-  notes: [],
-  notesMap: Map(),
-  selectedNoteId: ACTIONS.NOT_SELECTED_NOTE
-}
+const INITIAL_STATE = Map({
+  notes: {},
+  selectedNoteID: ACTIONS.NOT_SELECTED_NOTE
+})
 
-// Helper method, updates a field with a newValue of an element in notes array
-// without altering provided state if there is a change in value, otherwise
-// returns provided state.
-const _updateNoteEntry = (state, field, newValue) => {
-  // Just return state as there is no active note.
-  if (state.activeNoteIndex < 0 ||
-      state.activeNoteIndex >= state.notes.length) {
-    logger.warn('action is fired with out of range' +
-                 ' activeNoteIndex')
-    return state
-  }
-
-  const currentNote = Object.create(state.notes[state.activeNoteIndex])
-
-  // Just return the state if there is not a change.
-  if (currentNote[field] === newValue) { return state }
-
-  currentNote[field] = newValue
+const createNote = (title, content, modified, rev) => {
   return {
-    ...state,
-    notes: [
-      ...state.notes.slice(0, state.activeNoteIndex),
-      currentNote,
-      ...state.notes.slice(state.activeNoteIndex + 1)
-    ]
+    title: title,
+    content: content,
+    modified: modified || '',
+    rev: rev || ''
   }
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.UPDATE_NOTE_LIST:
     case ACTIONS.NOTES_FETCH_SUCCESS:
       let notes = {}
       action.payload.forEach(note => {
-        notes[note.doc._id] = Map({
-          title: note.doc.title,
-          content: note.doc.content,
-          modified: note.doc.modified || '',
-          rev: note.doc._rev || ''
-        })
+        notes[note.doc._id] = createNote(
+          note.doc.title,
+          note.doc.content,
+          note.doc.modified,
+          note.doc._rev
+        )
       })
-      return {
-        ...state,
-        notesMap: state.notesMap.merge(notes)
-      }
-      return {
-        ...state,
-        notes: action.payload.map(note => {
-          return {
-            id: note.doc._id,
-            rev: note.doc._rev,
-            title: note.doc.title
-          }
-        })
-      }
-    case ACTIONS.SET_ACTIVE_NOTE_INDEX:
-      const noteId = action.payload
-      if (!state.notesMap.has(noteId)) {
-        logger.error('Selected note with invalid id: ' + noteId)
+      return state.set('notes', merge(state.get('notes'), notes))
+    case ACTIONS.SET_SELECTED_NOTE_ID:
+      const noteID = action.payload
+      if (noteID === state.get('selectedNoteID')) {
         return state
       }
-      return {
-        ...state,
-        selectedNoteId: noteId
+      else if (noteID === ACTIONS.NOT_SELECTED_NOTE &&
+          state.get('selectedNoteID') !== ACTIONS.NOT_SELECTED_NOTE) {
+        return state.set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
       }
-      return {
-        ...state,
-        activeNoteIndex: action.payload
+      else if (!state.get('notes').hasOwnProperty(noteID)) {
+        logger.error('Selected note with invalid id: ' + noteID)
+        return state
       }
+      return state.set('selectedNoteID', noteID)
     case ACTIONS.ADD_NOTE:
-      return state
-      return {
-        ...state,
-        notes: [...state.notes, {
-          id: uuidv4(),
-          rev: '',
-          title: ''
-        }],
-        activeNoteIndex: state.notes.length,
-        activeNoteContent: ''
-      }
-    case ACTIONS.UPDATE_NOTE_TITLE:
-      return state
-      return _updateNoteEntry(state, 'title', action.payload)
-    case ACTIONS.UPDATE_NOTE_REV:
-      return state
-      return _updateNoteEntry(state, 'rev', action.payload)
-    case ACTIONS.UPDATE_ACTIVE_NOTE_CONTENT:
-      return state
-      return {
-        ...state,
-        activeNoteContent: action.payload
-      }
-    case ACTIONS.SET_NOTE_STATUS:
-      return state
-      if (!NOTE_STATUS.hasOwnProperty(action.payload)) {
-        logger.warn('Trying to set unsupported noteStatus: ' + action.payload)
+      const newNote = action.payload
+      if (state.get('notes').hasOwnProperty(newNote.id)) {
+        logger.error('This note already exists: ' + newNote.id)
         return state
       }
-
-      return {
-        ...state,
-        noteStatus: action.payload
+      return state.setIn(['notes', newNote.id], createNote(
+        newNote.title,
+        newNote.content,
+        newNote.modified,
+        newNote.rev
+      ))
+    case ACTIONS.EDIT_SELECTED_NOTE:
+      const selectedNoteID = state.get('selectedNoteID')
+      if (selectedNoteID === ACTIONS.NOT_SELECTED_NOTE) {
+        logger.error('There is no selected note')
+        return state
       }
-    case ACTIONS.LOAD_NOTE_CONTENT:
-      return state
-      return {
-        ...state,
-        activeNoteContent: action.payload
+      const note = state.get('notes')[selectedNoteID]
+      const newValues = action.payload
+      if (newValues.content === note.content) {
+        return state
       }
-    case ACTIONS.DELETE_NOTE_FROM_LIST:
-      return state
-      return {
-        ...state,
-        notes: state.notes.filter(note => note.id !== action.payload)
+      return state.setIn(['notes', state.get('selectedNoteID')], createNote(
+        newValues.title,
+        newValues.content,
+        newValues.modified,
+        note.rev
+      ))
+    case ACTIONS.UPDATE_SELECTED_NOTE_REV:
+      if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
+        logger.error('There is no selected note')
+        return state
       }
+      return state.setIn(['notes', state.get('selectedNoteID'), 'rev'],
+                         action.payload)
+    case ACTIONS.DELETE_SELECTED_NOTE:
+      if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
+        logger.error('There is no selected note')
+        return state
+      }
+      return state.removeIn(['notes', state.get('selectedNoteID')])
+                  .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
     default:
       return state
   }

@@ -2,15 +2,18 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withTranslation } from 'react-i18next'
 
-import { addNewNote, setActiveNoteIndex } from '../../actions/note'
+import { createNote, setSelectedNoteID } from '../../actions/note'
 import NotesPanel from './notesPanel'
+import { ACTIONS } from '../../constants/actions'
 
 const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addNewNote: () => dispatch(addNewNote()),
-  setActiveNoteIndex: (noteIndex) => dispatch(setActiveNoteIndex(noteIndex))
+  createNote: () => dispatch(createNote()),
+  showDashboard: () => {
+    dispatch(setSelectedNoteID(ACTIONS.NOT_SELECTED_NOTE))
+  }
 })
 
 export default compose(

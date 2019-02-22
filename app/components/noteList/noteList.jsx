@@ -18,27 +18,19 @@ class NoteList extends React.Component {
     /**
      * index of current selected note
      */
-    activeNoteIndex: PropTypes.number.isRequired,
+    selectedNoteID: PropTypes.string.isRequired,
     /**
      * array of notes
      */
     notes: PropTypes.array.isRequired,
     /**
-     * fetches notes from database into notes array
+     * selects note with ID
      */
-    fetchAllNotes: PropTypes.func.isRequired,
-    /**
-     * fetch a note with index
-     */
-    fetchNote: PropTypes.func.isRequired,
-    /**
-     * selects note with index
-     */
-    selectNote: PropTypes.func.isRequired,
+    setSelectedNoteID: PropTypes.func.isRequired,
     /**
      * deletes selected note
      */
-    deleteNote: PropTypes.func.isRequired,
+    removeSelectedNote: PropTypes.func.isRequired,
     /**
      * styles for this component
      */
@@ -55,54 +47,26 @@ class NoteList extends React.Component {
    */
   constructor (props) {
     super()
-    this.state = {
-      selectedIndex: 0
-    }
 
     this.onNoteSelect = this.onNoteSelect.bind(this)
     this.onNoteDelete = this.onNoteDelete.bind(this)
   }
 
   /**
-   * Checks if active note index exists or not
-   * @return {boolean}
-   */
-  checkIfItemExists () {
-    const currentIndex = this.props.activeNoteIndex
-
-    // WORKAROUND: Unsaved item is unecessary added into notes list
-    // checking by empty revision.
-    return (currentIndex >= 0 &&
-            this.props.notes[currentIndex] &&
-            this.props.notes[currentIndex]['rev'])
-  }
-
-  /**
-   * Called after mounting component.
-   */
-  componentDidMount () {
-    const currentIndex = this.props.activeNoteIndex
-    if (this.checkIfItemExists()) {
-      this.props.fetchNote(currentIndex)
-    }
-  }
-
-  /**
    * Called when user selects a note
    */
-  onNoteSelect (noteIndex = -1) {
+  onNoteSelect (noteID) {
     // Do nothing as it's already selected.
-    if (this.props.activeNoteIndex === noteIndex) { return }
+    if (this.props.selectedNoteID === noteID) { return }
 
-    this.setState({ selectedIndex: noteIndex })
-    this.props.selectNote(noteIndex)
+    this.props.setSelectedNoteID(noteID)
   }
 
   /**
    * Called when user clicks for deleting selected note
    */
   onNoteDelete () {
-    this.props.deleteNote()
+    this.props.removeSelectedNote()
   }
 
   /**
@@ -117,9 +81,9 @@ class NoteList extends React.Component {
             {this.props.notes.map((note, index) => (
               <NoteListItem
                 key={index}
-                id={index}
+                id={note.id}
                 text={note.title}
-                selected={this.props.activeNoteIndex === index}
+                selected={this.props.selectedNoteID === note.id}
                 onClick={this.onNoteSelect}
                 onDelete={this.onNoteDelete} />
             ))}
