@@ -1,4 +1,4 @@
-const octokit = require('@octokit/rest')()
+const Octokit = require('@octokit/rest')
 const fs = require('fs')
 const mime = require('mime')
 const path = require('path')
@@ -31,27 +31,21 @@ var NightlyDeploy = {
       return
     }
 
-    this.authenticate()
-    this.getRelease()
-  },
-
-  // Authenticating user token.
-  authenticate () {
+    // Authenticating user token.
     if (!this.config.token) {
       throw new Error('Token is not provided')
     }
     console.log('Authenticating...')
-    octokit.authenticate({
-      type: 'token',
-      token: this.config.token
-    })
+    this.octo = new Octokit({ auth: `token ${this.config.token}` })
+
+    this.getRelease()
   },
 
   // Tries to check whether a release exist or not
   // If it exists, delete it. Otherwise create new one.
   getRelease () {
     console.log('Getting relesae info...')
-    octokit.repos.getReleaseByTag({
+    this.octo.repos.getReleaseByTag({
       owner: this.config.owner,
       repo: this.config.repo,
       tag: this.config.tag
@@ -77,7 +71,7 @@ var NightlyDeploy = {
   // Deletes release with releaseId, then creates new one.
   deleteRelease (releaseId) {
     console.log('Deleting release...')
-    octokit.repos.deleteRelease({
+    this.octo.repos.deleteRelease({
       owner: this.config.owner,
       repo: this.config.repo,
       release_id: releaseId
@@ -101,7 +95,7 @@ var NightlyDeploy = {
   // uploadAsset.
   createRelease (name, body) {
     console.log('Creating a new release...')
-    octokit.repos.createRelease({
+    this.octo.repos.createRelease({
       owner: this.config.owner,
       repo: this.config.repo,
       tag_name: this.config.tag,
@@ -123,7 +117,7 @@ var NightlyDeploy = {
   // new assets by deleting them, then it calls uploadAllAssets.
   getAssets (releaseId) {
     console.log('Getting assets...')
-    octokit.repos.listAssetsForRelease({
+    this.octo.repos.listAssetsForRelease({
       owner: this.config.owner,
       repo: this.config.repo,
       release_id: releaseId,
@@ -160,7 +154,7 @@ var NightlyDeploy = {
     }
 
     const assetUrl = path.join(this.config.dir, asset)
-    octokit.repos.uploadReleaseAsset({
+    this.octo.repos.uploadReleaseAsset({
       url: this.release.upload_url,
       file: fs.readFileSync(assetUrl),
       name: asset,
@@ -180,7 +174,7 @@ var NightlyDeploy = {
   // one.
   deleteAsset (assetId, assetIndex) {
     console.log('Deleting ' + this.filteredAssets[assetIndex])
-    octokit.repos.deleteReleaseAsset({
+    this.octo.repos.deleteReleaseAsset({
       owner: this.config.owner,
       repo: this.config.repo,
       asset_id: assetId
