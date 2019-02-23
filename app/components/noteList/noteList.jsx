@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 import List from '@material-ui/core/List'
+import FlipMove from 'react-flip-move'
 import Styles from './style'
 
 // UI wrappers.
@@ -78,15 +79,17 @@ class NoteList extends React.Component {
       <div className={classes.root}>
         <Scrollbars>
           <List component='nav' className={classes.list}>
-            {this.props.notes.map((note, index) => (
-              <NoteListItem
-                key={index}
-                id={note.id}
-                text={note.title}
-                selected={this.props.selectedNoteID === note.id}
-                onClick={this.onNoteSelect}
-                onDelete={this.onNoteDelete} />
-            ))}
+            <FlipMove typeName={null}>
+              {this.props.notes.map((note) => (
+                <NoteListItem
+                  key={note.id}
+                  id={note.id}
+                  text={note.title}
+                  selected={this.props.selectedNoteID === note.id}
+                  onClick={this.onNoteSelect}
+                  onDelete={this.onNoteDelete} />
+              ))}
+            </FlipMove>
           </List>
         </Scrollbars>
       </div>

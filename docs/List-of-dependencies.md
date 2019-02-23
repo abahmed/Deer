@@ -56,6 +56,7 @@ Those are dependencies that are essential for software to work.
 | react                 | ^16.8.3       | A JavaScript library for building user interfaces |
 | react-custom-scrollbars | ^4.2.1      | React scrollbars component |
 | react-dom             | ^16.8.3       | React package for working with the DOM |
+| react-flip-move       | ^3.0.3        | Responsible for animating a list of items when the list's order changes |
 | react-i18next         | ^10.2.0       | Internationalization for react |
 | react-jss             | ^8.6.1        | JSS integration with React |
 | react-quill           | ^1.3.3        | The Quill rich-text editor as a React component |
