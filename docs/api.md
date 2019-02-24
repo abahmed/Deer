@@ -133,6 +133,9 @@
 <dt><a href="#text">text</a></dt>
 <dd><p>text will be shown in this item</p>
 </dd>
+<dt><a href="#modified">modified</a></dt>
+<dd><p>Modification date of this item</p>
+</dd>
 <dt><a href="#selected">selected</a></dt>
 <dd><p>is current item selected or not</p>
 </dd>
@@ -1071,6 +1074,12 @@ id of current item
 
 ## text
 text will be shown in this item
+
+**Kind**: global variable  
+<a name="modified"></a>
+
+## modified
+Modification date of this item
 
 **Kind**: global variable  
 <a name="selected"></a>

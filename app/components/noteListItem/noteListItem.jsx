@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -24,6 +25,10 @@ class NoteListItem extends React.Component {
      * text will be shown in this item
      */
     text: PropTypes.string,
+    /**
+     * Modification date of this item
+     */
+    modified: PropTypes.number,
     /**
      * is current item selected or not
      */
@@ -77,6 +82,8 @@ class NoteListItem extends React.Component {
   render () {
     const { classes } = this.props
     const text = this.props.text || 'Empty note'
+    const modified =
+      this.props.modified ? moment(this.props.modified).format('llll') : ''
     return (
       <ListItem
         button
@@ -94,7 +101,8 @@ class NoteListItem extends React.Component {
             secondary: classes.listItemText
           }}
           className={classes.listItemText}
-          primary={text} />
+          primary={text}
+          secondary={modified} />
         <ListItemSecondaryAction>
           {this.props.selected
             ? <IconButton color='primary' onClick={this.onDeleteClick}>
