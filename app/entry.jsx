@@ -3,6 +3,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
+import moment from 'moment'
 import { ipcRenderer } from 'electron'
 import { Switch, Route, Redirect, HashRouter } from 'react-router-dom'
 import { create } from 'jss'
@@ -70,6 +71,7 @@ renderApp()
 
 /** Re-render app to update localization direction. */
 i18n.on('languageChanged', function (lng) {
+  moment.locale(lng)
   renderApp()
 })
 

@@ -85,6 +85,7 @@ class NoteList extends React.Component {
                   key={note.id}
                   id={note.id}
                   text={note.title}
+                  modified={note.modified}
                   selected={this.props.selectedNoteID === note.id}
                   onClick={this.onNoteSelect}
                   onDelete={this.onNoteDelete} />

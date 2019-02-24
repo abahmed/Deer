@@ -74,6 +74,7 @@
     "immutable": "^4.0.0-rc.12",
     "jss": "^9.8.7",
     "jss-rtl": "^0.2.3",
+    "moment": "^2.24.0",
     "pouchdb-browser": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
