@@ -2,6 +2,7 @@ const Octokit = require('@octokit/rest')
 const fs = require('fs')
 const mime = require('mime')
 const path = require('path')
+const appInfo = require('./package.json')
 const glob = require('glob-fs')({ gitignore: false })
 
 var NightlyDeploy = {
@@ -53,7 +54,8 @@ var NightlyDeploy = {
       // Release is already created.
       console.log(this.config.tag + '  already exist')
       this.release = result.data
-      this.getAssets(this.release.id)
+      this.deleteRelease(this.release.id)
+      // this.getAssets(this.release.id)
     }).catch(e => {
       console.log('Unable to get release info...')
       if (e.code === 404) {
@@ -247,6 +249,16 @@ if (branch === 'develop') {
     repo: 'Deer',
     branch: branch,
     tag: 'nightly',
+    assets: getAssetNames(assets),
+    dir: './dist',
+    token: process.env.GH_TOKEN
+  })
+} else if (branch === 'master') {
+  NightlyDeploy.init({
+    owner: 'abahmed',
+    repo: 'Deer',
+    branch: branch,
+    tag: appInfo.version,
     assets: getAssetNames(assets),
     dir: './dist',
     token: process.env.GH_TOKEN
