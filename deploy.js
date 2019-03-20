@@ -54,8 +54,7 @@ var NightlyDeploy = {
       // Release is already created.
       console.log(this.config.tag + '  already exist')
       this.release = result.data
-      this.deleteRelease(this.release.id)
-      // this.getAssets(this.release.id)
+      this.getAssets(this.release.id)
     }).catch(e => {
       console.log('Unable to get release info...')
       if (e.code === 404) {
