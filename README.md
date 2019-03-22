@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://github.com/abahmed/Deer/blob/develop/app/assets/images/Deer-256.png"/>
+  <img src="https://github.com/abahmed/Deer/blob/master/app/assets/images/Deer-256.png"/>
   <p align="center">
     <a href="https://travis-ci.org/abahmed/Deer">
-      <img src="https://travis-ci.org/abahmed/Deer.svg?branch=develop"/>
+      <img src="https://travis-ci.org/abahmed/Deer.svg?branch=master"/>
     </a>
-    <a href="https://ci.appveyor.com/project/abahmed/deer/branch/develop">
-      <img src="https://ci.appveyor.com/api/projects/status/k619um0clmxkmlrd/branch/develop?svg=true"/>
+    <a href="https://ci.appveyor.com/project/abahmed/deer/branch/master">
+      <img src="https://ci.appveyor.com/api/projects/status/k619um0clmxkmlrd/branch/master?svg=true"/>
     </a>
     <a href="https://gitter.im/abahmed/Deer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
       <img src="https://badges.gitter.im/abahmed/Deer.svg"/>
@@ -28,7 +28,7 @@
 + Multi-language :earth_americas:
 
 ### Screenshots
-![screenshot-1](https://github.com/abahmed/Deer/blob/develop/app/assets/images/deer-demo.gif)
+![screenshot-1](https://github.com/abahmed/Deer/blob/master/app/assets/images/deer-demo.gif)
 
 
 ### Supported Languages
@@ -50,9 +50,9 @@ Currently, Deer is available for Linux, Mac and Windows :tada::tada:
 
 macOS | Windows | Linux
 -----------------| ---| ---|
-<a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer.Setup.0.1.0.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer_0.1.0_amd64.deb'>Debian-based</a> |
-| | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.x86_64.rpm'>RedHat-based</a> |
-| | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0-linux.zip'>Portable</a> |
+<a href='https://github.com/abahmed/Deer/releases/download/v1.0.0/Deer-mac.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v1.0.0/Deer-win.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v1.0.0/Deer-linux-amd64.deb'>Debian-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/v1.0.0/Deer-linux-x86_64.rpm'>RedHat-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/v1.0.0/Deer-linux-x64.zip'>Portable</a> |
 
 [More information about this release](https://github.com/abahmed/Deer/releases/latest)
 

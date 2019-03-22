@@ -1,7 +1,7 @@
 {
   "name": "deer",
   "productName": "Deer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A modern, fast, beautiful note taking app",
   "author": "Deer <deer-project@googlegroups.com>",
   "main": "main.js",
