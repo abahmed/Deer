@@ -8,7 +8,7 @@ Before making changes, please first discuss the change you want to make through 
 
 + [Suggest new features to be implemented](https://github.com/abahmed/Deer/issues)
 + [Report issues](https://github.com/abahmed/Deer/issues)
-+ [Improve Documentation](https://github.com/abahmed/Deer/blob/develop/docs/README.md)
++ [Improve Documentation](https://github.com/abahmed/Deer/blob/master/docs/README.md)
 + [Fixing issues](https://github.com/abahmed/Deer/issues)
 
 
@@ -17,7 +17,7 @@ Before making changes, please first discuss the change you want to make through 
 If you wish to work on an issue, please comment on the issue that you want to work on it. This is to prevent duplicated efforts on the same issue.
 
 
-Contributions to Deer should be made in the form of pull requests to the **develop** branch. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the develop branch or given feedback for changes. (Seems not clear to you! Don't worry, we have added tutorials for [Github Workflow](./GitHub-workflow.md)
+Contributions to Deer should be made in the form of pull requests to the **master** branch. Each pull request will be reviewed by someone with permission to land patches. After reviewing the patch, it could be landed in the master branch or given feedback for changes. (Seems not clear to you! Don't worry, we have added tutorials for [Github Workflow](./GitHub-workflow.md)
 
 
 ### JavaScript Style guide

@@ -6,7 +6,7 @@ Firstly, You need to [Fork](https://help.github.com/articles/fork-a-repo/) Deer 
 
 `git clone https://github.com/YOUR-USER_NAME/Deer`
 
-According to GitHub naming we will call : 
+According to GitHub naming we will call :
 + The repository you have forked **origin** and its link is `https://github.com/YOUR-USER_NAME/Deer`
 + This repository **upstream** and its link is `https://github.com/abahmed/Deer`
 
@@ -17,7 +17,7 @@ The previous steps are done once, then these steps that you should follow every 
 
     ```
     git fetch upstream
-    git checkout -b LOCAL_BRANCH_NAME upstream/develop
+    git checkout -b LOCAL_BRANCH_NAME upstream/master
     ```
 
 2. Do your code changes then commit
@@ -32,10 +32,10 @@ The previous steps are done once, then these steps that you should follow every 
     git push -u origin "LOCAL_BRANCH_NAME"
     ```
 
-4. Create a [Pull Request(PR)](https://help.github.com/articles/using-pull-requests/) to the branch **develop**. To notify the reviewer that will review this PR, you can write r? @USER_NAME
+4. Create a [Pull Request(PR)](https://help.github.com/articles/using-pull-requests/) to the branch **master**. To notify the reviewer that will review this PR, you can write r? @USER_NAME
 
-5. After getting reviewers' feedback - if something needs to be changed, added, removed or fixed and these changes  are minor (means you didn't get **r+**, just fix it in a new commit on the same branch 
-    
+5. After getting reviewers' feedback - if something needs to be changed, added, removed or fixed and these changes  are minor (means you didn't get **r+**, just fix it in a new commit on the same branch
+
     ```
     git commit --fixup SHA1_OF_THE_PREVIOUS_COMMIT (You can get it using **git log**)
     ```
@@ -46,5 +46,5 @@ The previous steps are done once, then these steps that you should follow every 
 
     ```
     git fetch upstream
-    git rebase upstream/develop
+    git rebase upstream/master
     ```

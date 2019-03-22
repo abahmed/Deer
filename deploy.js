@@ -2,7 +2,6 @@ const Octokit = require('@octokit/rest')
 const fs = require('fs')
 const mime = require('mime')
 const path = require('path')
-const appInfo = require('./package.json')
 const glob = require('glob-fs')({ gitignore: false })
 
 var NightlyDeploy = {
@@ -57,11 +56,11 @@ var NightlyDeploy = {
       this.getAssets(this.release.id)
     }).catch(e => {
       console.log('Unable to get release info...')
-      if (e.code === 404) {
+      if (e.status === 404) {
         // Create the release as it does not exist.
         this.createRelease('nightly builds',
-          'This release is produced automatically for development branch' +
-          '(develop), so that people can help us testing the features that ' +
+          'This release is produced automatically for latest changes, ' +
+          'so that people can help us testing the features that ' +
           'have just been added')
       } else {
         throw new Error('Unhandled response for getReleaseByTag: ' + e)
@@ -242,22 +241,12 @@ if (isPullRequest) {
 }
 
 const branch = process.env.TRAVIS_BRANCH
-if (branch === 'develop') {
+if (branch === 'master') {
   NightlyDeploy.init({
     owner: 'abahmed',
     repo: 'Deer',
     branch: branch,
     tag: 'nightly',
-    assets: getAssetNames(assets),
-    dir: './dist',
-    token: process.env.GH_TOKEN
-  })
-} else if (branch === 'master') {
-  NightlyDeploy.init({
-    owner: 'abahmed',
-    repo: 'Deer',
-    branch: branch,
-    tag: appInfo.version,
     assets: getAssetNames(assets),
     dir: './dist',
     token: process.env.GH_TOKEN

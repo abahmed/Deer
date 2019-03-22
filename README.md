@@ -43,6 +43,7 @@ Currently, Deer supports these languages :earth_americas:. If you would like to 
  :poland:         | Polski               |
  :brazil:         | Português do Brasil  |
  :czech_republic: | Česky                |
+ :de:             | German               |
 
 
 ### Download
@@ -57,7 +58,7 @@ macOS | Windows | Linux
 [More information about this release](https://github.com/abahmed/Deer/releases/latest)
 
 ### Nightly builds
-Nightly builds :airplane: are produced **automatically** for development branch (**develop**), so that people can help us testing features that have just been added
+Nightly builds :airplane: are produced **automatically** for latest changes, so that people can help us testing features that have just been added
 
 macOS | Windows | Linux
 -----------------| ---| ---|
