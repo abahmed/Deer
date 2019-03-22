@@ -1,0 +1,11 @@
+{
+    "savingNote": "speichere Notiz ...",
+    "noteSaveSuccess": "Notiz erfolgreich gespeichert.",
+    "noteSaveFail": "Speichern der Notiz nicht möglich.",
+    "loadingNote": "lade Notiz.",
+    "noteLoadSuccess": "Notiz erfolgeich geladen.",
+    "noteLoadFail": "Laden der Notiz nicht möglich.",
+    "deletingNote": "lösche Notiz.",
+    "noteDeleteSuccess": "Notiz erfolgreich gelöscht.",
+    "noteDeleteFail": "löschen der Notiz nicht möglich."
+}
