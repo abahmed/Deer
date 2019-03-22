@@ -12,3 +12,7 @@
 + [Electron architecture](./Electron-architecture.md) - Overview of Electron
 + [Design](./Design.md) - Deer's top design for Desktop
 + [Packaging](./Packaging.md) - Building binary packages
++ [API documentation](./api.md) - API documentation for Deer (generated using JSDoc)
+
+#### Useful links for collaborators/mantainers
++ [Checking out branches locally](https://help.github.com/articles/checking-out-pull-requests-locally/)

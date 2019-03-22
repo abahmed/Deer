@@ -1,3 +1,5 @@
-module.exports = jest.fn(() => ({
-  name: 'test'
-}))
+module.exports = {
+  default: jest.fn(() => ({
+    name: 'test'
+  }))
+}

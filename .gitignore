@@ -5,9 +5,6 @@ node_modules
 npm-debug.log
 debug.log
 
-# Ignore package lock
-package-lock.json
-
 # Ignore Mac OS X files
 .DS_Store
 

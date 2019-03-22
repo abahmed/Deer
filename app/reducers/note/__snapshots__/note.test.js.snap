@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_NOTE is correct 1`] = `
+Immutable.Map {
+  "notes": Object {
+    "123": Object {
+      "content": "welcome to Deer 2",
+      "modified": 1550863560361,
+      "rev": "123a",
+      "title": "welcome to Deer 2",
+    },
+  },
+  "selectedNoteID": "",
+}
+`;
+
+exports[`DELETE_SELECTED_NOTE is correct 1`] = `
+Immutable.Map {
+  "notes": Object {},
+  "selectedNoteID": "",
+}
+`;
+
+exports[`EDIT_SELECTED_NOTE is correct 1`] = `
+Immutable.Map {
+  "notes": Object {},
+  "selectedNoteID": "",
+}
+`;
+
+exports[`INITIAL_STATE is correct 1`] = `
+Immutable.Map {
+  "notes": Object {},
+  "selectedNoteID": "",
+}
+`;
+
+exports[`NOTES_FETCH_SUCCESS is correct 1`] = `
+Immutable.Map {
+  "notes": Object {
+    "123": Object {
+      "content": "welcome to Deer",
+      "modified": 1550863560352,
+      "rev": "123a",
+      "title": "welcome to Deer",
+    },
+  },
+  "selectedNoteID": "",
+}
+`;
+
+exports[`SET_SELECTED_NOTE_ID is correct 1`] = `
+Immutable.Map {
+  "notes": Object {},
+  "selectedNoteID": "",
+}
+`;
+
+exports[`UPDATE_SELECTED_NOTE_REV is correct 1`] = `
+Immutable.Map {
+  "notes": Object {},
+  "selectedNoteID": "",
+}
+`;

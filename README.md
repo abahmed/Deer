@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./app/assets/images/Deer-256.png"/>
+  <img src="https://github.com/abahmed/Deer/blob/develop/app/assets/images/Deer-256.png"/>
   <p align="center">
     <a href="https://travis-ci.org/abahmed/Deer">
       <img src="https://travis-ci.org/abahmed/Deer.svg?branch=develop"/>
@@ -27,10 +27,43 @@
 + Cross Platform for Desktop and Mobile :computer:
 + Multi-language :earth_americas:
 
-### Download
-Currently, Deer is available for Linux, Mac and Windows :tada::tada:.
-[Download it now!](https://github.com/abahmed/Deer/releases)
+### Screenshots
+![screenshot-1](https://github.com/abahmed/Deer/blob/develop/app/assets/images/deer-demo.gif)
 
+
+### Supported Languages
+Currently, Deer supports these languages :earth_americas:. If you would like to Deer to support your language, [please request that  here](https://github.com/abahmed/Deer/issues/new?template=feature_request.md).
+
+&nbsp;            |  Language
+ -----------------|----------------------|
+ :uk:             | English              |
+ :egypt:          | العربية              |
+ :es:             | Español              |
+ :ru:             | Русский              |
+ :poland:         | Polski               |
+ :brazil:         | Português do Brasil  |
+ :czech_republic: | Česky                |
+
+
+### Download
+Currently, Deer is available for Linux, Mac and Windows :tada::tada:
+
+macOS | Windows | Linux
+-----------------| ---| ---|
+<a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer.Setup.0.1.0.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer_0.1.0_amd64.deb'>Debian-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0.x86_64.rpm'>RedHat-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/v0.1.0/Deer-0.1.0-linux.zip'>Portable</a> |
+
+[More information about this release](https://github.com/abahmed/Deer/releases/latest)
+
+### Nightly builds
+Nightly builds :airplane: are produced **automatically** for development branch (**develop**), so that people can help us testing features that have just been added
+
+macOS | Windows | Linux
+-----------------| ---| ---|
+<a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-mac.dmg'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-win.exe'>Download</a> | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-linux-amd64.deb'>Debian-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-linux-x86_64.rpm'>RedHat-based</a> |
+| | | <a href='https://github.com/abahmed/Deer/releases/download/nightly/Deer-linux-x64.zip'>Portable</a> |
 
 ### Getting started
 
