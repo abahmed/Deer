@@ -45,5 +45,10 @@ export const SUPPORTED_LANGS = [{
         language: 'Česky',
         code: 'cs',
         path: 'cs'
+    },
+    {
+        language: '中文',
+        code: 'zh',
+        path: 'zh'
     }
 ]

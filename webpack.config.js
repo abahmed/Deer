@@ -42,6 +42,7 @@ const developmentConfig = {
   },
   devtool: 'inline-source-map',
   devServer: {
+    port: 8080,
     publicPath: 'http://localhost:8080/build',
     hot: true,
     compress: true,
