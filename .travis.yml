@@ -6,6 +6,7 @@ node_js:
 os:
   - linux
   - osx
+  - windows
 
 cache:
   directories:
@@ -26,12 +27,8 @@ before_script:
 script:
   - npm run lint
   - npm run test
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       npm run release;
-      npm run deploy;
-    elif [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      npm run release;
-      npm run release:win;
       npm run deploy;
     else
       npm run build-prod;
