@@ -1,28 +1,13 @@
 language: node_js
 
-node_js:
-  - '10'
-
 os:
   - linux
   - osx
   - windows
 
-cache:
-  directories:
-  - node_modules
-  - $HOME/.cache/electron
-  - $HOME/.cache/electron-builder
-  - $HOME/.npm
 
 install:
   - npm install
-
-before_script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      sudo apt-get update;
-      sudo apt-get install -y rpm;
-    fi
 
 script:
   - npm run lint
