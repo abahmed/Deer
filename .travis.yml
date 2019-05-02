@@ -7,6 +7,10 @@ os:
   - linux
   - osx
   - windows
+env:
+  global:
+  - NVS_VERSION=1.2.0
+  - NODEJS_VERSION=node/10
 
 install:
   - npm install
