@@ -48,7 +48,10 @@ function createWindow () {
     minWidth: 800,
     minHeight: 600,
     icon: './assets/images/Deer-256.png',
-    show: false
+    show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   logger.info('Apps window is created')
 

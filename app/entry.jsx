@@ -71,6 +71,7 @@ renderApp()
 
 /** Re-render app to update localization direction. */
 i18n.on('languageChanged', function (lng) {
+  if (lng === 'zh') { lng = lng + '-cn' }
   moment.locale(lng)
   renderApp()
 })
