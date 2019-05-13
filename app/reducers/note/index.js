@@ -4,7 +4,8 @@ import { Map, merge } from 'immutable'
 
 const INITIAL_STATE = Map({
   notes: {},
-  selectedNoteID: ACTIONS.NOT_SELECTED_NOTE
+  selectedNoteID: ACTIONS.NOT_SELECTED_NOTE,
+  searchNotes: []
 })
 
 const createNote = (title, content, modified, rev) => {
@@ -86,6 +87,15 @@ export default (state = INITIAL_STATE, action) => {
       }
       return state.removeIn(['notes', state.get('selectedNoteID')])
                   .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
+    case ACTIONS.NOTES_SEARCH_UPDATE:
+      let searchNotes = []
+      action.payload.forEach(note => {
+        searchNotes.push(note.id)
+      })
+      if (state.get('searchNotes') === searchNotes)
+        return state
+
+      return state.set('searchNotes', searchNotes)
     default:
       return state
   }

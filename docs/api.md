@@ -157,6 +157,12 @@
 <dt><a href="#showDashboard">showDashboard</a></dt>
 <dd><p>shows dashboard</p>
 </dd>
+<dt><a href="#searchNote">searchNote</a></dt>
+<dd><p>searches for a note</p>
+</dd>
+<dt><a href="#clearSearch">clearSearch</a></dt>
+<dd><p>clears results of search</p>
+</dd>
 <dt><a href="#classes">classes</a></dt>
 <dd><p>styles for this component</p>
 </dd>
@@ -213,6 +219,9 @@
 <dt><a href="#updateNotesList">updateNotesList</a></dt>
 <dd><p>Used for updating notes with fetched notes from database.</p>
 </dd>
+<dt><a href="#updateSearchList">updateSearchList</a></dt>
+<dd><p>Used for updating search with text results</p>
+</dd>
 <dt><a href="#setSelectedNoteID">setSelectedNoteID</a></dt>
 <dd><p>Used for setting the index of selected note.</p>
 </dd>
@@ -253,7 +262,7 @@ and &quot;long-running&quot; in the background. It provides the ability
 for actions to install a function to be run once when a specific
 condition is met by an action coming through the system. Think of
 it as a thunk that blocks until the condition is met. Example:</p>
-<pre><code class="language-javascript">const services = { WAIT_UNTIL: require(&#39;wait-service&#39;).NAME };
+<pre><code class="language-js">const services = { WAIT_UNTIL: require(&#39;wait-service&#39;).NAME };
 
 { type: services.WAIT_UNTIL,
   predicate: action =&gt; action.type === constants.ADD_ITEM,
@@ -262,8 +271,7 @@ it as a thunk that blocks until the condition is met. Example:</p>
     // if you need them. `action` is the action that satisfied
     // the predicate.
   }
-}
-</code></pre>
+}</code></pre>
 </dd>
 <dt><a href="#routes">routes</a></dt>
 <dd><p>Declare routes for components.</p>
@@ -284,6 +292,9 @@ it as a thunk that blocks until the condition is met. Example:</p>
 </dd>
 <dt><a href="#removeSelectedNote">removeSelectedNote()</a></dt>
 <dd><p>Async method, used for removing active note from database.</p>
+</dd>
+<dt><a href="#searchNoteContains">searchNoteContains()</a></dt>
+<dd><p>Async method, user for searching for note with query</p>
 </dd>
 <dt><a href="#renderApp">renderApp()</a></dt>
 <dd><p>Renders Apps with proper direction</p>
@@ -364,6 +375,7 @@ called to ask main process to open a url in browser.
         * [~addNote(id, title, content, modified, rev)](#module_db--module.exports..addNote) ⇒ <code>Promise</code>
         * [~getNote(id)](#module_db--module.exports..getNote) ⇒ <code>Promise</code>
         * [~removeNote(id, rev)](#module_db--module.exports..removeNote) ⇒ <code>Promise</code>
+        * [~searchNote(query)](#module_db--module.exports..searchNote) ⇒ <code>Promise</code>
 
 <a name="exp_module_db--module.exports"></a>
 
@@ -424,6 +436,18 @@ Deletes a note from database using it's ID and rev.
 | --- | --- | --- |
 | id | <code>string</code> | for the note |
 | rev | <code>string</code> | for the note |
+
+<a name="module_db--module.exports..searchNote"></a>
+
+#### module.exports~searchNote(query) ⇒ <code>Promise</code>
+Searches for a note using query string.
+
+**Kind**: inner method of [<code>module.exports</code>](#exp_module_db--module.exports)  
+**Returns**: <code>Promise</code> - of the result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| query | <code>string</code> | text of query |
 
 <a name="About"></a>
 
@@ -696,6 +720,7 @@ NotesPanel Component
     * [new NotesPanel(props)](#new_NotesPanel_new)
     * [.onClickNewNote()](#NotesPanel+onClickNewNote)
     * [.viewDashboard()](#NotesPanel+viewDashboard)
+    * [.onSearch()](#NotesPanel+onSearch)
     * [.render()](#NotesPanel+render)
 
 <a name="new_NotesPanel_new"></a>
@@ -711,13 +736,19 @@ this is constructor description.
 <a name="NotesPanel+onClickNewNote"></a>
 
 ### notesPanel.onClickNewNote()
-Called when users clicks on new note button.
+Called when user clicks on new note button.
 
 **Kind**: instance method of [<code>NotesPanel</code>](#NotesPanel)  
 <a name="NotesPanel+viewDashboard"></a>
 
 ### notesPanel.viewDashboard()
-Called when users clicks on view dashboard button.
+Called when user clicks on view dashboard button.
+
+**Kind**: instance method of [<code>NotesPanel</code>](#NotesPanel)  
+<a name="NotesPanel+onSearch"></a>
+
+### notesPanel.onSearch()
+Called when user writes in searchbox.
 
 **Kind**: instance method of [<code>NotesPanel</code>](#NotesPanel)  
 <a name="NotesPanel+render"></a>
@@ -1124,6 +1155,18 @@ adds a new note
 shows dashboard
 
 **Kind**: global variable  
+<a name="searchNote"></a>
+
+## searchNote
+searches for a note
+
+**Kind**: global variable  
+<a name="clearSearch"></a>
+
+## clearSearch
+clears results of search
+
+**Kind**: global variable  
 <a name="classes"></a>
 
 ## classes
@@ -1224,6 +1267,12 @@ Used for adding a new note.
 
 ## updateNotesList
 Used for updating notes with fetched notes from database.
+
+**Kind**: global constant  
+<a name="updateSearchList"></a>
+
+## updateSearchList
+Used for updating search with text results
 
 **Kind**: global constant  
 <a name="setSelectedNoteID"></a>
@@ -1350,6 +1399,12 @@ Async method, used for updating note in database.
 
 ## removeSelectedNote()
 Async method, used for removing active note from database.
+
+**Kind**: global function  
+<a name="searchNoteContains"></a>
+
+## searchNoteContains()
+Async method, user for searching for note with query
 
 **Kind**: global function  
 <a name="renderApp"></a>

@@ -55,10 +55,24 @@ const removeNote = function (noteID, noteRev) {
   return notesDB.remove(noteID, noteRev)
 }
 
+/**
+ * Searches for a note using query string.
+ * @param {string} query text of query
+ * @return {Promise} of the result
+ **/
+const searchNote = function (query) {
+  return notesDB.query({
+    map: function (doc, emit) {
+      if (doc.content.includes(query)) { emit(doc._id) }
+    }
+  })
+}
+
 /** export the functions defined here */
 module.exports = {
   fetchNotes,
   addNote,
   getNote,
-  removeNote
+  removeNote,
+  searchNote
 }

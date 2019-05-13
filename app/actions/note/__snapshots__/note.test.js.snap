@@ -46,6 +46,14 @@ Array [
 ]
 `;
 
+exports[`note_actions updateSearchList Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "NOTES_SEARCH_UPDATE",
+  },
+]
+`;
+
 exports[`note_actions updateSelectedNoteRev Dispatches the correct action and payload 1`] = `
 Array [
   Object {
