@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions'
 import { ACTIONS } from '../../constants/actions'
-import { addNote, fetchNotes, removeNote } from '../../utils/db'
+import { addNote, fetchNotes, removeNote, searchNote } from '../../utils/db'
 import logger from 'electron-log'
 
 /** Used for adding a new note. */
@@ -8,6 +8,9 @@ const addNewNote = createAction(ACTIONS.ADD_NOTE)
 
 /** Used for updating notes with fetched notes from database. */
 const updateNotesList = createAction(ACTIONS.NOTES_FETCH_SUCCESS)
+
+/** Used for updating search with text results */
+const updateSearchList = createAction(ACTIONS.NOTES_SEARCH_UPDATE)
 
 /** Used for setting the index of selected note. */
 const setSelectedNoteID = createAction(ACTIONS.SET_SELECTED_NOTE_ID)
@@ -91,6 +94,15 @@ const removeSelectedNote = () => (dispatch, getState) => {
   })
 }
 
+/** Async method, user for searching for note with query */
+const searchNoteContains = (query) => (dispatch) => {
+  searchNote(query).then((result) => {
+    dispatch(updateSearchList(result.rows))
+  }).catch((err) => {
+    logger.error('Unable to search for note ' + JSON.stringify(err))
+  })
+}
+
 export {
   updateNotesList,
   addNewNote,
@@ -101,5 +113,7 @@ export {
   createNote,
   saveSelectedNote,
   deleteSelectedNote,
-  removeSelectedNote
+  removeSelectedNote,
+  updateSearchList,
+  searchNoteContains
 }

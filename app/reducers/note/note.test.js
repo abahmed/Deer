@@ -85,3 +85,18 @@ describe('DELETE_SELECTED_NOTE', () => {
     expect(result).toMatchSnapshot()
   })
 })
+
+describe('NOTES_SEARCH_UPDATE', () => {
+  test('is correct', () => {
+    const notes = [
+        {
+          id: '123',
+          key: '123'
+        }
+    ]
+    const action = { type: ACTIONS.NOTES_SEARCH_UPDATE, payload: notes }
+
+    const result = noteReducer(undefined, action)
+    expect(result).toMatchSnapshot()
+  })
+})

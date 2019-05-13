@@ -8,6 +8,9 @@ import NoteAddIcon from '@material-ui/icons/NoteAdd'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import Styles from './style'
 
+import SearchIcon from '@material-ui/icons/Search'
+import InputBase from '@material-ui/core/InputBase'
+
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
@@ -27,6 +30,14 @@ class NotesPanel extends React.Component {
      */
     showDashboard: PropTypes.func.isRequired,
     /**
+     * searches for a note
+     */
+    searchNote: PropTypes.func.isRequired,
+    /**
+     * clears results of search
+     */
+    clearSearch: PropTypes.func.isRequired,
+    /**
      * styles for this component
      */
     classes: PropTypes.object.isRequired,
@@ -43,23 +54,51 @@ class NotesPanel extends React.Component {
   constructor (props) {
     super()
 
+    this.saveTimer = null
+    this.previousQuery = null
+
     this.viewDashboard = this.viewDashboard.bind(this)
     this.onClickNewNote = this.onClickNewNote.bind(this)
+    this.onSearch = this.onSearch.bind(this)
   }
 
   /**
-   * Called when users clicks on new note button.
+   * Called when user clicks on new note button.
    */
   onClickNewNote () {
     this.props.createNote()
   }
 
   /**
-   * Called when users clicks on view dashboard button.
+   * Called when user clicks on view dashboard button.
    */
   viewDashboard () {
     // deselects selected note.
     this.props.showDashboard()
+  }
+
+  /**
+   * Called when user writes in searchbox.
+   */
+  onSearch (event) {
+    const query = event.target.value.trim()
+    if (query === this.previousQuery) { return }
+
+    this.previousQuery = query
+
+    if (!query) {
+      this.props.clearSearch()
+      clearTimeout(this.saveTimer)
+      return
+    }
+
+    // There is a change in content
+    if (this.saveTimer) {
+      clearTimeout(this.saveTimer)
+    }
+    this.saveTimer = setTimeout(() => {
+      this.props.searchNote(query)
+    }, 300)
   }
 
   /**
@@ -81,6 +120,22 @@ class NotesPanel extends React.Component {
               onClick={this.viewDashboard}>
               <DashboardIcon />
             </IconButton>
+          </Toolbar>
+          <Toolbar variant='dense' className={classes.toolbar}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder='Search…'
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+                onChange={this.onSearch}
+              />
+            </div>
+
           </Toolbar>
         </AppBar>
         <NoteList />

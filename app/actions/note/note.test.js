@@ -56,4 +56,10 @@ describe('note_actions', () => {
       expect(store.getActions()).toMatchSnapshot()
     })
   })
+  describe('updateSearchList', () => {
+    test('Dispatches the correct action and payload', () => {
+      store.dispatch(noteActions.updateSearchList())
+      expect(store.getActions()).toMatchSnapshot()
+    })
+  })
 })

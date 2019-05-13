@@ -7,14 +7,29 @@ import NoteList from './noteList'
 
 const mapStateToProps = state => {
   let notes = []
+  const searchNotesList = state.noteReducer.get('searchNotes')
   const notesList = state.noteReducer.get('notes')
-  for (const noteID in notesList) {
-    const note = notesList[noteID]
-    notes.push({
-      id: noteID,
-      title: note.title,
-      modified: note.modified
+  if (searchNotesList.length > 0)
+  {
+    searchNotesList.forEach(noteID => {
+      const note = notesList[noteID]
+      notes.push({
+        id: noteID,
+        title: note.title,
+        modified: note.modified
+      })
     })
+
+  }
+  else {
+    for (const noteID in notesList) {
+      const note = notesList[noteID]
+      notes.push({
+        id: noteID,
+        title: note.title,
+        modified: note.modified
+      })
+    }
   }
 
   // Sort notes by Date
