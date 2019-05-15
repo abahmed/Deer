@@ -52,8 +52,8 @@ export const SUPPORTED_LANGS = [{
         path: 'zh'
     },
 	{
-	  language: 'Türkçe',
-	  code: 'tr',
-	  path: 'tr'
+		language: 'Türkçe',
+		code: 'tr',
+		path: 'tr'
 	}
 ]
