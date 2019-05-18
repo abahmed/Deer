@@ -81,7 +81,6 @@ const saveSelectedNote = () => (dispatch, getState) => {
   })
 }
 
-
 /** Async method, used for removing active note from database. */
 const removeSelectedNote = () => (dispatch, getState) => {
   const state = getState().noteReducer

@@ -34,12 +34,10 @@ export default (state = INITIAL_STATE, action) => {
       const noteID = action.payload
       if (noteID === state.get('selectedNoteID')) {
         return state
-      }
-      else if (noteID === ACTIONS.NOT_SELECTED_NOTE &&
+      } else if (noteID === ACTIONS.NOT_SELECTED_NOTE &&
           state.get('selectedNoteID') !== ACTIONS.NOT_SELECTED_NOTE) {
         return state.set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
-      }
-      else if (!state.get('notes').hasOwnProperty(noteID)) {
+      } else if (!state.get('notes').hasOwnProperty(noteID)) {
         logger.error('Selected note with invalid id: ' + noteID)
         return state
       }
@@ -79,21 +77,20 @@ export default (state = INITIAL_STATE, action) => {
         return state
       }
       return state.setIn(['notes', state.get('selectedNoteID'), 'rev'],
-                         action.payload)
+        action.payload)
     case ACTIONS.DELETE_SELECTED_NOTE:
       if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
         logger.error('There is no selected note')
         return state
       }
       return state.removeIn(['notes', state.get('selectedNoteID')])
-                  .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
+        .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
     case ACTIONS.NOTES_SEARCH_UPDATE:
       let searchNotes = []
       action.payload.forEach(note => {
         searchNotes.push(note.id)
       })
-      if (state.get('searchNotes') === searchNotes)
-        return state
+      if (state.get('searchNotes') === searchNotes) { return state }
 
       return state.set('searchNotes', searchNotes)
     default:

@@ -105,5 +105,10 @@
     "env": [
       "jest"
     ]
+  },
+  "debug": {
+    "vscode": true,
+    "chromeDevTools": false,
+    "chromeDebugPort": 9222
   }
 }

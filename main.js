@@ -8,8 +8,24 @@ const appInfo = require('./package.json')
 const Store = require('electron-store')
 const logger = require('electron-log')
 
+const { debug } = appInfo
+const vscodeDebug = debug && debug.vscode ? debug.vscode : false
+const chromeDevTools =
+  debug && debug.chromeDevTools ? debug.chromeDevTools : false
+const chromeDebugPort =
+  debug && debug.chromeDebugPort ? debug.chromeDebugPort : null
+
 // Let electron reloads by itself when webpack watches changes in ./app/
 if (isDev) {
+  // Checking vscode debug enabled.
+  if (vscodeDebug && chromeDebugPort) {
+    // Adding remote debug port to chromium.
+    app.commandLine.appendSwitch(
+      'remote-debugging-port',
+      chromeDebugPort
+    )
+  }
+
   // Work around by providing electron path,
   // (https://github.com/yan-foto/electron-reload/issues/16)
   require('electron-reload')(__dirname, {
@@ -75,7 +91,7 @@ function createWindow () {
     logger.info('App window is shown')
 
     // Show DevTools for debugging.
-    if (isDev) {
+    if (isDev && chromeDevTools) {
       win.webContents.openDevTools({ mode: 'detach' })
     }
   })
@@ -135,6 +151,9 @@ app.on('ready', () => {
 
   // Installs developer tool extensions for debugging.
   if (isDev) {
+    if (vscodeDebug && chromeDebugPort) {
+      logger.info(`Vscode debug enabled. chrome debug port : ${chromeDebugPort}`)
+    }
     installDevToolsExtensions()
   }
 

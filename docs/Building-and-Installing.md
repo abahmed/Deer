@@ -68,3 +68,16 @@ npm install
 # Run Deer
 npm start
 ```
+
+### Debugging in VScode
+``` json
+{
+  "debug": {
+      "vscode": true, //To enable vscode debugging (in dev mode).
+      "chromeDevTools": false, //To open chrome dev tools (in dev mode).
+      "chromeDebugPort": 9222 //To set Chrome debug port(in dev mode).
+    }
+}
+```
+#### Start debugger in VScode
+![Drag Racing](./images/vscode-debug-window.png)

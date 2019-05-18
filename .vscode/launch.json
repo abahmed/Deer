@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Debug Deer",
+      "port": 9222,
+      "url": "file://${workspaceFolder}/index.html#/",
+      "webRoot": "${workspaceFolder}/app",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+          "webpack:///*": "${workspaceRoot}/*"
+      },
+      "trace": true
+    }
+  ]
+}

@@ -20,14 +20,14 @@ export default theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.primary.main, 0.25),
       '&:focus': {
-        backgroundColor: fade(theme.palette.primary.main, 0.25),
+        backgroundColor: fade(theme.palette.primary.main, 0.25)
       }
     },
     '&:focus': {
-      backgroundColor: fade(theme.palette.primary.main, 0.25),
+      backgroundColor: fade(theme.palette.primary.main, 0.25)
     },
     marginLeft: 0,
-    width: '100%',
+    width: '100%'
   },
   searchIcon: {
     width: theme.spacing.unit * 6,
@@ -36,7 +36,7 @@ export default theme => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   inputRoot: {
     color: 'inherit',
