@@ -42,13 +42,14 @@ describe('SET_SELECTED_NOTE_ID', () => {
 
 describe('ADD_NOTE', () => {
   test('is correct', () => {
-    const action = { type: ACTIONS.ADD_NOTE, payload: {
-      id: '123',
-      rev: '123a',
-      title: 'welcome to Deer 2',
-      content: 'welcome to Deer 2',
-      modified: 1550863560361
-    }}
+    const action = { type: ACTIONS.ADD_NOTE,
+      payload: {
+        id: '123',
+        rev: '123a',
+        title: 'welcome to Deer 2',
+        content: 'welcome to Deer 2',
+        modified: 1550863560361
+      } }
 
     const result = noteReducer(undefined, action)
     expect(result).toMatchSnapshot()
@@ -57,11 +58,12 @@ describe('ADD_NOTE', () => {
 
 describe('EDIT_SELECTED_NOTE', () => {
   test('is correct', () => {
-    const action = { type: ACTIONS.EDIT_SELECTED_NOTE, payload: {
-      title: 'welcome to Deer 3',
-      content: 'welcome to Deer 3',
-      modified: Date.now()
-    }}
+    const action = { type: ACTIONS.EDIT_SELECTED_NOTE,
+      payload: {
+        title: 'welcome to Deer 3',
+        content: 'welcome to Deer 3',
+        modified: Date.now()
+      } }
 
     const result = noteReducer(undefined, action)
     expect(result).toMatchSnapshot()
@@ -89,10 +91,10 @@ describe('DELETE_SELECTED_NOTE', () => {
 describe('NOTES_SEARCH_UPDATE', () => {
   test('is correct', () => {
     const notes = [
-        {
-          id: '123',
-          key: '123'
-        }
+      {
+        id: '123',
+        key: '123'
+      }
     ]
     const action = { type: ACTIONS.NOTES_SEARCH_UPDATE, payload: notes }
 

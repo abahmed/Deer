@@ -9,8 +9,7 @@ const mapStateToProps = state => {
   let notes = []
   const searchNotesList = state.noteReducer.get('searchNotes')
   const notesList = state.noteReducer.get('notes')
-  if (searchNotesList.length > 0)
-  {
+  if (searchNotesList.length > 0) {
     searchNotesList.forEach(noteID => {
       const note = notesList[noteID]
       notes.push({
@@ -19,9 +18,7 @@ const mapStateToProps = state => {
         modified: note.modified
       })
     })
-
-  }
-  else {
+  } else {
     for (const noteID in notesList) {
       const note = notesList[noteID]
       notes.push({
