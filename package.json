@@ -30,7 +30,8 @@
     "release:mac": "npm run build-prod && electron-builder --mac --publish never",
     "release:win": "npm run build-prod && electron-builder --win --publish never",
     "start": "webpack-dev-server --mode=development",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "prettier": "prettier --write app/**/*.js app/**/*.jsx"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -49,6 +50,12 @@
     "electron-reload": "^1.4.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
     "file-loader": "^3.0.1",
     "glob-fs": "^0.1.7",
     "husky": "^2.2.0",
@@ -56,6 +63,8 @@
     "jquery": "^3.4.1",
     "jsdoc-to-markdown": "^5.0.0",
     "mime": "^2.4.2",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.10.0",
     "redux-mock-store": "^1.5.3",
     "standard": "^12.0.1",
     "style-loader": "^0.23.1",
