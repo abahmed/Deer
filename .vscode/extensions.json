@@ -1,5 +1,9 @@
 {
   "recommendations": [
-      "msjsdiag.debugger-for-chrome"
+      "msjsdiag.debugger-for-chrome",
+      "steoates.autoimport",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "editorconfig.editorconfig"
   ]
 }
