@@ -31,7 +31,7 @@
     "release:win": "npm run build-prod && electron-builder --win --publish never",
     "start": "webpack-dev-server --mode=development",
     "test": "jest --verbose",
-    "prettier": "prettier --write app/**/*.js app/**/*.jsx"
+    "prettify": "prettier --write app/**/*.js app/**/*.jsx"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -104,7 +104,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run docs && git add -u"
+      "pre-commit": "npm run prettify && npm run lint && npm run docs && git add -u"
     }
   },
   "standard": {

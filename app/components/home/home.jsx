@@ -68,9 +68,9 @@ class Home extends React.Component {
   getHomeContent () {
     // Show homeContent when no note is selected.
     if (this.props.selectedNoteID) {
-      return (<NoteEditor />)
+      return <NoteEditor />
     }
-    return (<Dashboard />)
+    return <Dashboard />
   }
 
   /**
@@ -78,9 +78,7 @@ class Home extends React.Component {
    */
   render () {
     if (checkRedirectToWelcomePage()) {
-      return (
-        <Redirect to='/welcome' />
-      )
+      return <Redirect to='/welcome' />
     }
 
     const { classes } = this.props
@@ -88,17 +86,17 @@ class Home extends React.Component {
       <div className={classes.root}>
         <Slide in>
           <Grid container>
-            { this.props.hasNotes
-              ? <Grid item xs={4}>
+            {this.props.hasNotes ? (
+              <Grid item xs={4}>
                 <Paper className={classes.paper}>
                   <NotesPanel />
                 </Paper>
-              </Grid> : ''
-            }
+              </Grid>
+            ) : (
+              ''
+            )}
             <Grid item xs>
-              <Paper className={classes.paper}>
-                {this.getHomeContent()}
-              </Paper>
+              <Paper className={classes.paper}>{this.getHomeContent()}</Paper>
             </Grid>
           </Grid>
         </Slide>

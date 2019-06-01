@@ -79,26 +79,17 @@ class About extends React.Component {
     return (
       <Slide in direction='left'>
         <div className={classes.root}>
-          <img
-            className={classes.img}
-            src={require('../../assets/images/Deer-256.png')} />
+          <img className={classes.img} src={require('../../assets/images/Deer-256.png')} />
           <div className={classes.content}>
-            <Typography variant='h3'>
-              {packageJson.productName}
-            </Typography>
-            <Typography variant='body1'>
-              {packageJson.version}
-            </Typography>
+            <Typography variant='h3'>{packageJson.productName}</Typography>
+            <Typography variant='body1'>{packageJson.version}</Typography>
             <Typography variant='body2'>
               {os.type()} {os.arch()}
             </Typography>
             <Divider className={classes.divider} />
-            <Typography variant='body1'>
-              {packageJson.description}
-            </Typography>
+            <Typography variant='body1'>{packageJson.description}</Typography>
             <Typography variant='body2'>
-              {t('about:copyright')} © 2017 – {(new Date()).getFullYear()}
-              {' '}{t('about:forAuthors')}
+              {t('about:copyright')} © 2017 – {new Date().getFullYear()} {t('about:forAuthors')}
             </Typography>
             <Typography variant='body2'>
               {t('about:license', { license: packageJson.license })}
@@ -116,7 +107,8 @@ class About extends React.Component {
             <PopoverIcon
               text={t('about:homeBtn')}
               icon={<HomeIcon fontSize='large' />}
-              callback={this.onClickHome} />
+              callback={this.onClickHome}
+            />
           </div>
         </div>
       </Slide>

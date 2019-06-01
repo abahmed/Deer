@@ -137,9 +137,7 @@ class Settings extends React.Component {
     const settingsStatus = this.props.settingsStatus
     // New settings have been saved successfully, so redirect to home.
     if (settingsStatus === SETTINGS_STATUS.SETTINGS_SAVE_SUCCESS) {
-      return (
-        <Redirect to='/' />
-      )
+      return <Redirect to='/' />
     } else if (settingsStatus === SETTINGS_STATUS.SETTINGS_SAVE_FAIL) {
       // TODO: Handle saving failure.
     }
@@ -160,7 +158,8 @@ class Settings extends React.Component {
                   value={this.state.language}
                   onChange={this.onLanguageChange}
                   className={classes.select}
-                  color='primary'>
+                  color='primary'
+                >
                   {SUPPORTED_LANGS.map((lang, index) => (
                     <MenuItem key={index} value={lang.code}>
                       {lang.language}
@@ -176,7 +175,8 @@ class Settings extends React.Component {
                 color='primary'
                 className={classes.button}
                 disabled={this._isSaveDisabled()}
-                onClick={this.onSaveSettings}>
+                onClick={this.onSaveSettings}
+              >
                 {t('settings:saveBtn')}
                 <SaveIcon className={classes.nextIconSize} />
               </Button>
@@ -184,7 +184,8 @@ class Settings extends React.Component {
                 variant='contained'
                 color='primary'
                 className={classes.button}
-                onClick={this.onCancelClick}>
+                onClick={this.onCancelClick}
+              >
                 {t('settings:cancelBtn')}
                 <CancelIcon className={classes.nextIconSize} />
               </Button>

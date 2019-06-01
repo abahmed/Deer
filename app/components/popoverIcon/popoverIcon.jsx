@@ -78,7 +78,8 @@ class PopoverIcon extends React.Component {
           onMouseEnter={this.handlePopoverOpen}
           onMouseLeave={this.handlePopoverClose}
           onClick={this.props.callback}
-          color='primary'>
+          color='primary'
+        >
           {this.props.icon}
         </IconButton>
         <Popover

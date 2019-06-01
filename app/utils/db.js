@@ -22,8 +22,7 @@ const fetchNotes = function () {
  * @param {string} rev used in case of updating existing note
  * @return {Promise} of the result
  **/
-const addNote = function (id = uuidv4(), title = '', content = '',
-  modified = Date.now(), rev = '') {
+const addNote = function (id = uuidv4(), title = '', content = '', modified = Date.now(), rev = '') {
   const doc = {
     _id: id,
     title: title,
@@ -63,7 +62,9 @@ const removeNote = function (noteID, noteRev) {
 const searchNote = function (query) {
   return notesDB.query({
     map: function (doc, emit) {
-      if (doc.content.includes(query)) { emit(doc._id) }
+      if (doc.content.includes(query)) {
+        emit(doc._id)
+      }
     }
   })
 }

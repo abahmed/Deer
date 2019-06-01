@@ -19,10 +19,7 @@ import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import { SUPPORTED_LANGS } from '../../i18n/locales'
 import { LANG_LIST } from './langList'
-import {
-  setNotFirstTimeFlag,
-  getDefaultLanguage
-} from '../../utils/api.electron'
+import { setNotFirstTimeFlag, getDefaultLanguage } from '../../utils/api.electron'
 
 /**
  * Welcome Component
@@ -81,12 +78,17 @@ class Welcome extends React.Component {
    */
   updateLang () {
     // Update next lang index after fading out to be used for next fade-in.
-    if (!this.state.fadeIn) { this.updateNextLangIndex() }
+    if (!this.state.fadeIn) {
+      this.updateNextLangIndex()
+    }
 
-    this.timer = setTimeout(() => {
-      this.toggleFade()
-      this.updateLang()
-    }, this.state.fadeIn ? 3000 : 180)
+    this.timer = setTimeout(
+      () => {
+        this.toggleFade()
+        this.updateLang()
+      },
+      this.state.fadeIn ? 3000 : 180
+    )
   }
 
   /**
@@ -152,21 +154,14 @@ class Welcome extends React.Component {
     return (
       <Grid container justify='center' className={classes.root}>
         <Paper className={classes.paper}>
-          <img
-            src={require('../../assets/images/Deer-256.png')}
-          />
+          <img src={require('../../assets/images/Deer-256.png')} />
           <Fade in={this.state.fadeIn}>
-            <Typography
-              variant='h5'
-              component='h5'
-              className={classes.item}>
+            <Typography variant='h5' component='h5' className={classes.item}>
               {lang.welcome}
             </Typography>
           </Fade>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor='language'>
-              {lang.selectLang}
-            </InputLabel>
+            <InputLabel htmlFor='language'>{lang.selectLang}</InputLabel>
             <Select
               value={this.state.settings.language}
               onChange={this.onLanguageChange}
@@ -183,7 +178,8 @@ class Welcome extends React.Component {
             variant='contained'
             color='primary'
             className={classes.item}
-            onClick={this.onSaveSettings}>
+            onClick={this.onSaveSettings}
+          >
             {lang.nextBtn}
             <NavigateNext className={classes.nextIconSize} />
           </Button>

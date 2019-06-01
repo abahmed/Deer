@@ -82,8 +82,7 @@ class NoteListItem extends React.Component {
   render () {
     const { classes } = this.props
     const text = this.props.text || 'Empty note'
-    const modified =
-      this.props.modified ? moment(this.props.modified).format('llll') : ''
+    const modified = this.props.modified ? moment(this.props.modified).format('llll') : ''
     return (
       <ListItem
         button
@@ -94,7 +93,8 @@ class NoteListItem extends React.Component {
           selected: classes.selected
         }}
         selected={this.props.selected}
-        onClick={this.onClick}>
+        onClick={this.onClick}
+      >
         <ListItemText
           classes={{
             primary: classes.listItemText,
@@ -102,13 +102,16 @@ class NoteListItem extends React.Component {
           }}
           className={classes.listItemText}
           primary={text}
-          secondary={modified} />
+          secondary={modified}
+        />
         <ListItemSecondaryAction>
-          {this.props.selected
-            ? <IconButton color='primary' onClick={this.onDeleteClick}>
+          {this.props.selected ? (
+            <IconButton color='primary' onClick={this.onDeleteClick}>
               <DeleteIcon />
-            </IconButton> : ''
-          }
+            </IconButton>
+          ) : (
+            ''
+          )}
         </ListItemSecondaryAction>
       </ListItem>
     )

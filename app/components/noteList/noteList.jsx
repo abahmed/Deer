@@ -58,7 +58,9 @@ class NoteList extends React.Component {
    */
   onNoteSelect (noteID) {
     // Do nothing as it's already selected.
-    if (this.props.selectedNoteID === noteID) { return }
+    if (this.props.selectedNoteID === noteID) {
+      return
+    }
 
     this.props.setSelectedNoteID(noteID)
   }
@@ -80,7 +82,7 @@ class NoteList extends React.Component {
         <Scrollbars>
           <List component='nav' className={classes.list}>
             <FlipMove typeName={null}>
-              {this.props.notes.map((note) => (
+              {this.props.notes.map(note => (
                 <NoteListItem
                   key={note.id}
                   id={note.id}
@@ -88,7 +90,8 @@ class NoteList extends React.Component {
                   modified={note.modified}
                   selected={this.props.selectedNoteID === note.id}
                   onClick={this.onNoteSelect}
-                  onDelete={this.onNoteDelete} />
+                  onDelete={this.onNoteDelete}
+                />
               ))}
             </FlipMove>
           </List>

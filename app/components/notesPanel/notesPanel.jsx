@@ -82,7 +82,9 @@ class NotesPanel extends React.Component {
    */
   onSearch (event) {
     const query = event.target.value.trim()
-    if (query === this.previousQuery) { return }
+    if (query === this.previousQuery) {
+      return
+    }
 
     this.previousQuery = query
 
@@ -110,14 +112,10 @@ class NotesPanel extends React.Component {
       <div className={classes.root}>
         <AppBar position='static' color='default'>
           <Toolbar variant='dense' className={classes.toolbar}>
-            <IconButton
-              color='primary'
-              onClick={this.onClickNewNote}>
+            <IconButton color='primary' onClick={this.onClickNewNote}>
               <NoteAddIcon />
             </IconButton>
-            <IconButton
-              color='primary'
-              onClick={this.viewDashboard}>
+            <IconButton color='primary' onClick={this.viewDashboard}>
               <DashboardIcon />
             </IconButton>
           </Toolbar>
@@ -135,7 +133,6 @@ class NotesPanel extends React.Component {
                 onChange={this.onSearch}
               />
             </div>
-
           </Toolbar>
         </AppBar>
         <NoteList />

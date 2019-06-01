@@ -12,10 +12,7 @@ export const theme = {
   },
   typography: {
     useNextVariants: true,
-    fontFamily: [
-      'Roboto',
-      'sans-serif'
-    ].join(',')
+    fontFamily: ['Roboto', 'sans-serif'].join(',')
   },
   direction: 'ltr'
 }
