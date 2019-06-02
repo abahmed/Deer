@@ -81,10 +81,7 @@ class Dashboard extends React.Component {
     return (
       <Fade in>
         <div className={classes.root}>
-          <img
-            className={classes.img}
-            src={require('../../assets/images/Deer-256.png')}
-          />
+          <img className={classes.img} src={require('../../assets/images/Deer-256.png')} />
           <Typography variant='h5' className={classes.item}>
             {t('dashboard:welcome')}
           </Typography>
@@ -92,15 +89,18 @@ class Dashboard extends React.Component {
             <PopoverIcon
               text={t('dashboard:newNote')}
               icon={<NoteAddIcon fontSize='large' />}
-              callback={this.onClickNewNote} />
+              callback={this.onClickNewNote}
+            />
             <PopoverIcon
               text={t('dashboard:settings')}
               icon={<SettingsIcon fontSize='large' />}
-              callback={this.onClickSettings} />
+              callback={this.onClickSettings}
+            />
             <PopoverIcon
               text={t('dashboard:about')}
               icon={<InfosIcon fontSize='large' />}
-              callback={this.onClickAbout} />
+              callback={this.onClickAbout}
+            />
           </Grid>
         </div>
       </Fade>

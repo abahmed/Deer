@@ -53,11 +53,16 @@ class NoteEditor extends React.Component {
 
     this.modules = {
       toolbar: [
-        [{ 'header': '1' }, { 'header': '2' }],
+        [{ header: '1' }, { header: '2' }],
         ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
-        [{ 'align': [] }, { 'color': [] }, { 'background': [] }],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' },
-          { 'indent': '-1' }, { 'indent': '+1' }, { 'direction': 'rtl' }],
+        [{ align: [] }, { color: [] }, { background: [] }],
+        [
+          { list: 'ordered' },
+          { list: 'bullet' },
+          { indent: '-1' },
+          { indent: '+1' },
+          { direction: 'rtl' }
+        ],
         ['image'],
         ['clean']
       ],
@@ -67,12 +72,24 @@ class NoteEditor extends React.Component {
     }
 
     this.formats = [
-      'header', 'font', 'size',
-      'bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block',
-      'list', 'bullet', 'indent',
-      'color', 'background',
-      'align', 'direction',
-      'link', 'image'
+      'header',
+      'font',
+      'size',
+      'bold',
+      'italic',
+      'underline',
+      'strike',
+      'blockquote',
+      'code-block',
+      'list',
+      'bullet',
+      'indent',
+      'color',
+      'background',
+      'align',
+      'direction',
+      'link',
+      'image'
     ]
 
     this.saveTimer = null
@@ -84,8 +101,11 @@ class NoteEditor extends React.Component {
   handleChange (content, delta, source, editor) {
     // We only save first 40 characters of the first non-empty line if there
     // is a change.
-    const newTitle =
-      editor.getText(0, 40).trim().split('\u000A')[0].substring(0, 40)
+    const newTitle = editor
+      .getText(0, 40)
+      .trim()
+      .split('\u000A')[0]
+      .substring(0, 40)
 
     this.props.editSelectedNote(newTitle, content, Date.now())
 
