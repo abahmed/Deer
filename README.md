@@ -46,6 +46,7 @@ Currently, Deer supports these languages :earth_americas:. If you would like to 
  :de:             | Deutsche             |
  :cn:             | 中文                  |
  :tr:             | Türkçe               |
+ :bangladesh:     | বাংলা                  |
 
 
 ### Download

@@ -64,5 +64,11 @@ export const LANG_LIST = [
     welcome: 'Hoşgeldiniz',
     nextBtn: 'İleri',
     selectLang: 'Dili seçin'
+  },
+  {
+    lang: 'Bangla',
+    welcome: 'স্বাগতম',
+    nextBtn: 'পরবর্তী',
+    selectLang: 'ভাষা বাছাই করুন'
   }
 ]
