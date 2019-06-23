@@ -33,6 +33,10 @@ class NoteList extends React.Component {
      */
     removeSelectedNote: PropTypes.func.isRequired,
     /**
+     * set note as custom startup note
+     */
+    setCustomStartupNopte: PropTypes.func.isRequired,
+    /**
      * styles for this component
      */
     classes: PropTypes.object.isRequired,
@@ -51,6 +55,7 @@ class NoteList extends React.Component {
 
     this.onNoteSelect = this.onNoteSelect.bind(this)
     this.onNoteDelete = this.onNoteDelete.bind(this)
+    this.onCustom = this.onCustom.bind(this)
   }
 
   /**
@@ -73,6 +78,12 @@ class NoteList extends React.Component {
   }
 
   /**
+   * Called when user clicks on custom note
+   */
+  onCustom (noteID) {
+    this.props.setCustomStartupNopte(noteID)
+  }
+  /**
    * Rendering method
    */
   render () {
@@ -91,6 +102,7 @@ class NoteList extends React.Component {
                   selected={this.props.selectedNoteID === note.id}
                   onClick={this.onNoteSelect}
                   onDelete={this.onNoteDelete}
+                  onImportant={this.onCustom}
                 />
               ))}
             </FlipMove>

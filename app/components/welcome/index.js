@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  saveSettings: (newSettings) => dispatch(saveSettings(newSettings))
+  saveSettings: newSettings => dispatch(saveSettings(newSettings))
 })
 
 export default connect(
