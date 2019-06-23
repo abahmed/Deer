@@ -2,6 +2,7 @@ import { ACTIONS } from '../../constants/actions'
 import { SETTINGS_STATUS } from '../../constants/settingsStatus'
 import i18n from '../../i18n'
 import { setDefaultLanguage } from '../../utils/api.electron'
+import { setDefaultStartupMode } from '../../utils/api.electron'
 import logger from 'electron-log'
 import { Map } from 'immutable'
 
@@ -18,6 +19,9 @@ export default (state = INITIAL_STATE, action) => {
             const newLang = action.payload[setting]
             i18n.changeLanguage(newLang)
             setDefaultLanguage(newLang)
+          } else if (setting === 'defaultMode') {
+            const newMode = action.payload[setting]
+            setDefaultStartupMode(newMode)
           } else {
             logger.warn('Setting is not supported: ' + setting)
           }

@@ -34,11 +34,13 @@ describe('note_actions', () => {
 
   describe('editSelectedNote', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(noteActions.editSelectedNote({
-        title: '',
-        content: '',
-        modified: 1550849863632
-      }))
+      store.dispatch(
+        noteActions.editSelectedNote({
+          title: '',
+          content: '',
+          modified: 1550849863632
+        })
+      )
       expect(store.getActions()).toMatchSnapshot()
     })
   })

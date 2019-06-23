@@ -10,12 +10,15 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  saveSettings: (newSettings) => dispatch(saveSettings(newSettings)),
+  saveSettings: newSettings => dispatch(saveSettings(newSettings)),
   setReadyStatus: () => dispatch(setReadyStatus())
 })
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withTranslation(),
   withRouter
 )(Settings)

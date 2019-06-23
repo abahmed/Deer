@@ -41,11 +41,7 @@ export default theme => ({
   inputRoot: {
     color: 'inherit',
     width: '100%',
-    fontFamily: [
-      'Mali',
-      'El Messiri',
-      'monospace'
-    ].join(',')
+    fontFamily: ['Mali', 'El Messiri', 'monospace'].join(',')
   },
   inputInput: {
     paddingTop: theme.spacing.unit,

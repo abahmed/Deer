@@ -1,6 +1,11 @@
 import { ACTIONS } from '../../constants/actions'
 import logger from 'electron-log'
 import { Map, merge } from 'immutable'
+import {
+  setLastSelectedNoteId,
+  setLastEditedNoteId,
+  setCustomNoteId
+} from '../../utils/api.electron'
 
 const INITIAL_STATE = Map({
   notes: {},
@@ -34,13 +39,16 @@ export default (state = INITIAL_STATE, action) => {
       const noteID = action.payload
       if (noteID === state.get('selectedNoteID')) {
         return state
-      } else if (noteID === ACTIONS.NOT_SELECTED_NOTE &&
-          state.get('selectedNoteID') !== ACTIONS.NOT_SELECTED_NOTE) {
+      } else if (
+        noteID === ACTIONS.NOT_SELECTED_NOTE &&
+        state.get('selectedNoteID') !== ACTIONS.NOT_SELECTED_NOTE
+      ) {
         return state.set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
       } else if (!Object.prototype.hasOwnProperty.call(state.get('notes') ,noteID)) {
         logger.error('Selected note with invalid id: ' + noteID)
         return state
       }
+      setLastSelectedNoteId(noteID)
       return state.set('selectedNoteID', noteID)
     case ACTIONS.ADD_NOTE:
       const newNote = action.payload
@@ -49,12 +57,10 @@ export default (state = INITIAL_STATE, action) => {
         logger.error('This note already exists: ' + newNote.id)
         return state
       }
-      return state.setIn(['notes', newNote.id], createNote(
-        newNote.title,
-        newNote.content,
-        newNote.modified,
-        newNote.rev
-      ))
+      return state.setIn(
+        ['notes', newNote.id],
+        createNote(newNote.title, newNote.content, newNote.modified, newNote.rev)
+      )
     case ACTIONS.EDIT_SELECTED_NOTE:
       const selectedNoteID = state.get('selectedNoteID')
       if (selectedNoteID === ACTIONS.NOT_SELECTED_NOTE) {
@@ -66,32 +72,33 @@ export default (state = INITIAL_STATE, action) => {
       if (newValues.content === note.content) {
         return state
       }
-      return state.setIn(['notes', state.get('selectedNoteID')], createNote(
-        newValues.title,
-        newValues.content,
-        newValues.modified,
-        note.rev
-      ))
+      setLastEditedNoteId(state.get('selectedNoteID'))
+      return state.setIn(
+        ['notes', state.get('selectedNoteID')],
+        createNote(newValues.title, newValues.content, newValues.modified, note.rev)
+      )
     case ACTIONS.UPDATE_SELECTED_NOTE_REV:
       if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
         logger.error('There is no selected note')
         return state
       }
-      return state.setIn(['notes', state.get('selectedNoteID'), 'rev'],
-        action.payload)
+      return state.setIn(['notes', state.get('selectedNoteID'), 'rev'], action.payload)
     case ACTIONS.DELETE_SELECTED_NOTE:
       if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
         logger.error('There is no selected note')
         return state
       }
-      return state.removeIn(['notes', state.get('selectedNoteID')])
+      return state
+        .removeIn(['notes', state.get('selectedNoteID')])
         .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
     case ACTIONS.NOTES_SEARCH_UPDATE:
       let searchNotes = []
       action.payload.forEach(note => {
         searchNotes.push(note.id)
       })
-      if (state.get('searchNotes') === searchNotes) { return state }
+      if (state.get('searchNotes') === searchNotes) {
+        return state
+      }
 
       return state.set('searchNotes', searchNotes)
     default:

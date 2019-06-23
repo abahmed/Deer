@@ -3,7 +3,7 @@ import { ACTIONS } from '../../constants/actions'
 
 describe('INITIAL_STATE', () => {
   test('is correct', () => {
-    const action = { }
+    const action = {}
 
     const result = noteReducer(undefined, action)
     delete result.activeNoteState
@@ -42,14 +42,16 @@ describe('SET_SELECTED_NOTE_ID', () => {
 
 describe('ADD_NOTE', () => {
   test('is correct', () => {
-    const action = { type: ACTIONS.ADD_NOTE,
+    const action = {
+      type: ACTIONS.ADD_NOTE,
       payload: {
         id: '123',
         rev: '123a',
         title: 'welcome to Deer 2',
         content: 'welcome to Deer 2',
         modified: 1550863560361
-      } }
+      }
+    }
 
     const result = noteReducer(undefined, action)
     expect(result).toMatchSnapshot()
@@ -58,12 +60,14 @@ describe('ADD_NOTE', () => {
 
 describe('EDIT_SELECTED_NOTE', () => {
   test('is correct', () => {
-    const action = { type: ACTIONS.EDIT_SELECTED_NOTE,
+    const action = {
+      type: ACTIONS.EDIT_SELECTED_NOTE,
       payload: {
         title: 'welcome to Deer 3',
         content: 'welcome to Deer 3',
         modified: Date.now()
-      } }
+      }
+    }
 
     const result = noteReducer(undefined, action)
     expect(result).toMatchSnapshot()

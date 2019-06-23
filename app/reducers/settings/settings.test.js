@@ -5,7 +5,7 @@ jest.mock('../../utils/api.electron')
 
 describe('INITIAL_STATE', () => {
   test('is correct', () => {
-    const action = { }
+    const action = {}
 
     expect(settingsReducer(undefined, action)).toMatchSnapshot()
   })

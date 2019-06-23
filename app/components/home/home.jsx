@@ -14,7 +14,6 @@ import { checkRedirectToWelcomePage } from '../../utils/api.electron'
 import NotesPanel from '../notesPanel'
 import Dashboard from '../dashboard'
 import NoteEditor from '../noteEditor'
-
 /**
  * Home Component
  */
@@ -48,7 +47,6 @@ class Home extends React.Component {
    */
   constructor (props) {
     super()
-
     this.getHomeContent = this.getHomeContent.bind(this)
   }
 
@@ -64,7 +62,6 @@ class Home extends React.Component {
    * Decides whether to show NoteEditor or Dashboard component.
    * @return {element}
    */
-
   getHomeContent () {
     // Show homeContent when no note is selected.
     if (this.props.selectedNoteID) {
