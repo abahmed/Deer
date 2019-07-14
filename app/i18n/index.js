@@ -6,7 +6,7 @@ import { SUPPORTED_LANGS } from './locales'
 import isDev from 'electron-is-dev'
 
 // Import locales.
-let resources = {}
+const resources = {}
 SUPPORTED_LANGS.forEach(lang => {
   resources[lang.code] = require('./locales/' + lang.path).default
 })
