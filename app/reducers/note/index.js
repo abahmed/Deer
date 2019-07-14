@@ -37,14 +37,15 @@ export default (state = INITIAL_STATE, action) => {
       } else if (noteID === ACTIONS.NOT_SELECTED_NOTE &&
           state.get('selectedNoteID') !== ACTIONS.NOT_SELECTED_NOTE) {
         return state.set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
-      } else if (!state.get('notes').hasOwnProperty(noteID)) {
+      } else if (!Object.prototype.hasOwnProperty.call(state.get('notes') ,noteID)) {
         logger.error('Selected note with invalid id: ' + noteID)
         return state
       }
       return state.set('selectedNoteID', noteID)
     case ACTIONS.ADD_NOTE:
       const newNote = action.payload
-      if (state.get('notes').hasOwnProperty(newNote.id)) {
+
+      if (Object.prototype.hasOwnProperty.call(state.get('notes') ,newNote.id)) {
         logger.error('This note already exists: ' + newNote.id)
         return state
       }
