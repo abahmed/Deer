@@ -84,7 +84,7 @@ class Settings extends React.Component {
    * defaults, otherwise returns false.
    */
   _isSaveDisabled () {
-    for (let setting in this.state) {
+    for (const setting in this.state) {
       if (this.state[setting] !== this._defaults[setting]) {
         return false
       }
@@ -106,8 +106,8 @@ class Settings extends React.Component {
    */
   onSaveSettings () {
     // Saving new Language.
-    let newSettings = {}
-    for (let setting in this.state) {
+    const newSettings = {}
+    for (const setting in this.state) {
       // Avoid adding same settings as a new settings.
       if (this.state[setting] !== this._defaults[setting]) {
         newSettings[setting] = this.state[setting]

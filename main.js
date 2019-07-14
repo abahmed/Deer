@@ -50,7 +50,7 @@ if (!gotTheLock) {
 
 function createWindow () {
   // Load last state and fallback to defaults if it does not exist.
-  let lastWindowState = windowState({
+  const lastWindowState = windowState({
     defaultWidth: 800,
     defaultHeight: 600
   })
