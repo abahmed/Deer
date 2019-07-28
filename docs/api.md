@@ -121,6 +121,9 @@
 <dt><a href="#removeSelectedNote">removeSelectedNote</a></dt>
 <dd><p>deletes selected note</p>
 </dd>
+<dt><a href="#setCustomStartupNote">setCustomStartupNote</a></dt>
+<dd><p>set note as custom startup note</p>
+</dd>
 <dt><a href="#classes">classes</a></dt>
 <dd><p>styles for this component</p>
 </dd>
@@ -144,6 +147,9 @@
 </dd>
 <dt><a href="#onDelete">onDelete</a></dt>
 <dd><p>callback called when user clicks on delete button</p>
+</dd>
+<dt><a href="#onImportant">onImportant</a></dt>
+<dd><p>callback called when user clicks on important button</p>
 </dd>
 <dt><a href="#classes">classes</a></dt>
 <dd><p>styles for this component</p>
@@ -327,7 +333,10 @@ Supported Languages.
     * [~checkRedirectToWelcomePage()](#module_Electron API..checkRedirectToWelcomePage)
     * [~setNotFirstTimeFlag()](#module_Electron API..setNotFirstTimeFlag)
     * [~getDefaultLanguage()](#module_Electron API..getDefaultLanguage)
+    * [~getDefaultStartupMode()](#module_Electron API..getDefaultStartupMode)
+    * [~getDefaultstartupNoteId()](#module_Electron API..getDefaultstartupNoteId)
     * [~setDefaultLanguage()](#module_Electron API..setDefaultLanguage)
+    * [~setDefaultStartupMode()](#module_Electron API..setDefaultStartupMode)
     * [~openExternalLink()](#module_Electron API..openExternalLink)
 
 <a name="module_Electron API..checkRedirectToWelcomePage"></a>
@@ -352,10 +361,30 @@ retuns user's saved language if it's set, otherwise returns
 fallback language.
 
 **Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
+<a name="module_Electron API..getDefaultStartupMode"></a>
+
+### Electron API~getDefaultStartupMode()
+retuns user's saved startup mode if it's set, otherwise returns
+fallback startup mode.
+
+**Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
+<a name="module_Electron API..getDefaultstartupNoteId"></a>
+
+### Electron API~getDefaultstartupNoteId()
+retuns user's saved startup note id if it's set, otherwise returns
+null.
+
+**Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
 <a name="module_Electron API..setDefaultLanguage"></a>
 
 ### Electron API~setDefaultLanguage()
 called to save user's language preference by providing defaultLanguage.
+
+**Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
+<a name="module_Electron API..setDefaultStartupMode"></a>
+
+### Electron API~setDefaultStartupMode()
+called to save user 's default startup mode preference by providing defaultStartupMode.
 
 **Kind**: inner method of [<code>Electron API</code>](#module_Electron API)  
 <a name="module_Electron API..openExternalLink"></a>
@@ -638,6 +667,7 @@ NoteList Component
     * [new NoteList(props)](#new_NoteList_new)
     * [.onNoteSelect()](#NoteList+onNoteSelect)
     * [.onNoteDelete()](#NoteList+onNoteDelete)
+    * [.onCustom()](#NoteList+onCustom)
     * [.render()](#NoteList+render)
 
 <a name="new_NoteList_new"></a>
@@ -662,6 +692,12 @@ Called when user selects a note
 Called when user clicks for deleting selected note
 
 **Kind**: instance method of [<code>NoteList</code>](#NoteList)  
+<a name="NoteList+onCustom"></a>
+
+### noteList.onCustom()
+Called when user clicks on custom note
+
+**Kind**: instance method of [<code>NoteList</code>](#NoteList)  
 <a name="NoteList+render"></a>
 
 ### noteList.render()
@@ -679,6 +715,7 @@ NoteListItem Component
     * [new NoteListItem(props)](#new_NoteListItem_new)
     * [.onClick()](#NoteListItem+onClick)
     * [.onDeleteClick()](#NoteListItem+onDeleteClick)
+    * [.onImportantClick()](#NoteListItem+onImportantClick)
     * [.render()](#NoteListItem+render)
 
 <a name="new_NoteListItem_new"></a>
@@ -701,6 +738,12 @@ Called when user clicks on this item
 
 ### noteListItem.onDeleteClick()
 Called when user clicks on delete button
+
+**Kind**: instance method of [<code>NoteListItem</code>](#NoteListItem)  
+<a name="NoteListItem+onImportantClick"></a>
+
+### noteListItem.onImportantClick()
+called when user clicks on info button
 
 **Kind**: instance method of [<code>NoteListItem</code>](#NoteListItem)  
 <a name="NoteListItem+render"></a>
@@ -1083,6 +1126,12 @@ selects note with ID
 deletes selected note
 
 **Kind**: global variable  
+<a name="setCustomStartupNote"></a>
+
+## setCustomStartupNote
+set note as custom startup note
+
+**Kind**: global variable  
 <a name="classes"></a>
 
 ## classes
@@ -1129,6 +1178,12 @@ callback called when user clicks on this item
 
 ## onDelete
 callback called when user clicks on delete button
+
+**Kind**: global variable  
+<a name="onImportant"></a>
+
+## onImportant
+callback called when user clicks on important button
 
 **Kind**: global variable  
 <a name="classes"></a>

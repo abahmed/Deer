@@ -1,6 +1,7 @@
 /** @module Electron API */
 const electron = require('electron')
 const FALLBACK_LANG = 'en'
+const FALLBACK_MODE = 'NONE'
 
 // fetching electron store object
 const electronStore = electron.remote.getGlobal('electronStore')
@@ -37,6 +38,30 @@ const getDefaultLanguage = function () {
 }
 
 /**
+ * retuns user's saved startup mode if it's set, otherwise returns
+ * fallback startup mode.
+ */
+const getDefaultStartupMode = function () {
+  if (electronStore.has('general.startup')) {
+    return electronStore.get('general.startup')
+  }
+  return FALLBACK_MODE
+}
+
+/**
+ * retuns user's saved startup note id if it's set, otherwise returns
+ * null.
+ */
+const getDefaultstartupNoteId = function () {
+  var mode = getDefaultStartupMode()
+  var noteId = 'general.' + mode
+  if (electronStore.has(noteId)) {
+    return electronStore.get(noteId)
+  }
+  return null
+}
+
+/**
  * called to save user's language preference by providing defaultLanguage.
  */
 const setDefaultLanguage = function (defaultLanguage) {
@@ -44,6 +69,36 @@ const setDefaultLanguage = function (defaultLanguage) {
     return
   }
   electronStore.set('general.language', defaultLanguage)
+}
+
+/**
+ * called to save user 's default startup mode preference by providing defaultStartupMode.
+ */
+const setDefaultStartupMode = function (defaultStartupMode) {
+  if (!defaultStartupMode) {
+    return
+  }
+  electronStore.set('general.startup', defaultStartupMode)
+}
+const setLastSelectedNoteId = function (noteId) {
+  if (!noteId) {
+    return
+  }
+  electronStore.set('general.SELECTED', noteId)
+}
+
+const setLastEditedNoteId = function (noteId) {
+  if (!noteId) {
+    return
+  }
+  electronStore.set('general.EDITED', noteId)
+}
+
+const setCustomNoteId = function (noteId) {
+  if (!noteId) {
+    return
+  }
+  electronStore.set('general.CUSTOM', noteId)
 }
 
 /**
@@ -59,5 +114,11 @@ module.exports = {
   setNotFirstTimeFlag,
   getDefaultLanguage,
   setDefaultLanguage,
+  setDefaultStartupMode,
+  getDefaultStartupMode,
+  getDefaultstartupNoteId,
+  setLastSelectedNoteId,
+  setLastEditedNoteId,
+  setCustomNoteId,
   openExternalLink
 }

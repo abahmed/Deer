@@ -5,15 +5,17 @@ import { withRouter } from 'react-router-dom'
 import { createNote } from '../../actions/note'
 import Dashboard from './dashboard'
 
-const mapStateToProps = state => ({
-})
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
   createNote: () => dispatch(createNote())
 })
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withTranslation(),
   withRouter
 )(Dashboard)

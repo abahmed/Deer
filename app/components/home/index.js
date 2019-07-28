@@ -1,8 +1,6 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {
-  fetchAllNotes
-} from '../../actions/note'
+import { fetchAllNotes } from '../../actions/note'
 
 import Home from './home'
 
@@ -16,5 +14,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(Home)

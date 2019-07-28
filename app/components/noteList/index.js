@@ -3,10 +3,11 @@ import { compose } from 'redux'
 import { withTranslation } from 'react-i18next'
 
 import { setSelectedNoteID, removeSelectedNote } from '../../actions/note'
+import { setCustomNoteId } from '../../utils/api.electron'
 import NoteList from './noteList'
 
 const mapStateToProps = state => {
-  let notes = []
+  const notes = []
   const searchNotesList = state.noteReducer.get('searchNotes')
   const notesList = state.noteReducer.get('notes')
   if (searchNotesList.length > 0) {
@@ -41,11 +42,15 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setSelectedNoteID: (noteID) => dispatch(setSelectedNoteID(noteID)),
-  removeSelectedNote: () => dispatch(removeSelectedNote())
+  setSelectedNoteID: noteID => dispatch(setSelectedNoteID(noteID)),
+  removeSelectedNote: () => dispatch(removeSelectedNote()),
+  setCustomStartupNote: noteID => setCustomNoteId(noteID)
 })
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withTranslation()
 )(NoteList)

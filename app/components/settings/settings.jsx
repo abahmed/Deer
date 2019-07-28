@@ -17,8 +17,9 @@ import Styles from './style'
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
-import { getDefaultLanguage } from '../../utils/api.electron'
-import { SETTINGS_STATUS } from '../../constants/settingsStatus'
+import { getDefaultStartupMode, getDefaultLanguage } from '../../utils/api.electron'
+
+import { SETTINGS_STATUS, SUPPORTED_DEFAULT_MODES } from '../../constants/settingsStatus'
 import { SUPPORTED_LANGS } from '../../i18n/locales'
 
 /**
@@ -65,16 +66,19 @@ class Settings extends React.Component {
     super()
 
     this.state = {
-      language: getDefaultLanguage()
+      language: getDefaultLanguage(),
+      defaultMode: getDefaultStartupMode()
     }
 
     this.onSaveSettings = this.onSaveSettings.bind(this)
     this.onLanguageChange = this.onLanguageChange.bind(this)
+    this.onDefaultModeChange = this.onDefaultModeChange.bind(this)
     this._isSaveDisabled = this._isSaveDisabled.bind(this)
     this.onCancelClick = this.onCancelClick.bind(this)
 
     this._defaults = {
-      language: getDefaultLanguage()
+      language: getDefaultLanguage(),
+      defaultMode: getDefaultStartupMode()
     }
   }
 
@@ -99,6 +103,12 @@ class Settings extends React.Component {
     // Local component state used for UI internally, so we don't need to keep
     // it in Redux.
     this.setState({ language: event.target.value })
+  }
+
+  onDefaultModeChange (event) {
+    // Local component state used for UI internally, so we don't need to keep
+    // it in Redux.
+    this.setState({ defaultMode: event.target.value })
   }
 
   /**
@@ -163,6 +173,25 @@ class Settings extends React.Component {
                   {SUPPORTED_LANGS.map((lang, index) => (
                     <MenuItem key={index} value={lang.code}>
                       {lang.language}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item xs={6}>
+                <Typography variant='body1'>{t('settings:default startup note')}</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Select
+                  value={this.state.defaultMode}
+                  onChange={this.onDefaultModeChange}
+                  className={classes.select}
+                  color='primary'
+                >
+                  {SUPPORTED_DEFAULT_MODES.map((mode, index) => (
+                    <MenuItem key={index} value={mode.mode}>
+                      {mode.text}
                     </MenuItem>
                   ))}
                 </Select>

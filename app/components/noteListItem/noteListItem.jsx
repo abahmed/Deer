@@ -7,10 +7,12 @@ import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import DeleteIcon from '@material-ui/icons/Delete'
+import InfoIcon from '@material-ui/icons/Info'
 import Styles from './style'
 
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
+import { getDefaultStartupMode, getDefaultstartupNoteId } from '../../utils/api.electron'
 
 /**
  * NoteListItem Component
@@ -42,6 +44,10 @@ class NoteListItem extends React.Component {
      */
     onDelete: PropTypes.func.isRequired,
     /**
+     * callback called when user clicks on important button
+     */
+    onImportant: PropTypes.func.isRequired,
+    /**
      * styles for this component
      */
     classes: PropTypes.object.isRequired,
@@ -60,6 +66,7 @@ class NoteListItem extends React.Component {
 
     this.onClick = this.onClick.bind(this)
     this.onDeleteClick = this.onDeleteClick.bind(this)
+    this.onImportantClick = this.onImportantClick.bind(this)
   }
 
   /**
@@ -74,6 +81,13 @@ class NoteListItem extends React.Component {
    */
   onDeleteClick () {
     this.props.onDelete()
+  }
+
+  /**
+   * called when user clicks on info button
+   */
+  onImportantClick () {
+    this.props.onImportant(this.props.id)
   }
 
   /**
@@ -95,6 +109,18 @@ class NoteListItem extends React.Component {
         selected={this.props.selected}
         onClick={this.onClick}
       >
+        <div className={classes.CustomNote}>
+          {this.props.selected && getDefaultStartupMode() === 'CUSTOM' ? (
+            <IconButton
+              color={getDefaultstartupNoteId() === this.props.id ? 'secondary' : 'primary'}
+              onClick={this.onImportantClick}
+            >
+              <InfoIcon />
+            </IconButton>
+          ) : (
+            ''
+          )}
+        </div>
         <ListItemText
           classes={{
             primary: classes.listItemText,

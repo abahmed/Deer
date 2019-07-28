@@ -8,11 +8,7 @@ export default theme => ({
     '& .ql-container': {
       height: 'calc(100vh - 66px)',
       overflow: 'auto',
-      fontFamily: [
-        'Mali',
-        'El Messiri',
-        'monospace'
-      ].join(','),
+      fontFamily: ['Mali', 'El Messiri', 'monospace'].join(','),
       fontSize: '15px',
       color: 'black',
       border: 0
