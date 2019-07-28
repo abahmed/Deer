@@ -1,11 +1,7 @@
 import { ACTIONS } from '../../constants/actions'
 import logger from 'electron-log'
 import { Map, merge } from 'immutable'
-import {
-  setLastSelectedNoteId,
-  setLastEditedNoteId,
-  setCustomNoteId
-} from '../../utils/api.electron'
+import { setLastSelectedNoteId, setLastEditedNoteId } from '../../utils/api.electron'
 
 const INITIAL_STATE = Map({
   notes: {},
@@ -25,7 +21,7 @@ const createNote = (title, content, modified, rev) => {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ACTIONS.NOTES_FETCH_SUCCESS:
-      let notes = {}
+      const notes = {}
       action.payload.forEach(note => {
         notes[note.doc._id] = createNote(
           note.doc.title,
@@ -44,7 +40,7 @@ export default (state = INITIAL_STATE, action) => {
         state.get('selectedNoteID') !== ACTIONS.NOT_SELECTED_NOTE
       ) {
         return state.set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
-      } else if (!Object.prototype.hasOwnProperty.call(state.get('notes') ,noteID)) {
+      } else if (!Object.prototype.hasOwnProperty.call(state.get('notes'), noteID)) {
         logger.error('Selected note with invalid id: ' + noteID)
         return state
       }
@@ -53,7 +49,7 @@ export default (state = INITIAL_STATE, action) => {
     case ACTIONS.ADD_NOTE:
       const newNote = action.payload
 
-      if (Object.prototype.hasOwnProperty.call(state.get('notes') ,newNote.id)) {
+      if (Object.prototype.hasOwnProperty.call(state.get('notes'), newNote.id)) {
         logger.error('This note already exists: ' + newNote.id)
         return state
       }
@@ -92,7 +88,7 @@ export default (state = INITIAL_STATE, action) => {
         .removeIn(['notes', state.get('selectedNoteID')])
         .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
     case ACTIONS.NOTES_SEARCH_UPDATE:
-      let searchNotes = []
+      const searchNotes = []
       action.payload.forEach(note => {
         searchNotes.push(note.id)
       })

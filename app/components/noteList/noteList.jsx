@@ -83,6 +83,7 @@ class NoteList extends React.Component {
   onCustom (noteID) {
     this.props.setCustomStartupNopte(noteID)
   }
+
   /**
    * Rendering method
    */

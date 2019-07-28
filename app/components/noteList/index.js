@@ -7,7 +7,7 @@ import { setCustomNoteId } from '../../utils/api.electron'
 import NoteList from './noteList'
 
 const mapStateToProps = state => {
-  let notes = []
+  const notes = []
   const searchNotesList = state.noteReducer.get('searchNotes')
   const notesList = state.noteReducer.get('notes')
   if (searchNotesList.length > 0) {

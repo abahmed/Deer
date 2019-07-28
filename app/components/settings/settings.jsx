@@ -17,8 +17,8 @@ import Styles from './style'
 // UI wrappers.
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
-import { getDefaultStartupMode } from '../../utils/api.electron'
-import { getDefaultLanguage } from '../../utils/api.electron'
+import { getDefaultStartupMode, getDefaultLanguage } from '../../utils/api.electron'
+
 import { SETTINGS_STATUS, SUPPORTED_DEFAULT_MODES } from '../../constants/settingsStatus'
 import { SUPPORTED_LANGS } from '../../i18n/locales'
 

@@ -1,7 +1,7 @@
 /** @module Electron API */
 const electron = require('electron')
 const FALLBACK_LANG = 'en'
-const FALLBACK_MODE = 'new'
+const FALLBACK_MODE = 'NONE'
 
 // fetching electron store object
 const electronStore = electron.remote.getGlobal('electronStore')
@@ -48,6 +48,10 @@ const getDefaultStartupMode = function () {
   return FALLBACK_MODE
 }
 
+/**
+ * retuns user's saved startup note id if it's set, otherwise returns
+ * null.
+ */
 const getDefaultstartupNoteId = function () {
   var mode = getDefaultStartupMode()
   var noteId = 'general.' + mode

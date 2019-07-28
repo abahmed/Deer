@@ -1,5 +1,4 @@
 import { fade } from '@material-ui/core/styles/colorManipulator'
-import { relativeTimeRounding } from 'moment'
 
 export default theme => ({
   listItem: {

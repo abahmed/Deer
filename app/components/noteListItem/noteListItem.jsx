@@ -89,6 +89,7 @@ class NoteListItem extends React.Component {
   onImportantClick () {
     this.props.onImportant(this.props.id)
   }
+
   /**
    * Rendering method
    */
