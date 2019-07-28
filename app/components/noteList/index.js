@@ -44,7 +44,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   setSelectedNoteID: noteID => dispatch(setSelectedNoteID(noteID)),
   removeSelectedNote: () => dispatch(removeSelectedNote()),
-  setCustomStartupNopte: noteID => setCustomNoteId(noteID)
+  setCustomStartupNote: noteID => setCustomNoteId(noteID)
 })
 
 export default compose(

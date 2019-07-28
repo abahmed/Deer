@@ -58,9 +58,6 @@ const getDefaultstartupNoteId = function () {
   if (electronStore.has(noteId)) {
     return electronStore.get(noteId)
   }
-  if (mode === 'NEW') {
-    console.log('new')
-  }
   return null
 }
 

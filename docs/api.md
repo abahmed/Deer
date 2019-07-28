@@ -121,7 +121,7 @@
 <dt><a href="#removeSelectedNote">removeSelectedNote</a></dt>
 <dd><p>deletes selected note</p>
 </dd>
-<dt><a href="#setCustomStartupNopte">setCustomStartupNopte</a></dt>
+<dt><a href="#setCustomStartupNote">setCustomStartupNote</a></dt>
 <dd><p>set note as custom startup note</p>
 </dd>
 <dt><a href="#classes">classes</a></dt>
@@ -1126,9 +1126,9 @@ selects note with ID
 deletes selected note
 
 **Kind**: global variable  
-<a name="setCustomStartupNopte"></a>
+<a name="setCustomStartupNote"></a>
 
-## setCustomStartupNopte
+## setCustomStartupNote
 set note as custom startup note
 
 **Kind**: global variable  

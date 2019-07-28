@@ -35,7 +35,7 @@ class NoteList extends React.Component {
     /**
      * set note as custom startup note
      */
-    setCustomStartupNopte: PropTypes.func.isRequired,
+    setCustomStartupNote: PropTypes.func.isRequired,
     /**
      * styles for this component
      */
@@ -81,7 +81,7 @@ class NoteList extends React.Component {
    * Called when user clicks on custom note
    */
   onCustom (noteID) {
-    this.props.setCustomStartupNopte(noteID)
+    this.props.setCustomStartupNote(noteID)
   }
 
   /**
