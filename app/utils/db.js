@@ -4,6 +4,7 @@ const uuidv4 = require('uuid/v4')
 
 /** Initialize Schema */
 const notesDB = new PouchDB('notes')
+const noteBooksDB = new PouchDB('notebooks')
 
 /**
  * Fetches all notes from database
@@ -69,11 +70,60 @@ const searchNote = function (query) {
   })
 }
 
+/**
+ * Fetches all notebooks from database
+ * @return {Promise} of the result
+ * */
+const fetchNoteBooks = function () {
+  return noteBooksDB.allDocs({ include_docs: true })
+}
+
+/**
+ * Adds / Updates a notebook to database.
+ * @param {string} id for the notebook
+ * @param {string} name for the notebook
+ * @param {object}  notes for the notebook
+ * @param {string} modified date for the notebook
+ * @param {string} rev used in case of updating existing notebook
+ * @return {Promise} of the result
+ **/
+const addNoteBook = function (
+  id = uuidv4(),
+  name = '',
+  noteIDs = [],
+  modified = Date.now(),
+  rev = ''
+) {
+  const doc = {
+    _id: id,
+    name: name,
+    noteIDs: noteIDs,
+    modified: modified
+  }
+  if (rev) {
+    doc._rev = rev
+  }
+  return noteBooksDB.put(doc)
+}
+
+/**
+ * Deletes a notebook from database using it's ID and rev.
+ * @param {string} id for the notebook
+ * @param {string} rev for the notebook
+ * @return {Promise} of the result
+ **/
+const removeNoteBook = function (noteBookID, noteBookRev) {
+  return noteBooksDB.remove(noteBookID, noteBookRev)
+}
+
 /** export the functions defined here */
 module.exports = {
   fetchNotes,
   addNote,
   getNote,
   removeNote,
-  searchNote
+  searchNote,
+  fetchNoteBooks,
+  addNoteBook,
+  removeNoteBook
 }
