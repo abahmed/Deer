@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Fade from '@material-ui/core/Fade'
 import NoteAddIcon from '@material-ui/icons/NoteAdd'
+import NoteBookIcon from '@material-ui/icons/Book'
 import SettingsIcon from '@material-ui/icons/Settings'
 import InfosIcon from '@material-ui/icons/Info'
 import PopoverIcon from '../popoverIcon'
@@ -48,6 +49,7 @@ class Dashboard extends React.Component {
     super()
 
     this.onClickNewNote = this.onClickNewNote.bind(this)
+    this.onClickNoteBook = this.onClickNoteBook.bind(this)
     this.onClickSettings = this.onClickSettings.bind(this)
     this.onClickAbout = this.onClickAbout.bind(this)
   }
@@ -57,6 +59,13 @@ class Dashboard extends React.Component {
    */
   onClickNewNote () {
     this.props.createNote()
+  }
+
+  /**
+   * Called when users clicks on notebook button.
+   */
+  onClickNoteBook () {
+    this.props.history.push('/notebooks')
   }
 
   /**
@@ -90,6 +99,11 @@ class Dashboard extends React.Component {
               text={t('dashboard:newNote')}
               icon={<NoteAddIcon fontSize='large' />}
               callback={this.onClickNewNote}
+            />
+            <PopoverIcon
+              text={t('dashboard:noteBooks')}
+              icon={<NoteBookIcon fontSize='large' />}
+              callback={this.onClickNoteBook}
             />
             <PopoverIcon
               text={t('dashboard:settings')}
