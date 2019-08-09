@@ -249,8 +249,8 @@ class NoteBook extends React.Component {
     this.setState({ activeNoteBookID: selectedNoteBookID })
     this.props.setActiveNoteBookID(selectedNoteBookID)
     if (this.props.hasNoteList) {
-      this.props.deleteNoteList()
       this.props.closeNoteBook()
+      this.props.deleteNoteList()
     }
   }
 
