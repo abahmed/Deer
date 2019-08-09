@@ -287,10 +287,6 @@ class NoteBook extends React.Component {
     ) {
       this.props.createNoteList()
     }
-
-    if (this.state.activeNoteBookID === 'none') {
-      this.props.closeNoteBook()
-    }
   }
 
   /**
