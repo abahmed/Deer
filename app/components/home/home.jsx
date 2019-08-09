@@ -55,7 +55,9 @@ class Home extends React.Component {
    */
   componentDidMount () {
     // Trigger fetching notes as this component is loaded.
-    this.props.fetchAllNotes()
+    if (!this.props.hasNotes) {
+      this.props.fetchAllNotes()
+    }
   }
 
   /**
