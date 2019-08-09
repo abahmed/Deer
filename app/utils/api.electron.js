@@ -2,6 +2,7 @@
 const electron = require('electron')
 const FALLBACK_LANG = 'en'
 const FALLBACK_MODE = 'NONE'
+const FALLBACK_NOTEBOOK = 'none'
 
 // fetching electron store object
 const electronStore = electron.remote.getGlobal('electronStore')
@@ -27,7 +28,7 @@ const setNotFirstTimeFlag = function () {
 }
 
 /**
- * retuns user's saved language if it's set, otherwise returns
+ * returns user's saved language if it's set, otherwise returns
  * fallback language.
  */
 const getDefaultLanguage = function () {
@@ -38,7 +39,18 @@ const getDefaultLanguage = function () {
 }
 
 /**
- * retuns user's saved startup mode if it's set, otherwise returns
+ * returns last selected notebook if it's set, otherwise returns
+ * fallback notebook.
+ */
+const getLastSelectedNoteBook = function () {
+  if (electronStore.has('general.notebook')) {
+    return electronStore.get('general.notebook')
+  }
+  return FALLBACK_NOTEBOOK
+}
+
+/**
+ * returns user's saved startup mode if it's set, otherwise returns
  * fallback startup mode.
  */
 const getDefaultStartupMode = function () {
@@ -49,7 +61,7 @@ const getDefaultStartupMode = function () {
 }
 
 /**
- * retuns user's saved startup note id if it's set, otherwise returns
+ * returns user's saved startup note id if it's set, otherwise returns
  * null.
  */
 const getDefaultstartupNoteId = function () {
@@ -69,6 +81,16 @@ const setDefaultLanguage = function (defaultLanguage) {
     return
   }
   electronStore.set('general.language', defaultLanguage)
+}
+
+/**
+ * called to save the last selected notebook by providing last selected notebook.
+ */
+const setLastSelectedNoteBook = function (lastSelectedNoteBook) {
+  if (!lastSelectedNoteBook) {
+    return
+  }
+  electronStore.set('general.notebook', lastSelectedNoteBook)
 }
 
 /**
@@ -114,6 +136,8 @@ module.exports = {
   setNotFirstTimeFlag,
   getDefaultLanguage,
   setDefaultLanguage,
+  getLastSelectedNoteBook,
+  setLastSelectedNoteBook,
   setDefaultStartupMode,
   getDefaultStartupMode,
   getDefaultstartupNoteId,
