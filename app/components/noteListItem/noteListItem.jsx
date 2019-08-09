@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
+import NoteBookIcon from '@material-ui/icons/Book'
 import Styles from './style'
 
 // UI wrappers.
@@ -48,6 +49,10 @@ class NoteListItem extends React.Component {
      */
     onImportant: PropTypes.func.isRequired,
     /**
+     * callback called when user clicks on notebook button
+     */
+    onNoteBook: PropTypes.func.isRequired,
+    /**
      * styles for this component
      */
     classes: PropTypes.object.isRequired,
@@ -66,6 +71,7 @@ class NoteListItem extends React.Component {
 
     this.onClick = this.onClick.bind(this)
     this.onDeleteClick = this.onDeleteClick.bind(this)
+    this.onNoteBookClick = this.onNoteBookClick.bind(this)
     this.onImportantClick = this.onImportantClick.bind(this)
   }
 
@@ -88,6 +94,13 @@ class NoteListItem extends React.Component {
    */
   onImportantClick () {
     this.props.onImportant(this.props.id)
+  }
+
+  /**
+   * called when user clicks on notebook button
+   */
+  onNoteBookClick () {
+    this.props.onNoteBook(this.props.id, this.props.isInNoteBook)
   }
 
   /**
@@ -116,6 +129,18 @@ class NoteListItem extends React.Component {
               onClick={this.onImportantClick}
             >
               <InfoIcon />
+            </IconButton>
+          ) : (
+            ''
+          )}
+        </div>
+        <div className={classes.NoteBook}>
+          {this.props.selected && this.props.noteBookIsActive ? (
+            <IconButton
+              color={this.props.isInNoteBook ? 'secondary' : 'primary'}
+              onClick={this.onNoteBookClick}
+            >
+              <NoteBookIcon />
             </IconButton>
           ) : (
             ''
