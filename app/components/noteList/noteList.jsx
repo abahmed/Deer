@@ -25,6 +25,14 @@ class NoteList extends React.Component {
      */
     notes: PropTypes.array.isRequired,
     /**
+     * notes of the current active notebook
+     */
+    noteBookNotes: PropTypes.object.isRequired,
+    /**
+     * index of active notebook
+     */
+    activeNoteBookID: PropTypes.string.isRequired,
+    /**
      * selects note with ID
      */
     setSelectedNoteID: PropTypes.func.isRequired,
@@ -36,6 +44,18 @@ class NoteList extends React.Component {
      * set note as custom startup note
      */
     setCustomStartupNote: PropTypes.func.isRequired,
+    /**
+     * adds note to active notebook
+     */
+    addToActiveNoteBook: PropTypes.func.isRequired,
+    /**
+     * removes note from active notebook
+     */
+    removeFromActiveNoteBook: PropTypes.func.isRequired,
+    /**
+     * save changes for active notebook
+     */
+    saveActiveNoteBook: PropTypes.func.isRequired,
     /**
      * styles for this component
      */
@@ -55,6 +75,7 @@ class NoteList extends React.Component {
 
     this.onNoteSelect = this.onNoteSelect.bind(this)
     this.onNoteDelete = this.onNoteDelete.bind(this)
+    this.onNoteBookClick = this.onNoteBookClick.bind(this)
     this.onCustom = this.onCustom.bind(this)
   }
 
@@ -85,6 +106,21 @@ class NoteList extends React.Component {
   }
 
   /**
+   * Called when user clicks on notebook icon
+   */
+  onNoteBookClick (noteID, isInNoteBook) {
+    if (isInNoteBook) {
+      this.props.removeFromActiveNoteBook(noteID)
+      this.props.removeFromNoteIDs(noteID)
+      this.props.saveActiveNoteBook()
+    } else {
+      this.props.addToActiveNoteBook(noteID)
+      this.props.addToNoteIDs(noteID)
+      this.props.saveActiveNoteBook()
+    }
+  }
+
+  /**
    * Rendering method
    */
   render () {
@@ -101,9 +137,12 @@ class NoteList extends React.Component {
                   text={note.title}
                   modified={note.modified}
                   selected={this.props.selectedNoteID === note.id}
+                  isInNoteBook={Boolean(this.props.noteBookNotes[note.id])}
+                  noteBookIsActive={this.props.activeNoteBookID !== 'none'}
                   onClick={this.onNoteSelect}
                   onDelete={this.onNoteDelete}
                   onImportant={this.onCustom}
+                  onNoteBook={this.onNoteBookClick}
                 />
               ))}
             </FlipMove>
