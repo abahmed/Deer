@@ -45,8 +45,8 @@ class About extends React.Component {
   constructor (props) {
     super()
 
-    this.openIssuesLink = this.openIssuesLink.bind(this)
-    this.openAppLink = this.openAppLink.bind(this)
+    this.handleOpenIssuesLink = this.handleOpenIssuesLink.bind(this)
+    this.handleOpenAppLink = this.handleOpenAppLink.bind(this)
     this.onClickHome = this.onClickHome.bind(this)
   }
 
@@ -60,14 +60,14 @@ class About extends React.Component {
   /**
    * Open link for reporting issues in browser.
    */
-  openIssuesLink () {
+  handleOpenIssuesLink () {
     openExternalLink(packageJson.bugs.url)
   }
 
   /**
    * Open link for the app in browser.
    */
-  openAppLink () {
+  handleOpenAppLink () {
     openExternalLink(packageJson.repository.url)
   }
 
@@ -96,11 +96,11 @@ class About extends React.Component {
             </Typography>
             <Typography variant='body2'>
               {t('about:WantHelp')}
-              <span className={classes.link} onClick={this.openIssuesLink}>
+              <span className={classes.link} onClick={this.handleOpenIssuesLink}>
                 {t('about:reportIssue')}
               </span>
               {t('about:or')}
-              <span className={classes.link} onClick={this.openAppLink}>
+              <span className={classes.link} onClick={this.handleOpenAppLink}>
                 {t('about:contribute')}
               </span>
             </Typography>

@@ -45,6 +45,7 @@ class PopoverIcon extends React.Component {
 
     this.handlePopoverOpen = this.handlePopoverOpen.bind(this)
     this.handlePopoverClose = this.handlePopoverClose.bind(this)
+    this.handleOnClick = this.handleOnClick.bind(this)
   }
 
   /**
@@ -63,6 +64,13 @@ class PopoverIcon extends React.Component {
   }
 
   /**
+   * Called when user clicks on component
+   */
+  handleOnClick () {
+    this.props.callback()
+  }
+
+  /**
    * Rendering method
    */
   render () {
@@ -77,7 +85,7 @@ class PopoverIcon extends React.Component {
           aria-haspopup='true'
           onMouseEnter={this.handlePopoverOpen}
           onMouseLeave={this.handlePopoverClose}
-          onClick={this.props.callback}
+          onClick={this.handleOnClick}
           color='primary'
         >
           {this.props.icon}

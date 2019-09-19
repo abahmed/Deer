@@ -12,7 +12,7 @@ const INITIAL_STATE = Map({
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.SAVE_SETTINGS:
+    case ACTIONS.SAVE_SETTINGS: {
       try {
         for (const setting in action.payload) {
           if (setting === 'language') {
@@ -31,9 +31,12 @@ export default (state = INITIAL_STATE, action) => {
         logger.error(JSON.stringify(err))
         return state.set('settingsStatus', SETTINGS_STATUS.SETTINGS_SAVE_FAIL)
       }
-    case ACTIONS.SET_READY_STATUS:
+    }
+    case ACTIONS.SET_READY_STATUS: {
       return state.set('settingsStatus', SETTINGS_STATUS.READY)
-    default:
+    }
+    default: {
       return state
+    }
   }
 }

@@ -70,11 +70,11 @@ class Settings extends React.Component {
       defaultMode: getDefaultStartupMode()
     }
 
-    this.onSaveSettings = this.onSaveSettings.bind(this)
-    this.onLanguageChange = this.onLanguageChange.bind(this)
-    this.onDefaultModeChange = this.onDefaultModeChange.bind(this)
+    this.handleOnSaveSettings = this.handleOnSaveSettings.bind(this)
+    this.handleOnLanguageChange = this.handleOnLanguageChange.bind(this)
+    this.handleOnDefaultModeChange = this.handleOnDefaultModeChange.bind(this)
     this._isSaveDisabled = this._isSaveDisabled.bind(this)
-    this.onCancelClick = this.onCancelClick.bind(this)
+    this.handleOnCancelClick = this.handleOnCancelClick.bind(this)
 
     this._defaults = {
       language: getDefaultLanguage(),
@@ -99,13 +99,13 @@ class Settings extends React.Component {
   /**
    * Called when user changes language.
    */
-  onLanguageChange (event) {
+  handleOnLanguageChange (event) {
     // Local component state used for UI internally, so we don't need to keep
     // it in Redux.
     this.setState({ language: event.target.value })
   }
 
-  onDefaultModeChange (event) {
+  handleOnDefaultModeChange (event) {
     // Local component state used for UI internally, so we don't need to keep
     // it in Redux.
     this.setState({ defaultMode: event.target.value })
@@ -114,7 +114,7 @@ class Settings extends React.Component {
   /**
    * Called when user clicks on save button.
    */
-  onSaveSettings () {
+  handleOnSaveSettings () {
     // Saving new Language.
     const newSettings = {}
     for (const setting in this.state) {
@@ -129,7 +129,7 @@ class Settings extends React.Component {
   /**
    * Called when user clicks on cancel button.
    */
-  onCancelClick () {
+  handleOnCancelClick () {
     this.props.history.push('/')
   }
 
@@ -166,7 +166,7 @@ class Settings extends React.Component {
               <Grid item xs={6}>
                 <Select
                   value={this.state.language}
-                  onChange={this.onLanguageChange}
+                  onChange={this.handleOnLanguageChange}
                   className={classes.select}
                   color='primary'
                 >
@@ -185,7 +185,7 @@ class Settings extends React.Component {
               <Grid item xs={6}>
                 <Select
                   value={this.state.defaultMode}
-                  onChange={this.onDefaultModeChange}
+                  onChange={this.handleOnDefaultModeChange}
                   className={classes.select}
                   color='primary'
                 >
@@ -204,7 +204,7 @@ class Settings extends React.Component {
                 color='primary'
                 className={classes.button}
                 disabled={this._isSaveDisabled()}
-                onClick={this.onSaveSettings}
+                onClick={this.handleOnSaveSettings}
               >
                 {t('settings:saveBtn')}
                 <SaveIcon className={classes.nextIconSize} />
@@ -213,7 +213,7 @@ class Settings extends React.Component {
                 variant='contained'
                 color='primary'
                 className={classes.button}
-                onClick={this.onCancelClick}
+                onClick={this.handleOnCancelClick}
               >
                 {t('settings:cancelBtn')}
                 <CancelIcon className={classes.nextIconSize} />
