@@ -73,16 +73,16 @@ class NoteList extends React.Component {
   constructor (props) {
     super()
 
-    this.onNoteSelect = this.onNoteSelect.bind(this)
-    this.onNoteDelete = this.onNoteDelete.bind(this)
-    this.onNoteBookClick = this.onNoteBookClick.bind(this)
-    this.onCustom = this.onCustom.bind(this)
+    this.handleOnNoteSelect = this.handleOnNoteSelect.bind(this)
+    this.handleOnNoteDelete = this.handleOnNoteDelete.bind(this)
+    this.handleOnNoteBookClick = this.handleOnNoteBookClick.bind(this)
+    this.handleOnCustom = this.handleOnCustom.bind(this)
   }
 
   /**
    * Called when user selects a note
    */
-  onNoteSelect (noteID) {
+  handleOnNoteSelect (noteID) {
     // Do nothing as it's already selected.
     if (this.props.selectedNoteID === noteID) {
       return
@@ -94,21 +94,21 @@ class NoteList extends React.Component {
   /**
    * Called when user clicks for deleting selected note
    */
-  onNoteDelete () {
+  handleOnNoteDelete () {
     this.props.removeSelectedNote()
   }
 
   /**
    * Called when user clicks on custom note
    */
-  onCustom (noteID) {
+  handleOnCustom (noteID) {
     this.props.setCustomStartupNote(noteID)
   }
 
   /**
    * Called when user clicks on notebook icon
    */
-  onNoteBookClick (noteID, isInNoteBook) {
+  handleOnNoteBookClick (noteID, isInNoteBook) {
     if (isInNoteBook) {
       this.props.removeFromActiveNoteBook(noteID)
       this.props.removeFromNoteIDs(noteID)
@@ -139,10 +139,10 @@ class NoteList extends React.Component {
                   selected={this.props.selectedNoteID === note.id}
                   isInNoteBook={Boolean(this.props.noteBookNotes[note.id])}
                   noteBookIsActive={this.props.activeNoteBookID !== 'none'}
-                  onClick={this.onNoteSelect}
-                  onDelete={this.onNoteDelete}
-                  onImportant={this.onCustom}
-                  onNoteBook={this.onNoteBookClick}
+                  onClick={this.handleOnNoteSelect}
+                  onDelete={this.handleOnNoteDelete}
+                  onImportant={this.handleOnCustom}
+                  onNoteBook={this.handleOnNoteBookClick}
                 />
               ))}
             </FlipMove>

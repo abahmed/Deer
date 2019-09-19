@@ -57,22 +57,22 @@ class NotesPanel extends React.Component {
     this.saveTimer = null
     this.previousQuery = null
 
-    this.viewDashboard = this.viewDashboard.bind(this)
-    this.onClickNewNote = this.onClickNewNote.bind(this)
-    this.onSearch = this.onSearch.bind(this)
+    this.handleOnClickNewNote = this.handleOnClickNewNote.bind(this)
+    this.handleViewDashboard = this.handleViewDashboard.bind(this)
+    this.handleOnSearch = this.handleOnSearch.bind(this)
   }
 
   /**
    * Called when user clicks on new note button.
    */
-  onClickNewNote () {
+  handleOnClickNewNote () {
     this.props.createNote()
   }
 
   /**
    * Called when user clicks on view dashboard button.
    */
-  viewDashboard () {
+  handleViewDashboard () {
     // deselects selected note.
     this.props.showDashboard()
   }
@@ -80,7 +80,7 @@ class NotesPanel extends React.Component {
   /**
    * Called when user writes in searchbox.
    */
-  onSearch (event) {
+  handleOnSearch (event) {
     const query = event.target.value.trim()
     if (query === this.previousQuery) {
       return
@@ -112,10 +112,10 @@ class NotesPanel extends React.Component {
       <div className={classes.root}>
         <AppBar position='static' color='default'>
           <Toolbar variant='dense' className={classes.toolbar}>
-            <IconButton color='primary' onClick={this.onClickNewNote}>
+            <IconButton color='primary' onClick={this.handleOnClickNewNote}>
               <NoteAddIcon />
             </IconButton>
-            <IconButton color='primary' onClick={this.viewDashboard}>
+            <IconButton color='primary' onClick={this.handleViewDashboard}>
               <DashboardIcon />
             </IconButton>
           </Toolbar>
@@ -130,7 +130,7 @@ class NotesPanel extends React.Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
-                onChange={this.onSearch}
+                onChange={this.handleOnSearch}
               />
             </div>
           </Toolbar>

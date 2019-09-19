@@ -54,8 +54,8 @@ class Welcome extends React.Component {
     // Used to stop after navigating away from this component.
     this.timer = 0
 
-    this.onLanguageChange = this.onLanguageChange.bind(this)
-    this.onSaveSettings = this.onSaveSettings.bind(this)
+    this.handleOnLanguageChange = this.handleOnLanguageChange.bind(this)
+    this.handleOnSaveSettings = this.handleOnSaveSettings.bind(this)
   }
 
   /**
@@ -118,7 +118,7 @@ class Welcome extends React.Component {
   /**
    * Called when user clicks on next button.
    */
-  onSaveSettings () {
+  handleOnSaveSettings () {
     // Saving new Language if it's different from defaults.
     if (this.state.settings.language !== getDefaultLanguage()) {
       this.props.saveSettings({ language: this.state.settings.language })
@@ -133,7 +133,7 @@ class Welcome extends React.Component {
   /**
    * Called when user changes language in select box.
    */
-  onLanguageChange (event) {
+  handleOnLanguageChange (event) {
     this.setState(state => {
       return {
         ...state,
@@ -164,7 +164,7 @@ class Welcome extends React.Component {
             <InputLabel htmlFor='language'>{lang.selectLang}</InputLabel>
             <Select
               value={this.state.settings.language}
-              onChange={this.onLanguageChange}
+              onChange={this.handleOnLanguageChange}
               name='language'
             >
               {SUPPORTED_LANGS.map((lang, index) => (
@@ -178,7 +178,7 @@ class Welcome extends React.Component {
             variant='contained'
             color='primary'
             className={classes.item}
-            onClick={this.onSaveSettings}
+            onClick={this.handleOnSaveSettings}
           >
             {lang.nextBtn}
             <NavigateNext className={classes.nextIconSize} />

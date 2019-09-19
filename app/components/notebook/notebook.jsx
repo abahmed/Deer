@@ -123,16 +123,16 @@ class NoteBook extends React.Component {
       selectedNoteBookID: getLastSelectedNoteBook()
     }
 
-    this.onNameChange = this.onNameChange.bind(this)
-    this.onNoteBookChange = this.onNoteBookChange.bind(this)
+    this.handleOnNameChange = this.handleOnNameChange.bind(this)
+    this.handleOnNoteBookChange = this.handleOnNoteBookChange.bind(this)
     this.showErrorMessage = this.showErrorMessage.bind(this)
-    this.onClickNewNoteBook = this.onClickNewNoteBook.bind(this)
-    this.removeSelectedNoteBook = this.removeSelectedNoteBook.bind(this)
+    this.handleOnClickNewNoteBook = this.handleOnClickNewNoteBook.bind(this)
+    this.handleRemoveSelectedNoteBook = this.handleRemoveSelectedNoteBook.bind(this)
     this.isApplyDisabled = this.isApplyDisabled.bind(this)
     this.isOpenDisabled = this.isOpenDisabled.bind(this)
-    this.onApplyClick = this.onApplyClick.bind(this)
-    this.onOpenClick = this.onOpenClick.bind(this)
-    this.onReturnClick = this.onReturnClick.bind(this)
+    this.handleOnApplyClick = this.handleOnApplyClick.bind(this)
+    this.handleOnOpenClick = this.handleOnOpenClick.bind(this)
+    this.handleOnReturnClick = this.handleOnReturnClick.bind(this)
   }
 
   /**
@@ -148,7 +148,7 @@ class NoteBook extends React.Component {
   /**
    * Called when user writes in name field.
    */
-  onNameChange (event) {
+  handleOnNameChange (event) {
     // Local component state used for UI internally, so we don't need to keep
     // it in Redux.
     this.setState({ noteBookName: event.target.value })
@@ -157,7 +157,7 @@ class NoteBook extends React.Component {
   /**
    * Called when user changes notebook.
    */
-  onNoteBookChange (event) {
+  handleOnNoteBookChange (event) {
     // Local component state used for UI internally, so we don't need to keep
     // it in Redux.
     this.setState({ selectedNoteBookID: event.target.value })
@@ -181,7 +181,7 @@ class NoteBook extends React.Component {
   /**
    * Called when users clicks on new notebook button.
    */
-  onClickNewNoteBook () {
+  handleOnClickNewNoteBook () {
     const noteBookName = this.state.noteBookName.trim()
     const nameList = this.props.nameList
     if (noteBookName.length === 0) {
@@ -197,7 +197,7 @@ class NoteBook extends React.Component {
   /**
    * Called when users clicks on delete button.
    */
-  removeSelectedNoteBook () {
+  handleRemoveSelectedNoteBook () {
     const selectedNoteBookID = this.state.selectedNoteBookID
     const activeNoteBookID = this.state.activeNoteBookID
     this.props.setSelectedNoteBookID(selectedNoteBookID)
@@ -244,7 +244,7 @@ class NoteBook extends React.Component {
   /**
    * Called when user clicks on apply button.
    */
-  onApplyClick () {
+  handleOnApplyClick () {
     const selectedNoteBookID = this.state.selectedNoteBookID
     this.setState({ activeNoteBookID: selectedNoteBookID })
     this.props.setActiveNoteBookID(selectedNoteBookID)
@@ -257,7 +257,7 @@ class NoteBook extends React.Component {
   /**
    * Called when user clicks on open button.
    */
-  onOpenClick () {
+  handleOnOpenClick () {
     if (this.props.noteIDs.length === 0) {
       this.showErrorMessage('Notebook cannot be empty')
     } else {
@@ -272,7 +272,7 @@ class NoteBook extends React.Component {
   /**
    * Called when user clicks on return button.
    */
-  onReturnClick () {
+  handleOnReturnClick () {
     this.props.history.push('/')
   }
 
@@ -318,7 +318,7 @@ class NoteBook extends React.Component {
                         root: classes.inputRoot,
                         input: classes.inputInput
                       }}
-                      onChange={this.onNameChange}
+                      onChange={this.handleOnNameChange}
                     />
                   </div>
                 </Toolbar>
@@ -328,7 +328,7 @@ class NoteBook extends React.Component {
                   variant='contained'
                   color='primary'
                   className={classes.button}
-                  onClick={this.onClickNewNoteBook}
+                  onClick={this.handleOnClickNewNoteBook}
                 >
                   {t('settings:addBtn')}
                 </Button>
@@ -342,11 +342,11 @@ class NoteBook extends React.Component {
               <Grid item xs={6}>
                 <Select
                   value={this.state.selectedNoteBookID}
-                  onChange={this.onNoteBookChange}
+                  onChange={this.handleOnNoteBookChange}
                   className={classes.select}
                   color='primary'
                 >
-                  <MenuItem value={'none'}>none</MenuItem>
+                  <MenuItem value='none'>none</MenuItem>
                   {this.props.noteBooks.map((noteBook, index) => (
                     <MenuItem key={index} value={noteBook.id}>
                       {noteBook.name}
@@ -356,7 +356,7 @@ class NoteBook extends React.Component {
               </Grid>
               <Grid item xs={2}>
                 {this.state.selectedNoteBookID !== 'none' ? (
-                  <IconButton color='primary' onClick={this.removeSelectedNoteBook}>
+                  <IconButton color='primary' onClick={this.handleRemoveSelectedNoteBook}>
                     <DeleteIcon />
                   </IconButton>
                 ) : (
@@ -371,7 +371,7 @@ class NoteBook extends React.Component {
                 color='primary'
                 className={classes.button}
                 disabled={this.isApplyDisabled()}
-                onClick={this.onApplyClick}
+                onClick={this.handleOnApplyClick}
               >
                 {t('settings:applyBtn')}
               </Button>
@@ -380,7 +380,7 @@ class NoteBook extends React.Component {
                 color='primary'
                 className={classes.button}
                 disabled={this.isOpenDisabled()}
-                onClick={this.onOpenClick}
+                onClick={this.handleOnOpenClick}
               >
                 {t('settings:openBtn')}
               </Button>
@@ -388,7 +388,7 @@ class NoteBook extends React.Component {
                 variant='contained'
                 color='primary'
                 className={classes.button}
-                onClick={this.onReturnClick}
+                onClick={this.handleOnReturnClick}
               >
                 {t('settings:backBtn')}
               </Button>

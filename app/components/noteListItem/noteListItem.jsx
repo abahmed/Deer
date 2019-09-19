@@ -69,37 +69,37 @@ class NoteListItem extends React.Component {
   constructor (props) {
     super()
 
-    this.onClick = this.onClick.bind(this)
-    this.onDeleteClick = this.onDeleteClick.bind(this)
-    this.onNoteBookClick = this.onNoteBookClick.bind(this)
-    this.onImportantClick = this.onImportantClick.bind(this)
+    this.handleOnClick = this.handleOnClick.bind(this)
+    this.handleOnDeleteClick = this.handleOnDeleteClick.bind(this)
+    this.handleOnNoteBookClick = this.handleOnNoteBookClick.bind(this)
+    this.handleOnImportantClick = this.handleOnImportantClick.bind(this)
   }
 
   /**
    * Called when user clicks on this item
    */
-  onClick () {
+  handleOnClick () {
     this.props.onClick(this.props.id)
   }
 
   /**
    * Called when user clicks on delete button
    */
-  onDeleteClick () {
+  handleOnDeleteClick () {
     this.props.onDelete()
   }
 
   /**
    * called when user clicks on info button
    */
-  onImportantClick () {
+  handleOnImportantClick () {
     this.props.onImportant(this.props.id)
   }
 
   /**
    * called when user clicks on notebook button
    */
-  onNoteBookClick () {
+  handleOnNoteBookClick () {
     this.props.onNoteBook(this.props.id, this.props.isInNoteBook)
   }
 
@@ -120,13 +120,13 @@ class NoteListItem extends React.Component {
           selected: classes.selected
         }}
         selected={this.props.selected}
-        onClick={this.onClick}
+        onClick={this.handleOnClick}
       >
         <div className={classes.CustomNote}>
           {this.props.selected && getDefaultStartupMode() === 'CUSTOM' ? (
             <IconButton
               color={getDefaultstartupNoteId() === this.props.id ? 'secondary' : 'primary'}
-              onClick={this.onImportantClick}
+              onClick={this.handleOnImportantClick}
             >
               <InfoIcon />
             </IconButton>
@@ -138,7 +138,7 @@ class NoteListItem extends React.Component {
           {this.props.selected && this.props.noteBookIsActive ? (
             <IconButton
               color={this.props.isInNoteBook ? 'secondary' : 'primary'}
-              onClick={this.onNoteBookClick}
+              onClick={this.handleOnNoteBookClick}
             >
               <NoteBookIcon />
             </IconButton>
@@ -157,7 +157,7 @@ class NoteListItem extends React.Component {
         />
         <ListItemSecondaryAction>
           {this.props.selected ? (
-            <IconButton color='primary' onClick={this.onDeleteClick}>
+            <IconButton color='primary' onClick={this.handleOnDeleteClick}>
               <DeleteIcon />
             </IconButton>
           ) : (
