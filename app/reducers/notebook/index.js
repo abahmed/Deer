@@ -21,7 +21,7 @@ const createNoteBook = (name, noteIDs, modified, rev) => {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.NOTE_BOOKS_FETCH_SUCCESS:
+    case ACTIONS.NOTE_BOOKS_FETCH_SUCCESS: {
       const noteBooks = {}
 
       action.payload.forEach(noteBook => {
@@ -33,7 +33,8 @@ export default (state = INITIAL_STATE, action) => {
         )
       })
       return state.set('noteBooks', merge(state.get('noteBooks'), noteBooks))
-    case ACTIONS.SET_ACTIVE_NOTE_BOOK_ID:
+    }
+    case ACTIONS.SET_ACTIVE_NOTE_BOOK_ID: {
       const activeNoteBookID = action.payload
       if (activeNoteBookID === state.get('activeNoteBookID')) {
         return state
@@ -44,7 +45,8 @@ export default (state = INITIAL_STATE, action) => {
         return state.set('activeNoteBookID', ACTIONS.NOT_ACTIVE_NOTE_BOOK)
       }
       return state.set('activeNoteBookID', activeNoteBookID)
-    case ACTIONS.SET_SELECTED_NOTE_BOOK_ID:
+    }
+    case ACTIONS.SET_SELECTED_NOTE_BOOK_ID: {
       const noteBookID = action.payload
       if (noteBookID === state.get('selectedNoteBookID')) {
         return state
@@ -58,7 +60,8 @@ export default (state = INITIAL_STATE, action) => {
         return state
       }
       return state.set('selectedNoteBookID', noteBookID)
-    case ACTIONS.ADD_NOTE_BOOK:
+    }
+    case ACTIONS.ADD_NOTE_BOOK: {
       const newNoteBook = action.payload
 
       if (Object.prototype.hasOwnProperty.call(state.get('noteBooks'), newNoteBook.id)) {
@@ -69,7 +72,8 @@ export default (state = INITIAL_STATE, action) => {
         ['noteBooks', newNoteBook.id],
         createNoteBook(newNoteBook.name, newNoteBook.noteIDs, newNoteBook.modified, newNoteBook.rev)
       )
-    case ACTIONS.DELETE_SELECTED_NOTE_BOOK:
+    }
+    case ACTIONS.DELETE_SELECTED_NOTE_BOOK: {
       if (state.get('selectedNoteBookID') === ACTIONS.NOT_SELECTED_NOTE_BOOK) {
         logger.error('There is no selected notebook')
         return state
@@ -77,10 +81,13 @@ export default (state = INITIAL_STATE, action) => {
       return state
         .removeIn(['noteBooks', state.get('selectedNoteBookID')])
         .set('selectedNoteBookID', ACTIONS.NOT_SELECTED_NOTE_BOOK)
-    case ACTIONS.OPEN_NOTE_BOOK:
+    }
+    case ACTIONS.OPEN_NOTE_BOOK: {
       return state.set('noteBookIsOpened', true)
-    case ACTIONS.CLOSE_NOTE_BOOK:
+    }
+    case ACTIONS.CLOSE_NOTE_BOOK: {
       return state.set('noteBookIsOpened', false)
+    }
     case ACTIONS.CREATE_NOTE_LIST: {
       const noteBookNotes = {}
       const noteBooks = state.get('noteBooks')
@@ -91,8 +98,9 @@ export default (state = INITIAL_STATE, action) => {
       })
       return state.set('noteBookNotes', merge(state.get('noteBookNotes'), noteBookNotes))
     }
-    case ACTIONS.DELETE_NOTE_LIST:
+    case ACTIONS.DELETE_NOTE_LIST: {
       return state.set('noteBookNotes', {})
+    }
     case ACTIONS.ADD_NOTE_TO_NOTE_IDS: {
       const noteBooks = state.get('noteBooks')
       const activeNoteBookID = state.get('activeNoteBookID')
@@ -117,7 +125,7 @@ export default (state = INITIAL_STATE, action) => {
         createNoteBook(activeNoteBook.name, noteIDs, activeNoteBook.modified, activeNoteBook.rev)
       )
     }
-    case ACTIONS.ADD_NOTE_TO_ACTIVE_NOTE_BOOK:
+    case ACTIONS.ADD_NOTE_TO_ACTIVE_NOTE_BOOK: {
       const newNoteID = action.payload
 
       if (Object.prototype.hasOwnProperty.call(state.get('noteBookNotes'), newNoteID)) {
@@ -126,17 +134,20 @@ export default (state = INITIAL_STATE, action) => {
       }
 
       return state.setIn(['noteBookNotes', newNoteID], true)
+    }
     case ACTIONS.REMOVE_NOTE_FROM_ACTIVE_NOTE_BOOK: {
       const noteID = action.payload
       return state.removeIn(['noteBookNotes', noteID])
     }
-    case ACTIONS.UPDATE_ACTIVE_NOTE_BOOK_REV:
+    case ACTIONS.UPDATE_ACTIVE_NOTE_BOOK_REV: {
       if (state.get('activeNoteBookID') === ACTIONS.NOT_ACTIVE_NOTE_BOOK) {
         logger.error('There is no active notebook')
         return state
       }
       return state.setIn(['noteBooks', state.get('activeNoteBookID'), 'rev'], action.payload)
-    default:
+    }
+    default: {
       return state
+    }
   }
 }

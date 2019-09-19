@@ -20,7 +20,7 @@ const createNote = (title, content, modified, rev) => {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.NOTES_FETCH_SUCCESS:
+    case ACTIONS.NOTES_FETCH_SUCCESS: {
       const notes = {}
       action.payload.forEach(note => {
         notes[note.doc._id] = createNote(
@@ -31,7 +31,8 @@ export default (state = INITIAL_STATE, action) => {
         )
       })
       return state.set('notes', merge(state.get('notes'), notes))
-    case ACTIONS.SET_SELECTED_NOTE_ID:
+    }
+    case ACTIONS.SET_SELECTED_NOTE_ID: {
       const noteID = action.payload
       if (noteID === state.get('selectedNoteID')) {
         return state
@@ -46,7 +47,8 @@ export default (state = INITIAL_STATE, action) => {
       }
       setLastSelectedNoteId(noteID)
       return state.set('selectedNoteID', noteID)
-    case ACTIONS.ADD_NOTE:
+    }
+    case ACTIONS.ADD_NOTE: {
       const newNote = action.payload
 
       if (Object.prototype.hasOwnProperty.call(state.get('notes'), newNote.id)) {
@@ -57,7 +59,8 @@ export default (state = INITIAL_STATE, action) => {
         ['notes', newNote.id],
         createNote(newNote.title, newNote.content, newNote.modified, newNote.rev)
       )
-    case ACTIONS.EDIT_SELECTED_NOTE:
+    }
+    case ACTIONS.EDIT_SELECTED_NOTE: {
       const selectedNoteID = state.get('selectedNoteID')
       if (selectedNoteID === ACTIONS.NOT_SELECTED_NOTE) {
         logger.error('There is no selected note')
@@ -73,13 +76,15 @@ export default (state = INITIAL_STATE, action) => {
         ['notes', state.get('selectedNoteID')],
         createNote(newValues.title, newValues.content, newValues.modified, note.rev)
       )
-    case ACTIONS.UPDATE_SELECTED_NOTE_REV:
+    }
+    case ACTIONS.UPDATE_SELECTED_NOTE_REV: {
       if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
         logger.error('There is no selected note')
         return state
       }
       return state.setIn(['notes', state.get('selectedNoteID'), 'rev'], action.payload)
-    case ACTIONS.DELETE_SELECTED_NOTE:
+    }
+    case ACTIONS.DELETE_SELECTED_NOTE: {
       if (state.get('selectedNoteID') === ACTIONS.NOT_SELECTED_NOTE) {
         logger.error('There is no selected note')
         return state
@@ -87,7 +92,8 @@ export default (state = INITIAL_STATE, action) => {
       return state
         .removeIn(['notes', state.get('selectedNoteID')])
         .set('selectedNoteID', ACTIONS.NOT_SELECTED_NOTE)
-    case ACTIONS.NOTES_SEARCH_UPDATE:
+    }
+    case ACTIONS.NOTES_SEARCH_UPDATE: {
       const searchNotes = []
       action.payload.forEach(note => {
         searchNotes.push(note.id)
@@ -97,7 +103,9 @@ export default (state = INITIAL_STATE, action) => {
       }
 
       return state.set('searchNotes', searchNotes)
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
