@@ -119,10 +119,9 @@ export default (state = INITIAL_STATE, action) => {
       const activeNoteBook = noteBooks[activeNoteBookID]
       const noteIDs = activeNoteBook.noteIDs
       const noteID = action.payload
-      noteIDs.filter(ID => ID !== noteID)
       return state.setIn(
         ['noteBooks', activeNoteBookID],
-        createNoteBook(activeNoteBook.name, noteIDs, activeNoteBook.modified, activeNoteBook.rev)
+        createNoteBook(activeNoteBook.name, noteIDs.filter(ID => ID !== noteID), activeNoteBook.modified, activeNoteBook.rev)
       )
     }
     case ACTIONS.ADD_NOTE_TO_ACTIVE_NOTE_BOOK: {
@@ -145,6 +144,13 @@ export default (state = INITIAL_STATE, action) => {
         return state
       }
       return state.setIn(['noteBooks', state.get('activeNoteBookID'), 'rev'], action.payload)
+    }
+    case ACTIONS.UPDATE_NOTE_BOOK: {
+      const {id,notebook} = action.payload
+      return state.setIn(
+        ['noteBooks', id],
+        createNoteBook(notebook.name, notebook.noteIDs, notebook.modified, notebook.rev)
+      )
     }
     default: {
       return state

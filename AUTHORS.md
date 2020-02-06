@@ -28,3 +28,4 @@ If you make a contribution here, you may add your name and email address here.
 - Waheed Afolabi (waheed.freelancer16@gmail.com)
 - medha-yadav (medhayadav1896@gmail.com)
 - Tamim Arafat (tamim.arafat@gmail.com)
+- Mahendra Hegde (hegdemahendra9@gmail.com)

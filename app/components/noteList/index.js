@@ -7,7 +7,8 @@ import {
   removeFromNoteIDs,
   saveActiveNoteBook,
   addToActiveNoteBook,
-  removeFromActiveNoteBook
+  removeFromActiveNoteBook,
+  removeNoteFromAllNoteBooks
 } from '../../actions/notebook'
 import { setSelectedNoteID, removeSelectedNote } from '../../actions/note'
 import { setCustomNoteId } from '../../utils/api.electron'
@@ -80,7 +81,8 @@ const mapDispatchToProps = dispatch => ({
   removeFromNoteIDs: noteID => dispatch(removeFromNoteIDs(noteID)),
   addToActiveNoteBook: noteID => dispatch(addToActiveNoteBook(noteID)),
   removeFromActiveNoteBook: noteID => dispatch(removeFromActiveNoteBook(noteID)),
-  saveActiveNoteBook: () => dispatch(saveActiveNoteBook())
+  saveActiveNoteBook: () => dispatch(saveActiveNoteBook()),
+  removeNoteFromAllNoteBooks: noteID =>dispatch(removeNoteFromAllNoteBooks(noteID))
 })
 
 export default compose(

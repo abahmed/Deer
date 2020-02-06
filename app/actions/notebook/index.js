@@ -45,6 +45,9 @@ const removeFromActiveNoteBook = createAction(ACTIONS.REMOVE_NOTE_FROM_ACTIVE_NO
 /** Used for updating rev of active notebook. */
 const updateActiveNoteBookRev = createAction(ACTIONS.UPDATE_ACTIVE_NOTE_BOOK_REV)
 
+/** Used for updating the notebook */
+const updateNoteBook = createAction(ACTIONS.UPDATE_NOTE_BOOK)
+
 /** Async method, Used for fetching all notebooks from database. */
 const fetchAllNoteBooks = () => dispatch => {
   fetchNoteBooks()
@@ -122,6 +125,32 @@ const removeSelectedNoteBook = () => (dispatch, getState) => {
       logger.error('Unable to remove notebook ' + JSON.stringify(err))
     })
 }
+/** Async method, used for removing the destroyed note from notebook database. */
+const removeNoteFromAllNoteBooks = (noteID) => (dispatch, getState) => {
+  const state = getState().noteBookReducer
+  const noteBooks = state.get('noteBooks')
+  Object.keys(noteBooks).map( key => {
+    const notebook = noteBooks[key]
+    const noteIDs = notebook.noteIDs.filter( id => id !== noteID)
+    if(noteIDs.length !== notebook.noteIDs.length){
+      const modified = Date.now()
+      addNoteBook(
+        key,
+        notebook.name,
+        noteIDs,
+        modified,
+        notebook.rev
+      ).then(result => {
+          if (result.ok) {
+            dispatch(updateNoteBook({id:key, notebook: {...notebook,noteIDs,modified,rev:result.rev}}))
+          }
+        })
+        .catch(err => {
+          logger.error('Unable to update notebook: ' + JSON.stringify(err))
+        })
+    }
+  })
+}
 
 export {
   updateNoteBooksList,
@@ -141,5 +170,6 @@ export {
   closeNoteBook,
   createNoteList,
   deleteNoteList,
-  saveActiveNoteBook
+  saveActiveNoteBook,
+  removeNoteFromAllNoteBooks
 }
