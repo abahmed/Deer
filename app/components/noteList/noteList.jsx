@@ -94,7 +94,13 @@ class NoteList extends React.Component {
   /**
    * Called when user clicks for deleting selected note
    */
-  handleOnNoteDelete () {
+  handleOnNoteDelete (noteID) {
+    // remove from noteBookNotes
+    if (this.props.noteBookNotes[noteID]) {
+      this.props.removeFromActiveNoteBook(noteID)
+    }
+    // remove from noteBookIds
+    this.props.removeNoteFromAllNoteBooks(noteID)
     this.props.removeSelectedNote()
   }
 

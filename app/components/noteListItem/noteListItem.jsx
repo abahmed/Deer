@@ -86,7 +86,7 @@ class NoteListItem extends React.Component {
    * Called when user clicks on delete button
    */
   handleOnDeleteClick () {
-    this.props.onDelete()
+    this.props.onDelete(this.props.id)
   }
 
   /**

@@ -343,6 +343,9 @@ it as a thunk that blocks until the condition is met. Example:</p>
 <dt><a href="#removeSelectedNoteBook">removeSelectedNoteBook()</a></dt>
 <dd><p>Async method, used for removing active notebook from database.</p>
 </dd>
+<dt><a href="#removeNoteFromAllNoteBooks">removeNoteFromAllNoteBooks()</a></dt>
+<dd><p>Async method, used for removing the destroyed note from notebook database.</p>
+</dd>
 <dt><a href="#renderApp">renderApp()</a></dt>
 <dd><p>Renders Apps with proper direction</p>
 </dd>
@@ -1300,6 +1303,12 @@ Async method, used for updating notebook in database.
 
 ## removeSelectedNoteBook()
 Async method, used for removing active notebook from database.
+
+**Kind**: global function  
+<a name="removeNoteFromAllNoteBooks"></a>
+
+## removeNoteFromAllNoteBooks()
+Async method, used for removing the destroyed note from notebook database.
 
 **Kind**: global function  
 <a name="renderApp"></a>
