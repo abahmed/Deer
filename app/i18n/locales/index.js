@@ -61,5 +61,10 @@ export const SUPPORTED_LANGS = [
     language: 'বাংলা',
     code: 'bn',
     path: 'bn'
+  },
+  {
+    language: 'Italiano',
+    code: 'it',
+    path: 'it'
   }
 ]
